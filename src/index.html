@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    WiiQare Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template
+  </title>
+</head>
+
+<body
+  x-data="{ page: 'main', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+  x-init="
+        darkMode = JSON.parse(localStorage.getItem('darkMode'));
+        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+
+  <!-- ===== Page Wrapper Start ===== -->
+  <div class="flex h-screen overflow-hidden">
+    <!-- ===== Sidebar Start ===== -->
+    <include src="./components/sidebar.html"></include>
+    <!-- ===== Sidebar End ===== -->
+
+    <!-- ===== Content Area Start ===== -->
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+      <!-- ===== Header Start ===== -->
+      <include src="./components/header.html" />
+      <!-- ===== Header End ===== -->
+
+      <!-- ===== Main Content Start ===== -->
+      <main>
+
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+          <!-- Top components Start-->
+          <div class=" mt-2 mb-17">
+
+            <!-- Filter Start-->
+            <div>
+
+
+            </div>
+
+            <!-- Filter end-->
+
+            <!-- Export Option Start-->
+
+            <div>
+
+
+            </div>
+            <!-- Export Option end-->
+          </div>
+          <!-- Top components End-->
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 bg-[#DAE8FA] p-[19px] ">
+            <!-- Card Item Start -->
+            <div class="flex flex-row items-center gap-4 rounded-sm   ">
+
+              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-[#934286]">
+
+              </div>
+
+              <div class="mt-4 flex items-end justify-between">
+                <div class="mt-[-22px]">
+                  <h4 class="title-box dark:text-white">
+                    Total Registered
+                  </h4>
+                  <span class="number-title">2,868</span>
+                </div>
+                <!-- 
+                <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
+                  2.59%
+                  <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M4.35716 2.47737L0.908974 5.82987L5.0443e-07 4.94612L5 0.0848689L10 4.94612L9.09103 5.82987L5.64284 2.47737L5.64284 10.0849L4.35716 10.0849L4.35716 2.47737Z"
+                      fill="" />
+                  </svg>
+                </span> -->
+              </div>
+            </div>
+            <!-- Card Item End -->
+
+            <!-- Card Item Start -->
+            <div class="flex flex-row items-center gap-4  rounded-sm   ">
+              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-[#F37500]">
+
+              </div>
+
+              <div class="mt-4 flex items-end justify-between">
+                <div class="mt-[-22px]">
+                  <h4 class="title-box dark:text-white">
+                    With open Vouchers
+                  </h4>
+                  <span class="number-title">895</span>
+                </div>
+
+              </div>
+            </div>
+            <!-- Card Item End -->
+
+            <!-- Card Item Start -->
+            <div class="flex flex-row items-center gap-4 rounded-sm   ">
+              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-[#FEE501]">
+
+              </div>
+
+              <div class="mt-4 flex items-end justify-between">
+                <div class="mt-[-22px]">
+                  <h4 class="title-box dark:text-white">
+                    With used Voucher
+                  </h4>
+                  <span class="number-title">895</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card Item End -->
+
+            <!-- Card Item Start -->
+            <div class="flex flex-row items-center gap-4 rounded-sm   ">
+              <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-[#35B769]">
+
+              </div>
+
+              <div class="mt-4 flex items-end justify-between">
+                <div class="mt-[-22px]">
+                  <h4 class="title-box dark:text-white">
+                    Active Payers
+                  </h4>
+                  <span class="number-title">1,568</span>
+                </div>
+              </div>
+            </div>
+            <!-- Card Item End -->
+          </div>
+          <!-- Table start -->
+
+          <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table
+                    class=" table mt-[51px] min-w-full border text-center text-sm font-light dark:border-neutral-500">
+                    <thead class="border-b font-medium dark:border-neutral-500">
+                      <tr>
+                        <th scope="col" class=" title-box border-r py-0 w-0 dark:border-neutral-500">
+                          #
+                        </th>
+                        <th scope="col" class="border-r py-2  dark:border-neutral-500">
+                          <di class="left-table ml-[24px] title-box">NAME
+                </div>
+                </th>
+                <th scope="col" class="border-r py-2 ml-1  dark:border-neutral-500">
+                  <div class="left-table ml-[24px] title-box">REGISTRATION DATE</div>
+                </th>
+                <th scope="col" class="border-r py-2 ml-1  dark:border-neutral-500">
+                  <div class="right-table mr-[24px] title-box ">BENEFICIARIES</div>
+                </th>
+                <th scope="col" class="border-r ml-1 py-2 title-box dark:border-neutral-500">
+                  <div class="left-table ml-[24px] title-box">LAST PAYMENT</div>
+                </th>
+                <th scope="col" class="border-r ml-1 py-2 title-box dark:border-neutral-500">
+                  <div class="right-table mr-[24px]"> VOUCHER [VALUE]</div>
+                </th>
+                </tr>
+
+                </thead>
+                <tbody>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">1</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">KURUNZI ALFTRED MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium"> 19 Aug 2019</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">45</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium"> 29 Sep 2022</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">506</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">2</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">PORTGAS D ACE MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">24 Aug 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">24</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">07 May 2023</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">1,205</div>
+                    </td>
+
+                  </tr>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">3</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium ">KENPACHI ZARAKI MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">29 Sep 2020</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">12</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">18 Oct 2020</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium"> 1,582</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">4</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">ICHIGO KUROSAKI MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">15 Jan 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">8</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">22 Feb 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">2,354</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">5</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">RUKIA KUCHIKI MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">02 Mar 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">5</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">10 Apr 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">1,129</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">7</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">KATE JONES MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">15 Nov 2020</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">7</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">25 Dec 2020</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">2,345</div>
+                    </td>
+                  </tr>
+
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">8</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">JASON SMITH MR</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">3 Feb 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">3</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">15 Mar 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">1,234</div>
+                    </td>
+                  </tr>
+
+                  <tr class="border-b dark:border-neutral-500">
+                    <td class="whitespace-nowrap border-r px-6 py-2 font-medium dark:border-neutral-500">
+                      <div class="text-black-2 font-medium">9</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">MELISSA RODRIGUEZ MRS</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">12 Apr 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="right-table text-black-2 font-medium">5</div>
+                    </td>
+                    <td class="whitespace-nowrap border-r px-6 py-2 dark:border-neutral-500">
+                      <div class="left-table text-black-2 font-medium">30 May 2021</div>
+                    </td>
+                    <td class="whitespace-nowrap px-6 py-2">
+                      <div class="right-table text-black-2 font-medium">3,456</div>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table End -->
+    </div>
+    </main>
+
+    <!-- ===== Main Content End ===== -->
+  </div>
+  <!-- ===== Content Area End ===== -->
+  </div>
+  <!-- ===== Page Wrapper End ===== -->
+</body>
+
+<script>
+
+  let options = {
+    numberPerPage: 5, //Cantidad de datos por pagina
+    goBar: true, //Barra donde puedes digitar el numero de la pagina al que quiere ir
+    pageCounter: true, //Contador de paginas, en cual estas, de cuantas paginas
+  };
+
+  let filterOptions = {
+    el: '#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+  };
+
+  paginate.init('.myTable', options, filterOptions);
+</script>
+
+</html>
