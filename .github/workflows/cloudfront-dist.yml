@@ -32,11 +32,13 @@ jobs:
           source: dist
           force: true
 
-      - name: Update CloudFront distribution
-        uses: aws-actions/cloudfront@v1
-        with:
-          action: "update"
-          distribution-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-          region: ${{ secrets.AWS_REGION }}
-          files: dist/*
+      - name: Invalidate AWS CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+            DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+            PATHS: "/index.html"
+            AWS_REGION: "us-east-1"
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 
