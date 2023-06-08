@@ -1,1 +1,9 @@
 node_modules
+/.terraform/.terraform/
+/.idea/.gitignore
+/.idea/aws.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/WiiQare.iml
+/build/
+/dist/

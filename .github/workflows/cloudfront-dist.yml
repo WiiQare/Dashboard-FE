@@ -1,0 +1,42 @@
+name: Deploy Node.js App to AWS CloudFront
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Deploy to S3
+        uses: aws-actions/s3@v1
+        with:
+          action: "upload"
+          bucket: ${{ secrets.AWS_S3_BUCKET_NAME }}
+          region: ${{ secrets.AWS_REGION }}
+          source: dist
+          force: true
+
+      - name: Update CloudFront distribution
+        uses: aws-actions/cloudfront@v1
+        with:
+          action: "update"
+          distribution-id: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+          region: ${{ secrets.AWS_REGION }}
+          files: dist/*
+
