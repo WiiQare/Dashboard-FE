@@ -8,9 +8,6 @@ terraform {
     region = "eu-west-3"
   }
 
-#  resource "aws_iam_user" "user" {
-#    name = var.user_name
-#  }
 
   resource "aws_s3_bucket" "bucket" {
     bucket = var.bucket_name
