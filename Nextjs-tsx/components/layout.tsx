@@ -10,9 +10,7 @@ import Cards from "./cards";
 function Layout(props: Props) {
   return (
     <div className="flex h-screen  w-screen flex-row bg-white font-inter">
-      <title>
-        WiiQare Dashboard
-      </title>
+
       <MainMenu />
       <div className="w-full">
 

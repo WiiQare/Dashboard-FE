@@ -7,27 +7,28 @@ import PaymentsIcon from "./svgs/payments-Icon";
 import BeneficiariesIcon from "./svgs/beneficiaries-Icon";
 import MigrantPayersIcon from "./svgs/migrant-payers-Icon";
 import Logo from "./svgs/logo";
-import ReportMenuIcon from "./svgs/report-menu-icon";
+import ProfileIcon from "./svgs/profile-icon"
 import SettingMenuIcon from "./svgs/setting-menu-icon";
+import NFTICON from "./svgs/nft-icon";
 
 const menus = [
   { icon: MigrantPayersIcon, title: "Migrant Payers", href: "/" },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/drivers" },
   { icon: PaymentsIcon, title: "Payments", href: "/bookings" },
   { icon: HealthIcon, title: "Health Care Provider", href: "/notifications" },
-  { icon: HealthIcon, title: "NFT Vouchers", href: "/notifications" },
+  { icon: NFTICON, title: "NFT Vouchers", href: "/notifications" },
 ] as Menu[];
 
 const reportMenus = [
 
   {
-    icon: ReportMenuIcon,
+    icon: ProfileIcon,
     title: "Profile",
     href: "/car-reports",
   },
   {
     icon: SettingMenuIcon,
-    title: "Setting",
+    title: "Settings",
     href: "/car-reports",
   },
 ] as Menu[];
