@@ -243,4 +243,12 @@ span.flatpickr-weekday,
     position: static;
     bottom: 19px;
   }
+  .menu {
+    gap: 1.5rem;
+  }
+}
+@media (min-height: 634px) {
+  .menus {
+    gap: 1.5rem;
+  }
 }
