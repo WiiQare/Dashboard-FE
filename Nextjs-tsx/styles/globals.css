@@ -100,11 +100,7 @@ h5,
   text-align: right;
   font-size: 16px;
 }
-.table,
-.title-box {
-  color: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.06);
-}
+
 .action-box {
   box-sizing: border-box;
   width: 47px;
@@ -118,4 +114,7 @@ h5,
     bottom: 19px;
   }
 }
-
+.circle {
+  height: 2.875rem /* 46px */;
+  width: 2.875rem /* 46px */;
+}
