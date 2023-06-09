@@ -1,7 +1,7 @@
 import React from "react";
 import Props from "../props";
 
-function DashboardMenuIcon(props: Props) {
+function MigrantPayersIcon(props: Props) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
       <path
@@ -36,4 +36,4 @@ function DashboardMenuIcon(props: Props) {
   );
 }
 
-export default DashboardMenuIcon;
+export default MigrantPayersIcon;

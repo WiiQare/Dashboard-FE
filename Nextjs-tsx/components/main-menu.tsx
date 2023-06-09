@@ -2,22 +2,20 @@ import Link from "next/link";
 import React from "react";
 import LogoutIcon from "./logout-icon";
 import MenuItem, { Menu } from "./menu-item";
-import BellMenuIcon from "./svgs/bell-menu-icon";
-import BookingMenuIcon from "./svgs/booking-menu-icon";
-import CarMenuIcon from "./svgs/car-menu-icon";
-import DashboardMenuIcon from "./svgs/dashboard-menu-icon";
+import HealthIcon from "./svgs/health-Icon";
+import PaymentsIcon from "./svgs/payments-Icon";
+import BeneficiariesIcon from "./svgs/beneficiaries-Icon";
+import MigrantPayersIcon from "./svgs/migrant-payers-Icon";
 import Logo from "./svgs/logo";
-import PaymentMenuIcon from "./svgs/payment-menu-icon";
 import ReportMenuIcon from "./svgs/report-menu-icon";
 import SettingMenuIcon from "./svgs/setting-menu-icon";
-import TransactionMenuIcon from "./svgs/transaction-menu-icon";
 
 const menus = [
-  { icon: DashboardMenuIcon, title: "Migrant Payers", href: "/" },
-  { icon: CarMenuIcon, title: "Beneficiaries", href: "/drivers" },
-  { icon: BookingMenuIcon, title: "Payments", href: "/bookings" },
-  { icon: BellMenuIcon, title: "Health Care Provider", href: "/notifications" },
-  { icon: BellMenuIcon, title: "NFT Vouchers", href: "/notifications" },
+  { icon: MigrantPayersIcon, title: "Migrant Payers", href: "/" },
+  { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/drivers" },
+  { icon: PaymentsIcon, title: "Payments", href: "/bookings" },
+  { icon: HealthIcon, title: "Health Care Provider", href: "/notifications" },
+  { icon: HealthIcon, title: "NFT Vouchers", href: "/notifications" },
 ] as Menu[];
 
 const reportMenus = [

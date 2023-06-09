@@ -1,7 +1,7 @@
 import React from "react";
 import Props from "../props";
 
-function BellMenuIcon(props: Props) {
+function HealthIcon(props: Props) {
   return (
     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" {...props}>
       <path
@@ -22,4 +22,4 @@ function BellMenuIcon(props: Props) {
   );
 }
 
-export default BellMenuIcon;
+export default HealthIcon;
