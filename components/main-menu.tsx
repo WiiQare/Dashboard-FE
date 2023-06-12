@@ -13,10 +13,10 @@ import NFTICON from "./svgs/nft-icon";
 
 const menus = [
   { icon: MigrantPayersIcon, title: "Migrant Payers", href: "/" },
-  { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/drivers" },
-  { icon: PaymentsIcon, title: "Payments", href: "/bookings" },
-  { icon: HealthIcon, title: "Health Care Provider", href: "/notifications" },
-  { icon: NFTICON, title: "NFT Vouchers", href: "/notifications" },
+  { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/" },
+  { icon: PaymentsIcon, title: "Payments", href: "/" },
+  { icon: HealthIcon, title: "Health Care Provider", href: "/" },
+  { icon: NFTICON, title: "NFT Vouchers", href: "/" },
 ] as Menu[];
 
 const reportMenus = [
