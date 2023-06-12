@@ -8,14 +8,6 @@ export default function login() {
 
     return (
         <>
-            {/*
-                This example requires updating your template:
-        
-                ```
-                <html className="h-full bg-white">
-                <body className="h-full">
-                ```
-              */}
 
             <div className="items-center bg-[linear-gradient(100deg,#0a5dd3,#24a7ff)]  mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 xl:pb-5 ">
