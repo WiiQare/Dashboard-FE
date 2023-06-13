@@ -35,8 +35,8 @@ const reportMenus = [
 
 function MainMenu() {
   return (
-    <div className="flex w-60 px-[inherit] h-fit flex-none flex-col justify-between bg-[#0d65d8] p-6 text-white">
-      <div className="flex flex-col space-y-5">
+    <div className="flex w-60  h-fit flex-none flex-col justify-between bg-[#0d65d8] p-6 text-white">
+      <div className="flex py-[inherit] flex-col space-y-5">
         {/* Logo */}
         <div>
           <Link href="" className="block px-2 pt-2">
