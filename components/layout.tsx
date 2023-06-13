@@ -15,7 +15,7 @@ function Layout(props: Props) {
       <div className="w-full">
 
         <Header></Header>
-        <div className="mx-auto max-w-screen-2xl p-4 2xl:p-10">
+        <div className="mx-auto max-w-screen-2xl p-4 pb-0 2xl:p-10">
           <div className="flex  flex-grow items-center mb-[20px] mt-[-5px] pl-0 justify-between">
             <Filter />
             <Options />

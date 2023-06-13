@@ -23,7 +23,7 @@ function MenuItem(props: Menu) {
         {router.route == props.href && (
           <span className="absolute left-0 top-1/2 h-9 w-[6px] -translate-y-1/2 rounded bg-white"></span>
         )}
-        <props.icon />
+        <props.icon  />
         {props.title}
       </Link>
     </li>
