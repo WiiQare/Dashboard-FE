@@ -9,7 +9,7 @@ import Cards from "./cards";
 
 function Layout(props: Props) {
   return (
-    <div className="flex h-screen  w-screen flex-row bg-white font-inter">
+    <div className="fixed flex h-screen  w-screen flex-row bg-white font-inter">
 
       <MainMenu />
       <div className="w-full">
