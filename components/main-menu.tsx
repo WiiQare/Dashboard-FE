@@ -39,11 +39,11 @@ function MainMenu() {
       <div className="flex flex-col space-y-5">
         {/* Logo */}
         <div>
-          <Link href="./login" className="block px-2 py-6">
+          <Link href="" className="block px-2 pt-2">
             <Logo />
           </Link>
         </div>
-        <p className="px-4 py-3 text-white/50">Dashboard</p>
+        <p className="px-4 pt-3  text-lg text-white/50">Dashboard</p>
 
         <div className="flex flex-col space-y-4">
           <ul className="flex flex-col space-y-2">
@@ -56,7 +56,7 @@ function MainMenu() {
               />
             ))}
           </ul>
-
+          {/* <------components-----> */}
           <hr className="ml-4 py-2 text-white/20" />
 
           <div>
