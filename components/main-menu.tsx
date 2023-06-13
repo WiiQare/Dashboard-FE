@@ -39,7 +39,7 @@ function MainMenu() {
       <div className="flex flex-col space-y-5">
         {/* Logo */}
         <div>
-          <Link href="" className="block px-2 pt-2">
+          <Link href="./login" className="block px-2 pt-2">
             <Logo />
           </Link>
         </div>
