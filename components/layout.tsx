@@ -1,30 +1,47 @@
-import React from "react";
-import MainMenu from "./main-menu";
+import React, { useState } from "react";
+import SideBar from "./side-bar";
 import Props from "./props";
-import Header from "../components/headers";
-import Tables from "./table"; import Filter from "./svgs/filter";
-import Options from "./svgs/options";
+import Header from "./nav-bar";
+import Tables from "./table"; import Filter from "./atom/svgs/filtericon";
+import Options from "./atom/svgs/options";
 import Cards from "./cards";
-;
+import { ThemeProvider } from "next-themes";
+
+let sidebarAction: boolean
 
 function Layout(props: Props) {
+
+  const [open, setOpen] = useState(sidebarAction = false)
+
+  const handleSidebarState = (): void => {
+    setOpen(!open)
+  }
   return (
-    <div className="fixed flex overflow-auto h-screen  w-screen flex-row bg-white font-inter">
+    <ThemeProvider enableSystem={false} attribute="class">
+      <div className="fixed flex h-screen  w-screen flex-row  font-inter">
+        <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
+        <div className=" overflow-y-auto over bg-white dark:bg-black flex-1">
+          <Header  handleSidebar={handleSidebarState} />
+          <div className="p-4 sm:ml-[12rem]">
+            <div className="p-4  rounded-lg dark:border-gray-700 mt-20">
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="flex justify-start">
+                  <Filter />
+                </div>
+                <div className="flex items-center justify-end">
+                  <Options />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 mb-4">
+                <Cards />
+              </div>
 
-      <MainMenu />
-      <div className="w-full">
-
-        <Header></Header>
-        <div className="mx-auto max-w-screen-2xl p-4 pb-0 2xl:p-10">
-          <div className="flex  flex-grow items-center mb-[20px] mt-[-5px] pl-0 justify-between">
-            <Filter />
-            <Options />
+              <Tables />
+            </div>
           </div>
-          <Cards />
-          <Tables />
         </div>
       </div>
-    </div>
+    </ThemeProvider >
   );
 }
 
