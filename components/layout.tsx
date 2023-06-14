@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideBar from "./side-bar";
 import Props from "./props";
-import Header from "./nav-bar";
+import Navbar from "./nav-bar";
 import Tables from "./table"; import Filter from "./atom/svgs/filtericon";
 import Options from "./atom/svgs/options";
 import Cards from "./cards";
@@ -21,7 +21,7 @@ function Layout(props: Props) {
       <div className="fixed flex h-screen  w-screen flex-row  font-inter">
         <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
         <div className=" overflow-y-auto over bg-white dark:bg-black flex-1">
-          <Header  handleSidebar={handleSidebarState} />
+          <Navbar  handleSidebar={handleSidebarState} />
           <div className="p-4 sm:ml-[12rem]">
             <div className="p-4  rounded-lg dark:border-gray-700 mt-20">
               <div className="grid grid-cols-2 gap-4 mb-4">
