@@ -1,6 +1,6 @@
 import React from "react";
 
-function HealthIcon(props: Props) {
+function HealthIcon() {
     return (
         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" >
             <path fill="#fff" stroke="#fff" stroke-width=".25"
