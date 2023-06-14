@@ -1,16 +1,12 @@
-import Link from "next/link";
-import LogoutIcon from "./logout-icon";
 import MenuItem, { Menu } from "./side-bar-item";
 import HealthIcon from "./atom/svgs/health-Icon";
 import PaymentsIcon from "./atom/svgs/payments-Icon";
 import BeneficiariesIcon from "./atom/svgs/beneficiaries-Icon";
 import MigrantPayersIcon from "./atom/svgs/migrant-payers-Icon";
-import Logo from "./atom/images/logo";
 import ProfileIcon from "./atom/svgs/profile-icon"
 import SettingMenuIcon from "./atom/svgs/setting-menu-icon";
 import NFTICON from "./atom/svgs/nft-icon";
-import React, { useState, useMemo } from "react";
-import { useRouter } from "next/router";
+import React, { useState} from "react";
 
 
 
