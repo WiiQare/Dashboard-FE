@@ -1,7 +1,5 @@
 import React from "react";
-import Props from "../props";
-
-function BeneficiariesIcon(props: Props) {
+function BeneficiariesIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" fill="none" viewBox="0 0 24 18">
     <path fill="#fff" fill-rule="evenodd"

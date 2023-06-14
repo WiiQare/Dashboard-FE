@@ -1,9 +1,8 @@
 import React from "react";
-import Props from "../props";
 
-function SettingMenuIcon(props: Props) {
+function SettingMenuIcon() {
   return (
-    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" {...props}>
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none">
       <path
         d="M12.4001 14.3466C13.696 14.3466 14.7466 13.296 14.7466 12C14.7466 10.704 13.696 9.65341 12.4001 9.65341C11.1041 9.65341 10.0535 10.704 10.0535 12C10.0535 13.296 11.1041 14.3466 12.4001 14.3466Z"
         stroke="currentColor"

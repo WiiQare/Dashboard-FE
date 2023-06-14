@@ -1,7 +1,6 @@
 import React from "react";
-import Props from "../props";
 
-function PaymentsIcon(props: Props) {
+function PaymentsIcon() {
   return (
     <svg className="ml-[-4px]" xmlns="http://www.w3.org/2000/svg" width="29" height="28" fill="none"
       viewBox="0 0 29 28">

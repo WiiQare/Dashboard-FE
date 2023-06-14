@@ -1,9 +1,8 @@
 import React from "react";
-import Props from "../props";
 
-function ChevronDownIcon(props: Props) {
+function ChevronDownIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
       <path
         d="M6 9L12 15L18 9"
         stroke="#656575"

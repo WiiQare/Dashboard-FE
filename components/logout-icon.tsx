@@ -1,9 +1,9 @@
 import React from "react";
 import Props from "./props";
 
-function LogoutIcon(props: Props) {
+function LogoutIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" {...props}>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" >
       <path
         d="M8.33331 14.1667L12.5 10L8.33331 5.83334"
         stroke="currentColor"

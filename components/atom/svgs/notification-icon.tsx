@@ -1,9 +1,8 @@
 import React from "react";
-import Props from "../props";
 
-function NotificationIcon(props: Props) {
+function NotificationIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
       <g clipPath="url(#clip0_17_464)">
         <path
           d="M11.9997 22.8533C12.4196 22.8437 12.8226 22.6858 13.1374 22.4076C13.4522 22.1295 13.6584 21.7489 13.7197 21.3333H10.213C10.276 21.7602 10.4919 22.1497 10.8205 22.4293C11.1492 22.7089 11.5682 22.8596 11.9997 22.8533Z"
