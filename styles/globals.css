@@ -108,8 +108,8 @@ h5,
   align-content: center;
   border: 1px solid rgba(136, 136, 136, 0.28);
 }
-.search {
-  transition: all 0.15s ease;
+.transition {
+  transition: all 1s ease;
 }
 .circle {
   height: 2.875rem /* 46px */;
@@ -125,4 +125,8 @@ h5,
   .search {
     display: none;
   }
+}
+#react-aria5852958079-6 {
+  top: 70px !important;
+  border-radius: 7px;
 }

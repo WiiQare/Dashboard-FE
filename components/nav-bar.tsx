@@ -6,12 +6,14 @@ import Link from "next/link";
 import Logo from "./atom/images/logo";
 interface myProps {
     handleSidebar(): void
-
-
 }
 
 const Navbar: React.FC<myProps> = (props) => {
-
+    let dropDownState: boolean
+    const [dropDown, setDropDown] = useState(dropDownState = false)
+    const handleDropDown = (): void => {
+        setDropDown(!dropDown)
+    }
     return (
         <div>
             <nav className=" bg-[#0d65d8] fixed top-0 z-50 w-full  dark:bg-gray-800 dark:border-gray-700">
@@ -40,7 +42,7 @@ const Navbar: React.FC<myProps> = (props) => {
 
                             {/* <!--Search start --> */}
                             <div className="flex items-left  mt-3">
-                                <div className=" sm:block w-[12rem] search sm:w-[16rem] bg-white ">
+                                <div className=" sm:block w-[12rem] transition sm:w-[16rem] bg-white ">
                                     <form action="https://formbold.com/s/unique_form_id" method="POST" className="mt-[6px]">
                                         <div className="relative left-0">
                                             <button className="absolute top-1/2 left-[85%] -translate-y-1/2">
@@ -59,10 +61,14 @@ const Navbar: React.FC<myProps> = (props) => {
                         <div className="flex w-fit ml-auto justify-end">
 
                             <div className="flex items-center">
-                                <div className="flex items-center ml-3">
-                                    <div>
-                                        <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                            <span className="sr-only">Open user menu</span>
+                                <div className="flex items-center ml-3 flex-col gap-3">
+                                    <div className="flex gap-2">
+                                        <span className=" text-right-2 lg:block">
+                                            <span className="block text-sm mt-2 font-medium text-white">Edward Newgate</span>
+                                            <span className="block text-xs font-medium text-gray ">Admin</span>
+                                        </span>
+                                        <button type="button" onFocus={handleDropDown} onBlur={handleDropDown} className=" flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                            <span className="sr-only">Profile menu</span>
                                             <Image className="rounded-full transform-rotate-0.2"
                                                 src={user}
                                                 width={50}
@@ -70,16 +76,18 @@ const Navbar: React.FC<myProps> = (props) => {
                                                 alt="User"
                                             />  </button>
                                     </div>
-                                    <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                                    <div className={`   ${!dropDown && 'hidden'}     z-50  transition  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 absolute mt-14 ml-[-2rem] w-[15%]  dark:divide-gray-600" id="dropdown-user`}>
+
                                         <div className="px-4 py-3" role="none">
                                             <p className="text-sm text-gray-900 dark:text-white" role="none">
-
+                                                Edward Newgate
                                             </p>
                                             <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-
+                                                whiteb@twopiece.com
                                             </p>
                                         </div>
                                         <ul className="py-1" role="none">
+
                                             <li>
                                                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
                                             </li>
