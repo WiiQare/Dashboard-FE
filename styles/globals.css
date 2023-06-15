@@ -51,7 +51,9 @@ h5,
 .h5 {
   @apply text-sm font-normal leading-4;
 }
-
+.svg {
+  color: black;
+}
 .number-title {
   width: 149.67px;
   height: 36.14px;
@@ -108,8 +110,11 @@ h5,
   align-content: center;
   border: 1px solid rgba(136, 136, 136, 0.28);
 }
-.transition {
+.transiton-1 {
   transition: all 1s ease;
+}
+.transiton-0\.5 {
+  transition: all 0.5s ease;
 }
 .circle {
   height: 2.875rem /* 46px */;
@@ -135,4 +140,8 @@ h5,
 #react-aria5852958079-6 {
   top: 70px !important;
   border-radius: 7px;
+}
+.bg-gray-850 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }

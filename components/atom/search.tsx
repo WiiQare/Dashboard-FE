@@ -3,7 +3,7 @@ import SearchIcon from "./svgs/search-icon";
 function Search() {
     return (
         <div className="flex ml-[-4px] search items-left  mt-3">
-            <div className=" sm:block w-[12rem] search-input ransition sm:w-[15rem] bg-white ">
+            <div className=" sm:block w-[12rem] search-input ransition sm:w-[15rem] bg-white border ">
                 <form action="https://formbold.com/s/unique_form_id" method="POST" className="mt-[6px]">
                     <div className="relative left-0">
                         <button className="absolute top-1/2 left-[85%] -translate-y-1/2">

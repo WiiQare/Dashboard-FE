@@ -12,20 +12,21 @@ function CardsItem(props: cards) {
     const router = useRouter();
 
     return (
+        <div className="grid  sm:grid-cols-3 grid-cols-3 rounded-md  dark:bg-[#182644] bg-white p-[20px] ">
+            <div
+                className={
+                    `circle ` +
+                    props.color +
+                    " h-11.5 w-11.5 flex mt-5 rounded-full "
+                }
+            ></div>
 
-        <div className="flex flex-row items-center gap-4 rounded-sm   ">
-            <div className={`circle `+props.color+" flex h-11.5 w-11.5 items-center justify-center rounded-full "}>
-
+            <div className=" ml-[-0rem] grid  gap-0 ">
+                <h4 className="mb-4  text-black dark:text-white">{props.title}</h4>
+                <span className="number-title !text-xl mt-1 ml-2 ">{props.values}</span>
             </div>
 
-            <div className="mt-4 flex items-end justify-between">
-                <div className="mt-[-22px]">
-                    <h4 className="title-box dark:text-white">
-                       {props.title}
-                    </h4>
-                    <span className="number-title">{props.values}</span>
-                </div>
-            </div>
+            
         </div>
     );
 }

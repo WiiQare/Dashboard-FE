@@ -16,7 +16,7 @@ function MenuItem(props: Menu) {
       <Link
         href={props.href}
         className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == props.href
-          ? "button-text bg-[#FF8A2B]"
+          ? "button-text bg-[#FF8A2B] dark:bg-[#df690a]"
           : "opacity-75 hover:bg-[#FF8A2B]"
           }`}
       >

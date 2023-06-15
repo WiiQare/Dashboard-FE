@@ -10,6 +10,7 @@ function Logo( ) {
       alt="Picture of the author"
       width="350"
       height="300"
+      
     />
   )
 }

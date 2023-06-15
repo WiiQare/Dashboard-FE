@@ -16,14 +16,10 @@ function Layout(props: Props) {
   }
   return (
     <ThemeProvider enableSystem={false} attribute="class">
-      <div className="fixed flex h-screen  w-screen flex-row  font-inter">
+      <div className="fixed flex h-full  w-screen flex-row  font-inter">
         <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-        <div className=" overflow-y-auto over bg-white dark:bg-black flex-1">
-          <Navbar handleSidebar={handleSidebarState} />
-          <div>
-            <Contain />
-          </div>
-        </div>
+        <Navbar handleSidebar={handleSidebarState} />
+        <Contain />
       </div>
     </ThemeProvider >
   );

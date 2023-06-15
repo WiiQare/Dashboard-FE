@@ -15,24 +15,30 @@ function Contain(props: Props) {
         setOpen(!open)
     }
     return (
+        <div className=" bg-[#f0f4fd] dark:bg-[#0f172a] overflow-y-auto over  flex-1">
 
-        <div className="transition p-4 h-fit   sm:ml-[12rem]">
-            
-        
-            <div className="p-4   mt-20">
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="flex justify-start">
-                        <Filter />
-                    </div>
-                    <div className="flex items-center justify-end">
-                        <Options />
+            <div className=" h-full">
+                <div className="transiton-1 p-4 h-full sm:ml-[12rem]">
+
+
+                    <div className="p-4   mt-20">
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                            <div className="flex justify-start">
+                                <Filter />
+                            </div>
+                            <div className="flex items-center justify-end">
+                                <Options />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 gap-4 mb-4">
+                            <Cards />
+                        </div>
+                        <div className="">
+                            <Tables />
+                        </div>
+
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-4 mb-4">
-                    <Cards />
-                </div>
-
-                <Tables />
             </div>
         </div>
     );
