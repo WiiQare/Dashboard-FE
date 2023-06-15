@@ -47,6 +47,7 @@ const Navbar: React.FC<myProps> = (props) => {
                         <div className="flex w-fit ml-auto justify-end">
 
                             <div className="flex items-center">
+
                                 <div className="flex items-center ml-3 flex-col gap-3">
                                     <div className="flex gap-2">
                                         <span className=" text-right-2 hidden sm:block lg:block">

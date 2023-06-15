@@ -4,9 +4,10 @@ import CardsItem from "./cards-item";
 
 const cards = [
     { title: "Total number of Registered", color: "bg-[#934286]", values: "2,868" },
-    { title: "Number of open Vouchers", color: "bg-[#F37500]", values: "895" },
-    { title: "Number  used Voucher", color: "bg-[#FEE501]", values: "368" },
+    { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: "895" },
+    { title: "Total Unspent Vouchers", color: "bg-[#FEE501]", values: "368" },
     { title: "Number of active Payers", color: "bg-[#35B769]", values: "1,605" },
+    { title: "Number of Vouchers recalled", color: "bg-[#c71313]", values: "1,605" },
 ];
 
 
