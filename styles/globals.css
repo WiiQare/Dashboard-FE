@@ -121,9 +121,15 @@ h5,
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 596px) {
   .search {
     display: none;
+  }
+}
+@media only screen and (max-width: 627px) {
+  .search-input {
+    width: 10rem;
+    transition: all 1s ease;
   }
 }
 #react-aria5852958079-6 {

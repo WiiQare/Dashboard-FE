@@ -6,7 +6,7 @@ import MigrantPayersIcon from "./atom/svgs/migrant-payers-Icon";
 import ProfileIcon from "./atom/svgs/profile-icon"
 import SettingMenuIcon from "./atom/svgs/setting-menu-icon";
 import NFTICON from "./atom/svgs/nft-icon";
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 
 
@@ -17,11 +17,11 @@ interface myProps {
 }
 
 const menus = [
-  { icon: MigrantPayersIcon, title: "Migrant Payers", href: "/" },
+  { icon: MigrantPayersIcon, title: "Payers", href: "/" },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
   { icon: PaymentsIcon, title: "Payments", href: "/Payments" },
-  { icon: HealthIcon, title: "Health Care Provider", href: "/Health" },
-  { icon: NFTICON, title: "NFT Vouchers", href: "/NFT" },
+  { icon: HealthIcon, title: "Provider", href: "/Health" },
+  { icon: NFTICON, title: "Vouchers", href: "/NFT" },
 ] as Menu[];
 
 
@@ -47,7 +47,7 @@ const SideBar: React.FC<myProps> = (props) => {
   return (
     <aside id=" logo-sidebar" className={`
       ${props.sidebarOpen && "translate-x-0"}
-       bg-[#0d65d8] fixed top-0 left-0 z-40 w-30 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 `
+       bg-[#0d65d8] fixed top-0 left-0 z-40 w-30 h-screen transition pt-20 -translate-x-full  border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 `
     } aria-label="Sidebar" >
       <div className="bg-[#0d65d8] w-[13rem] h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-800">
         <div className="mt-5 flex flex-col  space-y-4">

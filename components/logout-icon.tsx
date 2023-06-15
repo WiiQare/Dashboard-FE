@@ -1,5 +1,5 @@
 import React from "react";
-import Props from "./props";
+
 
 function LogoutIcon() {
   return (
