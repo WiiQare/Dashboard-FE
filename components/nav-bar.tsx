@@ -19,7 +19,7 @@ const Navbar: React.FC<myProps> = (props) => {
     }
     return (
         <div>
-            <nav className=" transiton-c-0.5 bg-white fixed top-0 z-50 w-full border-b border-gray-200 dark:border-none dark:bg-[#050e20d6] dark:border-gray-700">
+            <nav className=" transition-c-0.5 bg-white fixed top-0 z-50 w-full border-b border-gray-200 dark:border-none dark:bg-[#050e20d6] dark:border-gray-700">
                 <div className="px-3 py-3 lg:px-5 lg:pl-3">
                     <div className="grid grid-cols-2 gap4 mb-4">
                         <div className="flex gap-2">
@@ -68,16 +68,16 @@ const Navbar: React.FC<myProps> = (props) => {
                                                 alt="User"
                                             />  </button>
                                     </div>
-                                    <div className={`   ${!dropDown && 'hidden'}  dark:bg-[#050e20d6]   z-50  transiton-1  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow  absolute mt-14 ml-[-2rem]   dark:divide-gray-600" id="dropdown-user`}>
+                                    <div className={`   ${!dropDown && 'hidden'}  dark:bg-[#050e20d6]   z-50  transition-1  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow  absolute mt-14 ml-[-2rem]   dark:divide-gray-600" id="dropdown-user`}>
 
-                                        <div className="px-4 py-3 flex"   role="none">
+                                        <div className="px-4 py-3 flex" role="none">
                                             <div>
-                                            <p className="text-sm text-gray-900 dark:text-white" role="none">
-                                                Edward Newgate
-                                            </p>
-                                            <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                                whiteb@twopiece.com
-                                            </p>
+                                                <p className="text-sm text-gray-900 dark:text-white" role="none">
+                                                    Edward Newgate
+                                                </p>
+                                                <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                                    whiteb@twopiece.com
+                                                </p>
                                             </div>
                                             <div className="mb-2 ml-5">
                                                 <DarkMode />

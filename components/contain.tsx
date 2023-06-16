@@ -15,10 +15,10 @@ function Contain(props: Props) {
         setOpen(!open)
     }
     return (
-        <div className=" transiton-c-0.5 bg-[#f0f4fd] dark:bg-[#0f172a] overflow-y-auto over  flex-1">
+        <div className=" transition-c-0.5 bg-[#f0f4fd] dark:bg-[#0f172a] overflow-y-auto over  flex-1">
 
             <div className=" h-full">
-                <div className="transiton-1 p-4 h-full sm:ml-[12rem]">
+                <div className="transition-1 p-4 h-full sm:ml-[12rem]">
 
 
                     <div className="py-4  sm:px-4 mt-20">
@@ -33,7 +33,7 @@ function Contain(props: Props) {
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <Cards />
                         </div>
-                        <div className=" transiton-c-0.5">
+                        <div className=" transition-c-0.5">
                             <Tables />
                         </div>
 

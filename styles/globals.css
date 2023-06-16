@@ -110,10 +110,10 @@ h5,
   align-content: center;
   border: 1px solid rgba(136, 136, 136, 0.28);
 }
-.transiton-1 {
+.transition-1 {
   transition: all 1s ease;
 }
-.transiton-0\.5 {
+.transition-0\.5 {
   transition: all 0.5s ease;
 }
 .circle {
@@ -144,4 +144,10 @@ h5,
 .bg-gray-850 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.transition-c-0\.5{
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
 }
