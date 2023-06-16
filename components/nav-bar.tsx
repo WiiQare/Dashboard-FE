@@ -19,7 +19,7 @@ const Navbar: React.FC<myProps> = (props) => {
     }
     return (
         <div>
-            <nav className=" bg-white fixed top-0 z-50 w-full border-b border-gray-200 dark:border-none dark:bg-[#050e20d6] dark:border-gray-700">
+            <nav className=" transiton-c-0.5 bg-white fixed top-0 z-50 w-full border-b border-gray-200 dark:border-none dark:bg-[#050e20d6] dark:border-gray-700">
                 <div className="px-3 py-3 lg:px-5 lg:pl-3">
                     <div className="grid grid-cols-2 gap4 mb-4">
                         <div className="flex gap-2">
@@ -27,7 +27,7 @@ const Navbar: React.FC<myProps> = (props) => {
                             <div className="flex items-center  ">
 
                                 <div className="flex items-center justify-start">
-                                    <button onClick={props.handleSidebar}  type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                                    <button onClick={props.handleSidebar} type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                                         <span className="sr-only">Open sidebar</span>
                                         <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
@@ -49,7 +49,7 @@ const Navbar: React.FC<myProps> = (props) => {
                         </div>
                         <div className=" flex flex-row w-fit ml-auto justify-end">
                             <div className="w-fit mt-3 h-0 ">
-                                <DarkMode />
+
                             </div>
                             <div className="flex items-center">
 
@@ -59,7 +59,7 @@ const Navbar: React.FC<myProps> = (props) => {
                                             <span className="block text-sm mt-2 font-medium text-black dark:text-white">Edward Newgate</span>
                                             <span className="block text-xs font-medium text-blue-300 ml-20 ">Admin</span>
                                         </span>
-                                        <button type="button" onClick={handleDropDown} onBlur={handleDropDown} className=" flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                        <button type="button" onClick={handleDropDown} className=" flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                             <span className="sr-only">Profile menu</span>
                                             <Image className="rounded-full transform-rotate-0.2"
                                                 src={user}
@@ -68,15 +68,20 @@ const Navbar: React.FC<myProps> = (props) => {
                                                 alt="User"
                                             />  </button>
                                     </div>
-                                    <div className={`   ${!dropDown && 'hidden'}     z-50  transiton-1  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow  absolute mt-14 ml-[-2rem] w-[15%]  dark:divide-gray-600" id="dropdown-user`}>
+                                    <div className={`   ${!dropDown && 'hidden'}  dark:bg-[#050e20d6]   z-50  transiton-1  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow  absolute mt-14 ml-[-2rem]   dark:divide-gray-600" id="dropdown-user`}>
 
-                                        <div className="px-4 py-3" role="none">
+                                        <div className="px-4 py-3 flex"   role="none">
+                                            <div>
                                             <p className="text-sm text-gray-900 dark:text-white" role="none">
                                                 Edward Newgate
                                             </p>
                                             <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
                                                 whiteb@twopiece.com
                                             </p>
+                                            </div>
+                                            <div className="mb-2 ml-5">
+                                                <DarkMode />
+                                            </div>
                                         </div>
                                         <ul className="py-1" role="none">
 
@@ -93,7 +98,7 @@ const Navbar: React.FC<myProps> = (props) => {
                                                 <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
                                             </li>
                                             <li>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>

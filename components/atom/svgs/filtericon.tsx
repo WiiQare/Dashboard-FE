@@ -10,7 +10,7 @@ function Filter() {
             <div className="flex-none p-2">
                 <button
                     // onClick={showDropdownOptions()}
-                    className="ml-[-17px] flex flex-row justify-between px-2  text-gray-700 focus:outline-none focus:border-blue-600">
+                    className="ml-[-17px] flex flex-row justify-between px-2   transiton-c-0.5 text-gray-700 dark:text-slate-50 focus:outline-none focus:border-blue-600">
                     <span className="select-none">Filter</span>
 
                     <svg id="arrow-down" className="hidden w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg"

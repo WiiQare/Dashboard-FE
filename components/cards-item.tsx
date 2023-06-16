@@ -12,7 +12,7 @@ function CardsItem(props: cards) {
     const router = useRouter();
 
     return (
-        <div className="grid  sm:grid-cols-3 rounded-md  dark:bg-[#182644] bg-white p-[20px] ">
+        <div className="grid  sm:grid-cols-3 rounded-md  transiton-c-0.5   dark:bg-[#182644] bg-white p-[20px] ">
             <div
                 className={
                     `circle ` +
@@ -22,7 +22,7 @@ function CardsItem(props: cards) {
             ></div>
 
             <div className=" ml-[-0rem] grid  gap-0 ">
-                <h4 className="mb-4  text-black text-white">{props.title}</h4>
+                <h4 className="mb-4  transiton-c-0.5 text-black dark:text-white">{props.title}</h4>
                 <span className="number-title !text-xl mt-1 ml-2 ">{props.values}</span>
             </div>
 

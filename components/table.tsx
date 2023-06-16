@@ -108,7 +108,7 @@ function Tables() {
                 <div className="inline-block min-w-full text-black dark:text-black  sm:px-6 lg:px-8">
                     <div className="overflow-hidden">
                         <table
-                            className=" rounded-2xl  bg-white dark:bg-[#1e293b]  text-black  dark:text-white table min-w-full text-center text-sm font-light ">
+                            className=" rounded-2xl  transiton-c-0.5  bg-white dark:bg-[#1e293b]  text-black  dark:text-white table min-w-full text-center text-sm font-light ">
                             <thead className="font-normal">
                                 <tr className="">
                                     <th scope="col" className=" title-box py-0 w-0">

@@ -49,7 +49,7 @@ const SideBar: React.FC<myProps> = (props) => {
       ${props.sidebarOpen && "translate-x-0"}
        bg-white fixed top-0 left-0 z-40 w-30 h-screen transiton-0.5 pt-20 -translate-x-full  border-r border-gray-200 dark:border-none sm:translate-x-0 dark:bg-gray-900 dark:border-gray-700 `
     } aria-label="Sidebar" >
-      <div className="bg-white w-[13rem] h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-900">
+      <div className="transiton-c-0.5 bg-white w-[13rem] h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-900">
         <div className="mt-5 flex flex-col  space-y-4">
           <p className="px-4 pt-3  text-lg text-gray-500 dark:text-white/50">Dashboard</p>
           <button onClick={props.handleSidebar} onBlur={props.handleSidebar} type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -84,7 +84,7 @@ const SideBar: React.FC<myProps> = (props) => {
                 />
               ))}
               <div className="ml-28 mt-5 ">
-                <DarkMode />
+
               </div>
             </ul>
           </div>
