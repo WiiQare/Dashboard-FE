@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 export interface Menu {
-  icon: any;
+  icon: string;
   title: string;
   href: string;
 }

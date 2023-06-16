@@ -21,7 +21,7 @@ function Contain(props: Props) {
                 <div className="transiton-1 p-4 h-full sm:ml-[12rem]">
 
 
-                    <div className="p-4   mt-20">
+                    <div className="py-4  sm:px-4 mt-20">
                         <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className="flex justify-start">
                                 <Filter />

@@ -134,7 +134,7 @@ function Tables() {
 
                             </thead>
                             <tbody>
-                                <tr className="bg-[#0b276307]">
+                                <tr className="">
                                     <td className="whitespace-nowrap px-6 py-3 font-normal">
                                         <div className="text-black-2 font-normal">1</div>
                                     </td>

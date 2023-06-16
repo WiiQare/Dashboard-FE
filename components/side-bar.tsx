@@ -7,6 +7,7 @@ import ProfileIcon from "./atom/svgs/profile-icon"
 import SettingMenuIcon from "./atom/svgs/setting-menu-icon";
 import NFTICON from "./atom/svgs/nft-icon";
 import React, { useState } from "react";
+import DarkMode from "./atom/dark-mode";
 
 
 
@@ -22,11 +23,10 @@ const menus = [
   { icon: PaymentsIcon, title: "Payments", href: "/Payments" },
   { icon: HealthIcon, title: "Provider", href: "/Health" },
   { icon: NFTICON, title: "Vouchers", href: "/NFT" },
-] as Menu[];
+] as unknown as Menu[];
 
 
 const reportMenus = [
-
   {
     icon: ProfileIcon,
     title: "Profile",
@@ -37,7 +37,7 @@ const reportMenus = [
     title: "Settings",
     href: "/car-reports",
   },
-] as Menu[];
+] as unknown as Menu[];
 
 const SideBar: React.FC<myProps> = (props) => {
 
@@ -83,6 +83,9 @@ const SideBar: React.FC<myProps> = (props) => {
                   icon={menu.icon}
                 />
               ))}
+              <div className="ml-28 mt-5 ">
+                <DarkMode />
+              </div>
             </ul>
           </div>
         </div>
