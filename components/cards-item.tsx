@@ -23,7 +23,7 @@ function CardsItem(props: cards) {
 
             <div className=" ml-[-0rem] grid  gap-0 ">
                 <h4 className="mb-4  transition-c-0.5 text-black dark:text-white">{props.title}</h4>
-                <span className="number-title !text-xl mt-1 ml-2 ">{props.values}</span>
+                <span className="number-title !text-xl dark:text-cyan-500 mt-1 ml-2 ">{props.values}</span>
             </div>
 
 
