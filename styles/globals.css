@@ -137,17 +137,64 @@ h5,
     transition: all 1s ease;
   }
 }
-#react-aria5852958079-6 {
-  top: 70px !important;
-  border-radius: 7px;
-}
+
 .bg-gray-850 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
-.transition-c-0\.5{
+.transition-c-0\.5 {
   -webkit-transition: background-color 1s ease-out;
   -moz-transition: background-color 1s ease-out;
   -o-transition: background-color 1s ease-out;
   transition: background-color 1s ease-out;
 }
+@media screen and (max-width: 1524px) and (min-width: 1280px) {
+  .card-text {
+    max-width: 8rem;
+  }
+}
+.nextui-c-ltVxD {
+  border-radius: 6px !important;
+}
+.nextui-dropdown-item {
+  background-color: red;
+  width: 16rem;
+  margin-left: -8px;
+  border-radius: 0px !important;
+}
+/* normal state */
+.nextui-c-kpzpMf-dXDdo-dividerWeight-light {
+  color: blue;
+}
+/* on hover */
+.nextui-c-kpzpMf-dDgKzK-isHovered-true {
+  color: blue !important;
+}
+/* on focus */
+.nextui-c-kpzpMf-kIthQh-isFocused-true {
+  color: blue !important;
+  background-color: rgba(126, 129, 141, 0.089) !important;
+}
+
+.logout:hover,
+.logout:focus,
+.logout {
+  color: red !important;
+}
+li.nextui-c-kpzpMf:nth-child(4) {
+  border-top: rgba(0, 0, 0, 0.13) solid 1.8px;
+
+  margin-bottom: -8px;
+}
+li.nextui-c-kpzpMf:nth-child(4):focus,
+li.nextui-c-kpzpMf:nth-child(4):hover {
+  background-color: rgba(194, 15, 15, 0.11) !important;
+}
+.nextui-popover-content-enter-active {
+  border: none;
+  margin-left: 0rem !important;
+
+}
+.nextui-c-PJLV {
+  width: 12rem;
+} 

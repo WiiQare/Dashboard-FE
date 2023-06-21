@@ -4,7 +4,8 @@ import Props from "./props";
 import Navbar from "./nav-bar";
 import { ThemeProvider } from "next-themes";
 import Contain from "./contain";
-
+import DataPage from "../pages/api/extract";
+import Data from "../data.json"
 let sidebarAction: boolean
 
 function Layout(props: Props) {
@@ -21,6 +22,7 @@ function Layout(props: Props) {
         <Navbar handleSidebar={handleSidebarState} />
         <Contain />
       </div>
+    
     </ThemeProvider >
   );
 }

@@ -4,7 +4,7 @@ import { faTicket } from "@fortawesome/free-solid-svg-icons";
 
 function HealthIcon() {
     return (
-        <FontAwesomeIcon icon={faTicket} className="w-5" />
+        <FontAwesomeIcon icon={faTicket} className="w-6" />
     );
 }
 

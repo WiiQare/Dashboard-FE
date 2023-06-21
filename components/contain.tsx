@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Props from "./props";
-import Tables from "./table"; import Filter from "./atom/svgs/filtericon";
+import Tables from "./table"; import Filter from "./atom/filter";
 import Options from "./atom/svgs/options";
 import Cards from "./cards";
 

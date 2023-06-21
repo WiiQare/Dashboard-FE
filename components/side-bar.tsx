@@ -1,13 +1,13 @@
-import MenuItem, { Menu } from "./side-bar-item";
+import MenuItem, { Menu } from "./ molecules /side-bar-item";
 import HealthIcon from "./atom/svgs/health-Icon";
 import PaymentsIcon from "./atom/svgs/payments-Icon";
 import BeneficiariesIcon from "./atom/svgs/beneficiaries-Icon";
-import MigrantPayersIcon from "./atom/svgs/migrant-payers-Icon";
+import PayersIcon from "./atom/svgs/payers-Icon";
 import ProfileIcon from "./atom/svgs/profile-icon"
 import SettingMenuIcon from "./atom/svgs/setting-menu-icon";
-import NFTICON from "./atom/svgs/nft-icon";
+import NFTICON from "./atom/svgs/voucher-icon";
 import React, { useState } from "react";
-import DarkMode from "./atom/dark-mode";
+import DarkMode from "./ molecules /dark-mode";
 
 
 
@@ -18,7 +18,7 @@ interface myProps {
 }
 
 const menus = [
-  { icon: MigrantPayersIcon, title: "Payers", href: "/" },
+  { icon: PayersIcon, title: "Payers", href: "/" },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
   { icon: PaymentsIcon, title: "Payments", href: "/Payments" },
   { icon: HealthIcon, title: "Provider", href: "/Health" },

@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardsItem from "./cards-item";
+import CardsItem from "./ molecules /cards-item";
 
 const cards = [
     { title: "Total number of Registered", color: "bg-[#934286]", values: "2,868" },
