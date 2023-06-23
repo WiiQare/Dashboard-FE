@@ -155,11 +155,16 @@ h5,
 }
 .nextui-c-ltVxD {
   border-radius: 6px !important;
+  border: solid 1px #1100001a !important;
+  margin-left: -1rem !important;
+  width: 5px !important;
+  
 }
 .nextui-dropdown-item {
   background-color: red;
-  width: 16rem;
+  width: 16rem !important;
   margin-left: -8px;
+  margin-top: 2px;
   border-radius: 0px !important;
 }
 /* normal state */
@@ -180,10 +185,10 @@ h5,
 .logout:focus,
 .logout {
   color: red !important;
+  height: 2.5rem !important;
 }
 li.nextui-c-kpzpMf:nth-child(4) {
   border-top: rgba(0, 0, 0, 0.13) solid 1.8px;
-
   margin-bottom: -8px;
 }
 li.nextui-c-kpzpMf:nth-child(4):focus,
@@ -192,9 +197,4 @@ li.nextui-c-kpzpMf:nth-child(4):hover {
 }
 .nextui-popover-content-enter-active {
   border: none;
-  margin-left: 0rem !important;
-
 }
-.nextui-c-PJLV {
-  width: 12rem;
-} 

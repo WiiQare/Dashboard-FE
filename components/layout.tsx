@@ -4,8 +4,9 @@ import Props from "./props";
 import Navbar from "./nav-bar";
 import { ThemeProvider } from "next-themes";
 import Contain from "./contain";
-import DataPage from "../pages/api/extract";
-import Data from "../data.json"
+import { Provider } from 'react-redux';
+import store from "../redux/store";
+
 let sidebarAction: boolean
 
 function Layout(props: Props) {
@@ -17,12 +18,13 @@ function Layout(props: Props) {
   }
   return (
     <ThemeProvider enableSystem={false} attribute="class">
-      <div className="fixed flex h-full  w-screen flex-row  font-inter">
-        <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-        <Navbar handleSidebar={handleSidebarState} />
-        <Contain />
-      </div>
-    
+      <Provider store={store}>
+        <div className="fixed flex h-full  w-screen flex-row  font-inter">
+          <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
+          <Navbar handleSidebar={handleSidebarState} />
+          <Contain />
+        </div>
+      </Provider>
     </ThemeProvider >
   );
 }
