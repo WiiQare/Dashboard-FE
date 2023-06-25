@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Props from "./props";
-import Tables from "./atom/table"; 
+import Tables from "./atom/table";
 import Options from "./atom/svgs/options";
 import Cards from "./cards";
 
 
-let sidebarAction: boolean
-
 function Contain(props: Props) {
 
-    const [open, setOpen] = useState(sidebarAction = false)
-
-    const handleSidebarState = (): void => {
-        setOpen(!open)
-    }
     return (
         <div className=" transition-c-0.5 bg-[#f0f4fd] dark:bg-[#0f172a] overflow-y-auto over  flex-1">
 

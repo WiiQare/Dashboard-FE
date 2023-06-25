@@ -6,11 +6,11 @@ function Options() {
         <div>
             <div className="flex">
                 <div className="w-auto h-auto action-box p-[8px]">
-                    <PrinterIcon/>
+                    <PrinterIcon />
                 </div>
                 <div className="w-auto h-auto  action-box p-[8px]"><svg width="32" height="32" viewBox="0 0 32 32"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_79_1190)">
+                    <g clipPath="url(#clip0_79_1190)">
                         <path d="M30 18V16H24V26H26V22H29V20H26V18H30Z" fill="black" />
                         <path
                             d="M19 26H15V16H19C19.7954 16.0009 20.5579 16.3172 21.1204 16.8796C21.6828 17.4421 21.9991 18.2046 22 19V23C21.9991 23.7954 21.6828 24.5579 21.1204 25.1204C20.5579 25.6828 19.7954 25.9991 19 26ZM17 24H19C19.2651 23.9997 19.5193 23.8943 19.7068 23.7068C19.8943 23.5193 19.9997 23.2651 20 23V19C19.9997 18.7349 19.8943 18.4807 19.7068 18.2932C19.5193 18.1057 19.2651 18.0003 19 18H17V24Z"

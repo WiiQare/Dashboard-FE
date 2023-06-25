@@ -5,7 +5,7 @@ import Navbar from "./nav-bar";
 import { ThemeProvider } from "next-themes";
 import Contain from "./contain";
 import { Provider } from 'react-redux';
-import store from "../redux/store";
+import store from "../redux/store/store";
 
 let sidebarAction: boolean
 

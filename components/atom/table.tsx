@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import TableGenerator from './table-items';
+import React from 'react';
+import TableItems from './tableItem';
 import payersData from '../../payers.json';
 import { useSelector } from 'react-redux';
 
-const MyTable: React.FC = () => {
-    const searchValue = useSelector((state: any) => state.searchValue);
+const Table: React.FC = () => {
+    const searchValue = useSelector((state: any) => state.search.searchValue);
     const data = payersData.record;
 
     const columns = React.useMemo(
@@ -35,8 +35,7 @@ const MyTable: React.FC = () => {
             item.beneficiaries_vouchers.toString().includes(searchValue.toLowerCase())
     );
 
-
-    return <TableGenerator data={filteredData} columns={columns} />
+    return <TableItems data={filteredData} columns={columns} />;
 };
 
-export default MyTable;
+export default Table;

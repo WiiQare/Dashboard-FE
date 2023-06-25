@@ -51,9 +51,11 @@ h5,
 .h5 {
   @apply text-sm font-normal leading-4;
 }
+
 .svg {
   color: black;
 }
+
 .number-title {
   width: 149.67px;
   height: 36.14px;
@@ -74,6 +76,7 @@ h5,
   order: 1;
   flex-grow: 0;
 }
+
 .number-title {
   font-family: "Poppins";
   font-style: normal;
@@ -92,11 +95,13 @@ h5,
   font-size: 16px;
   transform: rotate(-0.2deg);
 }
+
 .left-table {
   display: block;
   text-align: left;
   font-size: 16px;
 }
+
 .right-table {
   display: block;
   text-align: right;
@@ -110,27 +115,35 @@ h5,
   align-content: center;
   border: 1px solid rgba(136, 136, 136, 0.28);
 }
+
 .transition-1 {
   transition: all 1s ease;
 }
-.transition-0\.5 {
+
+.transition-c-0\.5 {
   transition: all 0.5s ease;
 }
+
 .circle {
-  height: 2.875rem /* 46px */;
-  width: 2.875rem /* 46px */;
+  height: 2.875rem
+    /* 46px */
+  ;
+  width: 2.875rem
+    /* 46px */
+  ;
 }
+
 .translate-x-0 {
   --tw-translate-x: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
 @media only screen and (max-width: 596px) {
   .search {
     display: none;
   }
 }
+
 @media only screen and (max-width: 627px) {
   .search-input {
     width: 10rem;
@@ -142,24 +155,27 @@ h5,
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
-.transition-c-0\.5 {
+
+.FF {
   -webkit-transition: background-color 1s ease-out;
   -moz-transition: background-color 1s ease-out;
   -o-transition: background-color 1s ease-out;
   transition: background-color 1s ease-out;
 }
+
 @media screen and (max-width: 1524px) and (min-width: 1280px) {
   .card-text {
     max-width: 8rem;
   }
 }
+
 .nextui-c-ltVxD {
   border-radius: 6px !important;
   border: solid 1px #1100001a !important;
   margin-left: -1rem !important;
   width: 5px !important;
-  
 }
+
 .nextui-dropdown-item {
   background-color: red;
   width: 16rem !important;
@@ -167,14 +183,17 @@ h5,
   margin-top: 2px;
   border-radius: 0px !important;
 }
+
 /* normal state */
 .nextui-c-kpzpMf-dXDdo-dividerWeight-light {
   color: blue;
 }
+
 /* on hover */
 .nextui-c-kpzpMf-dDgKzK-isHovered-true {
   color: blue !important;
 }
+
 /* on focus */
 .nextui-c-kpzpMf-kIthQh-isFocused-true {
   color: blue !important;
@@ -187,14 +206,47 @@ h5,
   color: red !important;
   height: 2.5rem !important;
 }
+
 li.nextui-c-kpzpMf:nth-child(4) {
   border-top: rgba(0, 0, 0, 0.13) solid 1.8px;
   margin-bottom: -8px;
 }
+
 li.nextui-c-kpzpMf:nth-child(4):focus,
 li.nextui-c-kpzpMf:nth-child(4):hover {
   background-color: rgba(194, 15, 15, 0.11) !important;
 }
+
 .nextui-popover-content-enter-active {
   border: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
 }

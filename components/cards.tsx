@@ -1,5 +1,4 @@
 import React from "react";
-
 import CardsItem from "./ molecules /cards-item";
 
 const cards = [
@@ -10,19 +9,19 @@ const cards = [
     { title: "Number of Vouchers recalled", color: "bg-[#c71313]", values: "1,605" },
 ];
 
-
-function Cards() {
-    return (<div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5  p-[23px] ">
-
-        {cards.map((cards, index) => (
-            <CardsItem
-
-                title={cards.title}
-                color={cards.color}
-                values={cards.values}
-            />
-        ))} </div>
+const Cards: React.FC = () => {
+    return (
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]">
+            {cards.map((card, index) => (
+                <CardsItem
+                    key={index}
+                    title={card.title}
+                    color={card.color}
+                    values={card.values}
+                />
+            ))}
+        </div>
     );
-}
+};
 
 export default Cards;

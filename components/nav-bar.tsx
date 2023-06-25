@@ -1,12 +1,11 @@
 import React from "react";
-
 import Image from "next/image";
 import user from "../public/images/user-01.png";
 import Link from "next/link";
 import Logo from "./atom/images/logo";
 import Search from "./atom/search";
 import DarkMode from "./ molecules /dark-mode";
-import { Dropdown, Text } from "@nextui-org/react";
+import Profile from "./profile";
 
 interface myProps {
   handleSidebar(): void;
@@ -36,8 +35,8 @@ const Navbar: React.FC<myProps> = (props) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        clip-rule="evenodd"
-                        fill-rule="evenodd"
+                        clipRule="evenodd"
+                        fillRule="evenodd"
                         d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
                       ></path>
                     </svg>
@@ -58,60 +57,7 @@ const Navbar: React.FC<myProps> = (props) => {
               <div className="mr-5 h-5 pt-3">
                 <DarkMode />
               </div>
-
-              <Dropdown placement="bottom-left" >
-                <Dropdown.Trigger>
-                  <button type="button" className="flex rounded-full text-sm">
-                    <Image
-                      className="transform-rotate-0.2 rounded-full"
-                      src={user}
-                      width={50}
-                      height={50}
-                      alt="User"
-                    />{" "}
-                  </button>
-                </Dropdown.Trigger>
-                <Dropdown.Menu
-                  color="secondary"
-                  className="dark:bg-[#060f21] !w-12 "
-                  aria-label="Avatar Actions"
-                >
-                  <Dropdown.Item
-                    key="profile"
-                    className="w-full dark:text-white "
-                    css={{
-                      height: "$18",
-                    }}
-                  >
-                    <Text b color="inherit" css={{ d: "flex" }}>
-                      Edward Newgate
-                    </Text>
-                    <Text
-                      b
-                      color="inherit"
-                      css={{ d: "flex", color: "$blue400" }}
-                    >
-                      Admin
-                    </Text>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    key="settings"
-                    className="dark:text-white"
-                    withDivider
-                  >
-                    My Settings
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dark:text-white"
-                    key="team_settings"
-                  >
-                    Team Settings
-                  </Dropdown.Item>
-                  <Dropdown.Item key="logout" className="logout" color="error">
-                    Log Out
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <Profile />
             </div>
           </div>
         </div>
