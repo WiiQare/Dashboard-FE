@@ -61,11 +61,7 @@ const Profile = () => {
             </div>
             {isDropdownVisible && isDropdownOpen && (
                 <div className="p-2 absolute ml-[-7rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]" ref={dropdownRef}>
-                    <h1>work damit</h1>
-                    <h1>work damit</h1>
-                    <h1>work damit</h1>
-                    <h1>work damit</h1>
-                    <h1>work damit</h1>
+                 
                 </div>
             )}
         </div>
