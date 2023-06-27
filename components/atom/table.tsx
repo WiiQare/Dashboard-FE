@@ -13,7 +13,6 @@ const Table: React.FC = () => {
             { Header: 'Name', accessor: 'name' },
             { Header: 'Country', accessor: 'country' },
             { Header: 'Registration Date', accessor: 'registration_date' },
-            { Header: 'Language', accessor: 'language' },
             { Header: 'Purchased Vouchers', accessor: 'purchased_vouchers' },
             { Header: 'Beneficiaries Vouchers', accessor: 'beneficiaries_vouchers' },
             { Header: 'Unspent Vouchers', accessor: 'unspent_vouchers' },
@@ -27,7 +26,6 @@ const Table: React.FC = () => {
         item =>
             item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
             item.country.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.language.toLowerCase().includes(searchValue.toLowerCase()) ||
             item.id.toString().includes(searchValue.toLowerCase()) ||
             item.registration_date.toString().includes(searchValue.toLowerCase()) ||
             item.open_vouchers.toString().includes(searchValue.toLowerCase()) ||

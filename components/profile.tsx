@@ -59,7 +59,28 @@ const Profile = () => {
                 />
             </div>
             {isDropdownVisible && isDropdownOpen && (
-                <div className="p-2 absolute ml-[-7rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]" ref={dropdownRef}>
+                <div className="p-2 absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]" ref={dropdownRef}>
+                    <div id="dropdownSmall" className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#050e20d6] dark:divide-gray-600">
+                        <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            <div>Edward Newgate</div>
+                            <div className="font-medium truncate">whiteB@Oda.com</div>
+                        </div>
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
+                            <li className='hover:border-indigo-700'>
+                                <a href="#" className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                            </li>
+
+                            <li>
+                                <a href="#" className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#" className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                            </li>
+                        </ul>
+                        <div className="py-2">
+                            <a href="#" className="block px-4 py-2 border-r-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                        </div>
+                    </div>
 
                 </div>
             )}

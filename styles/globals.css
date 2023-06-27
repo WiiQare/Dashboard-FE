@@ -191,7 +191,8 @@ th.text-left:nth-child(3)>div:nth-child(1) {
   /* Firefox */
 }
 
-.fade-enter {
+
+/* .fade-enter {
   opacity: 0;
 }
 
@@ -207,4 +208,4 @@ th.text-left:nth-child(3)>div:nth-child(1) {
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms;
-}
+} */
