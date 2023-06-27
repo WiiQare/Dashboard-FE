@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useTable, usePagination, Column, TableInstance, TableState } from 'react-table';
+import { useTable, useSortBy, usePagination, Column, TableInstance, TableState } from 'react-table';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 interface TableItemsProps<T extends object> {
@@ -26,7 +26,7 @@ interface MyTableInstance<T extends object> extends TableInstance<T> {
 
 const initialTableState: MyTableState<any> = {
     pageIndex: 0,
-    pageSize: 20,
+    pageSize: 15,
 };
 
 const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
@@ -47,57 +47,90 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
             data,
             initialState: initialTableState,
         },
+        useSortBy,
         usePagination
     ) as MyTableInstance<any>;
 
+
     return (
-        <div className="!transition-c-0.5">
-            <div className="no-scrollbar overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="inline-block min-w-full text-black dark:text-black sm:px-6 lg:pl-8">
-                    <div className="overflow-hidden">
-                        <table className="rounded-2xl transition-c-0.5 bg-white dark:bg-[#1e293b] text-black dark:text-white table min-w-full text-center text-sm font-light" {...getTableProps()}>
-                            <thead className="font-normal">
-                                {headerGroups.map((headerGroup) => (
-                                    <tr {...headerGroup.getHeaderGroupProps()}>
-                                        {headerGroup.headers.map((column) => (
-                                            <th className={`text-left title-box py-5 pl-5 ${parseInt(column.id) >= columns.length - 5 ? '!p-0 !w-28' : ''}`} {...column.getHeaderProps()}>
+        <div className="container mx-auto  text-black dark:text-white  transition-c-0.5">
+            <div className="shadow rounded-2xl border-none  bg-white dark:bg-[#192231] no-scrollbar overflow-x-auto ">
+                <div className=" table min-w-full overflow-hidden">
+
+                    <table className=" table-fixed  dark:bg-[#1e293b]   text-center text-sm font-light" {...getTableProps()}>
+                        <thead className="font-normal">
+                            {headerGroups.map((headerGroup) => (
+                                <tr {...headerGroup.getHeaderGroupProps()} className=' border-gray-200 bg-gray-100 dark:bg-[#192231]'>
+                                    {headerGroup.headers.map((column: any) => (
+                                        <th
+                                            className={`text-left border-b  dark:border-gray-700  title-box py-5 pl-5 ${parseInt(column.id) >= columns.length - 5 ? '!p-0 !w-28' : ''}`}
+                                            {...column.getHeaderProps(column.getSortByToggleProps())} // Add the getSortByToggleProps() function to enable sorting
+                                        > <div className='header flex'>
                                                 {column.render('Header')}
-                                            </th>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </thead>
-                            <tbody {...getTableBodyProps()}>
-                                <TransitionGroup component={null}>
-                                    {page.map((row, index) => {
-                                        prepareRow(row);
-                                        return (
-                                            <CSSTransition key={row.id} classNames="fade" timeout={300}>
-                                                <tr {...row.getRowProps()}>
-                                                    {row.cells.map((cell: any) => {
-                                                        const { getCellProps, column, render } = cell;
-                                                        return (
-                                                            <td
-                                                                {...getCellProps()}
-                                                                className={`text-left whitespace-nowrap px-6 py-3 ${column.id >= columns.length - 5 ? '!p-0 !w-28' : ''}`}
-                                                            >
-                                                                {render('Cell')}
-                                                            </td>
-                                                        );
-                                                    })}
-                                                </tr>
-                                            </CSSTransition>
-                                        );
-                                    })}
-                                </TransitionGroup>
-                            </tbody>
-                        </table>
-                    </div>
+                                                {/* Display the sorting icon */}
+                                                {/* <span>
+                                                        {column.isSorted ? (
+                                                            column.isSortedDesc ? (
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                                                                  
+                                                                    <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z" /></svg>
+                                                            ) : (
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                                                                  
+                                                                    <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z" /></svg>
+                                                            )
+                                                        ) : (
+                                                            // Default sorting icon
+                                                            <div className='arrows ml-1 w-2'>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                                                                  
+                                                                    <path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z" /></svg>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                                                                  
+                                                                    <path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8H288c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z" /></svg>
+                                                            </div>
+
+
+                                                        )}
+
+                                                    </span> */}
+                                            </div>
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                            <TransitionGroup component={null}>
+                                {page.map((row, index) => {
+                                    prepareRow(row);
+                                    return (
+                                        <CSSTransition key={row.id} classNames="fade" timeout={200}>
+                                            <tr {...row.getRowProps()} className='border-b dark:border-gray-700'>
+                                                {row.cells.map((cell: any) => {
+                                                    const { getCellProps, column, render } = cell;
+                                                    return (
+                                                        <td
+                                                            {...getCellProps()}
+                                                            className={`text-left whitespace-nowrap px-6 py-4 ${column.id >= columns.length - 5 ? '!p-0 !w-28' : ''}`}
+                                                        >
+                                                            {render('Cell')}
+                                                        </td>
+                                                    );
+                                                })}
+                                            </tr>
+                                        </CSSTransition>
+                                    );
+                                })}
+                            </TransitionGroup>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
 
             {/* Pagination Controls */}
-            <ul className="inline-flex -space-x-px">
+            <ul className="inline-flex -space-x-px mt-3">
                 <li>
                     <button
                         onClick={() => gotoPage(0)}
@@ -156,7 +189,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
                     </button>
                 </li>
             </ul>
-        </div>
+        </div >
     );
 };
 

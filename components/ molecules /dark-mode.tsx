@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import * as ReactDOM from 'react-dom';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const DarkMode = () => {

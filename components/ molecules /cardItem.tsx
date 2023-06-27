@@ -1,14 +1,12 @@
-import { useRouter } from "next/router";
 import React from "react";
 
 export interface cards {
     color: any;
     title: string;
-    values: string;
+    values: number;
 }
 
 function CardsItem(props: cards) {
-    const router = useRouter();
 
     return (
         <div className="grid  sm:grid-cols-3 rounded-md  transition-c-0.5   dark:bg-[#182644] bg-white p-[20px] ">

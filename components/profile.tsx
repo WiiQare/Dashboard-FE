@@ -4,7 +4,6 @@ import { RootState } from '../redux/rootReducer';
 import { toggleDropdown } from '../redux/actions/actions';
 import user from '../public/images/user-01.png'
 import Image from "next/image";
-// components/Profile.tsx// components/Profile.tsx
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -61,7 +60,7 @@ const Profile = () => {
             </div>
             {isDropdownVisible && isDropdownOpen && (
                 <div className="p-2 absolute ml-[-7rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]" ref={dropdownRef}>
-                 
+
                 </div>
             )}
         </div>

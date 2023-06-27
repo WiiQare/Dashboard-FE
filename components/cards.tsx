@@ -1,12 +1,17 @@
 import React from "react";
-import CardsItem from "./ molecules /cards-item";
+import CardsItem from "./ molecules /cardItem";
+import payersData from '../payers.json';
+
+
+
+const data = payersData;
 
 const cards = [
-    { title: "Total number of Registered", color: "bg-[#934286]", values: "2,868" },
-    { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: "895" },
-    { title: "Total Unspent Vouchers", color: "bg-[#FEE501]", values: "368" },
-    { title: "Number of active Payers", color: "bg-[#35B769]", values: "1,605" },
-    { title: "Number of Vouchers recalled", color: "bg-[#c71313]", values: "1,605" },
+    { title: "Total number of Registered", color: "bg-[#934286]", values: data.total_registered },
+    { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: data.total_purchased_vouchers },
+    { title: "Total Unspent Vouchers", color: "bg-[#FEE501]", values: data.total_unspent_vouchers },
+    { title: "Number of active Payers", color: "bg-[#35B769]", values: data.total_active_payers },
+    { title: "Number of Vouchers recalled", color: "bg-[#c71313]", values: data.total_redeemed_vouchers },
 ];
 
 const Cards: React.FC = () => {

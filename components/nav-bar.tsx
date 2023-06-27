@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import user from "../public/images/user-01.png";
 import Link from "next/link";
 import Logo from "./atom/images/logo";
 import Search from "./atom/search";
