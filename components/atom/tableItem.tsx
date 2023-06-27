@@ -54,13 +54,13 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
 
     return (
         <div className="container mx-auto  text-black dark:text-white  transition-c-0.5">
-            <div className="shadow rounded-2xl border-none  bg-white dark:bg-[#192231] no-scrollbar overflow-x-auto ">
+            <div className="shadow rounded-2xl border-none  bg-white  transition-c-0.5 dark:bg-[#192231] no-scrollbar overflow-x-auto ">
                 <div className=" table min-w-full overflow-hidden">
 
-                    <table className=" table-fixed  dark:bg-[#1e293b]   text-center text-sm font-light" {...getTableProps()}>
+                    <table className=" table-fixed  dark:bg-[#1e293b]  transition-c-0.5  text-center text-sm font-light" {...getTableProps()}>
                         <thead className="font-normal">
                             {headerGroups.map((headerGroup) => (
-                                <tr {...headerGroup.getHeaderGroupProps()} className=' border-gray-200 bg-gray-100 dark:bg-[#192231]'>
+                                <tr {...headerGroup.getHeaderGroupProps()} className=' transition-c-0.5 border-gray-200 bg-gray-100 dark:bg-[#192231]'>
                                     {headerGroup.headers.map((column: any) => (
                                         <th
                                             className={`text-left border-b  dark:border-gray-700  title-box py-5 pl-5 ${parseInt(column.id) >= columns.length - 5 ? '!p-0 !w-28' : ''}`}
