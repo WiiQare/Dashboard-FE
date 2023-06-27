@@ -19,8 +19,8 @@ const menus = [
   { icon: PayersIcon, title: "Payers", href: "/" },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
   { icon: PaymentsIcon, title: "Payments", href: "/Payments" },
-  { icon: HealthIcon, title: "Provider", href: "/Health" },
-  { icon: NFTICON, title: "Vouchers", href: "/NFT" },
+  { icon: HealthIcon, title: "Provider", href: "/Provider" },
+  { icon: NFTICON, title: "Vouchers", href: "/Vouchers" },
 ] as unknown as Menu[];
 
 const reportMenus = [
