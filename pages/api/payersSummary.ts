@@ -14,7 +14,7 @@ export interface Payers {
 export const fetchData = async (): Promise<any> => {
     try {
         const response: AxiosResponse<Payers> = await axios.get(
-            'http://ec2-52-47-127-9.eu-west-3.compute.amazonaws.com:3000/api/v1/admin/payers/summary'
+            'https://ec2-52-47-127-9.eu-west-3.compute.amazonaws.com:3000/api/v1/admin/payers/summary'
         );
         return response.data;
     } catch (error) {
