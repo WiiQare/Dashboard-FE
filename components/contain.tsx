@@ -26,7 +26,7 @@ function Contain(props: Props) {
                             <Cards />
                         </div>
                         <div className=" transition-c-0.5">
-                            <Tables />
+                        <Tables />
                         </div>
 
                     </div>

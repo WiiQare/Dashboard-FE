@@ -1,6 +1,5 @@
 
 import Head from "next/head";
-import favicon from "../public/favicon.ico"
 import Layout from "../components/layout";
 
 export default function Home() {
