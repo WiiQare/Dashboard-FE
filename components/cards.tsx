@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CardsItem from "./ molecules /cardItem";
-import { useSelector } from "react-redux";
 import { fetchData } from "../pages/api/payersSummary";
 
 
@@ -9,8 +8,7 @@ import { fetchData } from "../pages/api/payersSummary";
 const Cards: React.FC = () => {
 
 
-    const searchValue = useSelector((state: any) => state.search.searchValue);
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<any>([]);
 
     useEffect(() => {
         const fetchDataFromAPI = async () => {

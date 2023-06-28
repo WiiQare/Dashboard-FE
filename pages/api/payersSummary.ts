@@ -3,14 +3,10 @@ import axios, { AxiosResponse } from 'axios';
 
 export interface Payers {
     // Define the structure of your table data
-    payerId: string,
-    payerName: string,
-    payerCountry: string,
-    registeredDate: string,
-    beneficiaries: string;
-    purchasedVouchers: number,
-    openVouchers: number,
-    totalRedeemedVouchers: number
+    numberOfRegisteredPayers: number,
+    totalNumberOfPurchasedVouchers: number,
+    totalNumberOfPendingVouchers: number,
+    totalNumberOfRedeemedVouchers: number,
 
     // Add more properties as needed
 }
