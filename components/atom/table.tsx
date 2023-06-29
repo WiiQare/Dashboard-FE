@@ -21,7 +21,7 @@ const Table: React.FC<TableProps> = () => {
         };
 
         fetchDataFromAPI();
-    }, []);
+    }, []); 
     const columns = React.useMemo(
         () => [
             { Header: 'ID', accessor: 'payerId' },
