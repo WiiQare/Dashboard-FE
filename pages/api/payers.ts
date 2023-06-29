@@ -10,7 +10,10 @@ export interface Payers {
     beneficiaries: string;
     purchasedVouchers: number,
     openVouchers: number,
-    totalRedeemedVouchers: number
+    totalRedeemedVouchers: number,
+    unclaimedVouchers:number,
+    pendingVouchers: number,
+
 
     // Add more properties as needed
 }
@@ -21,7 +24,6 @@ export const fetchData = async (): Promise<any> => {
             'https://wiiqare.neema.co.za/api/v1/admin/payers'
         );
         return response.data;
-        console.log(response.data)
     } catch (error) {
         console.error('Error fetching data:', error);
         throw error;
