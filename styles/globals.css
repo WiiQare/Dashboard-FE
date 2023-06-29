@@ -191,6 +191,15 @@ th.text-left:nth-child(3)>div:nth-child(1) {
   /* Firefox */
 }
 
+@media screen and (max-width: 1397px) and (min-width: 1279px) {
+  div.sm\:grid-cols-3 > div:nth-child(2) > h4:nth-child(1){
+    width: 6rem;
+    margin-left: 1rem;
+
+  }
+}
+
+
 
 /* .fade-enter {
   opacity: 0;

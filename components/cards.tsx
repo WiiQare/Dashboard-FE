@@ -32,7 +32,7 @@ const Cards: React.FC = () => {
 
 
     return (
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]">
+        <div className="grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]">
             {cards.map((card, index) => (
                 <CardsItem
                     key={index}
