@@ -54,27 +54,6 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any; }) => {
             <p className="px-4 pt-3  text-lg text-gray-500 dark:text-white/50">
               Dashboard
             </p>
-            <button
-              onClick={props.handleSidebar}
-              onBlur={props.handleSidebar}
-              type="button"
-              className="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 sm:hidden"
-            >
-              <span className="sr-only">Open sidebar</span>
-              <svg
-                className="h-6 w-6"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  fillRule="evenodd"
-                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                ></path>
-              </svg>
-            </button>
             <ul className="flex flex-col space-y-2 text-black dark:text-white">
               {menus.map((menu, index) => (
                 <MenuItem
