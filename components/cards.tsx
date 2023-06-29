@@ -25,7 +25,7 @@ const Cards: React.FC = () => {
     const cards = [
         { title: "Total  Registered", color: "bg-[#934286]", values: data.numberOfRegisteredPayers },
         { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: data.totalNumberOfPurchasedVouchers },
-        { title: "Total Pendinding  Vouchers", color: "bg-[#FEE501]", values: data.totalNumberOfPendingVouchers },
+        { title: "Total Pending  Vouchers", color: "bg-[#FEE501]", values: data.totalNumberOfPendingVouchers },
         { title: "Total Redeemed Payers", color: "bg-[#35B769]", values: data.totalNumberOfRedeemedVouchers },
         { title: "Active payers", color: "bg-[#c71313]", values: data.numberOfActivePayers },
     ];
