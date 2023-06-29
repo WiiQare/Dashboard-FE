@@ -23,11 +23,11 @@ const Cards: React.FC = () => {
         fetchDataFromAPI();
     }, []);
     const cards = [
-        { title: "Total number of Registered", color: "bg-[#934286]", values: data.numberOfRegisteredPayers },
+        { title: "Total  Registered", color: "bg-[#934286]", values: data.numberOfRegisteredPayers },
         { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: data.totalNumberOfPurchasedVouchers },
-        { title: "Total Unspent Vouchers", color: "bg-[#FEE501]", values: data.totalNumberOfPendingVouchers },
-        { title: "Number of active Payers", color: "bg-[#35B769]", values: data.totalNumberOfRedeemedVouchers },
-        { title: "Number of Vouchers recalled", color: "bg-[#c71313]", values: data.numberOfActivePayers },
+        { title: "Total Pendinding  Vouchers", color: "bg-[#FEE501]", values: data.totalNumberOfPendingVouchers },
+        { title: "Total Redeemed Payers", color: "bg-[#35B769]", values: data.totalNumberOfRedeemedVouchers },
+        { title: "Active payers", color: "bg-[#c71313]", values: data.numberOfActivePayers },
     ];
 
 
