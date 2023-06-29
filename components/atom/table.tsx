@@ -28,10 +28,10 @@ const Table: React.FC<TableProps> = () => {
             { Header: 'Name', accessor: 'payerName' },
             { Header: 'Country', accessor: 'payerCountry' },
             { Header: 'Registration Date', accessor: 'registeredDate' },
-            { Header: 'Purchased Vouchers', accessor: 'purchasedVouchers' },
-            { Header: 'Beneficiaries Vouchers', accessor: 'beneficiaries' },
+            { Header: 'Pending Vouchers', accessor: 'purchasedVouchers' },
+            { Header: 'Unique Beneficiaries Vouchers', accessor: 'beneficiaries' },
             { Header: 'Unspent Vouchers', accessor: 'unspentVouchers' },
-            { Header: 'Open Vouchers', accessor: 'openVouchers' },
+            { Header: 'Unclaimed Vouchers', accessor: 'openVouchers' },
             { Header: 'Redeemed Vouchers', accessor: 'redeemedVouchers' },
         ],
         []
