@@ -61,7 +61,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
             navigator.clipboard.writeText(value);
             toast.success('ID copied to clipboard!', {
                 position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 10000,
+                autoClose: 1000,
                 hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
