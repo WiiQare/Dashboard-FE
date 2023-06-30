@@ -1,7 +1,4 @@
 
-import Head from "next/head";
-import favicon from "../public/favicon.ico"
-import Layout from "../components/layout";
 import logo from "../public/images/logo_orange.png"
 import Image from "next/image";
 export default function login() {
@@ -15,11 +12,11 @@ export default function login() {
                         <div className="h-full flex mt-[-72px]">
                             {/* <!-- Card --> */}
                             <div className="max-w-[360px] flex mx-auto">
-                                <div className="bg-white shadow-lg h-[104px] rounded-full mt-9">
+                                <div className="bg-white shadow-lg w-[101px] h-[100px] rounded-full mt-9">
                                     {/* <!-- Card header --> */}
                                     <header className="text-center px-5 mt-[20px] pb-5">
                                         {/* <!-- Avatar --> */}
-                                        <Image
+                                        <Image className="mt-[1.6rem]"
                                             src={logo}
                                             width={70}
                                             height={50}
@@ -73,7 +70,7 @@ export default function login() {
                             </div>
 
 
-                            <div className="px-4">
+                            {/* <div className="px-4">
                                 <button
                                     type="submit"
                                     className="flex w-full justify-center rounded-md bg-orange-600 py-1.5 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -94,7 +91,7 @@ export default function login() {
                                 >
                                     Sign in with Discords
                                 </button>
-                            </div>
+                            </div> */}
                             <div className="text-sm">
                                 <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                     Forgot password?

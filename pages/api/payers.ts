@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 export interface Payers {
     // Define the structure of your table data
     payerId: string,
+    payerIdDisplay: string,
     payerName: string,
     payerCountry: string,
     registeredDate: string,

@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <link rel="shortcut icon" href="../public/favicon.ico" />
         <title>
-          WiiQare Dashboard
+          Dashboard
         </title>
       </Head>
       <Layout />

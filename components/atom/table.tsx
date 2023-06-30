@@ -21,10 +21,10 @@ const Table: React.FC<TableProps> = () => {
         };
 
         fetchDataFromAPI();
-    }, []); 
+    }, []);
     const columns = React.useMemo(
         () => [
-            { Header: 'ID', accessor: 'payerId' },
+            { Header: 'ID', accessor: 'payerId', id: 'payerId' },
             { Header: 'Name', accessor: 'payerName' },
             { Header: 'Country', accessor: 'payerCountry' },
             { Header: 'Registration Date', accessor: 'registeredDate' },
@@ -42,9 +42,9 @@ const Table: React.FC<TableProps> = () => {
             item.payerName.toLowerCase().includes(searchValue.toLowerCase()) ||
             item.payerCountry.toLowerCase().includes(searchValue.toLowerCase()) ||
             item.payerId.toLowerCase().includes(searchValue.toLowerCase()) ||
-            item.registeredDate.toString().includes(searchValue.toLowerCase()) ||
-            item.openVouchers.toString().includes(searchValue.toLowerCase()) ||
-            item.beneficiaries.toString().includes(searchValue.toLowerCase()) ||
+            item.registeredDate.toLowerCase().includes(searchValue.toLowerCase()) ||
+            item.redeemedVouchers.toString().includes(searchValue.toLowerCase()) ||
+            item.unclaimedVouchers.toString().includes(searchValue.toLowerCase()) ||
             item.beneficiaries.toString().includes(searchValue.toLowerCase())
     );
 
