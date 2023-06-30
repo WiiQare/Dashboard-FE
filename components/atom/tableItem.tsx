@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { useTable, useSortBy, usePagination, Column, TableInstance, TableState } from 'react-table';
-import { CSSTransition } from 'react-transition-group';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 interface TableItemsProps<T extends object> {
     data: T[];
@@ -51,31 +53,49 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
         usePagination
     ) as MyTableInstance<any>;
 
-    const copyFullId = (id: string) => {
-        navigator.clipboard.writeText(id);
-    };
 
     const renderIdCell = (cell: any) => {
         const { value } = cell;
-        const shortenedId = value.slice(0, 5);
+
+        const handleCopyClick = () => {
+            navigator.clipboard.writeText(value);
+            toast.success('ID copied to clipboard!', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 10000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                className: 'dark:!bg-[#1e293b] dark:!text-white'
+       
+            });
+        };
+
         return (
-            <div className="id-cell" title={value} onClick={() => copyFullId(value)}>
-                <span>{shortenedId}</span>
+            <div className="flex items-center">
+
+                <button
+                    className="px-2 py-1"
+                    onClick={handleCopyClick}
+                    title={value}
+                >
+                    {value.substr(0, 3)}
+                </button>
             </div>
         );
     };
-
     return (
         <div className="container mx-auto  text-black dark:text-white  transition-c-0.5">
-            <div className="shadow rounded-2xl border-none  bg-white  transition-c-0.5 dark:bg-[#192231] no-scrollbar overflow-x-auto ">
+            <ToastContainer />
+            <div className=" shadow rounded-2xl border-none  bg-white  transition-c-0.5 dark:bg-[#192231] no-scrollbar overflow-x-auto ">
                 <div className=" table min-w-full overflow-hidden">
                     <table className=" table-auto  dark:bg-[#1e293b] w-full transition-c-0.5  text-center text-sm font-light" {...getTableProps()}>
                         <thead className="font-normal">
                             {headerGroups.map((headerGroup) => (
-                                <tr {...headerGroup.getHeaderGroupProps()} className=" transition-c-0.5 border-gray-200 bg-[#c3ddff2a] dark:bg-[#192231]">
+                                <tr {...headerGroup.getHeaderGroupProps()} className="  transition-c-0.5 border-gray-200 bg-[#c3ddff2a] dark:bg-[#192231]">
                                     {headerGroup.headers.map((column: any) => (
                                         <th
-                                            className={`text-left border-b  dark:border-gray-700  title-box py-5 pl-5 ${parseInt(column.id) >= columns.length - 5 ? '!p-0' : ''}`}
+                                            className={`text-left  border-b  dark:border-gray-700  title-box py-5 pl-5 ${parseInt(column.id) >= columns.length - 5 ? '!p-0' : ''} ${column.id == 'payerId'  && 'pl-8' }  `}
                                             {...column.getHeaderProps(column.getSortByToggleProps())} // Add the getSortByToggleProps() function to enable sorting
                                         >
                                             <div className="header flex">
@@ -90,27 +110,27 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
                             {page.map((row, index) => {
                                 prepareRow(row);
                                 return (
-                                    
-                                    
-                                        <tr {...row.getRowProps()} className="border-b dark:border-gray-700">
-                                            {row.cells.map((cell: any) => {
-                                                const { getCellProps, column, render } = cell;
-                                                return (
-                                                    <td
-                                                        {...getCellProps()}
-                                                        className={`text-left whitespace-nowrap px-6 py-4 ${column.id >= columns.length - 5 ? 'x' : ''}`}
-                                                    >
-                                                        {column.id === 'payerId' ? (
-                                                            renderIdCell(cell)
-                                                        ) : (
-                                                            render('Cell')
-                                                        )}
-                                                    </td>
-                                                );
-                                            })}
-                                        </tr>
-                                   
-                                   
+
+
+                                    <tr {...row.getRowProps()} className="border-b dark:border-gray-700">
+                                        {row.cells.map((cell: any) => {
+                                            const { getCellProps, column, render } = cell;
+                                            return (
+                                                <td
+                                                    {...getCellProps()}
+                                                    className={`text-left whitespace-nowrap px-6 py-4 ${column.id >= columns.length - 5 ? 'x' : ''}`}
+                                                >
+                                                    {column.id === 'payerId' ? (
+                                                        renderIdCell(cell)
+                                                    ) : (
+                                                        render('Cell')
+                                                    )}
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
+
+
                                 );
                             })}
                         </tbody>
