@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 
 
 export interface Payers {
-    // Define the structure of your table data
+    // Define the structure of the table data
     numberOfRegisteredPayers: number,
     totalNumberOfPurchasedVouchers: number,
     totalNumberOfPendingVouchers: number,

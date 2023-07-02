@@ -96,6 +96,11 @@ h5,
   transform: rotate(-0.2deg);
 }
 
+.MuiDataGrid-columnHeader:focus-within {
+  outline: none !important;
+
+}
+
 .left-table {
   display: block;
   text-align: left;
@@ -142,6 +147,38 @@ h5,
   .search {
     display: none;
   }
+}
+
+@media only screen and (min-width: 1650) {
+  [data-field="payerId"] {
+    max-width: unset !important;
+    flex: 1;
+    transition: all 1s ease;
+  }
+
+  [data-field="payerName"] {
+    max-width: unset !important;
+    flex: 1;
+    transition: all 1s ease;
+  }
+
+
+}
+
+@media only screen and (min-width: 2000px) {
+  [data-field="payerId"] {
+    max-width: unset !important;
+    flex: 1;
+    transition: all 1s ease;
+  }
+
+  [data-field="payerName"] {
+    max-width: unset !important;
+    flex: 1;
+    transition: all 1s ease;
+  }
+
+
 }
 
 @media only screen and (max-width: 627px) {
@@ -192,13 +229,16 @@ th.text-left:nth-child(3)>div:nth-child(1) {
 }
 
 @media screen and (max-width: 1397px) and (min-width: 1279px) {
-  div.sm\:grid-cols-3 > div:nth-child(2) > h4:nth-child(1){
+  div.sm\:grid-cols-3>div:nth-child(2)>h4:nth-child(1) {
     width: 6rem;
     margin-left: 1rem;
 
   }
 }
 
+div.MuiDataGrid-columnHeader:nth-child(1) {
+  padding-left: 1rem;
+}
 
 
 /* .fade-enter {

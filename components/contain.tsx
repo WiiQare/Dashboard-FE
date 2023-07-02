@@ -24,10 +24,11 @@ function Contain(props: Props) {
                         </div>
                         <div className="grid grid-cols-1 gap-4 mb-4">
                             <Cards />
+                            <div className=" transition-c-0.5">
+                                <Tables />
+                            </div>
                         </div>
-                        <div className=" transition-c-0.5">
-                        <Tables />
-                        </div>
+
 
                     </div>
                 </div>
