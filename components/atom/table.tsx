@@ -33,48 +33,57 @@ const Table: React.FC<TableProps> = () => {
             {
                 field: 'payerId',
                 headerName: 'ID',
-                width: 25,
+                minWidth: 25,
+                flex: 1,
 
             },
             {
                 field: 'payerName',
                 headerName: 'Name',
-                width: 250,
+                minWidth: 250,
+                flex: 1,
 
             },
             {
                 field: 'payerCountry',
                 headerName: 'Country',
+                minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'registeredDate',
                 headerName: 'Registration Date',
+                minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'purchasedVouchers',
                 headerName: 'Purchased Vouchers',
+                minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'beneficiaries',
                 headerName: 'Unique Beneficiaries Vouchers',
+                minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'pendingVouchers',
                 headerName: 'Pending Vouchers',
+                 minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'unclaimedVouchers',
                 headerName: 'Unclaimed Vouchers',
+                 minWidth: 100,
                 flex: 1,
             },
             {
                 field: 'redeemedVouchers',
                 headerName: 'Redeemed Vouchers',
+                 minWidth: 100,
                 flex: 1,
             },
         ],

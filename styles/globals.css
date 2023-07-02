@@ -149,38 +149,6 @@ h5,
   }
 }
 
-@media only screen and (min-width: 1650) {
-  [data-field="payerId"] {
-    max-width: unset !important;
-    flex: 1;
-    transition: all 1s ease;
-  }
-
-  [data-field="payerName"] {
-    max-width: unset !important;
-    flex: 1;
-    transition: all 1s ease;
-  }
-
-
-}
-
-@media only screen and (min-width: 2000px) {
-  [data-field="payerId"] {
-    max-width: unset !important;
-    flex: 1;
-    transition: all 1s ease;
-  }
-
-  [data-field="payerName"] {
-    max-width: unset !important;
-    flex: 1;
-    transition: all 1s ease;
-  }
-
-
-}
-
 @media only screen and (max-width: 627px) {
   .search-input {
     width: 10rem;
