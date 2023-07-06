@@ -17,12 +17,11 @@ export default function login() {
                                     <header className="text-center px-5 mt-[20px] pb-5">
                                         {/* <!-- Avatar --> */}
                                         <Image className="mt-[1.6rem]"
-                                            src={logo}
+                                            src="/image/logo.png"
                                             width={70}
                                             height={50}
-                                            alt="Picture of the author"
-                                        />
-
+                                            alt="logo"
+                                        />``
                                     </header>
                                 </div>
                             </div>

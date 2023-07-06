@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import { toggleDropdown } from '../redux/actions/actions';
-import user from '../public/images/user-01.png'
+
 import Image from "next/image";
 
 const Profile = () => {
@@ -52,7 +52,7 @@ const Profile = () => {
             >
                 <Image
                     className="transform-rotate-0.2 mt-1 rounded-full"
-                    src={user}
+                    src="/images/user-01.png"
                     width={50}
                     height={50}
                     alt="User"

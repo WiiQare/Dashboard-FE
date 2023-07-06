@@ -16,14 +16,7 @@ export default function Providers(props: Props) {
         setOpen(!open)
     }
     return (
-        <ThemeProvider enableSystem={false} attribute="class">
-            <Provider store={store}>
-                <div className="fixed flex h-full  w-screen flex-row  font-inter">
-                    <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-                    <Navbar handleSidebar={handleSidebarState} />
-                </div>
-            </Provider>
-        </ThemeProvider >
+        <></>
     );
 }
 

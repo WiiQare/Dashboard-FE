@@ -4,7 +4,11 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   // distDir: 'dist',
-  images:{unoptimized : true}
+  images: { unoptimized: true },
+  env: {
+    WIIQARE_URI: 'https://wiiqare.neema.co.za/api/v1/admin'
+
+  }
 }
 
 module.exports = nextConfig

@@ -10,17 +10,17 @@ import React from "react";
 
 
 
-interface myProps {
-  handleSidebar(): void;
-  sidebarOpen: boolean;
-}
+const Submenus = [
+  { icon: PaymentsIcon, title: "Payers", href: "/Payments/Payments", },
+  { icon: HealthIcon, title: "Payers", href: "/Payments/Payers", },
+];
 
 const menus = [
-  { icon: PayersIcon, title: "Payers", href: "/" },
+  { icon: PayersIcon, title: "Payers", href: "/Payers", },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
-  { icon: PaymentsIcon, title: "Payments", href: "/Payments" },
-  { icon: HealthIcon, title: "Provider", href: "/Provider" },
-  { icon: NFTICON, title: "Vouchers", href: "/Vouchers" },
+  { icon: PaymentsIcon, title: "Payments",  submenu: Submenus },
+  { icon: HealthIcon, title: "Provider", href: "/Provider", },
+  { icon: NFTICON, title: "Vouchers", href: "/Vouchers", },
 ] as unknown as Menu[];
 
 const reportMenus = [
@@ -36,59 +36,55 @@ const reportMenus = [
   },
 ] as unknown as Menu[];
 
-const SideBar = (props: { sidebarOpen: any; handleSidebar: any; }) => {
-  // Remove the useState hook for showSidebar
-  // Access the sidebarOpen state from Redux props instead
-
+const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
   return (
-    <>
-      <div
-        id=" logo-sidebar"
-        className={`
-      ${props.sidebarOpen && "translate-x-0"}
-       w-30 transition-0.5 fixed top-0 left-0 z-40 h-screen -translate-x-full border-r border-gray-200  bg-white pt-20 dark:border-none dark:border-gray-700 dark:bg-gray-900 sm:translate-x-0 `}
-        aria-label="Sidebar"
-      >
-        <div className="transition-c-0.5 h-full w-[13rem] overflow-y-auto bg-white px-3 pb-4  dark:bg-gray-900">
-          <div className="mt-5 flex flex-col  space-y-4">
-            <p className="px-4 pt-3  text-lg text-gray-500 dark:text-white/50">
-              Dashboard
+    <div
+      id=" logo-sidebar"
+      className={`
+      ${props.sidebarOpen ? "translate-x-0 " : 'max-sm:hidden'}
+      w-30 h-full transition-0.5   left-0 z-40 -translate-x-full border-r border-gray-200  bg-white pt-2 dark:border-none dark:border-gray-700 dark:bg-gray-900 sm:translate-x-0  `}
+      aria-label="Sidebar"
+    >
+      <div className="transition-c-0.5 h-full w-[13rem] overflow-x-auto bg-white px-3 pb-4  dark:bg-gray-900">
+        <div className=" flex flex-col  space-y-4">
+          <p className="px-4 pt-3  text-lg text-gray-500 dark:text-white/50">
+            Dashboard
+          </p>
+          <ul className="flex flex-col space-y-2 text-black dark:text-white">
+            {menus.map((menu, index) => (
+              <MenuItem
+                key={index}
+                submenu={menu.submenu}
+                title={menu.title}
+                href={menu.href}
+                icon={menu.icon}
+              />
+            ))}
+          </ul>
+          {/* <------components-----> */}
+          <hr className="ml-4 py-2 text-black dark:text-white/20" />
+
+          <div>
+            <p className="px-4 py-3 text-black dark:text-white/50">
+              Administration
             </p>
-            <ul className="flex flex-col space-y-2 text-black dark:text-white">
-              {menus.map((menu, index) => (
+
+            <ul className="text-black dark:text-white">
+              {reportMenus.map((menu, index) => (
                 <MenuItem
                   key={index}
+                  submenu={menu.submenu}
                   title={menu.title}
                   href={menu.href}
                   icon={menu.icon}
                 />
               ))}
+              <div className="ml-28 mt-5 "></div>
             </ul>
-            {/* <------components-----> */}
-            <hr className="ml-4 py-2 text-black dark:text-white/20" />
-
-            <div>
-              <p className="px-4 py-3 text-black dark:text-white/50">
-                Administration
-              </p>
-
-              <ul className="text-black dark:text-white">
-                {reportMenus.map((menu, index) => (
-                  <MenuItem
-                    key={index}
-                    title={menu.title}
-                    href={menu.href}
-                    icon={menu.icon}
-                  />
-                ))}
-                <div className="ml-28 mt-5 "></div>
-              </ul>
-            </div>
           </div>
-
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

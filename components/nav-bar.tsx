@@ -5,17 +5,17 @@ import Search from "./atom/search";
 import DarkMode from "./ molecules /dark-mode";
 import Profile from "./profile";
 
-interface myProps {
+interface MyProps {
   handleSidebar(): void;
 }
 
-const Navbar: React.FC<myProps> = (props) => {
+const Navbar: React.FC<MyProps> = (props) => {
   return (
-    <div>
-      <nav className=" transition-c-0.5 fixed top-0 z-50 w-full border-b border-gray-200 bg-white dark:border-none dark:border-gray-700 dark:bg-[#050e20d6]">
+
+      <nav className=" transition-c-0.5 top-0  w-full border-b border-gray-200 bg-white dark:border-none dark:border-gray-700 dark:bg-[#050e20d6]">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="gap4 mb-4 grid grid-cols-2">
-            <div className="flex gap-2">
+            <div className="flex gap-2 h-14">
               {/* <!--logo start --> */}
               <div className="flex items-center  ">
                 <div className="flex items-center justify-start">
@@ -60,7 +60,7 @@ const Navbar: React.FC<myProps> = (props) => {
           </div>
         </div>
       </nav>
-    </div>
+
   );
 };
 

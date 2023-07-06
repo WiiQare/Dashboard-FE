@@ -208,6 +208,55 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
   padding-left: 1rem;
 }
 
+.nextui-collapse-title-container:hover {
+  background-color: #FF8A2B;
+  opacity: 0.75;
+  border-radius: 0.25rem;
+}
+
+.nextui-c-hPzDAx {
+  height: 4.4rem;
+  margin-top: -1rem;
+}
+
+.accordion-header {
+  @apply flex items-center justify-between p-4 bg-gray-200 cursor-pointer;
+}
+
+.accordion-header:hover {
+  @apply bg-gray-300;
+}
+
+
+.accordion-content.expanded {
+  @apply max-h-96;
+  /* Adjust the value as needed */
+}
+
+.nextui-collapse-title-container {
+  padding-top: 0rem;
+  padding-bottom: 0.2rem;
+  margin-top: -5px;
+
+
+}
+
+.nextui-c-hPzDAx-eLdNZT-borderWeight-light {
+  border: none !important;
+}
+
+/* .main {
+  grid-template-areas:
+    "header header header"
+    "nav content content"
+    "footer footer footer"
+  ;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto  auto;
+  grid-gap: 10px;
+
+  height: 100vh;
+} */
 
 /* .fade-enter {
   opacity: 0;

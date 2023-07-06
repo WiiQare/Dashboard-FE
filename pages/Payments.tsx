@@ -12,18 +12,9 @@ export default function Beneficiaries(props: Props) {
 
     const [open, setOpen] = useState(sidebarAction = false)
 
-    const handleSidebarState = (): void => {
-        setOpen(!open)
-    }
+
     return (
-        <ThemeProvider enableSystem={false} attribute="class">
-            <Provider store={store}>
-                <div className="fixed flex h-full  w-screen flex-row  font-inter">
-                    <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-                    <Navbar handleSidebar={handleSidebarState} />
-                </div>
-            </Provider>
-        </ThemeProvider >
+        <></>
     );
 }
 

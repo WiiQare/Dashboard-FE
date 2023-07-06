@@ -1,44 +1,20 @@
-import React, { useEffect, useState } from "react";
-import CardsItem from "./ molecules /cardItem";
-import { fetchData } from "../pages/api/payersSummary";
+import React, { useEffect, useState } from 'react';
+import CardsItem from './ molecules /cardItem';
 
 
 
-
-const Cards: React.FC = () => {
-
-
-    const [data, setData] = useState<any>([]);
-
-    useEffect(() => {
-        const fetchDataFromAPI = async () => {
-            try {
-                const newData = await fetchData();
-                setData(newData);
-            } catch (error) {
-
-            }
-        };
-
-        fetchDataFromAPI();
-    }, []);
-    const cards = [
-        { title: "Total  Registered", color: "bg-[#934286]", values: data.numberOfRegisteredPayers },
-        { title: "Total Purchased Vouchers", color: "bg-[#F37500]", values: data.totalNumberOfPurchasedVouchers },
-        { title: "Total Pending  Vouchers", color: "bg-[#FEE501]", values: data.totalNumberOfPendingVouchers },
-        { title: "Total Redeemed Vouchers", color: "bg-[#35B769]", values: data.totalNumberOfRedeemedVouchers },
-        { title: "Active payers", color: "bg-[#c71313]", values: data.numberOfActivePayers },
-    ];
+const Cards = ({ data }: any) => {
 
 
     return (
-        <div className="grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]">
-            {cards.map((card, index) => (
+        <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
+            {data.map((item: any) => (
                 <CardsItem
-                    key={index}
-                    title={card.title}
-                    color={card.color}
-                    values={card.values}
+                    key={item.title}
+                    title={item.title}
+                    shade={item.shade}
+                    color={item.color}
+                    values={item.values}
                 />
             ))}
         </div>

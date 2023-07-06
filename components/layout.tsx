@@ -1,32 +1,49 @@
 import React, { useState } from "react";
 import SideBar from "./side-bar";
-import Props from "./props";
 import Navbar from "./nav-bar";
-import { ThemeProvider } from "next-themes";
-import Contain from "./contain";
-import { Provider } from 'react-redux';
-import store from "../redux/store/store";
 
-let sidebarAction: boolean
 
+let sidebarAction: boolean = false
+type Props = {
+  children: JSX.Element,
+};
 function Layout(props: Props) {
 
-  const [open, setOpen] = useState(sidebarAction = false)
+  const [open, setOpen] = useState(sidebarAction)
 
   const handleSidebarState = (): void => {
     setOpen(!open)
   }
   return (
-    <ThemeProvider enableSystem={false} attribute="class">
-      <Provider store={store}>
-        <div className="fixed flex h-full  w-screen flex-row  font-inter">
-          <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-          <Navbar handleSidebar={handleSidebarState} />
-          <Contain />
+
+
+    <div className=" bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col h-screen">
+      <div className="flex z-50  w-full">
+        <Navbar handleSidebar={handleSidebarState} />
+      </div>
+      <div className="flex overflow-hidden flex-grow ">
+        <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
+        <div className="flex flex-grow w-full">
+          {props.children}
         </div>
-      </Provider>
-    </ThemeProvider >
+      </div>
+    </div>
+
+
   );
 }
 
 export default Layout;
+{/* <div className=" grid">
+          <Navbar handleSidebar={handleSidebarState} />
+
+          <div className=" flex w-full h-full transition-c-0.5">
+            <div className=" flex h-full ">
+             
+            </div>
+
+            <div className="flex flex-col ">
+             
+            </div>
+          </div>
+        </div>*/}

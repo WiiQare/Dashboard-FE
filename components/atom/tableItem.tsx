@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
-import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from 'next-themes';
-import { makeStyles } from '@mui/material/styles';
 import { GlobalStyles } from '@mui/material';
 
 interface TableItemsProps<T extends object> {
@@ -47,7 +46,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
 
         <div className="text-black dark:text-white transition-c-0.5 w-full">
             <ToastContainer />
-            <div className="shadow rounded-2xl border-none bg-white transition-c-0.5 dark:bg-[#192231] no-scrollbar overflow-x-auto">
+            <div className="shadow rounded-2xl border-none bg-white transition-c-0.5 dark:bg-[#111827] no-scrollbar overflow-x-auto">
                 <div className="table min-w-full overflow-hidden">
                     <GlobalStyles
                         styles={{
