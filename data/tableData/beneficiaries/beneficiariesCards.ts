@@ -1,5 +1,5 @@
 const CardsData = (summary: any) => {
-    console.log(summary)
+
     return [
 
         {
