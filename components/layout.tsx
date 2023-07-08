@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SideBar from "./side-bar";
-import Navbar from "./nav-bar";
+import SideBar from "./molecules/side-bar";
+import Navbar from "./molecules/nav-bar";
 
 
 let sidebarAction: boolean = false
@@ -34,16 +34,3 @@ function Layout(props: Props) {
 }
 
 export default Layout;
-{/* <div className=" grid">
-          <Navbar handleSidebar={handleSidebarState} />
-
-          <div className=" flex w-full h-full transition-c-0.5">
-            <div className=" flex h-full ">
-             
-            </div>
-
-            <div className="flex flex-col ">
-             
-            </div>
-          </div>
-        </div>*/}

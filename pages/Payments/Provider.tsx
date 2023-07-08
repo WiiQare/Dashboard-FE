@@ -1,5 +1,5 @@
 import Content from "../../components/content";
-import PayersColumns from "../../data/tableData/payments/payers/payerColumns";
+import PayersColumns from "../../data/tableData/payments/provider/payerColumns";
 import { GetStaticProps } from "next";
 import { fetchData } from "../api/fetchData";
 import { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetchData("/payments/payers");
+    const res = await fetchData("/payments/providers");
     const result = await JSON.parse(JSON.stringify(await res));
     const summary = await JSON.parse(JSON.stringify(await fetchData("/payments/summary")))
 

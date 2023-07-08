@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CardsItem from './ molecules /cardItem';
+import CardsItem from './cardItem';
 
 
 
@@ -15,6 +15,8 @@ const Cards = ({ data }: any) => {
                     shade={item.shade}
                     color={item.color}
                     values={item.values}
+                    info={item.info}
+                    progress={item.progress}
                 />
             ))}
         </div>

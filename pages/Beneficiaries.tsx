@@ -1,12 +1,12 @@
-import Content from "../../components/content";
-import PayersColumns from "../../data/tableData/payments/payers/payerColumns";
+import Content from "../components/content";
+import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from "../data/tableData/beneficiaries/beneficiariesColumns";
 import { GetStaticProps } from "next";
-import { fetchData } from "../api/fetchData";
+import { fetchData } from "./api/fetchData";
 import { useEffect, useState } from "react";
-import CardsData from "../../data/tableData/payments/paymentsCards";
+import CardsData from "../data/tableData/beneficiaries/beneficiariesCards";
 
-import Header from "../../components/atom/head";
-import Cards from "../../components/molecules/cards";
+import Header from "../components/atom/head";
+import Cards from "../components/molecules/cards";
 
 
 export interface BeneficiariesInterface {
@@ -27,7 +27,7 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
     return (
         <div>
             <Header />
-            <Content columns={PayersColumns} groups={[]} data={data}>
+            <Content columns={BeneficiariesColumns} groups={BeneficiariesColumnGroupingModel} data={data}>
                 <Cards data={cardData} />
             </Content>
 
@@ -38,9 +38,9 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
 
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetchData("/payments/payers");
+    const res = await fetchData("/beneficiaries");
     const result = await JSON.parse(JSON.stringify(await res));
-    const summary = await JSON.parse(JSON.stringify(await fetchData("/payments/summary")))
+    const summary = await JSON.parse(JSON.stringify(await fetchData("/beneficiaries/summary")))
 
     return {
 

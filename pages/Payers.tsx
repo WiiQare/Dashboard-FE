@@ -1,10 +1,10 @@
 import Content from "../components/content";
 import PayersColumns from "../data/tableData/payers/payerColumns";
 import { GetStaticProps } from "next";
-import { fetchData } from "./api/payers";
+import { fetchData } from "./api/fetchData";
 import { useEffect, useState } from "react";
 import CardsData from "../data/tableData/payers/payersCards";
-import Cards from "../components/cards";
+import Cards from "../components/molecules/cards";
 import Header from "../components/atom/head";
 
 export interface PayersInterface {
@@ -25,7 +25,7 @@ export default function Payers({ result, summary }: PayersInterface) {
     return (
         <div>
             <Header />
-            <Content columns={PayersColumns} data={data}>
+            <Content columns={PayersColumns} data={data} groups={[]}>
                 <Cards data={cardData} />
             </Content>
         </div>

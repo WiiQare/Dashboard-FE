@@ -1,24 +1,24 @@
-import MenuItem, { Menu } from "./ molecules /side-bar-item";
-import HealthIcon from "./atom/svgs/health-Icon";
-import PaymentsIcon from "./atom/svgs/payments-Icon";
-import BeneficiariesIcon from "./atom/svgs/beneficiaries-Icon";
-import PayersIcon from "./atom/svgs/payers-Icon";
-import ProfileIcon from "./atom/svgs/profile-icon";
-import SettingMenuIcon from "./atom/svgs/setting-menu-icon";
-import NFTICON from "./atom/svgs/voucher-icon";
+import MenuItem, { Menu } from "./side-bar-item";
+import HealthIcon from "../atom/svgs/health-Icon";
+import PaymentsIcon from "../atom/svgs/payments-Icon";
+import BeneficiariesIcon from "../atom/svgs/beneficiaries-Icon";
+import PayersIcon from "../atom/svgs/payers-Icon";
+import ProfileIcon from "../atom/svgs/profile-icon";
+import SettingMenuIcon from "../atom/svgs/setting-menu-icon";
+import NFTICON from "../atom/svgs/voucher-icon";
 import React from "react";
 
 
 
 const Submenus = [
-  { icon: PaymentsIcon, title: "Payers", href: "/Payments/Payments", },
-  { icon: HealthIcon, title: "Payers", href: "/Payments/Payers", },
+  { icon: HealthIcon, title: "Provider", href: "/Payments/Provider", },
+  { icon: PayersIcon, title: "Payers", href: "/Payments/Payers", },
 ];
 
 const menus = [
   { icon: PayersIcon, title: "Payers", href: "/Payers", },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
-  { icon: PaymentsIcon, title: "Payments",  submenu: Submenus },
+  { icon: PaymentsIcon, title: "Payments", submenu: Submenus },
   { icon: HealthIcon, title: "Provider", href: "/Provider", },
   { icon: NFTICON, title: "Vouchers", href: "/Vouchers", },
 ] as unknown as Menu[];

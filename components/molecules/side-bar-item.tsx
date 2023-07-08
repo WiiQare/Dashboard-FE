@@ -33,15 +33,15 @@ function MenuItem(props: Menu) {
           {isExpanded &&
 
             props.submenu.map((submenu) => (
-              <div key={submenu.title} className="ml-3">
+              <div key={submenu.title} className="mt-5 ml-3">
                 <Link
                   href={submenu.href}
-                  className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == props.href
-                    ? "button-text bg-[#FF8A2B] dark:bg-[#df690a]"
+                  className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == submenu.href
+                    ? "button-text bg-[#FF8A2B] dark:bg-[#df690a] !opacity-100"
                     : "opacity-75 hover:bg-[#FF8A2B]"
                     }`}
                 >
-                  {router.route == props.href && (
+                  {router.route == submenu.href && (
                     <span className="absolute left-0 top-1/2 h-9 w-[6px] -translate-y-1/2 rounded bg-white"></span>
                   )}
                   <submenu.icon />

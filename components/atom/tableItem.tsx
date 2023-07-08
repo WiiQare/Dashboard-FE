@@ -1,16 +1,19 @@
 import React, { FC } from 'react';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridColumnGroup, GridColumnGroupingModel, GridGroupNode } from '@mui/x-data-grid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from 'next-themes';
-import { GlobalStyles } from '@mui/material';
+import { GlobalStyles, } from '@mui/material';
 
 interface TableItemsProps<T extends object> {
     data: T[];
     columns: GridColDef[];
+    groups: GridColumnGroupingModel;
+
 }
 
-const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
+const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
+
     const renderIdCell = (params: any) => {
         const { value } = params;
 
@@ -41,7 +44,6 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
         ...row,
     }));
     const theme = useTheme();
-    console.log(theme.theme)
     return (
 
         <div className="text-black dark:text-white transition-c-0.5 w-full">
@@ -94,7 +96,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
                             renderCell: (params) => {
                                 const { field } = column;
 
-                                if (field === 'payerId') {
+                                if (field.toLowerCase().includes('id')) {
                                     return renderIdCell(params);
                                 }
 
@@ -102,12 +104,16 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns }) => {
                             },
 
                         }))}
+                        experimentalFeatures={{ columnGrouping: true }}
+                        columnGroupingModel={groups}
+
+
                         checkboxSelection={false}
                         disableColumnFilter={false}
                         disableColumnMenu={false}
                         disableColumnSelector={false}
                         disableDensitySelector={false}
-                        hideFooter={true}
+                        // hideFooter={true}
                         autoHeight
                         components={{
                             Toolbar: () => null, // Hide the default toolbar

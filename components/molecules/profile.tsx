@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/rootReducer';
-import { toggleDropdown } from '../redux/actions/actions';
+import { RootState } from '../../redux/rootReducer';
+import { toggleDropdown } from '../../redux/actions/actions';
 
 import Image from "next/image";
 
@@ -55,7 +55,7 @@ const Profile = () => {
                     src="/images/user-01.png"
                     width={50}
                     height={50}
-                    alt="User"
+                    alt="Users"
                 />
             </div>
             {isDropdownVisible && isDropdownOpen && (
