@@ -4,6 +4,7 @@ import { RootState } from '../../redux/rootReducer';
 import { toggleDropdown } from '../../redux/actions/actions';
 
 import Image from "next/image";
+import React from 'react';
 
 const Profile = () => {
     const dispatch = useDispatch();
