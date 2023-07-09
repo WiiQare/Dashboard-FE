@@ -22,7 +22,6 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
     useEffect(() => {
         setCardData(CardsData(summary))
     }, [summary])
-console.log(data)
     return (
         <div>
          
