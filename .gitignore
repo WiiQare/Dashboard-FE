@@ -1,5 +1,4 @@
 node_modules
-next.config.js
 /.terraform/.terraform/
 /.idea/.gitignore
 /.idea/aws.xml
@@ -9,3 +8,4 @@ next.config.js
 /build/
 /dist/
 /.next/
+/next.config.js
