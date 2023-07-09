@@ -1,11 +1,10 @@
 import Content from "../../components/content";
-import PayersColumns from "../../data/tableData/payments/provider/payerColumns";
+import PayersColumns from "../../data/tableData/payments/provider/providerColumns";
 import { GetStaticProps } from "next";
 import { fetchData } from "../api/fetchData";
 import { useEffect, useState } from "react";
 import CardsData from "../../data/tableData/payments/paymentsCards";
 
-import Header from "../../components/atom/head";
 import Cards from "../../components/molecules/cards";
 
 
@@ -23,10 +22,10 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
     useEffect(() => {
         setCardData(CardsData(summary))
     }, [summary])
-
+console.log(data)
     return (
         <div>
-            <Header />
+         
             <Content columns={PayersColumns} groups={[]} data={data}>
                 <Cards data={cardData} />
             </Content>

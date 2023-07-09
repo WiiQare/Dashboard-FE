@@ -5,7 +5,6 @@ import { fetchData } from "./api/fetchData";
 import { useEffect, useState } from "react";
 import CardsData from "../data/tableData/beneficiaries/beneficiariesCards";
 
-import Header from "../components/atom/head";
 import Cards from "../components/molecules/cards";
 
 
@@ -26,7 +25,7 @@ export default function Payers({ result, summary }: BeneficiariesInterface) {
 
     return (
         <div>
-            <Header />
+          
             <Content columns={BeneficiariesColumns} groups={BeneficiariesColumnGroupingModel} data={data}>
                 <Cards data={cardData} />
             </Content>

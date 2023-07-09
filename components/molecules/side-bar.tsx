@@ -64,7 +64,7 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
           {/* <------components-----> */}
           <hr className="ml-4 py-2 text-black dark:text-white/20" />
 
-          <div>
+          {/* <div>
             <p className="px-4 py-3 text-black dark:text-white/50">
               Administration
             </p>
@@ -81,7 +81,7 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
               ))}
               <div className="ml-28 mt-5 "></div>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

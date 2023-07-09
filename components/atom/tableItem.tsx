@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { DataGrid, GridColDef, GridColumnGroup, GridColumnGroupingModel, GridGroupNode } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridColumnGroup, GridColumnGroupingModel, GridGroupNode, GridToolbar } from '@mui/x-data-grid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from 'next-themes';
@@ -14,6 +14,7 @@ interface TableItemsProps<T extends object> {
 
 const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
 
+    const theme = useTheme();
     const renderIdCell = (params: any) => {
         const { value } = params;
 
@@ -40,10 +41,10 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
     };
 
     const rowsWithId = data.map((row, index) => ({
-        id: index.toString(), // Use index as the default id if not provided
+        id: index.toString(),
         ...row,
     }));
-    const theme = useTheme();
+
     return (
 
         <div className="text-black dark:text-white transition-c-0.5 w-full">
@@ -70,6 +71,9 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                     />
                     <DataGrid
                         sx={{
+                            "& .MuiButton-text": {
+                                color: theme.theme === 'dark' ? "#ffffff" : "#1976d2 !important",
+                            },
                             "&.MuiDataGrid-root  .MuiDataGrid-cell:focus-within": {
                                 outline: "none !important",
                             },
@@ -85,9 +89,17 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                             "& .MuiDataGrid-menuList": {
                                 backgroundColor: "#ffffff2e !important",
 
-                            }
-                        }}
+                            },
+                            "& .MuiDataGrid-toolbarContainer": {
+                                backgroundColor: theme.theme === 'dark' ? "#0f1b31" : "#f1f6ff !important",
+                                marginBottom: "8px auto auto",
+                                padding: "7px",
+                                width: "100%"
 
+                            },
+
+                        }}
+                        slots={{ toolbar: GridToolbar }}
 
                         className=' !border-none  dark:!text-white'
                         rows={rowsWithId}
@@ -96,7 +108,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                             renderCell: (params) => {
                                 const { field } = column;
 
-                                if (field.toLowerCase().includes('id')) {
+                                if (field.includes('Id')) {
                                     return renderIdCell(params);
                                 }
 
@@ -113,7 +125,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                         disableColumnMenu={false}
                         disableColumnSelector={false}
                         disableDensitySelector={false}
-                        // hideFooter={true}
+                        hideFooter={true}
                         autoHeight
                         components={{
                             Toolbar: () => null, // Hide the default toolbar
