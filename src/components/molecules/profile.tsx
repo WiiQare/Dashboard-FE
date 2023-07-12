@@ -118,7 +118,7 @@ const Profile = () => {
                             <li className="hover:border-indigo-700">
                                 <a
                                     href="#"
-                                    className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Dashboard
                                 </a>
@@ -127,7 +127,7 @@ const Profile = () => {
                             <li>
                                 <a
                                     href="#"
-                                    className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Settings
                                 </a>
@@ -135,7 +135,7 @@ const Profile = () => {
                             <li>
                                 <a
                                     href="#"
-                                    className="block px-4 py-2 border-r-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Earnings
                                 </a>
@@ -144,7 +144,7 @@ const Profile = () => {
                         <div className="py-2">
                             <a
                                 onClick={handleSignOut}
-                                className="block px-4 py-2 border-r-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                className="block px-4 py-2 border-l-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                             >
                                 Sign out
                             </a>
