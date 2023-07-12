@@ -1,4 +1,5 @@
 import PayersColumns from "@/data/tableData/payers/payersColumns";
+import { payersColumnGroupingModel } from "@/data/tableData/payers/payersColumns";
 import React from "react";
 import { useTheme } from "next-themes";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -81,7 +82,7 @@ export default function MainPayersTable({ result }: PayersInterface) {
                 renderCell: (params) => {
                     const { field } = column;
 
-                    if (field.includes('Id')) {
+                    if (field.toLowerCase().endsWith('id') || field === 'id') {
                         return renderIdCell(params);
                     }
 
@@ -91,12 +92,13 @@ export default function MainPayersTable({ result }: PayersInterface) {
             }))}
             experimentalFeatures={{ columnGrouping: true }}
 
-
+            columnGroupingModel={payersColumnGroupingModel}
             checkboxSelection={false}
             disableColumnFilter={false}
             disableColumnMenu={false}
             disableColumnSelector={false}
             disableDensitySelector={false}
+
             autoHeight
             componentsProps={{
                 toolbar: {
