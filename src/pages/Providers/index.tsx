@@ -31,8 +31,9 @@ const Providers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    let take = 10;
-    const skip = 0;
+    let take = 1; // Default number of items to take
+    const skip = 0; // Default amount to skip
+
     useLayoutEffect(() => {
         setUserAuth(Boolean(localStorage.getItem("userAuth")));
         setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
@@ -47,17 +48,16 @@ const Providers = () => {
             const summaryData = await fetchData("/providers/summary", userState?.access_token);
             setData(res);
             setSummary(summaryData);
-
+            // console.log("Data in first fetch", res);
+            // console.log("summaryData", summaryData);
         };
-        if (mounted) {
+        if (mounted && userAuth) {
             fetchDataAsync()
         }
-        ;
 
-    }, [mounted, take, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
+    }, [mounted]); // Remove other dependencies to fetch data only once when mounted
     if (mounted) {
         if (userAuth === false) {
-            // console.log("userAuth", userAuth)
 
             Router.replace("/auth/signin");
         }
@@ -73,9 +73,14 @@ const Providers = () => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRegisteredProviders)
+            console.log('Summary:', summary);
+            console.log('numOfItems:', numOfItems);
         }
     }, [summary]);
 
+    console.log('Summary out:', summary);
+    console.log('numOfItems out:', numOfItems);
+    console.log('take:', take);
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {
@@ -100,7 +105,9 @@ const Providers = () => {
     if (!data || !summary) {
         return null; // Render nothing until data and summary are available
     }
-
+    console.log('Summary out done:', summary);
+    console.log('numOfItems out done:', numOfItems);
+    console.log('take done:', take);
     return (
         <div>
             <Content columns={ProviderColumns} data={data} cardsData={cardData} groups={ProviderColumnGroupingModel}>

@@ -17,7 +17,7 @@ interface UserInterface {
 
 let newSkip: number = 0;
 
-const Payers = () => {
+const Vouchers = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
@@ -30,8 +30,9 @@ const Payers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    const take = 10;
-    const skip = 0;
+    const take = 10; // Default number of items to take
+    const skip = 0; // Default amount to skip
+
     useLayoutEffect(() => {
         setUserAuth(Boolean(localStorage.getItem("userAuth")));
         setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
@@ -55,7 +56,7 @@ const Payers = () => {
             const summaryData = await fetchData("/vouchers/summary", userState?.access_token);
             setData(res);
             setSummary(summaryData);
-            // console.log("res", res);
+            console.log("res", res);
         };
         if (mounted && userAuth) {
             fetchDataAsync();
@@ -63,18 +64,25 @@ const Payers = () => {
 
     }, [mounted, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
 
-
+    useEffect(() => {
+        if (data) {
+            // Access the data here once it's available
+            console.log('Data:', { ...data });
+        }
+    }, [data]);
 
     useEffect(() => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.vouchersInMaxTime.numberOfVouchers)
-            // console.log('CardsData:', CardsData(summary));
-            // console.log('numOfItems:', numOfItems);
+            console.log('CardsData:', CardsData(summary));
+            console.log('numOfItems:', numOfItems);
         }
-    }, [summary]);
+    }, [numOfItems, summary]);
 
-
+    console.log('Summary out:', summary);
+    console.log('numOfItems out:', numOfItems);
+    console.log('take:', take);
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {
@@ -103,7 +111,7 @@ const Payers = () => {
     if (!data || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    // console.log('Summary out done:', { data });
+    console.log('Summary out done:', { data });
     // console.log('numOfItems out done:', numOfItems);
     // console.log('take done:', take);
     return (
@@ -140,4 +148,4 @@ const Payers = () => {
     );
 };
 
-export default Payers;
+export default Vouchers;
