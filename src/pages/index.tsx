@@ -22,7 +22,8 @@ interface UserInterface {
 
 export default function Home() {
     const User = React.useContext(UserContext);
-    const [chartData, setChartData] = useState<ChartData[]>([]);
+    const [barChartData, setbarChartData] = useState<ChartData[]>([]);
+    const [lineChartData, setlineChartData] = useState<[]>([]);
     const [tableData, setTableData] = useState<[]>([]);
     const [userState, setUserState] = useState<UserInterface | any>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(
@@ -50,19 +51,22 @@ export default function Home() {
         const fetchDataAsync = async () => {
             const tableRes = await fetchData("/payers", userState?.access_token, 10, 0);
             setTableData(tableRes);
-            const res = await fetchData("/charts", userState?.access_token, 5, 0);
-            setChartData(res)
+            const res = await fetchData("/charts/payers", userState?.access_token, 5, 0);
+            setbarChartData(res)
+            const line = await fetchData("/charts/beneficiaries", userState?.access_token, 10, 0);
+            setlineChartData(line)
+            console.log(tableData)
         };
-        if (mounted  && userAuth) {
+        if (mounted && userAuth) {
             fetchDataAsync();
         }
 
 
 
-    }, [mounted, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
+    }, [mounted]); // Remove other dependencies to fetch data only once when mounted
 
 
-    if (!chartData) {
+    if (!barChartData) {
         return null; //loading
     }
 
@@ -72,15 +76,19 @@ export default function Home() {
             <div className="p-4">
                 <div className="flex flex-1  transition-c-0.5 pr-2 !h-[22.4rem] w-full">
                     <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[23rem]">
-                        <LineChart payersInfo={chartData}></LineChart>
+                        <LineChart Data={barChartData}></LineChart>
                     </div>
                     <div className=" w-1/2  flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white  h-[23rem]">
                         <MainPayersTable result={tableData} />
                     </div>
                 </div>
-                <div className="mt-5 w-[37%]">
-                    <BarChart data={chartData} />
+
+                <div className="flex mt-5 pr-5 flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[27rem]">
+                    <div className=" w-[92%]">
+                        <BarChart data={lineChartData} />
+                    </div>
                 </div>
+
             </div>
         </div>
     );

@@ -1,13 +1,11 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 import { ResponsiveBar, BarDatum } from "@nivo/bar";
 import { useTheme } from 'next-themes';
-import { fetchData } from "@/pages/api/fetchData";
-import { UserContext } from "@/context/UserContext";
 
 export interface ChartData extends BarDatum {
-    activePayers: number;
-    registeredPayers: number;
+    activeCount: number;
+    registeredCount: number;
     country: string;
 }
 
@@ -27,8 +25,9 @@ const BarChart: React.FC<BarChartProps> = ({ data }: BarChartProps) => {
         >
             <ResponsiveBar
                 data={data}
-                keys={['registeredBeneficiariesPerCountry', 'activeBeneficiariesPerCountry']}
-                indexBy="activePayersPerCountry"
+                keys={['registeredCount', 'activeCount']}
+
+                indexBy="country"
                 margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
                 padding={0.3}
                 valueScale={{ type: "linear" }}
@@ -44,12 +43,12 @@ const BarChart: React.FC<BarChartProps> = ({ data }: BarChartProps) => {
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: -30,
-                    legend: "Country and City",
+                    tickSize: 10,
+                    tickPadding: 7,
+                    tickRotation: 20,
+                    legend: "Beneficiaries",
                     legendPosition: "middle",
-                    legendOffset: 50,
+                    legendOffset: -320,
                 }}
                 axisLeft={{
                     tickSize: 0,
@@ -77,7 +76,7 @@ const BarChart: React.FC<BarChartProps> = ({ data }: BarChartProps) => {
                         itemWidth: 70,
                         itemHeight: 20,
                         itemDirection: "left-to-right",
-                        itemTextColor: theme === 'dark' ? "rgb(225,225,225)" : undefined,
+                        itemTextColor: theme === 'dark' ? "rgb(225,225,225)" : "",
                         itemOpacity: 0.85,
                         symbolSize: 15,
                         effects: [

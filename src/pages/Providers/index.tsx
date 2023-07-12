@@ -31,7 +31,7 @@ const Providers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    let take = 1; // Default number of items to take
+    let take = 10; // Default number of items to take
     const skip = 0; // Default amount to skip
 
     useLayoutEffect(() => {
@@ -62,25 +62,20 @@ const Providers = () => {
             Router.replace("/auth/signin");
         }
     }
-    useEffect(() => {
-        if (data) {
-            // Access the data here once it's available
-            console.log('Data:', data);
-        }
-    }, [data]);
+
 
     useEffect(() => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRegisteredProviders)
-            console.log('Summary:', summary);
-            console.log('numOfItems:', numOfItems);
+            // console.log('Summary:', summary);
+            // console.log('numOfItems:', numOfItems);
         }
     }, [numOfItems, summary]);
 
-    console.log('Summary out:', summary);
-    console.log('numOfItems out:', numOfItems);
-    console.log('take:', take);
+    // console.log('Summary out:', summary);
+    // console.log('numOfItems out:', numOfItems);
+    // console.log('take:', take);
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {
@@ -105,9 +100,9 @@ const Providers = () => {
     if (!data || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    console.log('Summary out done:', summary);
-    console.log('numOfItems out done:', numOfItems);
-    console.log('take done:', take);
+    // console.log('Summary out done:', summary);
+    // console.log('numOfItems out done:', numOfItems);
+    // console.log('take done:', take);
     return (
         <div>
             <Content columns={ProviderColumns} data={data} cardsData={cardData} groups={ProviderColumnGroupingModel}>
