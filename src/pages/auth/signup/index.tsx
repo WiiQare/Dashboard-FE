@@ -145,8 +145,7 @@ const SignUp: NextPage = (props): React.JSX.Element => {
                                             Login Failed
                                         </p>
                                         <p className=" ital">
-                                            Verify that you entered the correct
-                                            email and password message
+                                           The Email is already in use.
                                         </p>
                                     </div>
                                 )}
