@@ -2,9 +2,6 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,8 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@public/*": ["./public/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/molecules/mainCards.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/hooks/localStorage.ts"],
   "exclude": ["node_modules"]
 }
