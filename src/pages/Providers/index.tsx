@@ -55,7 +55,7 @@ const Providers = () => {
             fetchDataAsync()
         }
 
-    }, [mounted]); // Remove other dependencies to fetch data only once when mounted
+    }, [mounted, take, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
     if (mounted) {
         if (userAuth === false) {
 
@@ -76,7 +76,7 @@ const Providers = () => {
             console.log('Summary:', summary);
             console.log('numOfItems:', numOfItems);
         }
-    }, [summary]);
+    }, [numOfItems, summary]);
 
     console.log('Summary out:', summary);
     console.log('numOfItems out:', numOfItems);
