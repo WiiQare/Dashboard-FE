@@ -26,7 +26,7 @@ function MenuItem(props: Menu) {
       {props.submenu ? (
 
         <div>
-          <Accordion sx={{
+          <Accordion  className="" sx={{
             border: 'none',
             boxShadow: 'none',
             background: 'none',
@@ -35,7 +35,7 @@ function MenuItem(props: Menu) {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
-              className="hover:bg-[#FF8A2B]"
+              className="rounded items-center py-1  hover:bg-[#FF8A2B]"
             >
               <Typography className=" text-black dark:text-white flex">
                 <props.icon />
@@ -44,10 +44,10 @@ function MenuItem(props: Menu) {
             </AccordionSummary>
             <AccordionDetails>
               {   props.submenu.map((submenu) => (
-              <div key={submenu.title} className="mt-2 ml-3">
+              <div key={submenu.title} className=" ml-3">
                 <Link
                   href={submenu.href}
-                  className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == submenu.href
+                  className={`relative flex gap-2 rounded  dark:text-white  items-center mb-2 py-3 px-4 ${router.route == submenu.href
                     ? "button-text bg-[#FF8A2B] dark:bg-[#df690a] !opacity-100"
                     : "opacity-75 hover:bg-[#FF8A2B]"
                     }`}
