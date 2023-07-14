@@ -1,5 +1,8 @@
 # WiiQare Admin Dashboard
 
+[![Tests](https://github.com/WiiQare/Dashboard-FE/actions/workflows/test.yml/badge.svg)](https://github.com/WiiQare/Dashboard-FE/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/WiiQare/Dashboard-FE/branch/main/graph/badge.svg?token=qTjGVsrVDc)](https://codecov.io/gh/WiiQare/Dashboard-FE)
+
 ## Quick Start
 
 1. Install the node dependencies: `npm install`
