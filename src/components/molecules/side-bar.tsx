@@ -9,11 +9,12 @@ import SettingMenuIcon from "@public/svg/setting-menu-icon";
 import NFTICON from "@public/svg/voucher-icon";
 import React from "react";
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
+import PaymentProviderIcon from "@public/svg/Providers-icon";
 
 
 
 const Submenus = [
-  { icon: HealthIcon, title: "Provider", href: "/Payments/Provider", },
+  { icon: PaymentProviderIcon, title: "Provider", href: "/Payments/Provider", },
   { icon: PayersIcon, title: "Payers", href: "/Payments/Payers", },
 ];
 
