@@ -2,35 +2,38 @@ import React, { FormEventHandler, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
-import { AuthenticationFunction } from "../../api/authentication";
+import { ForgotePassword } from "../../api/forgotePassword";
+import { VerifyEmail } from "../../api/verifyEmail";
 import { UserContext } from "@/context/UserContext";
-import SignUp from "../signup";
 
-const SignIn: NextPage = (props): React.JSX.Element => {
+const ForogtPassword: NextPage = (props): React.JSX.Element => {
     const email = useRef<string>("");
     const password = useRef<string>("");
+    const confirm_password = useRef<string>("");
     const router = useRouter();
-    const [isValid, setIsValid] = React.useState<boolean>(true);
-    const [isDisable, setIsDisable]= React.useState<boolean>(false)
-
+    const [isValid, setIsValid] = React.useState<boolean>(false);
+    const [isVerifyEmail, setISVerifyEmail] = React.useState<boolean>(false);
+    const [ErroMessage, setErroMessage] = React.useState<boolean>(false);
+    const [isMatch, setIsMatch] = React.useState<boolean>(true);
     const User = React.useContext(UserContext);
 
     if (User?.authenticated === true) router.push("/");
 
+
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        setIsDisable(true)
-        const user = await AuthenticationFunction(
-            email.current,
-            password.current
-        );
+        if (!isVerifyEmail) {
+            const varifyEmail = await VerifyEmail(email.current);
+            varifyEmail ? setISVerifyEmail(varifyEmail) : setErroMessage(true)
+        }
+
+
 
         if (user) {
             User?.setAuthenticated(true);
             User?.setUser(user);
             localStorage.setItem("userState", JSON.stringify(user));
             localStorage.setItem("userAuth", JSON.stringify(true));
-            setIsDisable(false)
             router.push("/");
         } else {
             setIsValid(false);
@@ -61,15 +64,15 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                             </div>
                         </div>
                         <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                            Sign in
+                            Sign Up
                         </h2>
                     </div>
 
-                    <div className="mt-4 pb- sm:mx-auto sm:w-full sm:max-w-sm">
-                        <form className="space-y-6" onSubmit={onSubmit}>
+                    <div className="mt-4 pb-[-2rem] sm:mx-auto sm:w-full sm:max-w-sm">
+                        <form className="space-y-7" onSubmit={onSubmit}>
                             <div>
                                 <div className="bg-white px-4 pt-4 rounded-lg">
-                                    <div className="relative bg-inherit">
+                                    {!isValid ? <div className="relative bg-inherit">
                                         <input
                                             onChange={(e) => {
                                                 email.current = e.target.value;
@@ -85,67 +88,71 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                                         />
                                         <label
                                             htmlFor="email"
-                                            className="absolute cursor-text pointer-events-none left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+                                            className="absolute pointer-events-none cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
                                         >
-                                            Email
+                                            Enter Your email
                                         </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className=" bg-white px-4 pb-2 rounded-lg">
-                                <div className="relative bg-inherit">
+                                    </div> :
+                                    <div><div className="relative bg-inherit">
                                     <input
                                         onChange={(e) => {
-                                            password.current = e.target.value;
+                                            email.current = e.target.value;
                                             setIsValid(true);
                                         }}
-                                        id="password"
-                                        name="password"
-                                        type="password"
+                                        id="email"
+                                        name="email"
+                                        //type="email"
+                                        autoComplete="email"
                                         required
-                                        placeholder="********"
+                                        placeholder="email@example.com"
                                         className="peer w-full border-0 bg-transparent h-10 rounded-lg text-black placeholder-transparent ring-2 px-2 ring-gray-200 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
                                     />
                                     <label
-                                        htmlFor="password"
+                                        htmlFor="email"
                                         className="absolute pointer-events-none cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
                                     >
-                                        Password
+                                        Enter Your email
                                     </label>
-                                </div>
-                                {!isValid && (
-                                    <div
-                                        className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4"
-                                        role="alert"
+                                </div><div className="relative bg-inherit">
+                                    <input
+                                        onChange={(e) => {
+                                            email.current = e.target.value;
+                                            setIsValid(true);
+                                        }}
+                                        id="email"
+                                        name="email"
+                                        //type="email"
+                                        autoComplete="email"
+                                        required
+                                        placeholder="email@example.com"
+                                        className="peer w-full border-0 bg-transparent h-10 rounded-lg text-black placeholder-transparent ring-2 px-2 ring-gray-200 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+                                    />
+                                    <label
+                                        htmlFor="email"
+                                        className="absolute pointer-events-none cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
                                     >
-                                        <p className="font-bold">
-                                            Login Failed
-                                        </p>
-                                        <p className=" ital">
-                                            Verify that you entered the correct
-                                            email and password message
-                                        </p>
-                                    </div>
-                                )}
+                                        Enter Your email
+                                    </label>
+                                </div></div>}
+                                </div>
                             </div>
 
                             <div className="px-4">
                                 <button
                                     type="submit"
-                                    className="flex w-full justify-center  rounded-md bg-orange-600 hover:bg-orange-500 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="flex w-full justify-center pointer-events-none rounded-md bg-orange-600 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     Sign in
                                 </button>
                             </div>
-                            <div className="text-sm">
-                            </div>
-                        </form>
 
+
+
+                        </form>
                         <p className="mt-10 text-center text-sm text-gray-500">
-                            Not a member?{" "}
+                            Already have an account?
                             <button
-                                onClick={ ()=> router.push("/auth/signup")}
+                                onClick={() => router.push("/auth/signin")}
                                 className="font-semibold leading-6 text-orange-600 hover:text-orange-500"
                             >
                                 Sign up
@@ -158,4 +165,4 @@ const SignIn: NextPage = (props): React.JSX.Element => {
     );
 };
 
-export default SignIn;
+export default ForogtPassword;

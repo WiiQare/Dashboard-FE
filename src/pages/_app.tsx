@@ -7,9 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { Provider } from "react-redux";
 import store from "@/redux/store/store";
 import { UserProvider } from "@/context/UserContext";
-//theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
-//core
 import "primereact/resources/primereact.min.css";
 
 export default function App({ Component, pageProps }: AppProps) {

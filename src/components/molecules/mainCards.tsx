@@ -85,7 +85,7 @@ const ExampleComponent: React.FC<DataProps> = ({
         totalRedeemedVouchers?.numberOfVouchers!;
 
     return (
-        <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2  w-[88%] md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
+        <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
             <VoucherInfo
                 label="Pending Vouchers"
                 numberOfVouchers={pendingVouchers?.numberOfVouchers}
