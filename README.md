@@ -1,5 +1,5 @@
-# WiiQare
+# WiiQare Admin Dashboard
 
-npm install
-
-npm start
+## Get started
+1. `npm install`
+2. `npm start`
