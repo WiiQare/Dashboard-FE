@@ -11,7 +11,6 @@ export interface PayersInterface {
 }
 
 export default function MainPayersTable({ result }: PayersInterface) {
-    console.log("hi")
     const theme = useTheme();
     const renderIdCell = (params: any) => {
         const { value } = params;

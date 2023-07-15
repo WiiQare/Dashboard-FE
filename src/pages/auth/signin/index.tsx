@@ -11,6 +11,7 @@ const SignIn: NextPage = (props): React.JSX.Element => {
     const password = useRef<string>("");
     const router = useRouter();
     const [isValid, setIsValid] = React.useState<boolean>(true);
+    const [isDisable, setIsDisable]= React.useState<boolean>(false)
 
     const User = React.useContext(UserContext);
 
@@ -18,6 +19,7 @@ const SignIn: NextPage = (props): React.JSX.Element => {
 
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
+        setIsDisable(true)
         const user = await AuthenticationFunction(
             email.current,
             password.current
@@ -28,6 +30,7 @@ const SignIn: NextPage = (props): React.JSX.Element => {
             User?.setUser(user);
             localStorage.setItem("userState", JSON.stringify(user));
             localStorage.setItem("userAuth", JSON.stringify(true));
+            setIsDisable(false)
             router.push("/");
         } else {
             setIsValid(false);
@@ -82,7 +85,7 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                                         />
                                         <label
                                             htmlFor="email"
-                                            className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+                                            className="absolute cursor-text pointer-events-none left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
                                         >
                                             Email
                                         </label>
@@ -106,7 +109,7 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                                     />
                                     <label
                                         htmlFor="password"
-                                        className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
+                                        className="absolute pointer-events-none cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
                                     >
                                         Password
                                     </label>
@@ -130,13 +133,12 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                             <div className="px-4">
                                 <button
                                     type="submit"
-                                    className="flex w-full justify-center rounded-md bg-orange-600 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="flex w-full justify-center  rounded-md bg-orange-600 hover:bg-orange-500 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     Sign in
                                 </button>
                             </div>
                             <div className="text-sm">
-                               
                             </div>
                         </form>
 

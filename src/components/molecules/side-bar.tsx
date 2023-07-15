@@ -4,14 +4,15 @@ import PaymentsIcon from "@public/svg/payments-Icon";
 import BeneficiariesIcon from "@public/svg/beneficiaries-Icon";
 import PayersIcon from "@public/svg/payers-Icon";
 import ProfileIcon from "@public/svg/profile-icon";
-import SettingMenuIcon from "@public/svg/setting-menu-icon";
 import NFTICON from "@public/svg/voucher-icon";
 import React from "react";
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
+import PaymentProviderIcon from "@public/svg/Providers-icon";
 
 
 
 const Submenus = [
-  { icon: HealthIcon, title: "Provider", href: "/Payments/Provider", },
+  { icon: PaymentProviderIcon, title: "Provider", href: "/Payments/Provider", },
   { icon: PayersIcon, title: "Payers", href: "/Payments/Payers", },
 ];
 
@@ -30,7 +31,6 @@ const reportMenus = [
     href: "/profile",
   },
   {
-    icon: SettingMenuIcon,
     title: "Settings",
     href: "/settings",
   },

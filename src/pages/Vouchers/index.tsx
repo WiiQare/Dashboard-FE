@@ -3,7 +3,7 @@ import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/vouchers/vouchersCards";
-import Pagination from '@/components/atom/pagination';
+import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import VouchersColumns from '@/data/tableData/vouchers/vouchersColumns';
 interface UserInterface {

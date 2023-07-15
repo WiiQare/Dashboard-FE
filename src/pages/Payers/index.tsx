@@ -3,7 +3,7 @@ import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/payers/payersCards";
-import Pagination from '@/components/atom/pagination';
+import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import payersColumns, { payersColumnGroupingModel } from '@/data/tableData/payers/payersColumns';
 
@@ -32,7 +32,7 @@ const Payers = () => {
     const [mounted, setMounted] = useState<boolean>(false);
 
     const take = 10;
-    const skip = 0; 
+    const skip = 0;
     useLayoutEffect(() => {
         setUserAuth(Boolean(localStorage.getItem("userAuth")));
         setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));

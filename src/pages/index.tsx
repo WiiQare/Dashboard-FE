@@ -55,7 +55,7 @@ export default function Home() {
             setbarChartData(res)
             const line = await fetchData("/charts/beneficiaries", userState?.access_token, 10, 0);
             setlineChartData(line)
-            console.log(tableData)
+            // console.log(tableData)
         };
         if (mounted && userAuth) {
             fetchDataAsync();
@@ -71,24 +71,28 @@ export default function Home() {
     }
 
     return (
-        <div className="w-full overflow-y-auto">
-            <MainCards />
-            <div className="p-4">
-                <div className="flex flex-1  transition-c-0.5 pr-2 !h-[22.4rem] w-full">
-                    <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[23rem]">
-                        <LineChart Data={barChartData}></LineChart>
-                    </div>
-                    <div className=" w-1/2  flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white  h-[23rem]">
-                        <MainPayersTable result={tableData} />
+        <div className="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4">
+            <div className="grid grid-cols-1 gap-4 mb-4">
+                <div className="w-full overflow-y-auto">
+                    <MainCards />
+                    <div className="p-4">
+                        <div className="flex flex-1  transition-c-0.5 pr-2 !h-[22.4rem] w-full">
+                            <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[23rem]">
+                                <LineChart Data={barChartData}></LineChart>
+                            </div>
+                            <div className=" w-1/2  flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white  h-[23rem]">
+                                <MainPayersTable result={tableData} />
+                            </div>
+                        </div>
+
+                        <div className="flex mt-5 pr-5 flex-grow dark:bg-[#182644]  w-[50%] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[30rem]">
+                            <div className=" w-[92%]">
+                                <BarChart data={lineChartData} />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div className="flex mt-5 pr-5 flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md  mr-5 rounded-md  bg-white   h-[27rem]">
-                    <div className=" w-[92%]">
-                        <BarChart data={lineChartData} />
-                    </div>
-                </div>
-
             </div>
         </div>
     );

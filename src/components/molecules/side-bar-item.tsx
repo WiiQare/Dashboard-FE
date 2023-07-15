@@ -1,6 +1,8 @@
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export interface Menu {
   icon: string;
@@ -9,6 +11,7 @@ export interface Menu {
   submenu: any[];
 
 }
+
 
 function MenuItem(props: Menu) {
   const router = useRouter();
@@ -23,19 +26,28 @@ function MenuItem(props: Menu) {
       {props.submenu ? (
 
         <div>
-
-          <button onClick={handleToggle} className="hover:bg-[#FF8A2B] relative flex gap-2 rounded items-center py-3 w-full px-4">
-            <props.icon />
-            {props.title}
-          </button>
-
-          {isExpanded &&
-
-            props.submenu.map((submenu) => (
-              <div key={submenu.title} className="mt-2 ml-3">
+          <Accordion  className="" sx={{
+            border: 'none',
+            boxShadow: 'none',
+            background: 'none',
+          }} >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              className="rounded items-center py-1  hover:bg-[#FF8A2B]"
+            >
+              <Typography className=" text-black dark:text-white flex">
+                <props.icon />
+                <span className="ml-2">{props.title}</span>
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {   props.submenu.map((submenu) => (
+              <div key={submenu.title} className=" ml-3">
                 <Link
                   href={submenu.href}
-                  className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == submenu.href
+                  className={`relative flex gap-2 rounded  dark:text-white  items-center mb-2 py-3 px-4 ${router.route == submenu.href
                     ? "button-text bg-[#FF8A2B] dark:bg-[#df690a] !opacity-100"
                     : "opacity-75 hover:bg-[#FF8A2B]"
                     }`}
@@ -47,8 +59,11 @@ function MenuItem(props: Menu) {
                   {submenu.title}
                 </Link>
               </div>
-            ))
-          }
+            ))}
+            </AccordionDetails>
+          </Accordion>
+
+
 
         </div>)
         : <Link
@@ -56,7 +71,7 @@ function MenuItem(props: Menu) {
           href={props.href}
           className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == props.href
             ? "button-text bg-[#FF8A2B] dark:bg-[#df690a]"
-            : "opacity-75 hover:bg-[#FF8A2B]"
+            : " hover:bg-[#FF8A2B]"
             }`}
         >
           {router.route == props.href && (

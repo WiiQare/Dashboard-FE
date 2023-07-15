@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { DataGrid, GridColDef, GridColumnGroup, GridColumnGroupingModel, GridGroupNode, GridToolbar } from '@mui/x-data-grid';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { DataGrid, GridColDef, GridColumnGroupingModel, GridGroupNode, GridToolbar } from '@mui/x-data-grid';
+import { ToastContainer, } from 'react-toastify';
+
 import { useTheme } from 'next-themes';
 import { GlobalStyles, } from '@mui/material';
 
@@ -20,21 +20,13 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
 
         const handleCopyClick = () => {
             navigator.clipboard.writeText(value);
-            toast.success('ID copied to clipboard!', {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 1000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: false,
-                className: 'dark:!bg-[#1e293b] dark:!text-white'
-            });
+        
         };
 
         return (
             <div className="flex items-center">
                 <button className="px-2 py-1" onClick={handleCopyClick} title={value}>
-                    {value.substr(0, 4)}
+                {typeof value === 'string' ? value.substr(0, 4) : value}
                 </button>
             </div>
         );

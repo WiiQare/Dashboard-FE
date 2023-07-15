@@ -249,9 +249,16 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
 
 
 }
-
+.MuiPaper-root{
+background: none !important;
+}
 .nextui-c-hPzDAx-eLdNZT-borderWeight-light {
   border: none !important;
+}
+#panel1a-content{
+  margin-bottom: -30px;
+margin-top: -1px;
+
 }
 
 /* .main {

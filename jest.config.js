@@ -1,6 +1,7 @@
 // You can learn more about each option below in the Jest docs: https://jestjs.io/docs/configuration.
 
 module.exports = {
+  setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   collectCoverageFrom: [
     "**/*.{js,jsx,ts,tsx}",
@@ -22,11 +23,12 @@ module.exports = {
     "^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$": `<rootDir>/__mocks__/fileMock.js`,
 
     // Handle module aliases
-    "^@/components/(.*)$": "<rootDir>/components/$1",
 
-    "^@/pages/(.*)$": "<rootDir>/pages/$1",
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@public/(.*)$': '<rootDir>/public/$1',
   },
-  testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
+  testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/coverage/"],
+  coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/coverage/"],
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset
     // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
