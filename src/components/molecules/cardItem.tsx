@@ -13,7 +13,9 @@ export interface Cards {
 
 }
 function hexToRgba(hex: string, alpha: number = 0.4): string {
-    const sanitizedHex = hex.replace('#', '');
+
+    let sanitizedHex: string ="";
+    if (hex && typeof (hex) == "string") {  sanitizedHex = hex.replace('#', ''); }
 
     if (sanitizedHex.length === 3) {
         const [r, g, b] = sanitizedHex.split('');

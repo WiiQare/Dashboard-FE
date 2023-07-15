@@ -3,7 +3,7 @@ import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/beneficiaries/beneficiariesCards";
-import Pagination from '@/components/atom/pagination';
+import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from '@/data/tableData/beneficiaries/beneficiariesColumns';
 interface UserInterface {

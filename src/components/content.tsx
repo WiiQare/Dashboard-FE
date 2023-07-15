@@ -1,5 +1,4 @@
 import React from "react";
-import Options from "@public/svg/options";
 import Table from "./molecules/table";
 import Cards from "./molecules/cards";
 

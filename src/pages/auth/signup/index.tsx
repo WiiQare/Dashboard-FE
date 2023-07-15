@@ -17,7 +17,7 @@ const SignUp: NextPage = (props): React.JSX.Element => {
     if (User?.authenticated === true) router.push("/");
 
     const comparePassword = (pass: string, cpass: string) => {
-        console.log(cpass.length);
+        // console.log(cpass.length);
         cpass.length != 0 ? (pass === cpass ? setIsMatch(true) : setIsMatch(false)) : setIsMatch(true) 
 
     };

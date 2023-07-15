@@ -55,7 +55,7 @@ export default function Home() {
             setbarChartData(res)
             const line = await fetchData("/charts/beneficiaries", userState?.access_token, 10, 0);
             setlineChartData(line)
-            console.log(tableData)
+            // console.log(tableData)
         };
         if (mounted && userAuth) {
             fetchDataAsync();
