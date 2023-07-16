@@ -54,7 +54,7 @@ const Navbar: React.FC<MyProps> = (props) => {
             {/* <!--logo End --> */}
 
             {/* <!--Search start --> */}
-            <Search />
+            {/* <Search /> */}
             {/* <!--Search End --> */}
           </div>
           <div className=" ml-auto flex w-fit flex-row justify-end">

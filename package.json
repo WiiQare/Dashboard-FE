@@ -51,6 +51,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@jest/globals": "^29.6.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "autoprefixer": "10.4.14",
