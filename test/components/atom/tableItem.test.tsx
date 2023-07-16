@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import TableItems from "./tableItem";
+import TableItems from "../../../src/components/atom/tableItem";
 import { GridColumnGroupingModel } from "@mui/x-data-grid";
 
 

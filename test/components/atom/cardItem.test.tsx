@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import CardsItem from './cardItem';
+import CardsItem from '../../../src/components/atom/cardItem';
 
 describe('CardsItem Component', () => {
     const mockProps = {

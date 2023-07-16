@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PrimeLineChart from "./PrimeLineChart";
+import PrimeLineChart from "../../../../src/components/atom/charts/PrimeLineChart";
 
 // beforeEach(() => {
 //     // Mock the getContext method for HTMLCanvasElement

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 
 import 'next/router';
-import Providers from './index';
+import Providers from '../../../src/pages/Providers/index';
 jest.mock('next/router', () => ({
     replace: jest.fn(),
     useRouter: jest.fn().mockReturnValue({

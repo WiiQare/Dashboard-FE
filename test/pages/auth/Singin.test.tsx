@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { useRouter } from 'next/router';
-import SignIn from './index';
+import SignIn from '../../../src/pages/auth/signin/index';
 
 jest.mock('next/router', () => ({
     useRouter: () => ({
