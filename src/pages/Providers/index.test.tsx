@@ -5,10 +5,9 @@ import Providers from './index';
 jest.mock('next/router', () => ({
     replace: jest.fn(),
     useRouter: jest.fn().mockReturnValue({
-        // Provide mock implementations of any router methods you use
+        // Provide mock implementations of any router methods
         push: jest.fn(),
         replace: jest.fn(),
-        // Add any other methods or properties you require for testing
     }),
 }));
 test('renders Providers component', async () => {

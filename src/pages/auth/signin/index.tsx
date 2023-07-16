@@ -1,17 +1,18 @@
-import React, { FormEventHandler, useRef } from "react";
+import React, { FormEventHandler, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { AuthenticationFunction } from "../../api/authentication";
 import { UserContext } from "@/context/UserContext";
-import SignUp from "../signup";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const SignIn: NextPage = (props): React.JSX.Element => {
-    const email = useRef<string>("");
-    const password = useRef<string>("");
+const SignIn: NextPage = (): React.JSX.Element => {
+    const email = useRef("");
+    const password = useRef("");
     const router = useRouter();
-    const [isValid, setIsValid] = React.useState<boolean>(true);
-    const [isDisable, setIsDisable]= React.useState<boolean>(false)
+    const [isValid, setIsValid] = useState(true);
+    const [isDisable, setIsDisable] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const User = React.useContext(UserContext);
 
@@ -19,20 +20,25 @@ const SignIn: NextPage = (props): React.JSX.Element => {
 
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        setIsDisable(true)
-        const user = await AuthenticationFunction(
-            email.current,
-            password.current
-        );
+        setIsDisable(true);
+        setIsLoading(true);
+        const user = await AuthenticationFunction(email.current, password.current);
 
         if (user) {
-            User?.setAuthenticated(true);
-            User?.setUser(user);
-            localStorage.setItem("userState", JSON.stringify(user));
-            localStorage.setItem("userAuth", JSON.stringify(true));
-            setIsDisable(false)
-            router.push("/");
+            if (user.access_token) {
+                User?.setAuthenticated(true);
+                User?.setUser(user);
+                localStorage.setItem("userState", JSON.stringify(user));
+                localStorage.setItem("userAuth", JSON.stringify(true));
+                setIsDisable(false);
+                setIsLoading(false);
+                router.push("/");
+            } else {
+                setIsLoading(false);
+                setIsValid(false);
+            }
         } else {
+            setIsLoading(false);
             setIsValid(false);
         }
     };
@@ -119,12 +125,10 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                                         className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4"
                                         role="alert"
                                     >
-                                        <p className="font-bold">
-                                            Login Failed
-                                        </p>
-                                        <p className=" ital">
-                                            Verify that you entered the correct
-                                            email and password message
+                                        <p className="font-bold">Login Failed</p>
+                                        <p className="ital">
+                                            Verify that you entered the correct email and password
+                                            message
                                         </p>
                                     </div>
                                 )}
@@ -133,19 +137,23 @@ const SignIn: NextPage = (props): React.JSX.Element => {
                             <div className="px-4">
                                 <button
                                     type="submit"
+                                    disabled={isDisable}
                                     className="flex w-full justify-center  rounded-md bg-orange-600 hover:bg-orange-500 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
-                                    Sign in
+                                    {isLoading ? (
+                                        <CircularProgress color="inherit" size={20} />
+                                    ) : (
+                                        "Sign in"
+                                    )}
                                 </button>
                             </div>
-                            <div className="text-sm">
-                            </div>
+                            <div className="text-sm"></div>
                         </form>
 
                         <p className="mt-10 text-center text-sm text-gray-500">
                             Not a member?{" "}
                             <button
-                                onClick={ ()=> router.push("/auth/signup")}
+                                onClick={() => router.push("/auth/signup")}
                                 className="font-semibold leading-6 text-orange-600 hover:text-orange-500"
                             >
                                 Sign up

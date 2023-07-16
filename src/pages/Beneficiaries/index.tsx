@@ -72,9 +72,7 @@ const Beneficiaries = () => {
         }
     }, [summary]);
 
-    // console.log('Summary out:', summary);
-    // console.log('numOfItems out:', numOfItems);
-    // console.log('take:', take);
+
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {

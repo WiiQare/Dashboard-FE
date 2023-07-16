@@ -46,7 +46,7 @@ describe('SignUp Component', () => {
     //     fireEvent.click(signUpButton);
 
     //     // Mock the SignUpApi function and assert its usage
-    //     // You can use jest.spyOn or jest.mock to mock the SignUpApi function
+
 
     //     // Wait for the async operations to complete
     //     await waitFor(() => { });

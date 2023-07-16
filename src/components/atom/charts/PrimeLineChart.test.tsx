@@ -4,7 +4,7 @@ import PrimeLineChart from "./PrimeLineChart";
 // beforeEach(() => {
 //     // Mock the getContext method for HTMLCanvasElement
 //     HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
-//         // Mock the properties or methods you need for testing
+//         // Mock the properties or methods  needed for testing
 //         fillRect: jest.fn(),
 //         // Add any other necessary mock properties or methods
 //     }));

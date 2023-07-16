@@ -22,7 +22,7 @@ const LineChart = ({ Data }: Props) => {
                 labels: countryLabels,
                 datasets: [
                     {
-                        label: "Registered Beneficiaries",
+                        label: "Registered Payers",
                         data: registeredValue,
                         fill: true,
                         backgroundColor: "rgba(232, 200, 37, 0.4)",
@@ -31,7 +31,7 @@ const LineChart = ({ Data }: Props) => {
                         hoverBackgroundColor: "rgb(232, 200, 37)",
                     },
                     {
-                        label: "Active Beneficiaries",
+                        label: "Active Payers",
                         data: activePayers,
                         fill: true,
                         backgroundColor: "rgba(1, 236, 100, 0.4)",
