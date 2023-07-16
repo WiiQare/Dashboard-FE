@@ -40,6 +40,7 @@ export default function Home() {
     // console.log("mounted", mounted)
     if (mounted) {
         if (userAuth === false) {
+
             Router.replace("/auth/signin");
         }
     }
