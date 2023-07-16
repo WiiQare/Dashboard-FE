@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Cards from './cards';
+import Cards from '../../../src/components/molecules/cards';
 
 describe('Cards Component', () => {
     it('Renders without errors', () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme } from "next-themes";
 
-interface PayersData {
+export interface  PayersData {
     numberOfActivePayers?: number;
     numberOfRegisteredPayers?: number;
 }

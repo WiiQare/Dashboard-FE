@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useRouter } from 'next/router';
-import SideBar from './side-bar';
+import SideBar from '../../../src/components/molecules/side-bar';
 
 // Mock the useRouter hook
 jest.mock('next/router', () => ({

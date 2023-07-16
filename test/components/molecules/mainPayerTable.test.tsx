@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import MainPayersTable from './mainPayerTable';
+import MainPayersTable from '../../../src/components/molecules/mainPayerTable';
 
 describe('MainPayersTable Component', () => {
     const result = [
