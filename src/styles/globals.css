@@ -55,6 +55,7 @@ h4,
 .svg {
   color: black;
 }
+
 /* 
 input {
   color: black;
@@ -92,11 +93,6 @@ input {
   color: #0f123f;
 
   transform: rotate(-0.2deg);
-}
-
-.bar-chart>div:nth-child(1)>div:nth-child(1)>svg:nth-child(1) {
-  height: 24rem;
-  width: 54rem;
 }
 
 .title-box {
@@ -249,16 +245,28 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
 
 
 }
-.MuiPaper-root{
-background: none !important;
+
+.MuiPaper-root {
+  background: none !important;
 }
+
 .nextui-c-hPzDAx-eLdNZT-borderWeight-light {
   border: none !important;
 }
-#panel1a-content{
-  margin-bottom: -30px;
-margin-top: -1px;
 
+#panel1a-content {
+  margin-bottom: -30px;
+  margin-top: -1px;
+
+}
+
+.bar-chart>div:nth-child(1)>div:nth-child(1)>svg:nth-child(1) {
+  height: 27rem;
+  width: 100%;
+}
+
+.bar-chart>div:nth-child(1)>div:nth-child(1) {
+  width: 105%;
 }
 
 /* .main {

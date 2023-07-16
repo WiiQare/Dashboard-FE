@@ -48,8 +48,7 @@ const Providers = () => {
             const summaryData = await fetchData("/providers/summary", userState?.access_token);
             setData(res);
             setSummary(summaryData);
-            // console.log("Data in first fetch", res);
-            // console.log("summaryData", summaryData);
+
         };
         if (mounted && userAuth) {
             fetchDataAsync()
@@ -68,14 +67,11 @@ const Providers = () => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRegisteredProviders)
-            // console.log('Summary:', summary);
-            // console.log('numOfItems:', numOfItems);
+
         }
     }, [numOfItems, summary]);
 
-    // console.log('Summary out:', summary);
-    // console.log('numOfItems out:', numOfItems);
-    // console.log('take:', take);
+
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {

@@ -90,7 +90,7 @@ export default function MainPayersTable({ result }: PayersInterface) {
 
             }))}
             experimentalFeatures={{ columnGrouping: true }}
-
+            
             columnGroupingModel={payersColumnGroupingModel}
             checkboxSelection={false}
             disableColumnFilter={false}

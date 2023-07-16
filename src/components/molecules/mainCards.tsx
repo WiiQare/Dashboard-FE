@@ -15,40 +15,30 @@ const VoucherInfo: React.FC<VoucherInfoProps> = ({ label, numberOfVouchers = 0, 
 
     return (
         <div className="grid border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 rounded-md transition-c-0.5   dark:bg-[#182644] bg-white p-[20px] ">
-
             <div className=" ml-[-0rem] grid w-44  gap-0 ">
                 <h4 className=" card-text transition-c-0.5 text-black dark:text-white">{numberOfVouchers}</h4>
                 <h4 className=" card-text transition-c-0.5 text-black dark:text-white">{`Value: $${value}`}</h4>
                 <h4 className="mb-4 card-text transition-c-0.5 text-black dark:text-white">{label}</h4>
-
-
             </div>
             <div className='flex flex-col items-end gap-5'>
                 <CircularProgress
-
                     size="md"
                     thickness={7}
                     determinate
                     value={percentage}
-                    // text={`${percentage.toFixed(1)}%`}
                     variant="soft"
-
                 />
                 <span className='text-primary'>
                     {`${percentage.toFixed(1)}%`}
                 </span>
-
             </div>
         </div>
-    )
-
-
-
+    );
 };
 
-interface DataProps {
-    totalPendingVouchers?: number;
-    pendingVouchers?: {
+export interface DataProps {
+    [x: string]: any;
+    totalPendingVouchers?: {
         numberOfVouchers?: number;
         value?: number;
     };
@@ -70,26 +60,26 @@ interface DataProps {
     };
 }
 
-const ExampleComponent: React.FC<DataProps> = ({
-    totalPendingVouchers = 0,
-    pendingVouchers = {},
+const Cards: React.FC<DataProps> = ({
+    totalPendingVouchers = {},
     totalPurchasedVouchers = {},
     totalUnclaimedVouchers = {},
     totalClaimedVouchers = {},
     totalRedeemedVouchers = {},
 }) => {
     const totalVouchers =
-        totalPurchasedVouchers?.numberOfVouchers! +
-        totalUnclaimedVouchers?.numberOfVouchers! +
-        totalClaimedVouchers?.numberOfVouchers! +
-        totalRedeemedVouchers?.numberOfVouchers!;
-
+        (totalPendingVouchers?.numberOfVouchers ?? 0) +
+        (totalPurchasedVouchers?.numberOfVouchers ?? 0) +
+        (totalUnclaimedVouchers?.numberOfVouchers ?? 0) +
+        (totalClaimedVouchers?.numberOfVouchers ?? 0) +
+        (totalRedeemedVouchers?.numberOfVouchers ?? 0);
+    console.log(totalPendingVouchers?.numberOfVouchers)
     return (
         <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
             <VoucherInfo
                 label="Pending Vouchers"
-                numberOfVouchers={pendingVouchers?.numberOfVouchers}
-                value={pendingVouchers?.value}
+                numberOfVouchers={totalPendingVouchers?.numberOfVouchers}
+                value={totalPendingVouchers?.value}
                 totalVouchers={totalVouchers}
             />
             <VoucherInfo
@@ -120,35 +110,19 @@ const ExampleComponent: React.FC<DataProps> = ({
     );
 };
 
-// Example data
-const data: DataProps = {
-    totalPendingVouchers: 10,
-    pendingVouchers: {
-        numberOfVouchers: 5,
-        value: 100,
-    },
-    totalPurchasedVouchers: {
-        numberOfVouchers: 20,
-        value: 500,
-    },
-    totalUnclaimedVouchers: {
-        numberOfVouchers: 8,
-        value: 200,
-    },
-    totalClaimedVouchers: {
-        numberOfVouchers: 15,
-        value: 300,
-    },
-    totalRedeemedVouchers: {
-        numberOfVouchers: 12,
-        value: 400,
-    },
-};
+const MainCards: React.FC<{ data: DataProps }> = ({ data }) => {
+    const modifiedData = {
+        totalPendingVouchers: data.pendingVouchers?.numberOfVouchers,
+        pendingVouchers: data.pendingVouchers,
+        totalPurchasedVouchers: data.vouchersInMaxTime,
+        totalUnclaimedVouchers: data.unclaimedVouchers,
+        totalClaimedVouchers: data.claimedVouchers,
+        totalRedeemedVouchers: data.redeemedVouchers,
+    };
 
-const MainCards: React.FC = () => {
     return (
         <div>
-            <ExampleComponent {...data} />
+            <Cards {...modifiedData} />
         </div>
     );
 };

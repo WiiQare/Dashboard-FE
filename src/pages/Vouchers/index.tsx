@@ -56,7 +56,7 @@ const Vouchers = () => {
             const summaryData = await fetchData("/vouchers/summary", userState?.access_token);
             setData(res);
             setSummary(summaryData);
-            // console.log("res", res);
+            
         };
         if (mounted && userAuth) {
             fetchDataAsync();
@@ -69,14 +69,11 @@ const Vouchers = () => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.vouchersInMaxTime.numberOfVouchers)
-            // console.log('CardsData:', CardsData(summary));
-            // console.log('numOfItems:', numOfItems);
+            
         }
     }, [numOfItems, summary]);
 
-    // console.log('Summary out:', summary);
-    // console.log('numOfItems out:', numOfItems);
-    // console.log('take:', take);
+    
     const handlePageChange = async (page: number) => {
         let newPage = page;
         if (page === currentPage - 1) {
@@ -105,9 +102,7 @@ const Vouchers = () => {
     if (!data || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    // console.log('Summary out done:', { data });
-    // console.log('numOfItems out done:', numOfItems);
-    // console.log('take done:', take);
+    
     return (
         <div>
             <Content columns={VouchersColumns} data={data} cardsData={cardData} groups={[]}>

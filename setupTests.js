@@ -14,9 +14,9 @@ window.ResizeObserver = class ResizeObserver {
 }
 jest.mock('next/router', () => ({
   useRouter: jest.fn().mockReturnValue({
-    // Provide mock implementations of any router methods you use
+    // Provide mock implementations of any router methods  use
     push: jest.fn(),
     replace: jest.fn(),
-    // Add any other methods or properties you require for testing
+    // Add any other methods or properties  require for testing
   }),
 }));

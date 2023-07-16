@@ -19,15 +19,14 @@ function Layout(props: Props) {
   return (
     <div>
       <Header />
-      <div className="  dark:bg-[#0f172a] flex flex-col h-screen">
+      <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col h-screen">
         <div className="flex z-50  w-full">
           {!router.route.includes("/auth") && <Navbar handleSidebar={handleSidebarState} />}
 
         </div>
-        <div className="flex overflow-
-         flex-grow ">
+        <div className="flex overflow-hidden flex-grow ">
           {!router.route.includes("/auth") && <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />}
-          <div className="flex flex-grow w-full bg-[#f0f4fd] dark:bg-[#0f172a] ">
+          <div className="flex flex-grow w-full ">
             {props.children}
           </div>
         </div>
