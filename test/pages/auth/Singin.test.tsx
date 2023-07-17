@@ -1,16 +1,10 @@
-import { render } from "@testing-library/react";
-import { useRouter } from "next/router";
 import SignIn from "../../../src/pages/auth/signIn/index";
+import { render } from '@testing-library/react';
 
-jest.mock("next/router", () => ({
-    useRouter: () => ({
-        push: jest.fn(),
-    }),
-}));
 
-describe("SignIn Component", () => {
-    it("should render without errors", () => {
+describe('SignIn', () => {
+    it('should render the SignIn component', () => {
         render(<SignIn />);
-        // No errors thrown if the component renders successfully
+        // Assert that the component renders without throwing any error
     });
 });
