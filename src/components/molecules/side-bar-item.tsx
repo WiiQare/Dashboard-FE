@@ -35,7 +35,7 @@ function MenuItem(props: Menu) {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
-              className="rounded items-center py-1  hover:bg-[#FF8A2B]"
+              className="!rounded items-center py-1 hover:bg-[#FF8A2B]"
             >
               <Typography className=" text-black dark:text-white flex">
                 <props.icon />
@@ -69,7 +69,7 @@ function MenuItem(props: Menu) {
         : <Link
 
           href={props.href}
-          className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == props.href
+          className={`relative flex gap-2 rounded items-center mt-3 py-3 px-4 ${router.route == props.href
             ? "button-text bg-[#FF8A2B] dark:bg-[#df690a]"
             : " hover:bg-[#FF8A2B]"
             }`}

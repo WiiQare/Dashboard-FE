@@ -1,8 +1,9 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { toggleDropdown } from "../../redux/actions/actions";
 import { UserContext } from "@/context/UserContext";
+import { signOut } from "next-auth/react";
 
 import Image from "next/image";
 import Router from "next/router";
@@ -16,11 +17,7 @@ interface UserInterface {
     access_token: string;
 }
 
-
 const Profile = () => {
-
-   
-
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | any>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(
@@ -28,12 +25,11 @@ const Profile = () => {
     );
     const [mounted, setMounted] = useState<boolean>(false);
 
-
-    useLayoutEffect(() => {
-        setUserAuth(Boolean(localStorage.getItem("userAuth")));
-        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
-        setMounted(true);
-    }, [User?.authenticated, User?.user]);
+    // useEffect(() => {
+    //     setUserAuth(Boolean(localStorage.getItem("userAuth")));
+    //     setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
+    //     setMounted(true);
+    // }, [User?.authenticated, User?.user]);
 
     const dispatch = useDispatch();
     const isDropdownVisible = useSelector(
@@ -44,7 +40,6 @@ const Profile = () => {
     const profilePictureRef = useRef<HTMLDivElement>(null);
 
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-
 
     const handleProfilePictureClick = () => {
         dispatch(toggleDropdown());
@@ -70,9 +65,9 @@ const Profile = () => {
         User?.setUser({});
         localStorage.removeItem("userAuth");
         localStorage.removeItem("userState");
-        Router.replace("/auth/signin");
+        //Router.replace("/auth/signIn");
+        signOut({ callbackUrl: "/auth/signIn" });
     };
-
 
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClick);
@@ -108,7 +103,7 @@ const Profile = () => {
                     >
                         <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                             <div className="font-medium truncate">
-                            {userState?.email}
+                                {userState?.email}
                             </div>
                         </div>
                         <ul

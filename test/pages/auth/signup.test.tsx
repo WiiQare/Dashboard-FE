@@ -1,13 +1,13 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import SignUp from '../../../src/pages/auth/signup/index';
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import SignUp from "../../../src/pages/auth/signUp/index";
 
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
     __esModule: true,
     useRouter: jest.fn(),
 }));
 
-describe('SignUp Component', () => {
-    it('should render without errors', () => {
+describe("SignUp Component", () => {
+    it("should render without errors", () => {
         render(<SignUp />);
         // No errors thrown if the component renders successfully
     });
@@ -46,7 +46,6 @@ describe('SignUp Component', () => {
     //     fireEvent.click(signUpButton);
 
     //     // Mock the SignUpApi function and assert its usage
-
 
     //     // Wait for the async operations to complete
     //     await waitFor(() => { });
