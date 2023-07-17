@@ -26,6 +26,6 @@
         "src/hooks/localStorage.ts",
         "src/pages/api/auth/[...nextauth].js",
         "src/pages/api/authentication.js"
-    ],
+, "__mocks__/styleMock.js"    ],
     "exclude": ["node_modules"]
 }
