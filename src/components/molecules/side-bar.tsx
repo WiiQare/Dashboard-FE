@@ -6,7 +6,6 @@ import PayersIcon from "@public/svg/payers-Icon";
 import ProfileIcon from "@public/svg/profile-icon";
 import NFTICON from "@public/svg/voucher-icon";
 import React from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import PaymentProviderIcon from "@public/svg/Providers-icon";
 
 

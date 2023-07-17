@@ -6,7 +6,7 @@ type User = {
     email: string;
     username: string;
     status: string;
-    userRole: string;
+    type: string;
 };
 
 export async function AuthenticationFunction(email: string, password: string) {

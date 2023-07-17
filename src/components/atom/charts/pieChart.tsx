@@ -79,7 +79,7 @@ const PayersPieChart: React.FC<PieChartProps> = ({ data }) => {
             theme={{
                 tooltip: {
                     container: {
-                        background: theme === "dark" ? "black" : "#000000",
+                        background: theme === "dark" ? "black" : "#ffffff",
                         color: theme === "dark" ? "#ffffff" : "#000000",
                     },
                 },

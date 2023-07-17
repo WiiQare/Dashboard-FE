@@ -11,7 +11,7 @@ interface TableProps {
 }
 function Content({ children, columns, cardsData, data, groups }: TableProps) {
     return (
-        <div className="py-4 transition-1 overflow-y-hidden p-4 h-full w-full sm:px-4">
+        <div className="py-4 transition-1 p-4 h-full w-full sm:px-4 overflow-y-auto">
             <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex justify-start"></div>
                 <div className="flex items-center justify-end">

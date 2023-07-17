@@ -1,108 +1,78 @@
-import { UserContext } from '@/context/UserContext';
-import Router from 'next/router';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/payments/paymentsCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import payersColumns from '@/data/tableData/payments/payers/payersColumns';
-interface UserInterface {
-    type: string;
-    userId: string;
-    phoneNumber: string;
-    names: string;
-    email: string;
-    access_token: string;
-}
+import { useSession } from 'next-auth/react';
 
 let newSkip: number = 0;
 
 const Payers = () => {
-    const User = React.useContext(UserContext);
-    const [userState, setUserState] = useState<UserInterface | null>(User?.user);
-    const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [data, setData] = useState<any>(null);
+    const [tableData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
-    const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
+    const [numOfItems, setNumOfItems] = useState<number>(0);
     const [cardData, setCardData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
-
+    const [userInfo, setUserInfo] = useState<any>({});
     const [mounted, setMounted] = useState<boolean>(false);
 
-    const take = 10;
-    const skip = 0;
-    useLayoutEffect(() => {
-        setUserAuth(Boolean(localStorage.getItem("userAuth")));
-        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
-        setMounted(true);
-    }, [User?.authenticated, User?.user]);
+    const { data, status } = useSession();
 
     useEffect(() => {
-        if (!mounted) return; // Return early if the component is not mounted
+        setMounted(true);
+        setUserInfo(data);
+    }, [status, data]);
+
+    const take = 10;
+
+    useEffect(() => {
+        if (!mounted || !userInfo?.access_token) return;
 
         const fetchDataAsync = async () => {
-            const res = await fetchData("/payments/payers", userState?.access_token, take, skip);
-            const summaryData = await fetchData("/payments/summary", userState?.access_token);
-            setData(res);
+            const res = await fetchData('/payments/payers', userInfo.access_token, take, 0);
+            const summaryData = await fetchData('/payments/summary', userInfo.access_token);
+            setTableData(res);
             setSummary(summaryData);
-            console.log("res", res);
         };
-        if (mounted && userAuth) {
-            fetchDataAsync();
 
-        }
-
-    }, [mounted, userAuth, userState?.access_token]);  // Remove other dependencies to fetch data only once when mounted
-    if (mounted) {
-        if (userAuth === false) {
-            // console.log("userAuth", userAuth)
-
-            Router.replace("/auth/signin");
-        }
-    }
-
+        fetchDataAsync();
+    }, [mounted, userInfo?.access_token]);
 
     useEffect(() => {
         if (summary) {
-            setCardData(CardsData(summary))
-            setNumOfItems(summary.numberOfRows | 10)
-            // console.log('CardsData:', CardsData(summary));
-            // console.log('numOfItems:', numOfItems);
+            setCardData(CardsData(summary));
+            setNumOfItems(summary.numberOfProviderPayments)
         }
     }, [summary]);
 
-
     const handlePageChange = async (page: number) => {
-        let newPage = page;
-        if (page === currentPage - 1) {
-            newPage = currentPage - 2;
+        if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
+            setCurrentPage(page);
+            const newSkip = (page - 1) * take;
+            const res = await fetchData('/payments/payers', userInfo?.access_token, take, newSkip);
+            setTableData(res);
         }
-        newSkip = newPage * take;
-        const res = await fetchData("/payements/payers", userState?.access_token, take, newSkip);
-        setData(res);
-        setCurrentPage(newPage);
     };
 
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        newSkip = 0;
-        fetchData("/payements/payers", userState?.access_token, newPageSize, newSkip).then((res) => {
-            setData(res);
+        fetchData('/payments/payers', userInfo?.access_token, newPageSize, 0).then((res) => {
+            setTableData(res);
+            setCurrentPage(1);
         });
     };
 
-    if (!data || !summary) {
+    if (!tableData || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    // console.log('Summary out done:', { ...data });
-    // console.log('numOfItems out done:', numOfItems);
-    // console.log('take done:', take);
+
     return (
         <div>
-            <Content columns={payersColumns} data={data} cardsData={cardData} groups={[]}>
+            <Content columns={payersColumns} data={tableData} cardsData={cardData} groups={[]}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
