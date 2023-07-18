@@ -16,7 +16,6 @@ export default function Home() {
     const [pieData, setPieData] = useState<any>({});
     const [userInfo, setUserInfo] = useState<any>({})
     const [mounted, setMounted] = useState<boolean>(false)
-    const router = useRouter()
 
     const { data, status } = useSession()
 
@@ -60,6 +59,7 @@ export default function Home() {
     }, [userInfo?.access_token]) //Don't change it
     if (mounted) {
         if (status === 'loading') {
+            // console.log("NEXTAUTH_URL", process.env.NEXTAUTH_SECRET)
             console.log("Loading.....");
 
         }
