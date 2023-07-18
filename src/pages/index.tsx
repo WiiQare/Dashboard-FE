@@ -7,14 +7,7 @@ import { useSession } from "next-auth/react";
 import { fetchData } from "./api/fetchData";
 import PayersPieChart from "@/components/atom/charts/pieChart";
 
-interface UserInterface {
-    type: string;
-    userId: string;
-    phoneNumber: string;
-    names: string;
-    email: string;
-    access_token: string;
-}
+
 
 export default function Home() {
     const [barChartData, setBarChartData] = useState<ChartData[]>([]);
@@ -60,12 +53,8 @@ export default function Home() {
             );
             setCardsData(cards);
             // console.log(tableData)
-
-
-            console.log("     setCardsData(cards);")
         };
         if (userInfo?.access_token) {
-            console.log("userInfo?.access_token")
             fetchDataAsync()
         }
     }, [userInfo?.access_token]) //Don't change it

@@ -37,12 +37,12 @@ function Layout(props: Props) {
 
                 router?.replace('/auth/signIn')
             }
-            console.log("unauthenticated")
+            // console.log("unauthenticated")
         }
         if (status === 'authenticated') {
             //user is authenticated
             //your fetching loading
-            console.log("authenticated")
+            // console.log("authenticated")
         }
     }
 
