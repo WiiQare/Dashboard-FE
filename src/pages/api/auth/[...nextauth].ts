@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { AuthenticationFunction } from "../authentication";
 
 const authOptions: NextAuthOptions = {
-    secret: process.env.NEXTAUTH_SECRET, // Use the NEXTAUTH_SECRET environment variable
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
         maxAge: 85000,
         strategy: "jwt",
