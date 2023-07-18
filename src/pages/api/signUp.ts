@@ -9,7 +9,7 @@ type User = {
     userRole: string;
 };
 
-export async function SignUpApi(email: string, password: string) {
+export async function SignUpApi(email: string, password: string): Promise<string | null>{
     //console.log("entered AuthenticationFunction");
     try {
         // Make a POST request to the external API endpoint to validate the user's information
@@ -26,13 +26,9 @@ export async function SignUpApi(email: string, password: string) {
                 },
             }
         ); // Check the response from the API to determine if the authentication was successful
-        if (data.status) {
-            const auth =  await AuthenticationFunction(
-                email,
-                password
-            );
+        if (data) {
             // If authentication succeeds, return the user object received from the API
-            return auth;
+            return data.status;
         } else {
             // If authentication fails, return null
             return null;
