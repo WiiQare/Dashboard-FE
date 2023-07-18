@@ -7,14 +7,7 @@ import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import providersColumns from '@/data/tableData/payments/provider/providerColumns';
 import { useSession } from 'next-auth/react';
-interface UserInterface {
-    type: string;
-    userId: string;
-    phoneNumber: string;
-    names: string;
-    email: string;
-    access_token: string;
-}
+
 
 let newSkip: number = 0;
 

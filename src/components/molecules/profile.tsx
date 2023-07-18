@@ -2,34 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { toggleDropdown } from "../../redux/actions/actions";
-import { UserContext } from "@/context/UserContext";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 import Image from "next/image";
-import Router from "next/router";
 
-interface UserInterface {
-    type: string;
-    userId: string;
-    phoneNumber: string;
-    names: string;
-    email: string;
-    access_token: string;
-}
+
 
 const Profile = () => {
-    const User = React.useContext(UserContext);
-    const [userState, setUserState] = useState<UserInterface | any>(User?.user);
-    const [userAuth, setUserAuth] = useState<boolean | undefined>(
-        User?.authenticated
-    );
-    const [mounted, setMounted] = useState<boolean>(false);
+    const { data, status } = useSession()
+    const [userInfo, setUserInfo] = useState<any>({})
 
-    // useEffect(() => {
-    //     setUserAuth(Boolean(localStorage.getItem("userAuth")));
-    //     setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
-    //     setMounted(true);
-    // }, [User?.authenticated, User?.user]);
+    useEffect(() => {
+        setUserInfo(data)
+    }, [status, data]);
+
+
 
     const dispatch = useDispatch();
     const isDropdownVisible = useSelector(
@@ -61,11 +48,7 @@ const Profile = () => {
     };
 
     const handleSignOut = () => {
-        User?.setAuthenticated(false);
-        User?.setUser({});
-        localStorage.removeItem("userAuth");
-        localStorage.removeItem("userState");
-        //Router.replace("/auth/signIn");
+
         signOut({ callbackUrl: "/auth/signIn" });
     };
 
@@ -76,7 +59,7 @@ const Profile = () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
     }, [handleOutsideClick]);
-
+    // console.log(userInfo)
     return (
         <div className="profile-dropdown">
             <div
@@ -94,7 +77,7 @@ const Profile = () => {
             </div>
             {isDropdownVisible && isDropdownOpen && (
                 <div
-                    className="p-2 absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
+                    className=" absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
                     ref={dropdownRef}
                 >
                     <div
@@ -103,7 +86,7 @@ const Profile = () => {
                     >
                         <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                             <div className="font-medium truncate">
-                                {userState?.email}
+                                {userInfo?.user.email}
                             </div>
                         </div>
                         <ul

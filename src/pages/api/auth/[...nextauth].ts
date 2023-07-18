@@ -1,8 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { AuthenticationFunction } from "../authentication";
 
-const authOptions: any = {
+const authOptions: NextAuthOptions = {
+    secret: process.env.NEXTAUTH_SECRET, // Use the NEXTAUTH_SECRET environment variable
     session: {
         maxAge: 85000,
         strategy: "jwt",
@@ -35,9 +36,7 @@ const authOptions: any = {
                 );
 
                 if (response?.type != "WIIQARE_ADMIN")
-                    throw new Error(
-                        "Vous n'êtes pas authoriser de vous connecter"
-                    );
+                    throw new Error("Vous n'êtes pas authoriser de vous connecter");
                 return response;
             },
         }),
