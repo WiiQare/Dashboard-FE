@@ -8,7 +8,7 @@ const authOptions: NextAuthOptions = {
         maxAge: 85000,
         strategy: "jwt",
     },
-    
+
     callbacks: {
         async jwt({ token, user }: any) {
             if (user) {
@@ -35,7 +35,7 @@ const authOptions: NextAuthOptions = {
                     credentials?.email,
                     credentials?.password
                 );
-
+                debugger
                 if (response?.type != "WIIQARE_ADMIN")
                     throw new Error("Vous n'êtes pas authoriser de vous connecter");
                 return response;

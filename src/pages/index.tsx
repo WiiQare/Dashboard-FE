@@ -79,7 +79,7 @@ export default function Home() {
                     <div className="w-full">
                         <MainCards data={cardsData} />
                         <div className="p-4">
-                            <div className="flex flex-col h-[23rem] lg:flex-row gap-4 transition-c-0.5 pr-2">
+                            <div className="flex flex-col h-[23rem] max-lg:mb-[25rem] lg:flex-row gap-4 transition-c-0.5 pr-2">
                                 <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md rounded-md bg-white lg:w-1/2">
                                     <LineChart Data={barChartData} />
                                 </div>
