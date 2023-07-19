@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { DataGrid, GridColDef, GridColumnGroupingModel, GridGroupNode, GridToolbar } from '@mui/x-data-grid';
-import { ToastContainer, } from 'react-toastify';
-
+import { DataGrid, GridColDef, GridColumnGroupingModel, GridToolbar } from '@mui/x-data-grid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from 'next-themes';
 import { GlobalStyles, } from '@mui/material';
 
@@ -20,7 +20,15 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
 
         const handleCopyClick = () => {
             navigator.clipboard.writeText(value);
-        
+            toast.success('ID copied to clipboard!', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                className: 'dark:!bg-[#1e293b] dark:!text-white'
+            });
         };
 
         return (
@@ -98,11 +106,8 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                             ...column,
                             renderCell: (params) => {
                                 const { field } = column;
-                                
+
                                 if (field.toLowerCase().endsWith('id') || field === 'id') {
-                                    // console.log("field ",field)
-                                    // console.log("column ",column)
-                                    // console.log("params ",params)
                                     return renderIdCell(params);
                                 }
 

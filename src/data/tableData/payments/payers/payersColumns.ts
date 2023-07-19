@@ -10,20 +10,20 @@ const PayersColumns: any[] = [
     {
         field: 'transactionDate',
         headerName: 'Transaction Date',
-        minWidth: 250,
+        minWidth: 100,
         flex: 1,
 
     },
     {
         field: 'paymentValue',
         headerName: 'Payment Value',
-        minWidth: 150,
+        minWidth: 80,
         flex: 1,
     },
     {
         field: 'payerCountry',
         headerName: 'Payer Country',
-        minWidth: 150,
+        minWidth: 200,
         flex: 1,
     },
     {

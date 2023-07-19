@@ -17,13 +17,8 @@ const Table: React.FC<TableProps> = ({
     currentPage,
     pageSize,
 }) => {
-    const searchValue = useSelector((state: any) => state.search?.searchValue);
 
     const filteredData = React.useMemo(() => {
-        // Apply search filtering if needed
-        // if (searchValue) {
-        //     return filterData(data, searchValue);
-        // }
         return data;
     }, [data]);
 
