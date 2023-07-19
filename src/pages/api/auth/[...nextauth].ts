@@ -31,13 +31,11 @@ const authOptions: NextAuthOptions = {
             type: "credentials",
             credentials: {},
             async authorize(credentials: any) {
-                debugger;
+                eval("debugger");
                 const response: any = await AuthenticationFunction(
                     credentials?.email,
                     credentials?.password
                 );
-                debugger;
-
                 if (response?.type != "WIIQARE_ADMIN")
                     throw new Error("Vous n'êtes pas authoriser de vous connecter");
                 return response;
@@ -48,6 +46,7 @@ const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/auth/signIn",
     },
+
 };
 
 export default NextAuth(authOptions);
