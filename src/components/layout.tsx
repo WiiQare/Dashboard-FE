@@ -55,7 +55,7 @@ function Layout(props: Props) {
   }
 
   if (router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp") {
-    if (userAuth === false) {
+    if (userAuth === false || userState.access_token < 8) {
       router?.replace("/auth/signIn");
       return null; // Return null to prevent rendering the content while redirecting
     }
