@@ -1,22 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { toggleDropdown } from "../../redux/actions/actions";
-import { signOut, useSession } from "next-auth/react";
-
+import { UserContext } from "@/context/UserContext";
 import Image from "next/image";
+import Router from "next/router";
 
+interface UserInterface {
+    type: string;
+    userId: string;
+    phoneNumber: string;
+    names: string;
+    email: string;
+    access_token: string;
+}
 
+const Profile = (): JSX.Element => {
+    const User = React.useContext(UserContext);
+    const [userState, setUserState] = useState<UserInterface | null>(
+        User?.user || null
+    );
 
-const Profile = () => {
-    const { data, status } = useSession()
-    const [userInfo, setUserInfo] = useState<any>({})
-
-    useEffect(() => {
-        setUserInfo(data)
-    }, [status, data]);
-
-
+    useLayoutEffect(() => {
+        setUserState(JSON.parse(localStorage.getItem("userState") || "null"));
+    }, []);
 
     const dispatch = useDispatch();
     const isDropdownVisible = useSelector(
@@ -25,7 +32,6 @@ const Profile = () => {
 
     const dropdownRef = useRef<HTMLDivElement>(null);
     const profilePictureRef = useRef<HTMLDivElement>(null);
-
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
     const handleProfilePictureClick = () => {
@@ -48,8 +54,11 @@ const Profile = () => {
     };
 
     const handleSignOut = () => {
-
-        signOut({ callbackUrl: "/auth/signIn" });
+        User?.setAuthenticated(false);
+        User?.setUser({});
+        localStorage.removeItem("userAuth");
+        localStorage.removeItem("userState");
+        Router.replace("/auth/signin");
     };
 
     useEffect(() => {
@@ -58,8 +67,8 @@ const Profile = () => {
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
-    }, [handleOutsideClick]);
-    // console.log(userInfo)
+    }, []);
+
     return (
         <div className="profile-dropdown">
             <div
@@ -77,7 +86,7 @@ const Profile = () => {
             </div>
             {isDropdownVisible && isDropdownOpen && (
                 <div
-                    className=" absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
+                    className="absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
                     ref={dropdownRef}
                 >
                     <div
@@ -85,9 +94,7 @@ const Profile = () => {
                         className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#050e20d6] dark:divide-gray-600"
                     >
                         <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div className="font-medium truncate">
-                                {userInfo?.user.email}
-                            </div>
+                            <div className="font-medium truncate">{userState?.email}</div>
                         </div>
                         <ul
                             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -101,7 +108,6 @@ const Profile = () => {
                                     Dashboard
                                 </a>
                             </li>
-
                             <li>
                                 <a
                                     href="#"
