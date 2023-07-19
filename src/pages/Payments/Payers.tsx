@@ -46,7 +46,7 @@ const Payers = () => {
             const summaryData = await fetchData("/payments/summary", userState?.access_token);
             setTableData(res);
             setSummary(summaryData);
-            console.log("res", res);
+            // console.log("res", res);
         };
         if (mounted && userAuth) {
             fetchDataAsync();

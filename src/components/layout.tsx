@@ -81,7 +81,7 @@ function Layout(props: Props) {
       return null; // Return null to prevent rendering the content while redirecting
     }
   }
-  console.log(userState?.access_token)
+  // console.log(userState?.access_token)
   return (
     <div>
       <Header />

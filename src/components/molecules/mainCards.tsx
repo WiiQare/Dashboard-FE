@@ -73,7 +73,7 @@ const Cards: React.FC<DataProps> = ({
         (totalUnclaimedVouchers?.numberOfVouchers ?? 0) +
         (totalClaimedVouchers?.numberOfVouchers ?? 0) +
         (totalRedeemedVouchers?.numberOfVouchers ?? 0);
-    console.log(totalPendingVouchers?.numberOfVouchers)
+    // console.log(totalPendingVouchers?.numberOfVouchers)
     return (
         <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
             <VoucherInfo
