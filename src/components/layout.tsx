@@ -26,7 +26,7 @@ function Layout(props: Props) {
   const User = React.useContext(UserContext);
   const [open, setOpen] = useState(sidebarAction);
   const [loading, setLoading] = useState(true); // Add loading state
-  const [hasExpired, setHasExpired] = useState(true)
+  const [hasExpired, setHasExpired] = useState(false)
 
   const handleSidebarState = (): void => {
     setOpen(!open);
@@ -64,16 +64,24 @@ function Layout(props: Props) {
 
   if (loading) {
     // Show a loading state while redirecting
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen p-5 bg-gray-100 min-w-screen">
+
+      <div className="flex space-x-2 animate-pulse">
+        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+      </div>
+
+    </div>;
   }
 
   if (router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp") {
-    if (userAuth === false || hasExpired) {
+    if (!userAuth || hasExpired) {
       router?.replace("/auth/signIn");
       return null; // Return null to prevent rendering the content while redirecting
     }
   }
-
+  console.log(userState?.access_token)
   return (
     <div>
       <Header />
