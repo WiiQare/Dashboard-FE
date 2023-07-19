@@ -1,77 +1,90 @@
 import { UserContext } from '@/context/UserContext';
 import Router from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/beneficiaries/beneficiariesCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from '@/data/tableData/beneficiaries/beneficiariesColumns';
-import { useSession } from 'next-auth/react';
+interface UserInterface {
+    type: string;
+    userId: string;
+    phoneNumber: string;
+    names: string;
+    email: string;
+    access_token: string;
+}
 
 let newSkip: number = 0;
 
 const Beneficiaries = () => {
+    const User = React.useContext(UserContext);
+    const [userState, setUserState] = useState<UserInterface | null>(User?.user);
+    const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
     const [tableData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
     const [numOfItems, setNumOfItems] = useState<number>(0);
     const [cardData, setCardData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
-    const [userInfo, setUserInfo] = useState<any>({});
+
     const [mounted, setMounted] = useState<boolean>(false);
 
-    const { data, status } = useSession();
-
-    useEffect(() => {
-        setMounted(true);
-        setUserInfo(data);
-    }, [status, data]);
-
     const take = 10;
+    const skip = 0;
+    useLayoutEffect(() => {
+        setUserAuth(Boolean(localStorage.getItem("userAuth")));
+        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
+        setMounted(true);
+    }, [User?.authenticated, User?.user]);
 
     useEffect(() => {
-        if (!mounted || !userInfo?.access_token) return;
+        if (!mounted) return; 
 
         const fetchDataAsync = async () => {
-            const res = await fetchData('/beneficiaries', userInfo.access_token, take, 0);
-            const summaryData = await fetchData('/beneficiaries/summary', userInfo.access_token);
+            const res = await fetchData("/beneficiaries", userState?.access_token, take, skip);
+            const summaryData = await fetchData("/beneficiaries/summary", userState?.access_token);
             setTableData(res);
             setSummary(summaryData);
         };
+        if (mounted && userAuth) {
+            fetchDataAsync();
 
-        fetchDataAsync();
-    }, [mounted, userInfo?.access_token]);
+        }
+
+    }, [mounted, userAuth, userState?.access_token]);  
+ 
+
 
     useEffect(() => {
         if (summary) {
-            setCardData(CardsData(summary));
+            setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRegisteredBeneficiaries)
         }
     }, [summary]);
+
 
     const handlePageChange = async (page: number) => {
         if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
             setCurrentPage(page);
             const newSkip = (page - 1) * take;
-            const res = await fetchData('/beneficiaries', userInfo?.access_token, take, newSkip);
+            const res = await fetchData('/beneficiaries', userState?.access_token, take, newSkip);
             setTableData(res);
         }
     };
-
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        fetchData('/beneficiaries', userInfo?.access_token, newPageSize, 0).then((res) => {
+        fetchData('/beneficiaries', userState?.access_token, newPageSize, 0).then((res) => {
             setTableData(res);
             setCurrentPage(1);
         });
     };
 
     if (!tableData || !summary) {
-        return null; // Render nothing until data and summary are available
+        return null;
     }
-
 
     return (
         <div>

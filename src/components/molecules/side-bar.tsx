@@ -46,9 +46,6 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
     >
       <div className="transition-c-0.5 h-full w-[13rem] overflow-x-auto bg-white px-3 pb-4  dark:bg-gray-900">
         <div className=" flex flex-col  space-y-4">
-          <p className="px-4 pt-3  text-lg text-gray-500 dark:text-white/50">
-            Dashboard
-          </p>
           <ul className="flex flex-col space-y-2 text-black dark:text-white">
             {menus.map((menu, index) => (
               <MenuItem
@@ -62,25 +59,6 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
           </ul>
           {/* <------components-----> */}
           <hr className="ml-4 py-2 text-black dark:text-white/20" />
-
-          {/* <div>
-            <p className="px-4 py-3 text-black dark:text-white/50">
-              Administration
-            </p>
-
-            <ul className="text-black dark:text-white">
-              {reportMenus.map((menu, index) => (
-                <MenuItem
-                  key={index}
-                  submenu={menu.submenu}
-                  title={menu.title}
-                  href={menu.href}
-                  icon={menu.icon}
-                />
-              ))}
-              <div className="ml-28 mt-5 "></div>
-            </ul>
-          </div> */}
         </div>
       </div>
     </div>

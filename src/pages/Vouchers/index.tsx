@@ -1,55 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import { UserContext } from '@/context/UserContext';
+import Router from 'next/router';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from '@/data/tableData/vouchers/vouchersCards';
-import Pagination from '@/components/atom/pagination';
+import CardsData from "@/data/tableData/vouchers/vouchersCards";
+import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import VouchersColumns from '@/data/tableData/vouchers/vouchersColumns';
-import { useSession } from 'next-auth/react';
+interface UserInterface {
+    type: string;
+    userId: string;
+    phoneNumber: string;
+    names: string;
+    email: string;
+    access_token: string;
+}
+
+let newSkip: number = 0;
 
 const Vouchers = () => {
-    const [tableData, setTableData] = useState<any>(null);
+    const User = React.useContext(UserContext);
+    const [userState, setUserState] = useState<UserInterface | null>(User?.user);
+    const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
+    const [tablData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
-    const [numOfItems, setNumOfItems] = useState<number>(0);
+    const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
     const [cardData, setCardData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
-    const [userInfo, setUserInfo] = useState<any>({});
+
     const [mounted, setMounted] = useState<boolean>(false);
 
-    const { data, status } = useSession();
+    const take = 10; // Default number of items to take
+    const skip = 0; // Default amount to skip
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        setUserAuth(Boolean(localStorage.getItem("userAuth")));
+        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
         setMounted(true);
-        setUserInfo(data);
-    }, [status, data]);
+    }, [User?.authenticated, User?.user]);
 
-    const take = 10;
+    if (mounted) {
+        if (userAuth === false) {
+            // console.log("userAuth", userAuth)
+
+            Router.replace("/auth/signin");
+
+        }
+    }
 
     useEffect(() => {
-        if (!mounted || !userInfo?.access_token) return;
+        if (!mounted) return; // Return early if the component is not mounted
 
         const fetchDataAsync = async () => {
-            const res = await fetchData('/vouchers', userInfo.access_token, take, 0);
-            const summaryData = await fetchData('/vouchers/summary', userInfo.access_token);
+            const res = await fetchData("/vouchers", userState?.access_token, take, skip);
+            const summaryData = await fetchData("/vouchers/summary", userState?.access_token);
             setTableData(res);
             setSummary(summaryData);
-        };
 
-        fetchDataAsync();
-    }, [mounted, userInfo?.access_token]);
+        };
+        if (mounted && userAuth) {
+            fetchDataAsync();
+        }
+
+    }, [mounted, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
+
 
     useEffect(() => {
         if (summary) {
-            setCardData(CardsData(summary));
-            setNumOfItems(summary.vouchersInMaxTime.numberOfVouchers);
+            setCardData(CardsData(summary))
+            setNumOfItems(summary.vouchersInMaxTime.numberOfVouchers)
+
         }
-    }, [summary]);
+    }, [numOfItems, summary]);
+
 
     const handlePageChange = async (page: number) => {
         if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
             setCurrentPage(page);
             const newSkip = (page - 1) * take;
-            const res = await fetchData('/vouchers', userInfo?.access_token, take, newSkip);
+            const res = await fetchData('/vouchers', userState?.access_token, take, newSkip);
             setTableData(res);
         }
     };
@@ -58,19 +87,20 @@ const Vouchers = () => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        fetchData('/vouchers', userInfo?.access_token, newPageSize, 0).then((res) => {
+        fetchData('/vouchers', userState?.access_token, newPageSize, 0).then((res) => {
             setTableData(res);
             setCurrentPage(1);
         });
     };
 
-    if (!tableData || !summary) {
+
+    if (!tablData || !summary) {
         return null; // Render nothing until data and summary are available
     }
 
     return (
         <div>
-            <Content columns={VouchersColumns} data={tableData} cardsData={cardData} groups={[]}>
+            <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">

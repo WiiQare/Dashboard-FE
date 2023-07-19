@@ -1,80 +1,82 @@
-import React, { FormEventHandler, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
-import CircularProgress from "@mui/material/CircularProgress";
 import { UserContext } from "@/context/UserContext";
-import { SignUpApi } from "@/pages/api/signUp";
-import { signIn } from "next-auth/react";
+import CircularProgress from "@mui/material/CircularProgress";
+import { AuthenticateUser } from "@/pages/api/authentication";
+import { SignUpUsers } from "@/pages/api/signUp";
 
 const SignUp: NextPage = (): React.JSX.Element => {
-    const emailRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
-    const confirmPasswordRef = useRef<HTMLInputElement>(null);
-    const [isValid, setIsValid] = useState(true);
-    const [isDisable, setIsDisable] = useState(false);
+    const emailRef = useRef("");
+    const passwordRef = useRef("");
+    const confirmPasswordRef = useRef("");
+    const router = useRouter();
+    const [isValidInput, setIsValidInput] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const User = React.useContext(UserContext);
-    const router = useRouter();
 
-    const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    const userContext = React.useContext(UserContext);
+
+    if (userContext?.authenticated === true) {
+        router.push("/");
+    }
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsDisable(true);
+        setIsDisabled(true);
         setIsLoading(true);
 
-        const email = emailRef.current?.value.trim() || "";
-        const password = passwordRef.current?.value.trim() || "";
-        const confirmPassword = confirmPasswordRef.current?.value.trim() || "";
+        const email = emailRef.current;
+        const password = passwordRef.current;
+        const confirmPassword = confirmPasswordRef.current;
 
         if (password !== confirmPassword) {
-            setIsValid(false);
+            setIsValidInput(false);
             setErrorMessage("Passwords do not match");
-            setIsDisable(false);
+            setIsDisabled(false);
             setIsLoading(false);
             return;
         }
 
-        const result: string | null = await SignUpApi(email, password);
+        const result = await SignUpUsers(email, password);
 
-        if (result === "ACTIVE") {
-            const signInResult = await signIn("credentials", {
-                email,
-                password,
-                redirect: false, // Prevents redirect after sign in
-                callbackUrl: "/", // Replace with your desired redirect URL
-            });
+        if (result) {
+            const user = await AuthenticateUser(email, password);
 
-            if (signInResult?.error) {
-                setIsValid(false);
-                setIsDisable(false);
-                setIsLoading(false);
-            } else {
-                User?.setAuthenticated(true);
-                setIsDisable(false);
+            if (user?.access_token) {
+                userContext?.setAuthenticated(true);
+                userContext?.setUser(user);
+                localStorage.setItem("userState", JSON.stringify(user));
+                localStorage.setItem("userAuth", JSON.stringify(true));
+                setIsValidInput(true);
+                setIsDisabled(false);
                 setIsLoading(false);
                 router.push("/");
+            } else {
+                setIsValidInput(false);
+                setIsLoading(false);
+                setIsDisabled(false);
+                setErrorMessage("Sign up failed");
             }
         } else {
-            setIsValid(false);
-            setErrorMessage("Account already exists");
-            setIsDisable(false);
+            setIsValidInput(false);
             setIsLoading(false);
+            setIsDisabled(false);
+            setErrorMessage("Account already exists");
         }
     };
 
     return (
         <>
-            <div className="items-center bg-[linear-gradient(100deg,#0a5dd3,#24a7ff)]  mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 xl:pb-5 ">
+            <div className="items-center bg-gradient-to-b from-blue-600 to-blue-400 mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+                <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 xl:pb-5">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                         <div className="h-full flex mt-[-72px]">
-                            {/* <!-- Card --> */}
                             <div className="max-w-[360px] flex mx-auto">
                                 <div className="bg-white shadow-lg w-[101px] h-[100px] rounded-full mt-9">
-                                    {/* <!-- Card header --> */}
                                     <header className="text-center px-5 mt-[20px] pb-5">
-                                        {/* <!-- Avatar --> */}
                                         <Image
                                             className="mt-[1.6rem]"
                                             src="/image/logo_orange.png"
@@ -97,10 +99,15 @@ const SignUp: NextPage = (): React.JSX.Element => {
                                 <div className="bg-white px-4 pt-4 rounded-lg">
                                     <div className="relative bg-inherit">
                                         <input
-                                            ref={emailRef}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                if (value !== emailRef.current) {
+                                                    emailRef.current = value;
+                                                    setIsValidInput(true);
+                                                }
+                                            }}
                                             id="email"
                                             name="email"
-                                            type="email"
                                             autoComplete="email"
                                             required
                                             placeholder="email@example.com"
@@ -119,7 +126,13 @@ const SignUp: NextPage = (): React.JSX.Element => {
                             <div className="bg-white px-4 pb-2 rounded-lg">
                                 <div className="relative bg-inherit">
                                     <input
-                                        ref={passwordRef}
+                                        onChange={(e) => {
+                                            const value = e.target.value;
+                                            if (value !== passwordRef.current) {
+                                                passwordRef.current = value;
+                                                setIsValidInput(true);
+                                            }
+                                        }}
                                         id="password"
                                         name="password"
                                         type="password"
@@ -134,12 +147,19 @@ const SignUp: NextPage = (): React.JSX.Element => {
                                         Password
                                     </label>
                                 </div>
+
                             </div>
 
                             <div className="bg-white px-4 pb-2 rounded-lg">
                                 <div className="relative bg-inherit">
                                     <input
-                                        ref={confirmPasswordRef}
+                                        onChange={(e) => {
+                                            const value = e.target.value;
+                                            if (value !== confirmPasswordRef.current) {
+                                                confirmPasswordRef.current = value;
+                                                setIsValidInput(true);
+                                            }
+                                        }}
                                         id="confirmPassword"
                                         name="confirmPassword"
                                         type="password"
@@ -154,12 +174,9 @@ const SignUp: NextPage = (): React.JSX.Element => {
                                         Confirm Password
                                     </label>
                                 </div>
-                                {!isValid && (
-                                    <div
-                                        className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4"
-                                        role="alert"
-                                    >
-                                        <p className="font-bold">Sign-up Failed</p>
+                                {!isValidInput && (
+                                    <div className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4">
+                                        <p className="font-bold">Sign Up Failed</p>
                                         <p className="ital">{errorMessage}</p>
                                     </div>
                                 )}
@@ -168,7 +185,7 @@ const SignUp: NextPage = (): React.JSX.Element => {
                             <div className="px-4">
                                 <button
                                     type="submit"
-                                    disabled={isDisable}
+                                    disabled={isDisabled}
                                     className="flex w-full justify-center  rounded-md bg-orange-600 hover:bg-orange-500 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     {isLoading ? (
@@ -178,12 +195,10 @@ const SignUp: NextPage = (): React.JSX.Element => {
                                     )}
                                 </button>
                             </div>
-
-                            <div className="text-sm"></div>
                         </form>
 
                         <p className="mt-10 text-center text-sm text-gray-500">
-                            Already have an account?{" "}
+                            Already a member?{" "}
                             <button
                                 onClick={() => router.push("/auth/signIn")}
                                 className="font-semibold leading-6 text-orange-600 hover:text-orange-500"

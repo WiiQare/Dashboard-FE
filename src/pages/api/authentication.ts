@@ -9,7 +9,7 @@ type User = {
     type: string;
 };
 
-export async function AuthenticationFunction(email: string, password: string) {
+export async function AuthenticateUser(email: string, password: string) {
     //console.log("entered AuthenticationFunction");
     try {
         // Make a POST request to the external API endpoint to validate the user's information
