@@ -129,7 +129,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
                                     <div className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4">
                                         <p className="font-bold">Login Failed</p>
                                         <p className="ital">
-                                            Verify that you entered the correct email and password message
+                                            Verify that you entered the correct email and password 
                                         </p>
                                     </div>
                                 )}
