@@ -17,7 +17,6 @@ export const SignIn: NextPage = (): React.JSX.Element => {
     const User = React.useContext(UserContext);
 
     if (User?.authenticated === true) Router.push("/");
-
     const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         setIsDisable(true);
