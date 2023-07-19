@@ -33,13 +33,13 @@ const Beneficiaries = () => {
     const take = 10;
     const skip = 0;
     useLayoutEffect(() => {
-        setUserAuth(Boolean(localStorage.getItem("userAuth")));
-        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
+        setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
+        setUserState(JSON.parse(sessionStorage.getItem("userState") || 'null'));
         setMounted(true);
     }, [User?.authenticated, User?.user]);
 
     useEffect(() => {
-        if (!mounted) return; 
+        if (!mounted) return;
 
         const fetchDataAsync = async () => {
             const res = await fetchData("/beneficiaries", userState?.access_token, take, skip);
@@ -52,8 +52,8 @@ const Beneficiaries = () => {
 
         }
 
-    }, [mounted, userAuth, userState?.access_token]);  
- 
+    }, [mounted, userAuth, userState?.access_token]);
+
 
 
     useEffect(() => {

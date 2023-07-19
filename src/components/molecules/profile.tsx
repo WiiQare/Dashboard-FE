@@ -22,7 +22,7 @@ const Profile = (): JSX.Element => {
     );
 
     useLayoutEffect(() => {
-        setUserState(JSON.parse(localStorage.getItem("userState") || "null"));
+        setUserState(JSON.parse(sessionStorage.getItem("userState") || "null"));
     }, []);
 
     const dispatch = useDispatch();
@@ -56,8 +56,8 @@ const Profile = (): JSX.Element => {
     const handleSignOut = () => {
         User?.setAuthenticated(false);
         User?.setUser({});
-        localStorage.removeItem("userAuth");
-        localStorage.removeItem("userState");
+        sessionStorage.removeItem("userAuth");
+        sessionStorage.removeItem("userState");
         Router.replace("/auth/signIn");
     };
 

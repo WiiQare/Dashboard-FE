@@ -31,17 +31,17 @@ const Providers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    let take = 10; 
+    let take = 10;
     const skip = 0;
 
     useLayoutEffect(() => {
-        setUserAuth(Boolean(localStorage.getItem("userAuth")));
-        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
+        setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
+        setUserState(JSON.parse(sessionStorage.getItem("userState") || 'null'));
         setMounted(true);
     }, [User?.authenticated, User?.user]);
 
     useEffect(() => {
-        if (!mounted) return; 
+        if (!mounted) return;
 
         const fetchDataAsync = async () => {
             const res = await fetchData("/providers", userState?.access_token, take, skip);

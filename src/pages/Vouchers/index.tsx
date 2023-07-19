@@ -34,8 +34,8 @@ const Vouchers = () => {
     const skip = 0; // Default amount to skip
 
     useLayoutEffect(() => {
-        setUserAuth(Boolean(localStorage.getItem("userAuth")));
-        setUserState(JSON.parse(localStorage.getItem("userState") || 'null'));
+        setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
+        setUserState(JSON.parse(sessionStorage.getItem("userState") || 'null'));
         setMounted(true);
     }, [User?.authenticated, User?.user]);
 

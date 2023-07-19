@@ -41,8 +41,8 @@ function Layout(props: Props) {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setUserAuth(Boolean(localStorage.getItem("userAuth")));
-    setUserState(JSON.parse(localStorage.getItem("userState") || "null"));
+    setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
+    setUserState(JSON.parse(sessionStorage.getItem("userState") || "null"));
     setMounted(true);
     setLoading(false); // Set loading to false after mounting
   }, [User?.authenticated, User?.user]);

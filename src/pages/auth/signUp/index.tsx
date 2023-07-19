@@ -48,8 +48,8 @@ const SignUp: NextPage = (): React.JSX.Element => {
             if (user?.access_token) {
                 userContext?.setAuthenticated(true);
                 userContext?.setUser(user);
-                localStorage.setItem("userState", JSON.stringify(user));
-                localStorage.setItem("userAuth", JSON.stringify(true));
+                sessionStorage.setItem("userState", JSON.stringify(user));
+                sessionStorage.setItem("userAuth", JSON.stringify(true));
                 setIsValidInput(true);
                 setIsDisabled(false);
                 setIsLoading(false);
