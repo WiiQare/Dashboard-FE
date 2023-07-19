@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AuthenticationFunction } from "./authentication";
+import { AuthenticateUser } from "./authentication";
 
 type User = {
     userId: string;
@@ -9,10 +9,10 @@ type User = {
     userRole: string;
 };
 
-export async function SignUpApi(email: string, password: string) {
-    //console.log("entered AuthenticationFunction");
+export async function SignUpUsers(email: string, password: string) {
+
     try {
-        // Make a POST request to the external API endpoint to validate the user's information
+
         const { data, status } = await axios.post<User>(
             ` ${process.env.WIIQARE_URI}/admin`,
             {
@@ -27,11 +27,10 @@ export async function SignUpApi(email: string, password: string) {
             }
         ); // Check the response from the API to determine if the authentication was successful
         if (data.status) {
-            const auth =  await AuthenticationFunction(
+            const auth =  await AuthenticateUser(
                 email,
                 password
             );
-            // If authentication succeeds, return the user object received from the API
             return auth;
         } else {
             // If authentication fails, return null

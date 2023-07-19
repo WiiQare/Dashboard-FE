@@ -22,7 +22,7 @@ const Providers = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [data, setData] = useState<any[]>();
+    const [tableData, setTableData] = useState<any[]>();
     const [summary, setSummary] = useState<any>();
     const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
     const [cardData, setCardData] = useState<any[]>([]);
@@ -31,8 +31,8 @@ const Providers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    let take = 10; // Default number of items to take
-    const skip = 0; // Default amount to skip
+    let take = 10; 
+    const skip = 0;
 
     useLayoutEffect(() => {
         setUserAuth(Boolean(localStorage.getItem("userAuth")));
@@ -41,12 +41,12 @@ const Providers = () => {
     }, [User?.authenticated, User?.user]);
 
     useEffect(() => {
-        if (!mounted) return; // Return early if the component is not mounted
+        if (!mounted) return; 
 
         const fetchDataAsync = async () => {
             const res = await fetchData("/providers", userState?.access_token, take, skip);
             const summaryData = await fetchData("/providers/summary", userState?.access_token);
-            setData(res);
+            setTableData(res);
             setSummary(summaryData);
 
         };
@@ -54,13 +54,8 @@ const Providers = () => {
             fetchDataAsync()
         }
 
-    }, [mounted, take, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
-    if (mounted) {
-        if (userAuth === false) {
+    }, [mounted, take, userAuth, userState?.access_token]);
 
-            Router.replace("/auth/signin");
-        }
-    }
 
 
     useEffect(() => {
@@ -73,35 +68,31 @@ const Providers = () => {
 
 
     const handlePageChange = async (page: number) => {
-        let newPage = page;
-        if (page === currentPage - 1) {
-            newPage = currentPage - 2;
+        if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
+            setCurrentPage(page);
+            const newSkip = (page - 1) * take;
+            const res = await fetchData('/providers', userState?.access_token, take, newSkip);
+            setTableData(res);
         }
-        newSkip = newPage * take;
-        const res = await fetchData("/providers", userState?.access_token, take, newSkip);
-        setData(res);
-        setCurrentPage(newPage);
     };
 
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        newSkip = 0;
-        fetchData("/providers", userState?.access_token, newPageSize, newSkip).then((res) => {
-            setData(res);
+        fetchData('/providers', userState?.access_token, newPageSize, 0).then((res) => {
+            setTableData(res);
+            setCurrentPage(1);
         });
     };
 
-    if (!data || !summary) {
+    if (!tableData || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    // console.log('Summary out done:', summary);
-    // console.log('numOfItems out done:', numOfItems);
-    // console.log('take done:', take);
+
     return (
         <div>
-            <Content columns={ProviderColumns} data={data} cardsData={cardData} groups={ProviderColumnGroupingModel}>
+            <Content columns={ProviderColumns} data={tableData} cardsData={cardData} groups={ProviderColumnGroupingModel}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">

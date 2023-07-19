@@ -21,7 +21,7 @@ const Vouchers = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [data, setData] = useState<any>(null);
+    const [tablData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
     const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
     const [cardData, setCardData] = useState<any[]>([]);
@@ -54,9 +54,9 @@ const Vouchers = () => {
         const fetchDataAsync = async () => {
             const res = await fetchData("/vouchers", userState?.access_token, take, skip);
             const summaryData = await fetchData("/vouchers/summary", userState?.access_token);
-            setData(res);
+            setTableData(res);
             setSummary(summaryData);
-            
+
         };
         if (mounted && userAuth) {
             fetchDataAsync();
@@ -69,43 +69,38 @@ const Vouchers = () => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.vouchersInMaxTime.numberOfVouchers)
-            
+
         }
     }, [numOfItems, summary]);
 
-    
+
     const handlePageChange = async (page: number) => {
-        let newPage = page;
-        if (page === currentPage - 1) {
-            newPage = currentPage - 2;
+        if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
+            setCurrentPage(page);
+            const newSkip = (page - 1) * take;
+            const res = await fetchData('/vouchers', userState?.access_token, take, newSkip);
+            setTableData(res);
         }
-        newSkip = newPage * take;
-        const res = await fetchData("/vouchers", userState?.access_token, take, newSkip);
-        setData(res);
-        setCurrentPage(newPage);
     };
 
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        newSkip = 0;
-        fetchData("/vouchers", userState?.access_token, newPageSize, newSkip).then((res) => {
-            setData(res);
+        fetchData('/vouchers', userState?.access_token, newPageSize, 0).then((res) => {
+            setTableData(res);
+            setCurrentPage(1);
         });
     };
-    if (mounted) {
-        if (userAuth === false) {
-            Router.replace("/auth/signin");
-        }
-    }
-    if (!data || !summary) {
+
+
+    if (!tablData || !summary) {
         return null; // Render nothing until data and summary are available
     }
-    
+
     return (
         <div>
-            <Content columns={VouchersColumns} data={data} cardsData={cardData} groups={[]}>
+            <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">

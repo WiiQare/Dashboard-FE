@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import SignUp from '../../../src/pages/auth/signup/index';
+import SignUp from '../../../src/pages/auth/signUp/index';
 
 jest.mock('next/router', () => ({
     __esModule: true,

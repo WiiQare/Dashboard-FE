@@ -21,9 +21,9 @@ const Beneficiaries = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [data, setData] = useState<any>(null);
+    const [tableData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
-    const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
+    const [numOfItems, setNumOfItems] = useState<number>(0);
     const [cardData, setCardData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
@@ -39,68 +39,56 @@ const Beneficiaries = () => {
     }, [User?.authenticated, User?.user]);
 
     useEffect(() => {
-        if (!mounted) return; // Return early if the component is not mounted
+        if (!mounted) return; 
 
         const fetchDataAsync = async () => {
             const res = await fetchData("/beneficiaries", userState?.access_token, take, skip);
             const summaryData = await fetchData("/beneficiaries/summary", userState?.access_token);
-            setData(res);
+            setTableData(res);
             setSummary(summaryData);
-            // console.log("res", res);
         };
         if (mounted && userAuth) {
             fetchDataAsync();
 
         }
 
-    }, [mounted, userAuth, userState?.access_token]);  // Remove other dependencies to fetch data only once when mounted
-    if (mounted) {
-        if (userAuth === false) {
-
-
-            Router.replace("/auth/signin");
-        }
-    }
+    }, [mounted, userAuth, userState?.access_token]);  
+ 
 
 
     useEffect(() => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRegisteredBeneficiaries)
-            // console.log('CardsData:', CardsData(summary));
-            // console.log('numOfItems:', numOfItems);
         }
     }, [summary]);
 
 
     const handlePageChange = async (page: number) => {
-        let newPage = page;
-        if (page === currentPage - 1) {
-            newPage = currentPage - 2;
+        if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
+            setCurrentPage(page);
+            const newSkip = (page - 1) * take;
+            const res = await fetchData('/beneficiaries', userState?.access_token, take, newSkip);
+            setTableData(res);
         }
-        newSkip = newPage * take;
-        const res = await fetchData("/beneficiaries", userState?.access_token, take, newSkip);
-        setData(res);
-        setCurrentPage(newPage);
     };
-
     const handlePageSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newPageSize = parseInt(event.target.value);
         setPageSize(newPageSize);
 
-        newSkip = 0;
-        fetchData("/beneficiaries", userState?.access_token, newPageSize, newSkip).then((res) => {
-            setData(res);
+        fetchData('/beneficiaries', userState?.access_token, newPageSize, 0).then((res) => {
+            setTableData(res);
+            setCurrentPage(1);
         });
     };
 
-    if (!data || !summary) {
+    if (!tableData || !summary) {
         return null;
     }
 
     return (
         <div>
-            <Content columns={BeneficiariesColumns} data={data} cardsData={cardData} groups={BeneficiariesColumnGroupingModel}>
+            <Content columns={BeneficiariesColumns} data={tableData} cardsData={cardData} groups={BeneficiariesColumnGroupingModel}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">

@@ -268,34 +268,3 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
 .bar-chart>div:nth-child(1)>div:nth-child(1) {
   width: 105%;
 }
-
-/* .main {
-  grid-template-areas:
-    "header header header"
-    "nav content content"
-    "footer footer footer"
-  ;
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: auto  auto;
-  grid-gap: 10px;
-
-  height: 100vh;
-} */
-
-/* .fade-enter {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
-} */
