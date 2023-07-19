@@ -4,6 +4,7 @@ import Navbar from "./molecules/nav-bar";
 import Header from "./atom/head";
 import { useRouter } from "next/router";
 import { UserContext } from "@/context/UserContext";
+import { fetchData } from "@/pages/api/fetchData";
 
 let sidebarAction: boolean = false;
 
@@ -25,6 +26,7 @@ function Layout(props: Props) {
   const User = React.useContext(UserContext);
   const [open, setOpen] = useState(sidebarAction);
   const [loading, setLoading] = useState(true); // Add loading state
+  const [hasExpired, setHasExpired] = useState(true)
 
   const handleSidebarState = (): void => {
     setOpen(!open);
@@ -45,8 +47,19 @@ function Layout(props: Props) {
     setLoading(false); // Set loading to false after mounting
   }, [User?.authenticated, User?.user]);
 
-  if (!mounted) {
-    return null;
+  const fetchDataAsync = async () => {
+    try {
+      await fetchData("/payers", userState?.access_token, 1, 0);
+      setHasExpired(false);
+    } catch (error) {
+      // Handle the error as needed
+      console.error('Error fetching data:', error);
+      setHasExpired(true);
+    }
+  };
+
+  if (mounted && userAuth) {
+    fetchDataAsync();
   }
 
   if (loading) {
@@ -55,7 +68,7 @@ function Layout(props: Props) {
   }
 
   if (router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp") {
-    if (userAuth === false || userState.access_token < 8) {
+    if (userAuth === false || hasExpired) {
       router?.replace("/auth/signIn");
       return null; // Return null to prevent rendering the content while redirecting
     }
