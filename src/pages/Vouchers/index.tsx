@@ -43,7 +43,7 @@ const Vouchers = () => {
         if (userAuth === false) {
             // console.log("userAuth", userAuth)
 
-            Router.replace("/auth/signin");
+            Router.replace("/auth/signIn");
 
         }
     }

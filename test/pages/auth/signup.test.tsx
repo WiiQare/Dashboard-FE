@@ -12,7 +12,7 @@ describe('SignUp Component', () => {
         // No errors thrown if the component renders successfully
     });
 
-    // it('should navigate to the signin page when "Already have an account?" button is clicked', () => {
+    // it('should navigate to the signIn page when "Already have an account?" button is clicked', () => {
     //     const mockPush = jest.fn();
     //     jest.spyOn(require('next/router'), 'useRouter').mockReturnValue({
     //         push: mockPush,
@@ -23,10 +23,10 @@ describe('SignUp Component', () => {
 
     //     fireEvent.click(signInButton);
 
-    //     expect(mockPush).toHaveBeenCalledWith('/auth/signin');
+    //     expect(mockPush).toHaveBeenCalledWith('/auth/signIn');
     // });
 
-    // it('should submit the form and navigate to the home page on successful signup', async () => {
+    // it('should submit the form and navigate to the home page on successful signUp', async () => {
     //     const mockPush = jest.fn();
     //     jest.mock('next/router', () => ({
     //         useRouter: () => ({
