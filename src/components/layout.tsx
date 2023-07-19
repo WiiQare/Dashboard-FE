@@ -87,10 +87,10 @@ function Layout(props: Props) {
       <Header />
       <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col h-screen">
         <div className="flex z-50  w-full">
-          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && <Navbar handleSidebar={handleSidebarState} />}
+          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && router.pathname !== "/404" && <Navbar handleSidebar={handleSidebarState} />}
         </div>
         <div className="flex overflow-hidden flex-grow ">
-          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && (
+          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && router.pathname !== "/404" && (
             <SideBar
               sidebarOpen={open}
               handleSidebar={handleSidebarState}

@@ -78,7 +78,7 @@ const Profile = (): JSX.Element => {
             >
                 <Image
                     className="transform-rotate-0.2 mt-2 rounded-full"
-                    src="/image/user-01.png"
+                    src="/images/user-01.png"
                     width={40}
                     height={50}
                     alt="Users"

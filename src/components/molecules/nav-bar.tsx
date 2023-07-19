@@ -42,7 +42,7 @@ const Navbar: React.FC<MyProps> = (props) => {
 
                 <Link href="/" className="block w-[12rem] px-2 pt-2">
                   <Image
-                    src="/image/logo.png"
+                    src="/images/logo.png"
                     alt="Picture of the author"
                     width="350"
                     height="300"

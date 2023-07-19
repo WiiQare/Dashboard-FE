@@ -79,7 +79,7 @@ const SignUp: NextPage = (): React.JSX.Element => {
                                     <header className="text-center px-5 mt-[20px] pb-5">
                                         <Image
                                             className="mt-[1.6rem]"
-                                            src="/image/logo_orange.png"
+                                            src="/images/logo_orange.png"
                                             width={70}
                                             height={50}
                                             alt="logo"
