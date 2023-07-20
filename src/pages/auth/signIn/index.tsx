@@ -11,6 +11,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
     const passwordRef = useRef("");
     const router = useRouter();
     const [isValidInput, setIsValidInput] = useState(true);
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const [isDisabled, setIsDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -39,11 +40,19 @@ const SignIn: NextPage = (): React.JSX.Element => {
             setIsDisabled(false);
             setIsLoading(false);
             router.push("/");
+        } else if (user?.access_token &&  !user?.type.includes("WIIQARE")) {
+            setErrorMessage("Sorry you are not allowed to access this page")
+            setIsLoading(false);
+            setIsDisabled(false);
+            setIsValidInput(false);
         } else {
             setIsValidInput(false);
+            setErrorMessage("Verify that you entered the correct email and password")
             setIsLoading(false);
             setIsDisabled(false);
         }
+
+
     };
 
     return (
@@ -129,7 +138,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
                                     <div className="bg-orange-100 error-message border-l-4 mt-5 rounded-sm mb-[-0.85rem] border-orange-500 text-orange-700 p-4">
                                         <p className="font-bold">Login Failed</p>
                                         <p className="ital">
-                                            Verify that you entered the correct email and password
+                                            {errorMessage}
                                         </p>
                                     </div>
                                 )}
