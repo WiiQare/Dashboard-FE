@@ -90,8 +90,12 @@ const Profile = (): JSX.Element => {
                         id="dropdownSmall"
                         className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#050e20d6] dark:divide-gray-600"
                     >
-                        <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div className="font-medium truncate">{userState?.email}</div>
+                        <div className="px-4 py-3  ">
+                            <div className="font-medium truncate">
+                                <span className="block text-sm dark:text-white font-bold text-black ">{userState?.names}</span>
+                                <span className="block text-sm mt-2 font-medium dark:text-white text-gray-700 truncate">{userState?.email}</span>
+                                <span className="block text-sm mt-1 font-medium dark:text-white text-gray-500 truncate">{userState?.type}</span>
+                            </div>
                         </div>
                         <ul
                             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -113,19 +117,12 @@ const Profile = (): JSX.Element => {
                                     Settings
                                 </button>
                             </li>
-                            <li>f
-                                <button
-                                    onClick={() => Router.push("/earnings")}
-                                    className="block px-4 py-2 w-full text-start border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                    Earnings
-                                </button>
-                            </li>
+
                         </ul>
                         <div className="py-2">
                             <button
                                 onClick={handleSignOut}
-                                className="block px-4 py-2 border-l-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                className="block px-4 py-2 w-full text-start  border-l-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                             >
                                 Sign out
                             </button>

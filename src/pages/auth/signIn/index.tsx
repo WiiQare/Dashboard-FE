@@ -153,13 +153,12 @@ const SignIn: NextPage = (): React.JSX.Element => {
 
                         <p className="mt-10 text-center text-sm text-gray-500">
                             Not a member?{" "}
-                            <button
-                                onClick={() => router.push("/auth/signUp")}
-                                className="font-semibold leading-6 text-orange-600 hover:text-orange-500"
-                            >
-                                Sign up
-                            </button>
+                            <span title="Contact an Administrator" className="hover:underline cursor-help">
+                                Contact an Administrator
+                            </span>
                         </p>
+
+
                     </div>
                 </div>
             </div>

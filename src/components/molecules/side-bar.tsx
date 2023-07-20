@@ -5,8 +5,11 @@ import BeneficiariesIcon from "@public/svg/beneficiaries-Icon";
 import PayersIcon from "@public/svg/payers-Icon";
 import ProfileIcon from "@public/svg/profile-icon";
 import NFTICON from "@public/svg/voucher-icon";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PaymentProviderIcon from "@public/svg/Providers-icon";
+import Link from "next/link";
+import { UserContext } from "@/context/UserContext";
+import { useRouter } from "next/router";
 
 
 
@@ -23,19 +26,46 @@ const menus = [
   { icon: NFTICON, title: "Vouchers", href: "/Vouchers", },
 ] as unknown as Menu[];
 
-const reportMenus = [
-  {
-    icon: ProfileIcon,
-    title: "Profile",
-    href: "/profile",
-  },
-  {
-    title: "Settings",
-    href: "/settings",
-  },
-] as unknown as Menu[];
+// const reportMenus = [
+//   {
+//     icon: ProfileIcon,
+//     title: "Profile",
+//     href: "/profile",
+//   },
+//   {
+//     title: "Settings",
+//     href: "/settings",
+//   },
+// ] as unknown as Menu[];
+
+interface UserInterface {
+  type: string;
+  userId: string;
+  phoneNumber: string;
+  names: string;
+  email: string;
+  access_token: string;
+}
 
 const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
+  const router = useRouter();
+  const User = React.useContext(UserContext);
+
+  const [userState, setUserState] = useState<UserInterface | any>(
+    User?.user
+  );
+  const [userAuth, setUserAuth] = useState<boolean | undefined>(
+    User?.authenticated
+  );
+  useEffect(() => {
+    setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
+    setUserState(JSON.parse(sessionStorage.getItem("userState") || "null"));
+// Set loading to false after mounting
+  }, [User?.authenticated, User?.user]);
+
+
+
+
   return (
     <div
       id=" logo-sidebar"
@@ -58,7 +88,11 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
             ))}
           </ul>
           {/* <------components-----> */}
-          {/* <hr className="ml-4 py-2 text-black dark:text-white/20" /> */}
+          <hr className="ml-4 py-2 text-black dark:text-white/20" />
+          { userState?.type === "WIIQARE_ADMIN" &&            <Link href="/" className=" dark:text-white/20 justify-center rounded-lg  py-3 px-4 bg-blue-100 hover:bg-blue-400 text-gray-800 font-bold inline-flex items-center">
+            Add members
+          </Link>
+          }
         </div>
       </div>
     </div>

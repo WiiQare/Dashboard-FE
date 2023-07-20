@@ -68,7 +68,7 @@ function Layout(props: Props) {
     return <Loader/>
   }
 
-  if (router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp") {
+  if (router.pathname !== "/auth/signIn") {
     if (!userAuth || hasExpired) {
       router?.replace("/auth/signIn");
       return null; // Return null to prevent rendering the content while redirecting
@@ -80,10 +80,10 @@ function Layout(props: Props) {
       <Header />
       <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col h-screen">
         <div className="flex z-50  w-full">
-          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && router.pathname !== "/404" && <Navbar handleSidebar={handleSidebarState} />}
+          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/404" && <Navbar handleSidebar={handleSidebarState} />}
         </div>
         <div className="flex overflow-hidden flex-grow ">
-          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp" && router.pathname !== "/404" && (
+          {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/404" && (
             <SideBar
               sidebarOpen={open}
               handleSidebar={handleSidebarState}
