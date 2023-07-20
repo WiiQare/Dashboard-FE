@@ -5,7 +5,7 @@ import { BiLeftArrow } from "react-icons/bi";
 const Error404 = () => {
     return (
         <>
-            <div className="min-w-screen min-h-screen bg-blue-100 flex items-center p-5 lg:p-[20rem] overflow-hidden relative">
+            <div className="min-w-screen min-h-screen w-full bg-blue-100 flex items-center p-5 lg:p-[20rem] overflow-hidden relative">
                 <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">
                     <div className="w-full md:w-1/2">
                         <div className="mb-10 md:mb-20 text-gray-600 font-light">

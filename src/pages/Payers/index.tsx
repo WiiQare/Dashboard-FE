@@ -6,6 +6,7 @@ import CardsData from "@/data/tableData/payers/payersCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import payersColumns, { payersColumnGroupingModel } from '@/data/tableData/payers/payersColumns';
+import Loader from '@/components/atom/loader';
 
 interface UserInterface {
     type: string;
@@ -84,7 +85,7 @@ const Payers = () => {
 
 
     if (!tableData || !summary) {
-        return null; // Render nothing until data and summary are available
+        return <Loader />
     }
 
     return (

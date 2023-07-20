@@ -5,6 +5,7 @@ import Header from "./atom/head";
 import { useRouter } from "next/router";
 import { UserContext } from "@/context/UserContext";
 import { fetchData } from "@/pages/api/fetchData";
+import Loader from "./atom/loader";
 
 let sidebarAction: boolean = false;
 
@@ -64,15 +65,7 @@ function Layout(props: Props) {
 
   if (loading) {
     // Show a loading state while redirecting
-    return <div className="flex items-center justify-center min-h-screen p-5 bg-gray-100 min-w-screen">
-
-      <div className="flex space-x-2 animate-pulse">
-        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-        <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-      </div>
-
-    </div>;
+    return <Loader/>
   }
 
   if (router.pathname !== "/auth/signIn" && router.pathname !== "/auth/signUp") {

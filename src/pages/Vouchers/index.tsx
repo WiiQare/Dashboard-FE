@@ -6,6 +6,7 @@ import CardsData from "@/data/tableData/vouchers/vouchersCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import VouchersColumns from '@/data/tableData/vouchers/vouchersColumns';
+import Loader from '@/components/atom/loader';
 interface UserInterface {
     type: string;
     userId: string;
@@ -95,7 +96,7 @@ const Vouchers = () => {
 
 
     if (!tablData || !summary) {
-        return null; // Render nothing until data and summary are available
+        return <Loader /> // Render nothing until data and summary are available
     }
 
     return (

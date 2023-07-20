@@ -6,6 +6,7 @@ import CardsData from "@/data/tableData/provider/providerCards";
 import Pagination from '@/components/atom/pagination';
 import Content from '@/components/content';
 import ProviderColumns, { ProviderColumnGroupingModel } from '@/data/tableData/provider/providerColumns';
+import Loader from '@/components/atom/loader';
 
 interface UserInterface {
     type: string;
@@ -86,8 +87,8 @@ const Providers = () => {
         });
     };
 
-    if (!tableData || !summary) {
-        return null; // Render nothing until data and summary are available
+   if (!tableData || !summary) {
+        return <Loader/>   
     }
 
     return (

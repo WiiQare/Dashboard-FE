@@ -113,7 +113,7 @@ const Profile = (): JSX.Element => {
                                     Settings
                                 </button>
                             </li>
-                            <li>
+                            <li>f
                                 <button
                                     onClick={() => Router.push("/earnings")}
                                     className="block px-4 py-2 w-full text-start border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
