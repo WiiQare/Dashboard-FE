@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/rootReducer";
 import { toggleDropdown } from "../../redux/actions/actions";
@@ -17,26 +17,24 @@ interface UserInterface {
 
 const Profile = (): JSX.Element => {
     const User = React.useContext(UserContext);
-    const [userState, setUserState] = useState<UserInterface | null>(
-        User?.user || null
-    );
-
-    useLayoutEffect(() => {
-        setUserState(JSON.parse(sessionStorage.getItem("userState") || "null"));
-    }, []);
 
     const dispatch = useDispatch();
     const isDropdownVisible = useSelector(
         (state: RootState) => state.dropdown.isVisible
     );
-
     const dropdownRef = useRef<HTMLDivElement>(null);
     const profilePictureRef = useRef<HTMLDivElement>(null);
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [userState, setUserState] = useState<UserInterface | null>(
+        User?.user || null
+    );
+
+    useEffect(() => {
+        setUserState(JSON.parse(sessionStorage.getItem("userState") || "null"));
+    }, []);
+
 
     const handleProfilePictureClick = () => {
         dispatch(toggleDropdown());
-        setDropdownOpen(!isDropdownOpen);
     };
 
     const handleOutsideClick = (event: MouseEvent) => {
@@ -49,7 +47,6 @@ const Profile = (): JSX.Element => {
             !dropdownRef.current.contains(targetElement)
         ) {
             dispatch(toggleDropdown());
-            setDropdownOpen(false);
         }
     };
 
@@ -84,9 +81,9 @@ const Profile = (): JSX.Element => {
                     alt="Users"
                 />
             </div>
-            {isDropdownVisible && isDropdownOpen && (
+            {isDropdownVisible && (
                 <div
-                    className="absolute ml-[-8rem] mt-1 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
+                    className="absolute mt-1 -ml-32 rounded-md bg-white dark:border-gray-700 dark:bg-[#050e20d6]"
                     ref={dropdownRef}
                 >
                     <div
@@ -101,37 +98,37 @@ const Profile = (): JSX.Element => {
                             aria-labelledby="dropdownSmallButton"
                         >
                             <li className="hover:border-indigo-700">
-                                <a
-                                    href="#"
-                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                <button
+                                    onClick={() => Router.push("/dashboard")}
+                                    className="block px-4 py-2 w-full text-start border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Dashboard
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                <button
+                                    onClick={() => Router.push("/settings")}
+                                    className="block px-4 py-2 w-full text-start border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Settings
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="block px-4 py-2 border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                <button
+                                    onClick={() => Router.push("/earnings")}
+                                    className="block px-4 py-2 w-full text-start border-l-4 border-transparent hover:border-indigo-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Earnings
-                                </a>
+                                </button>
                             </li>
                         </ul>
                         <div className="py-2">
-                            <a
+                            <button
                                 onClick={handleSignOut}
                                 className="block px-4 py-2 border-l-4 border-transparent hover:border-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                             >
                                 Sign out
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
