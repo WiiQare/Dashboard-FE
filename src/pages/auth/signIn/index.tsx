@@ -30,7 +30,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
 
         const user = await AuthenticateUser(email, password);
 
-        if (user?.access_token) {
+        if (user?.access_token && user?.type.includes("WIIQARE")) {
             userContext?.setAuthenticated(true);
             userContext?.setUser(user);
             sessionStorage.setItem("userState", JSON.stringify(user));
