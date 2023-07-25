@@ -34,7 +34,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
         return (
             <div className="flex items-center">
                 <button className="px-2 py-1" onClick={handleCopyClick} title={value}>
-                {typeof value === 'string' ? value.substr(0, 4) : value}
+                {typeof value === 'string' ? value.substr(0, 8) : value}
                 </button>
             </div>
         );
@@ -54,7 +54,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups }) => {
                     <GlobalStyles
                         styles={{
                             '&.MuiDataGrid-menuList': {
-                                backgroundColor: theme.theme === 'dark' && '#0f172a  !important',
+                                backgroundColor: theme.theme === 'dark' ? '#0f172a  !important': 'white',
                                 color: theme.theme === 'dark' && 'white !important',
                             },
                             '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root': {
