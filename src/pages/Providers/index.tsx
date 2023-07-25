@@ -1,11 +1,10 @@
 import { UserContext } from '@/context/UserContext';
-import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from "@/data/tableData/provider/providerCards";
+import CardsData from "@/data/tableData/providers/providerCards";
 import Pagination from '@/components/atom/pagination';
 import Content from '@/components/content';
-import ProviderColumns, { ProviderColumnGroupingModel } from '@/data/tableData/provider/providerColumns';
+import ProviderColumns, { ProviderColumnGroupingModel } from '@/data/tableData/providers/providerColumns';
 import Loader from '@/components/atom/loader';
 
 interface UserInterface {
