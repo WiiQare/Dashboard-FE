@@ -89,7 +89,36 @@ const Payers = () => {
     }
 
     return (
-        <Loader />
+        <div>
+            <Content columns={payersColumns} data={tableData} cardsData={cardData} groups={payersColumnGroupingModel}>
+                <div className="flex">
+                    <div>
+                        <div className="flex items-center mt-3 mr-2">
+                            <div className="mr-4">
+                                <label htmlFor="pageSize">Items per Page:</label>
+                                <select
+                                    id="pageSize"
+                                    className="ml-2 p-1 border border-gray-300 rounded"
+                                    value={pageSize}
+                                    onChange={handlePageSizeChange}
+                                >
+                                    <option value={10}>10</option>
+                                    <option value={20}>20</option>
+                                    <option value={30}>30</option>
+                                    {/* Add more options as needed */}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={Math.ceil(numOfItems / take)}
+                        onPageChange={handlePageChange}
+                    />
+                </div>
+            </Content>
+
+        </div>
     );
 };
 
