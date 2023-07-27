@@ -89,7 +89,7 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
           </ul>
           {/* <------components-----> */}
           <hr className="ml-4 py-2 text-black dark:text-white/20" />
-          { userState?.type === "WIIQARE_ADMIN" &&            <Link href="/" className=" dark:text-white/20 justify-center rounded-lg  py-3 px-4 bg-blue-100 hover:bg-blue-400 text-gray-800 font-bold inline-flex items-center">
+          { userState?.type === "WIIQARE_ADMIN" &&            <Link href="/" className=" dark:text-white/20 justify-center rounded-lg  py-3 px-4 bg-blue-100 dark:bg-blue-950 dark:hover:text-blue-200  hover:bg-blue-200 text-gray-800 dark:text-gray-100 font-bold inline-flex items-center">
             Add members
           </Link>
           }
