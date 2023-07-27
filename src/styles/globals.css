@@ -272,3 +272,25 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
 .bar-chart>div:nth-child(1)>div:nth-child(1) {
   width: 105%;
 }
+
+.pagination-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination-button:hover {
+  background-color: #f7fafc;
+}
+
+.pagination-button:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
