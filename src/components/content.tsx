@@ -11,27 +11,25 @@ interface TableProps {
 }
 function Content({ children, columns, cardsData, data, groups }: TableProps) {
     return (
-        <div className="py-4 transition-1 p-4 h-full w-full sm:px-4 overflow-y-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="flex justify-start"></div>
-                <div className="flex items-center justify-end">
-                    {/* <Options /> */}
-                </div>
-            </div>
+
+        <div className="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4">
             <div className="grid grid-cols-1 gap-4 mb-4">
-                <Cards data={cardsData} />
-                <div className="transition-c-0.5">
-                    <Table
-                        propsColumns={columns}
-                        propsGroups={groups}
-                        data={data}
-                        currentPage={0}
-                        pageSize={0}
-                    />
-                    {children}
+                <div className="w-full">
+                    <Cards data={cardsData} />
+                    <div className="transition-c-0.5">
+                        <Table
+                            propsColumns={columns}
+                            propsGroups={groups}
+                            data={data}
+                            currentPage={0}
+                            pageSize={0}
+                        />
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>
+
     );
 }
 export default Content;
