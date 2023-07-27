@@ -78,7 +78,7 @@ function Layout(props: Props) {
   return (
     <div>
       <Header />
-      <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col h-screen">
+      <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col fixed h-screen">
         <div className="flex z-50  w-full">
           {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/404" && <Navbar handleSidebar={handleSidebarState} />}
         </div>

@@ -57,7 +57,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
 
     return (
         <>
-            <div className="items-center bg-gradient-to-b from-blue-600 to-blue-400 mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="items-center bg-gradient-to-b from-blue-600 w-screen to-blue-400 mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 xl:pb-5">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                         <div className="h-full flex mt-[-72px]">
