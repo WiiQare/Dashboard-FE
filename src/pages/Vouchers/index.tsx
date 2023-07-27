@@ -121,16 +121,14 @@ const Vouchers = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={Math.ceil(numOfItems / take)}
-                            onPageChange={handlePageChange}
-                        />
-                    </div>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={Math.ceil(numOfItems / take)}
+                        onPageChange={handlePageChange}
+                    />
                 </div>
             </Content>
-            <h1 className="bg-red-500 w-28"> </h1>
+
         </div>
     );
 };

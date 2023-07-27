@@ -86,8 +86,8 @@ const Providers = () => {
         });
     };
 
-   if (!tableData || !summary) {
-        return <Loader/>   
+    if (!tableData || !summary) {
+        return <Loader />
     }
 
     return (
@@ -119,7 +119,7 @@ const Providers = () => {
                     />
                 </div>
             </Content>
-            <h1 className="bg-red-500 w-28"> </h1>
+
         </div>
     );
 };
