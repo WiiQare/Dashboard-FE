@@ -23,13 +23,12 @@ const Table: React.FC<TableProps> = ({
     }, [data]);
 
     return (
-        <>
+
             <TableItems
                 data={filteredData}
                 columns={propsColumns}
                 groups={propsGroups}
             />
-        </>
     );
 };
 

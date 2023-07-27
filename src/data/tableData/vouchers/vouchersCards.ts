@@ -9,7 +9,7 @@ const CardsData = (summary: any) => {
             values: summary.vouchersInOneWeek.value,
         },
         {
-            title: "Vuchers In One Month",
+            title: "Vouchers In One Month",
             color: "F37500",
             info: summary.vouchersInOneMonth.numberOfTransactions,
             values: summary.vouchersInOneMonth.value,
