@@ -100,26 +100,23 @@ const Vouchers = () => {
     }
 
     return (
+
         <div>
             <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]}>
-                <div className="flex">
-                    <div>
-                        <div className="flex items-center mt-3 mr-2">
-                            <div className="mr-4">
-                                <label htmlFor="pageSize">Items per Page:</label>
-                                <select
-                                    id="pageSize"
-                                    className="ml-2 p-1 border border-gray-300 rounded"
-                                    value={pageSize}
-                                    onChange={handlePageSizeChange}
-                                >
-                                    <option value={10}>10</option>
-                                    <option value={20}>20</option>
-                                    <option value={30}>30</option>
-                                    {/* Add more options as needed */}
-                                </select>
-                            </div>
-                        </div>
+                <div className="flex flex-col md:flex-row items-center mt-3 md:mt-0 md:mr-2">
+                    <div className="md:mr-4">
+                        <label htmlFor="pageSize">Items per Page:</label>
+                        <select
+                            id="pageSize"
+                            className="ml-2 p-1 border border-gray-300 rounded"
+                            value={pageSize}
+                            onChange={handlePageSizeChange}
+                        >
+                            <option value={10}>10</option>
+                            <option value={20}>20</option>
+                            <option value={30}>30</option>
+                            {/* Add more options as needed */}
+                        </select>
                     </div>
                     <Pagination
                         currentPage={currentPage}

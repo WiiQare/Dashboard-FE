@@ -4,8 +4,8 @@ const ProviderColumns: any[] = [
     { field: "id", headerName: "ID", Minwidth: 90 },
     { field: "name", headerName: "Name", minWidth: 250 },
     { field: "country", headerName: "Country", width: 120 },
-    { field: "registrationDate", headerName: "Registration Date", width: 180 },
-    { field: "currency", headerName: "Currency", width: 180 },
+    { field: "registrationDate", headerName: "Registration Date", Minwidth: 180 },
+    { field: "currency", headerName: "Currency",  Minwidth: 90},
     {
         field: "lastBeneficiaryProviderTransaction",
         headerName: "Last Beneficiary Provider Transaction",
