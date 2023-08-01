@@ -6,16 +6,14 @@ interface TableProps {
     propsColumns: any[];
     data: any[];
     propsGroups: any[];
-    currentPage: number;
-    pageSize: number;
+    currentPage: string;
 }
 
 const Table: React.FC<TableProps> = ({
     propsColumns,
     data,
     propsGroups,
-    currentPage,
-    pageSize,
+    currentPage
 }) => {
 
     const filteredData = React.useMemo(() => {
@@ -25,10 +23,10 @@ const Table: React.FC<TableProps> = ({
     return (
 
             <TableItems
-                data={filteredData}
-                columns={propsColumns}
-                groups={propsGroups}
-            />
+            data={filteredData}
+            columns={propsColumns}
+            groups={propsGroups} 
+            currentPage={currentPage}            />
     );
 };
 

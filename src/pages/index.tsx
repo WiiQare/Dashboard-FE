@@ -59,7 +59,6 @@ export default function Home() {
 
     }, [mounted, userAuth, userState?.access_token]);
 
-
     if (!barChartData) {
         return null;
     }

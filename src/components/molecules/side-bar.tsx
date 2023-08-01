@@ -22,7 +22,7 @@ const menus = [
   { icon: PayersIcon, title: "Payers", href: "/Payers", },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
   { icon: PaymentsIcon, title: "Payments", submenu: Submenus },
-  { icon: HealthIcon, title: "Provider", href: "/Providers", },
+  { icon: HealthIcon, title: "Providers", href: "/Providers", },
   { icon: NFTICON, title: "Vouchers", href: "/Vouchers", },
 ] as unknown as Menu[];
 

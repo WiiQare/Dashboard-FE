@@ -7,9 +7,10 @@ interface TableProps {
     groups: any[];
     data: any[];
     cardsData: any[];
+    currentPage: string,
     children: JSX.Element;
 }
-function Content({ children, columns, cardsData, data, groups }: TableProps) {
+function Content({ children, columns, cardsData, data, groups, currentPage }: TableProps) {
     return (
 
         <div className="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4">
@@ -21,8 +22,7 @@ function Content({ children, columns, cardsData, data, groups }: TableProps) {
                             propsColumns={columns}
                             propsGroups={groups}
                             data={data}
-                            currentPage={0}
-                            pageSize={0}
+                            currentPage={currentPage}
                         />
                         {children}
                     </div>

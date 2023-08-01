@@ -90,7 +90,7 @@ const Payers = () => {
 
     return (
         <div>
-            <Content columns={payersColumns} data={tableData} cardsData={cardData} groups={payersColumnGroupingModel}>
+            <Content columns={payersColumns} data={tableData} cardsData={cardData} groups={payersColumnGroupingModel} currentPage={'payers'}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
@@ -105,7 +105,7 @@ const Payers = () => {
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>
                                     <option value={30}>30</option>
-                                    {/* Add more options as needed */}
+
                                 </select>
                             </div>
                         </div>

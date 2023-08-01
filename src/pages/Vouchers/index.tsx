@@ -101,15 +101,15 @@ const Vouchers = () => {
 
     return (
         <div>
-            <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]}>
-                <div className="flex">
+            <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]} currentPage={"vouchers"}>
+            <div className="flex items-center justify-end mt-3 mr-2">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
                             <div className="mr-4">
                                 <label htmlFor="pageSize">Items per Page:</label>
                                 <select
                                     id="pageSize"
-                                    className="ml-2 p-1 border border-gray-300 rounded"
+                                    className="ml-2 w-12 p-1 border border-gray-300 dark:border-gray-700 dark:text-slate-200 bg-white dark:bg-gray-800 rounded focus:border-blue-300"
                                     value={pageSize}
                                     onChange={handlePageSizeChange}
                                 >

@@ -5,7 +5,7 @@ import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/payments/paymentsCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
-import PayersColumns from '@/data/tableData/payments/provider/providerColumns';
+import PayersColumns from '@/data/tableData/payments/providers/providerColumns';
 import Loader from '@/components/atom/loader';
 interface UserInterface {
     type: string;
@@ -91,7 +91,7 @@ const Provider = () => {
 
     return (
         <div>
-            <Content columns={PayersColumns} data={tableData} cardsData={cardData} groups={[]}>
+            <Content columns={PayersColumns} data={tableData} cardsData={cardData} groups={[]} currentPage={'provider_payments'}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
@@ -106,7 +106,7 @@ const Provider = () => {
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>
                                     <option value={30}>30</option>
-                                    {/* Add more options as needed */}
+
                                 </select>
                             </div>
                         </div>

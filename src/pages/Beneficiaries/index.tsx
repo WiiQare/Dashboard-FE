@@ -1,11 +1,11 @@
 import { UserContext } from '@/context/UserContext';
-import Router from 'next/router';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, FC, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from "@/data/tableData/beneficiaries/beneficiariesCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
 import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from '@/data/tableData/beneficiaries/beneficiariesColumns';
+import Loader from '@/components/atom/loader';
 interface UserInterface {
     type: string;
     userId: string;
@@ -83,12 +83,12 @@ const Beneficiaries = () => {
     };
 
     if (!tableData || !summary) {
-        return null;
+        return <Loader />
     }
 
     return (
         <div>
-            <Content columns={BeneficiariesColumns} data={tableData} cardsData={cardData} groups={BeneficiariesColumnGroupingModel}>
+            <Content columns={BeneficiariesColumns} data={tableData} cardsData={cardData} groups={BeneficiariesColumnGroupingModel} currentPage={'beneficiaries'}>
                 <div className="flex">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
@@ -103,7 +103,7 @@ const Beneficiaries = () => {
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>
                                     <option value={30}>30</option>
-                                    {/* Add more options as needed */}
+
                                 </select>
                             </div>
                         </div>
