@@ -2,7 +2,7 @@ const VouchersColumns: any[] = [
     {
         field: 'voucherId',
         headerName: 'Voucher ID',
-        width: 50,
+        minWidth: 50,
         flex: 1,
     },
     {

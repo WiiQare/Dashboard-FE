@@ -33,6 +33,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
     const theme = useTheme();
     const isDarkMode = theme.theme === 'dark';
 
+
     const handleExportClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -102,6 +103,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
 
 const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPage }) => {
     const theme = useTheme();
+    const country = require('currency-codes');
     const renderIdCell = (params: any) => {
         const { value } = params;
 
@@ -126,7 +128,16 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
             </div>
         );
     };
+    const renderCurrency = (params: any) => {
+        console.log(params);
+        const { value } = params;
 
+        return (
+            <div title={country.code(value.toString())?.currency} className="flex items-center">
+                {value.toString().toUpperCase()}
+            </div>
+        );
+    };
     const rowsWithId = data?.map((row, index) => ({
         id: index.toString(),
         ...row,
@@ -157,9 +168,9 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                             },
                         }}
                         slots={{
-                            toolbar: () => <CustomToolbar currentPage={currentPage} />, // Pass the currentPage prop here
+                            toolbar: () => <CustomToolbar currentPage={currentPage} />,
                         }}
-                        className='!border-none dark:text-white transition-c-0.5'
+                        className='!border-none dark:text-white transition-c-0.5    '
                         rows={rowsWithId}
                         columns={columns.map((column) => ({
                             ...column,
@@ -169,8 +180,12 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                                 if (field.toLowerCase().endsWith('id') || field === 'id') {
                                     return renderIdCell(params);
                                 }
+                                if (!field.toLowerCase().includes('in') && field.toLowerCase().endsWith('currency') || field === 'currency') {
+                                    return renderCurrency(params);
+                                }
 
                                 return params.value;
+
                             },
                         }))}
                         experimentalFeatures={{ columnGrouping: true }}
@@ -183,11 +198,11 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                         hideFooter={true}
                         autoHeight
                         components={{
-                            Toolbar: () => null, // Hide the default toolbar
+                            Toolbar: () => null,
                         }}
                         componentsProps={{
                             toolbar: {
-                                className: 'dark:bg-black', // Add the dark mode background color class
+                                className: 'dark:bg-black',
                             },
                         }}
                     />

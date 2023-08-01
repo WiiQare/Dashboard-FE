@@ -9,17 +9,17 @@ describe("TableItems Component", () => {
         const data = [
             { id: 1, name: "John Doe", age: 25 },
             { id: 2, name: "Jane Smith", age: 30 },
-            // Add more test data as needed
+          
         ];
 
         const columns = [
             { field: "id", headerName: "ID" },
             { field: "name", headerName: "Name" },
             { field: "age", headerName: "Age" },
-            // Add more test columns as needed
+           
         ];
 
-        const groups: GridColumnGroupingModel = []; // Set the column grouping model if required
+        const groups: GridColumnGroupingModel = []; 
 
         render(<TableItems data={data} columns={columns} groups={groups} />);
     });

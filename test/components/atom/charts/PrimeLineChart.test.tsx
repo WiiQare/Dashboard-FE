@@ -1,15 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import PrimeLineChart from "../../../../src/components/atom/charts/PrimeLineChart";
 
-// beforeEach(() => {
-//     // Mock the getContext method for HTMLCanvasElement
-//     HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
-//         // Mock the properties or methods  needed for testing
-//         fillRect: jest.fn(),
-//         // Add any other necessary mock properties or methods
-//     }));
-// });
-
 
 describe("PrimeLineChart", () => {
     it("should be rendered", () => {

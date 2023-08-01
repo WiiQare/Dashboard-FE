@@ -26,7 +26,7 @@ function Layout(props: Props) {
   const router = useRouter();
   const User = React.useContext(UserContext);
   const [open, setOpen] = useState(sidebarAction);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const [hasExpired, setHasExpired] = useState(false)
 
   const handleSidebarState = (): void => {

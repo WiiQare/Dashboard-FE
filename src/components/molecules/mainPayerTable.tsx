@@ -101,7 +101,7 @@ export default function MainPayersTable({ result }: PayersInterface) {
             autoHeight
             componentsProps={{
                 toolbar: {
-                    className: 'dark:bg-black', // Add the dark mode background color class
+                    className: 'dark:bg-black',
                 },
             }}
         />
