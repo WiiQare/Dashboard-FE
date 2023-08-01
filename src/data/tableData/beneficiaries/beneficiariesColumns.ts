@@ -4,8 +4,8 @@ import { GridValueGetterParams } from '@mui/x-data-grid';
 
 const BeneficiariesColumns: any[] = [
     { field: 'id', headerName: 'ID', Minwidth: 90 },
-    { field: 'name', headerName: 'Name', minWidth: 250 },
-    { field: 'country', headerName: 'Country', width: 120 },
+    { field: 'name', headerName: 'Name', minWidth: 200 },
+    { field: 'country', headerName: 'Country', width: 250 },
     { field: 'registrationDate', headerName: 'Registration Date', width: 180 },
     { field: 'lastActivityOn', headerName: 'Last Activity', width: 180 },
     {
