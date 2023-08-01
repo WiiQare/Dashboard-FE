@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Providers component 1`] = `
+<div>
+  <div
+    class="flex items-center bg-none justify-center w-full min-h-screen p-5  min-w-[100vw]"
+  >
+    <div
+      class="flex space-x-2 animate-pulse"
+    >
+      <div
+        class="w-3 h-3 bg-gray-500 rounded-full"
+      />
+      <div
+        class="w-3 h-3 bg-gray-500 rounded-full"
+      />
+      <div
+        class="w-3 h-3 bg-gray-500 rounded-full"
+      />
+    </div>
+  </div>
+</div>
+`;
