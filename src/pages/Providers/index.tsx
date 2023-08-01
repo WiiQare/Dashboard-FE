@@ -93,7 +93,7 @@ const Providers = () => {
     return (
         <div>
             <Content columns={ProviderColumns} data={tableData} cardsData={cardData} groups={ProviderColumnGroupingModel} currentPage={'providers'}>
-                <div className="flex">
+                <div className="flex items-center justify-end mt-3 mr-2">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
                             <div className="mr-4">

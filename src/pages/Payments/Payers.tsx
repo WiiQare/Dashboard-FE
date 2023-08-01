@@ -93,7 +93,7 @@ const Payers = () => {
     return (
         <div>
             <Content columns={payersColumns} data={tableData} cardsData={cardData} groups={[]} currentPage={'payer_payments'}>
-                <div className="flex">
+                <div className="flex items-center justify-end mt-3 mr-2">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
                             <div className="mr-4">
