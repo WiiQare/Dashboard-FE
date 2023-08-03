@@ -45,6 +45,9 @@ const PayersColumns: any[] = [
         headerName: 'Unique Beneficiary Count',
         minWidth: 150,
         flex: 1,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
     },
     {
         field: 'purchasedVouchers.numberOfVouchers',

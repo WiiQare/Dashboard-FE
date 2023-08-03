@@ -3,32 +3,32 @@ const CardsData = (summary: any) => {
     return [
 
         {
-            title: "Vouchers In One Week",
+            title: "Purchased Vouchers (last week)",
             color: "F37500",
             info: summary.vouchersInOneWeek.numberOfTransactions,
             values: summary.vouchersInOneWeek.value,
         },
         {
-            title: "Vouchers In One Month",
+            title: "Purchased Vouchers (last month)",
             color: "F37500",
             info: summary.vouchersInOneMonth.numberOfTransactions,
             values: summary.vouchersInOneMonth.value,
         },
         {
-            title: "Vouchers In Three Months",
+            title: "Purchased Vouchers (last three months)",
             color: "F37500",
             info: summary.vouchersInThreeMonths.numberOfTransactions,
             values: summary.vouchersInThreeMonths.value,
         },
 
         {
-            title: "Vouchers In Six Months",
+            title: "Purchased Vouchers (last six months)",
             color: "FEE501",
             info: summary.vouchersInSixMonths.numberOfVouchers,
             values: summary.vouchersInSixMonths.value,
         },
         {
-            title: "Vouchers In Max Time",
+            title: "Purchased Vouchers (all)",
             color: "FEE501",
             info: summary.vouchersInMaxTime.numberOfVouchers,
             values: summary.vouchersInMaxTime.value,

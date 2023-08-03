@@ -9,19 +9,28 @@ const VouchersColumns: any[] = [
         field: 'amountInLocalCurrency',
         headerName: 'Amount In Local Currency',
         minWidth: 170,
-        flex: 1,
+        flex: 2,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
     },
     {
         field: 'localCurrency',
         headerName: 'Local Currency',
         minWidth: 150,
         flex: 1,
+        headerAlign: 'center',
+        align: 'center'
+        
+        
     },
     {
         field: 'amountInSenderCurrency',
         headerName: 'Amount In Sender Currency',
         minWidth: 150,
-        flex: 1,
+        flex: 2,
+        headerAlign: 'center',
+        align: 'center'
     },
     {
         field: 'senderCurrency',

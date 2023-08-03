@@ -1,27 +1,60 @@
 import { GridValueGetterParams } from "@mui/x-data-grid";
 
 const ProviderColumns: any[] = [
-    { field: "id", headerName: "ID", Minwidth: 90 },
-    { field: "name", headerName: "Name", minWidth: 250 },
-    { field: "country", headerName: "Country", width: 120 },
-    { field: "registrationDate", headerName: "Registration Date", Minwidth: 180 },
-    { field: "currency", headerName: "Currency",  Minwidth: 90},
+    {
+        field: "id",
+        headerName: "ID",
+        minWidth: 90
+    },
+    {
+        field: "name",
+        headerName: "Name",
+        minWidth: 120,
+        flex: 1
+    },
+    {
+        field: "country",
+        headerName: "Country",
+        minWidth: 200,
+        type: "string",
+        flex: 2
+    },
+    {
+        field: "registrationDate",
+        headerName: "Registration Date",
+        minWidth: 130,
+        flex: 1,
+        headerAlign: 'center',
+        align: 'center'
+    },
+    {
+        field: "currency",
+        headerName: "Currency",
+        minWidth: 90
+    },
     {
         field: "lastBeneficiaryProviderTransaction",
         headerName: "Last Beneficiary Provider Transaction",
-        width: 180,
+        minWidth: 180,
+        flex: 1,
     },
     {
         field: "totalNumberOfUniqueBeneficiaries",
-        headerName: "Total NumberOf Unique Beneficiaries",
-        width: 180,
+        headerName: "Total Number Of Unique Beneficiaries",
+        minWidth: 180,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
     },
     {
         field: "totalBeneficiaryProviderTransactionWithinOneWeek",
         headerName: "Total Beneficiary Provider Transaction Within One Week",
-        width: 180,
+        minWidth: 180,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
     },
-     {
+    {
         field: "claimedVouchers.numberOfVouchers",
         headerName: "Number",
         valueGetter: (params: GridValueGetterParams) =>
