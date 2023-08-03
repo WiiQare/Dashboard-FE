@@ -5,6 +5,7 @@ import Menu from '@mui/material/Menu';
 import { createSvgIcon } from '@mui/material/utils';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GlobalStyles, } from '@mui/material';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from 'next-themes';
@@ -129,7 +130,6 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
         );
     };
     const renderCurrency = (params: any) => {
-        console.log(params);
         const { value } = params;
 
         return (
@@ -148,24 +148,50 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
             <ToastContainer />
             <div className="shadow rounded-2xl border-none bg-white transition-c-0.5 dark:bg-[#111827] no-scrollbar overflow-x-auto">
                 <div className="table min-w-full overflow-hidden">
+                    <GlobalStyles
+                        styles={{
+                            '&.MuiDataGrid-menuList': {
+                                backgroundColor: theme.theme === 'dark' ? '#0f172a  !important' : 'white',
+                                color: theme.theme === 'dark' && 'white !important',
+                            },
+                            '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root': {
+                                color: theme.theme === 'dark' && 'white  !important',
+
+                            },
+                            '& .MuiPaper-elevation': {
+                                backgroundColor: theme.theme === 'dark' && '#0f172a  !important',
+
+                            }, '& .MuiFormControlLabel-label': {
+                                color: theme.theme === 'dark' && 'white  !important',
+
+                            },
+
+
+                        }}
+                    />
                     <DataGrid
                         sx={{
                             "& .MuiButton-text": {
                                 color: theme.theme === 'dark' ? "#ffffff" : "#1976d2 !important",
                             },
+
                             "& .MuiDataGrid-cell": {
                                 borderBottom: 1,
                                 borderColor: "#ffffff2e",
+
                             },
                             "& .MuiDataGrid-menuList": {
                                 backgroundColor: "#ffffff2e !important",
+
                             },
                             "& .MuiDataGrid-toolbarContainer": {
                                 backgroundColor: theme.theme === 'dark' ? "#0f1b31" : "#f1f6ff !important",
                                 marginBottom: "8px auto auto",
                                 padding: "7px",
-                                width: "100%",
+                                width: "100%"
+
                             },
+
                         }}
                         slots={{
                             toolbar: () => <CustomToolbar currentPage={currentPage} />,
