@@ -17,10 +17,10 @@ const VouchersColumns: any[] = [
     {
         field: 'localCurrency',
         headerName: 'Local Currency',
-        minWidth: 150,
+        minWidth: 80,
         flex: 1,
-        headerAlign: 'center',
-        align: 'center'
+        headerAlign: 'left',
+        align: 'left'
         
         
     },

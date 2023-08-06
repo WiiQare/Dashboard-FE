@@ -14,6 +14,7 @@ const PayersColumns: any[] = [
         headerName: 'Name',
         minWidth: 250,
         flex: 1,
+        enableTooltip: true
 
     },
     {
@@ -51,70 +52,70 @@ const PayersColumns: any[] = [
     },
     {
         field: 'purchasedVouchers.numberOfVouchers',
-        headerName: 'Number',
+        headerName: 'Quantity',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.purchasedVouchers.numberOfVouchers,
     },
     {
         field: 'purchasedVouchers.value',
-        headerName: 'value',
+        headerName: 'EUR',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.purchasedVouchers.value,
     },
     {
         field: 'pendingVouchers.numberOfVouchers',
-        headerName: 'Number',
+        headerName: 'Quantity',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.pendingVouchers.numberOfVouchers,
     },
     {
         field: 'pendingVouchers.value',
-        headerName: 'value',
+        headerName: 'EUR',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.pendingVouchers.value,
     },
     {
         field: 'unclaimedVouchers.numberOfVouchers',
-        headerName: 'Number',
+        headerName: 'Quantity',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.unclaimedVouchers.numberOfVouchers,
     },
     {
         field: 'unclaimedVouchers.value',
-        headerName: 'value',
+        headerName: 'EUR',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.unclaimedVouchers.value,
     },
     {
         field: 'redeemedVouchers.numberOfVouchers',
-        headerName: 'Number',
+        headerName: 'Quantity',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.redeemedVouchers.numberOfVouchers,
     },
     {
         field: 'redeemedVouchers.value',
-        headerName: 'value',
+        headerName: 'EUR',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.redeemedVouchers.value,
     },
     {
         field: 'vouchersNotSent.numberOfVouchers',
-        headerName: 'Number',
+        headerName: 'Quantity',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.vouchersNotSent.numberOfVouchers,
     },
     {
         field: 'vouchersNotSent.value',
-        headerName: 'value',
+        headerName: 'EUR',
 
         valueGetter: (params: GridValueGetterParams) =>
             params.row.vouchersNotSent.value,
@@ -150,7 +151,7 @@ export const payersColumnGroupingModel: any = [
     },
     {
         groupId: 'vouchersNotSent',
-        headerName: 'Redeemed Vouchers',
+        headerName: 'Vouchers Not Sent',
         description: '',
         children: [{ field: 'vouchersNotSent.numberOfVouchers' }, { field: 'vouchersNotSent.value' }],
     },

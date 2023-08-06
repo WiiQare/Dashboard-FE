@@ -13,6 +13,13 @@ const ProviderColumns: any[] = [
         flex: 1
     },
     {
+        field: "city",
+        headerName: "City",
+        minWidth: 150,
+        type: "string",
+        flex: 1
+    },
+    {
         field: "country",
         headerName: "Country",
         minWidth: 200,
@@ -40,7 +47,7 @@ const ProviderColumns: any[] = [
     },
     {
         field: "totalNumberOfUniqueBeneficiaries",
-        headerName: "Total Number Of Unique Beneficiaries",
+        headerName: "Total Unique Beneficiaries",
         minWidth: 180,
         type: "number",
         headerAlign: 'center',
@@ -48,8 +55,40 @@ const ProviderColumns: any[] = [
     },
     {
         field: "totalBeneficiaryProviderTransactionWithinOneWeek",
-        headerName: "Total Beneficiary Provider Transaction Within One Week",
-        minWidth: 180,
+        headerName: "One Week",
+        minWidth: 100,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
+    },
+    {
+        field: "totalBeneficiaryProviderTransactionWithinOneMonth",
+        headerName: "One Month",
+        minWidth: 100,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
+    },
+    {
+        field: "totalBeneficiaryProviderTransactionWithinThreeMonths",
+        headerName: "Three Months",
+        minWidth: 100,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
+    },
+    {
+        field: "totalBeneficiaryProviderTransactionWithinSixMonths",
+        headerName: "Six Months",
+        minWidth: 100,
+        type: "number",
+        headerAlign: 'center',
+        align: 'center'
+    },
+    {
+        field: "totalBeneficiaryProviderTransaction",
+        headerName: "Max",
+        minWidth: 100,
         type: "number",
         headerAlign: 'center',
         align: 'center'
@@ -96,6 +135,18 @@ const ProviderColumns: any[] = [
     },
 ];
 export const ProviderColumnGroupingModel: any = [
+    {
+        groupId: "totalBeneficiaryProviderTransaction",
+        headerName: "Total Beneficiary Provider Transaction",
+        freeReordering: true,
+        children: [
+            { field: "totalBeneficiaryProviderTransactionWithinOneWeek" },
+            { field: "totalBeneficiaryProviderTransactionWithinOneMonth" },
+            { field: "totalBeneficiaryProviderTransactionWithinThreeMonths" },
+            { field: "totalBeneficiaryProviderTransactionWithinSixMonths" },
+            { field: "totalBeneficiaryProviderTransaction" },
+        ],
+    },
     {
         groupId: "Received Vouchers",
         headerName: "Total Payment",

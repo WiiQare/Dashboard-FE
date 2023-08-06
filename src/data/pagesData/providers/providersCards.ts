@@ -7,32 +7,14 @@ const CardsData = (summary: any) => {
             color: "934286",
             info: summary.numberOfRegisteredProviders
         },
-        {
-            title: "Total Beneficiary Transactions Within One Week",
-            color: "F37500",
-            info: summary.totalBeneficiaryTransactionsWithinOneWeek.numberOfTransactions,
-            values: summary.totalBeneficiaryTransactionsWithinOneWeek.value,
-        },
-        {
-            title: "Total Beneficiary Transactions Within Three Months",
-            color: "F37500",
-            info: summary.totalBeneficiaryTransactionsWithinThreeMonths.numberOfTransactions,
-            values: summary.totalBeneficiaryTransactionsWithinThreeMonths.value,
-        },
-        {
-            title: "Total Beneficiary Transactions Within Six Months",
-            color: "F37500",
-            info: summary.totalBeneficiaryTransactionsWithinSixMonths.numberOfTransactions,
-            values: summary.totalBeneficiaryTransactionsWithinSixMonths.value,
-        },
 
 
         {
-            title: "Total Beneficiary Provider Transactions",
+            title: "Total Beneficiary Transactions",
             color: "35B769",
             info: summary.totalBeneficiaryProviderTransaction,
         }, {
-            title: "Total Number Of Unique Beneficiaries",
+            title: "Total Unique Beneficiaries",
             color: "35B769",
             info: summary.totalNumberOfUniqueBeneficiaries,
         },
