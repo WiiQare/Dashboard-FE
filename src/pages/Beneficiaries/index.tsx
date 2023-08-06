@@ -1,11 +1,11 @@
 import { UserContext } from '@/context/UserContext';
 import React, { useEffect, useLayoutEffect, FC, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from "@/data/tableData/beneficiaries/beneficiariesCards";
+import CardsData from "@/data/pagesData/beneficiaries/beneficiariesCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
-import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from '@/data/tableData/beneficiaries/beneficiariesColumns';
-import Loader from '@/components/atom/loader';
+import BeneficiariesColumns, { BeneficiariesColumnGroupingModel } from '@/data/pagesData/beneficiaries/beneficiariesColumns';
+import PageSkeleton from '@/components/molecules/pageSkeleton';
 interface UserInterface {
     type: string;
     userId: string;
@@ -82,8 +82,19 @@ const Beneficiaries = () => {
         });
     };
 
-    if (!tableData || !summary) {
-        return <Loader />
+
+    const [showLoader, setShowLoader] = useState(true);
+
+    useEffect(() => {
+        if (tableData && summary) {
+            setTimeout(() => {
+                setShowLoader(false);
+            }, 500);
+        }
+    }, [summary, tableData]);
+    console.log(showLoader)
+    if (showLoader) {
+        return <PageSkeleton number={7} row={10} />;
     }
 
     return (

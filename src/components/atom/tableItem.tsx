@@ -1,24 +1,27 @@
 import React, { FC, useState } from 'react';
-import { DataGrid, GridColDef, GridColumnGroupingModel, GridToolbarContainer, GridCsvGetRowsToExportParams, GridToolbarExport, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarDensitySelector, useGridApiContext, gridExpandedSortedRowIdsSelector } from '@mui/x-data-grid';
-import Button, { ButtonProps } from '@mui/material/Button';
+import {
+    DataGrid,
+    GridColDef,
+    GridColumnGroupingModel,
+    GridToolbarContainer,
+    GridCsvGetRowsToExportParams,
+    GridToolbarExport,
+    GridToolbarColumnsButton,
+    GridToolbarFilterButton,
+    GridToolbarDensitySelector,
+    useGridApiContext,
+    gridExpandedSortedRowIdsSelector
+} from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import { createSvgIcon } from '@mui/material/utils';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GlobalStyles, } from '@mui/material';
+import { GlobalStyles } from '@mui/material';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from 'next-themes';
 
-interface TableItemsProps<T extends object> {
-    data: T[];
-    columns: GridColDef[];
-    groups: GridColumnGroupingModel;
-    currentPage: string;
-}
-interface CustomToolbarProps {
-    currentPage: string;
-}
 
 const getFilteredRows = ({ apiRef }: GridCsvGetRowsToExportParams) =>
     gridExpandedSortedRowIdsSelector(apiRef);
@@ -28,12 +31,22 @@ const ExportIcon = createSvgIcon(
     'SaveAlt',
 );
 
+interface TableItemsProps<T extends object> {
+    data: T[];
+    columns: GridColDef[];
+    groups: GridColumnGroupingModel;
+    currentPage: string;
+}
+
+interface CustomToolbarProps {
+    currentPage: string;
+}
+
 const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
     const apiRef = useGridApiContext();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const theme = useTheme();
     const isDarkMode = theme.theme === 'dark';
-
 
     const handleExportClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -82,7 +95,12 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
             <GridToolbarFilterButton />
             <GridToolbarDensitySelector />
             <GridToolbarExport printOptions={{ disableToolbarButton: true }} />
-            <Button color="primary" size="small" startIcon={<ExportIcon />} onClick={handleExportClick}>
+            <Button
+                color="primary"
+                size="small"
+                startIcon={<ExportIcon />}
+                onClick={handleExportClick}
+            >
                 Export All
             </Button>
             <Menu
@@ -92,7 +110,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
                 sx={{
                     "& .MuiMenu-paper": {
                         backgroundColor: isDarkMode ? '#0f172a !important' : 'white !important',
-                        color: isDarkMode ? 'white  !important' : 'black',
+                        color: isDarkMode ? 'white !important' : 'black',
                     },
                 }}
             >
@@ -105,6 +123,8 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
 const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPage }) => {
     const theme = useTheme();
     const country = require('currency-codes');
+
+    // Utility function to render ID cell
     const renderIdCell = (params: any) => {
         const { value } = params;
 
@@ -129,6 +149,8 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
             </div>
         );
     };
+
+    // Utility function to render currency cell
     const renderCurrency = (params: any) => {
         const { value } = params;
 
@@ -138,6 +160,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
             </div>
         );
     };
+
     const rowsWithId = data?.map((row, index) => ({
         id: index.toString(),
         ...row,
@@ -150,23 +173,13 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                 <div className="table min-w-full overflow-hidden">
                     <GlobalStyles
                         styles={{
-                            '&.MuiDataGrid-menuList': {
-                                backgroundColor: theme.theme === 'dark' ? '#0f172a  !important' : 'white',
+                            '&.MuiDataGrid-menuList, .MuiDataGrid-panel': {
+                                backgroundColor: theme.theme === 'dark' ? '#0f172a !important' : 'white',
                                 color: theme.theme === 'dark' && 'white !important',
                             },
-                            '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root': {
-                                color: theme.theme === 'dark' && 'white  !important',
-
+                            '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root, .MuiFormControlLabel-label': {
+                                color: theme.theme === 'dark' && 'white !important',
                             },
-                            '& .MuiPaper-elevation': {
-                                backgroundColor: theme.theme === 'dark' && '#0f172a  !important',
-
-                            }, '& .MuiFormControlLabel-label': {
-                                color: theme.theme === 'dark' && 'white  !important',
-
-                            },
-
-
                         }}
                     />
                     <DataGrid
@@ -193,10 +206,11 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                             },
 
                         }}
+
                         slots={{
                             toolbar: () => <CustomToolbar currentPage={currentPage} />,
                         }}
-                        className='!border-none dark:text-white transition-c-0.5    '
+                        className="!border-none dark:text-white transition-c-0.5"
                         rows={rowsWithId}
                         columns={columns.map((column) => ({
                             ...column,
@@ -206,12 +220,11 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
                                 if (field.toLowerCase().endsWith('id') || field === 'id') {
                                     return renderIdCell(params);
                                 }
-                                if (!field.toLowerCase().includes('in') && field.toLowerCase().endsWith('currency') || field === 'currency') {
+                                if (!field.toLowerCase().includes('in') && (field.toLowerCase().endsWith('currency') || field === 'currency')) {
                                     return renderCurrency(params);
                                 }
 
-                                return params.value;
-
+                                return <span title={params.value}>{params.value}</span>;
                             },
                         }))}
                         experimentalFeatures={{ columnGrouping: true }}

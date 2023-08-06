@@ -2,11 +2,11 @@ import { UserContext } from '@/context/UserContext';
 import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from "@/data/tableData/vouchers/vouchersCards";
+import CardsData from "@/data/pagesData/vouchers/vouchersCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
-import VouchersColumns from '@/data/tableData/vouchers/vouchersColumns';
-import Loader from '@/components/atom/loader';
+import VouchersColumns from '@/data/pagesData/vouchers/vouchersColumns';
+import PageSkeleton from '@/components/molecules/pageSkeleton';
 interface UserInterface {
     type: string;
     userId: string;
@@ -22,7 +22,7 @@ const Vouchers = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [tablData, setTableData] = useState<any>(null);
+    const [tableData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
     const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
     const [cardData, setCardData] = useState<any[]>([]);
@@ -95,14 +95,24 @@ const Vouchers = () => {
     };
 
 
-    if (!tablData || !summary) {
-        return <Loader /> // Render nothing until data and summary are available
+    const [showLoader, setShowLoader] = useState(true);
+
+    useEffect(() => {
+        if (tableData && summary) {
+            setTimeout(() => {
+                setShowLoader(false);
+            }, 500);
+        }
+    }, [summary, tableData]);
+    console.log(showLoader)
+    if (showLoader) {
+        return <PageSkeleton number={9} row={10} />;
     }
 
     return (
-        <div>
-            <Content columns={VouchersColumns} data={tablData} cardsData={cardData} groups={[]} currentPage={"vouchers"}>
-            <div className="flex items-center justify-end mt-3 mr-2">
+        <div >
+            <Content columns={VouchersColumns} data={tableData} cardsData={cardData} groups={[]} currentPage={"vouchers"}>
+                <div className="flex items-center justify-end mt-3 mr-2">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
                             <div className="mr-4">
@@ -116,7 +126,6 @@ const Vouchers = () => {
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>
                                     <option value={30}>30</option>
-                                 
                                 </select>
                             </div>
                         </div>

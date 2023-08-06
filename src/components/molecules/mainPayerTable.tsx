@@ -1,5 +1,5 @@
-import PayersColumns from "@/data/tableData/payers/payersColumns";
-import { payersColumnGroupingModel } from "@/data/tableData/payers/payersColumns";
+import PayersColumns from "@/data/pagesData/payers/payersColumns";
+import { payersColumnGroupingModel } from "@/data/pagesData/payers/payersColumns";
 import React from "react";
 import { useTheme } from "next-themes";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -90,7 +90,7 @@ export default function MainPayersTable({ result }: PayersInterface) {
 
             }))}
             experimentalFeatures={{ columnGrouping: true }}
-            
+
             columnGroupingModel={payersColumnGroupingModel}
             checkboxSelection={false}
             disableColumnFilter={false}

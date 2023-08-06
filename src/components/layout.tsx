@@ -64,8 +64,8 @@ function Layout(props: Props) {
   }
 
   if (loading) {
-    // Show a loading state while redirecting
-    return <Loader/>
+
+    return <Loader />
   }
 
   if (router.pathname !== "/auth/signIn") {
@@ -82,7 +82,7 @@ function Layout(props: Props) {
         <div className="flex z-50  w-full">
           {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/404" && <Navbar handleSidebar={handleSidebarState} />}
         </div>
-        <div className="flex overflow-hidden flex-grow ">
+        <div className="flex overflow-hidden w-screen flex-grow ">
           {userAuth && router.pathname !== "/auth/signIn" && router.pathname !== "/404" && (
             <SideBar
               sidebarOpen={open}

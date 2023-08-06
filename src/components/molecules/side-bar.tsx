@@ -14,15 +14,15 @@ import { useRouter } from "next/router";
 
 
 const Submenus = [
-  { icon: PaymentProviderIcon, title: "Provider", href: "/Payments/Provider", },
+  { icon: PaymentProviderIcon, title: "Provider", href: "/Payments/Providers", },
   { icon: PayersIcon, title: "Payers", href: "/Payments/Payers", },
 ];
 
 const menus = [
   { icon: PayersIcon, title: "Payers", href: "/Payers", },
   { icon: BeneficiariesIcon, title: "Beneficiaries", href: "/Beneficiaries" },
+  { icon: HealthIcon, title: "Providers", href: "/Providers" },
   { icon: PaymentsIcon, title: "Payments", submenu: Submenus },
-  { icon: HealthIcon, title: "Providers", href: "/Providers", },
   { icon: NFTICON, title: "Vouchers", href: "/Vouchers", },
 ] as unknown as Menu[];
 
@@ -76,7 +76,7 @@ const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
     >
       <div className="transition-c-0.5 h-full w-[13rem] overflow-x-auto bg-white px-3 pb-4  dark:bg-gray-900">
         <div className=" flex flex-col  space-y-4">
-          <ul className="flex flex-col space-y-2 text-black dark:text-white">
+          <ul className="flex flex-col space-y-3 text-black dark:text-white">
             {menus.map((menu, index) => (
               <MenuItem
                 key={index}

@@ -15,11 +15,8 @@ export interface Menu {
 
 function MenuItem(props: Menu) {
   const router = useRouter();
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleToggle = () => {
-    setIsExpanded(!isExpanded);
-  };
+
   return (
     <li>
 
@@ -44,10 +41,10 @@ function MenuItem(props: Menu) {
             </AccordionSummary>
             <AccordionDetails>
               {props.submenu.map((submenu) => (
-                <div key={submenu.title} className=" ml-3">
+                <div key={submenu.title} className=" my-2  -mx-4">
                   <Link
                     href={submenu.href}
-                    className={`relative flex gap-2 rounded  dark:text-white  items-center mb-2 py-3 px-4 ${router.route == submenu.href
+                    className={`relative flex gap-2 rounded  dark:text-white  items-center py-3 px-4 ${router.route == submenu.href
                       ? "button-text bg-[#FF8A2B] dark:bg-[#df690a] !opacity-100"
                       : "opacity-75 hover:bg-[#FF8A2B]"
                       }`}
@@ -69,7 +66,7 @@ function MenuItem(props: Menu) {
         : <Link
 
           href={props.href}
-          className={`relative flex gap-2 rounded items-center mt-3 py-3 px-4 ${router.route == props.href
+          className={`relative flex gap-2 rounded items-center py-3 px-4 ${router.route == props.href
             ? "button-text bg-[#FF8A2B] dark:bg-[#df690a]"
             : " hover:bg-[#FF8A2B]"
             }`}

@@ -1,6 +1,5 @@
 import React from 'react';
 import TableItems from '../atom/tableItem';
-import { useSelector } from 'react-redux';
 
 interface TableProps {
     propsColumns: any[];
@@ -22,11 +21,11 @@ const Table: React.FC<TableProps> = ({
 
     return (
 
-            <TableItems
+        <TableItems
             data={filteredData}
             columns={propsColumns}
-            groups={propsGroups} 
-            currentPage={currentPage}            />
+            groups={propsGroups}
+            currentPage={currentPage} />
     );
 };
 

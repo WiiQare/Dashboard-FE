@@ -1,12 +1,12 @@
 import { UserContext } from '@/context/UserContext';
+import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from "@/data/tableData/providers/providerCards";
-import Pagination from '@/components/atom/pagination';
+import CardsData from "@/data/pagesData/providers/providersCards";
+import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
-import ProviderColumns, { ProviderColumnGroupingModel } from '@/data/tableData/providers/providerColumns';
-import Loader from '@/components/atom/loader';
-
+import ProvidersColumns from '@/data/pagesData/providers/providersColumns';
+import PageSkeleton from '@/components/molecules/pageSkeleton';
 interface UserInterface {
     type: string;
     userId: string;
@@ -22,7 +22,7 @@ const Providers = () => {
     const User = React.useContext(UserContext);
     const [userState, setUserState] = useState<UserInterface | null>(User?.user);
     const [userAuth, setUserAuth] = useState<boolean | undefined>(User?.authenticated);
-    const [tableData, setTableData] = useState<any[]>();
+    const [tableData, setTableData] = useState<any>(null);
     const [summary, setSummary] = useState<any>();
     const [numOfItems, setNumOfItems] = useState<number>(0); // Set initial value to 0
     const [cardData, setCardData] = useState<any[]>([]);
@@ -31,8 +31,8 @@ const Providers = () => {
 
     const [mounted, setMounted] = useState<boolean>(false);
 
-    let take = 10;
-    const skip = 0;
+    const take = 10; // Default number of items to take
+    const skip = 0; // Default amount to skip
 
     useLayoutEffect(() => {
         setUserAuth(Boolean(sessionStorage.getItem("userAuth")));
@@ -40,8 +40,17 @@ const Providers = () => {
         setMounted(true);
     }, [User?.authenticated, User?.user]);
 
+    if (mounted) {
+        if (userAuth === false) {
+            // console.log("userAuth", userAuth)
+
+            Router.replace("/auth/signIn");
+
+        }
+    }
+
     useEffect(() => {
-        if (!mounted) return;
+        if (!mounted) return; // Return early if the component is not mounted
 
         const fetchDataAsync = async () => {
             const res = await fetchData("/providers", userState?.access_token, take, skip);
@@ -51,11 +60,10 @@ const Providers = () => {
 
         };
         if (mounted && userAuth) {
-            fetchDataAsync()
+            fetchDataAsync();
         }
 
-    }, [mounted, take, userAuth, userState?.access_token]);
-
+    }, [mounted, userAuth, userState?.access_token]); // Remove other dependencies to fetch data only once when mounted
 
 
     useEffect(() => {
@@ -65,6 +73,7 @@ const Providers = () => {
 
         }
     }, [numOfItems, summary]);
+
 
 
     const handlePageChange = async (page: number) => {
@@ -86,13 +95,24 @@ const Providers = () => {
         });
     };
 
-    if (!tableData || !summary) {
-        return <Loader />
+
+    const [showLoader, setShowLoader] = useState(true);
+
+    useEffect(() => {
+        if (tableData && summary) {
+            setTimeout(() => {
+                setShowLoader(false);
+            }, 500);
+        }
+    }, [summary, tableData]);
+    console.log(showLoader)
+    if (showLoader) {
+        return <PageSkeleton number={7} row={10} />;
     }
 
     return (
-        <div>
-            <Content columns={ProviderColumns} data={tableData} cardsData={cardData} groups={ProviderColumnGroupingModel} currentPage={'providers'}>
+        <div >
+            <Content columns={ProvidersColumns} data={tableData} cardsData={cardData} groups={[]} currentPage={"providers"}>
                 <div className="flex items-center justify-end mt-3 mr-2">
                     <div>
                         <div className="flex items-center mt-3 mr-2">
@@ -100,14 +120,13 @@ const Providers = () => {
                                 <label htmlFor="pageSize">Items per Page:</label>
                                 <select
                                     id="pageSize"
-                                    className="ml-2 p-1 border border-gray-300 rounded"
+                                    className="ml-2 w-12 p-1 border border-gray-300 dark:border-gray-700 dark:text-slate-200 bg-white dark:bg-gray-800 rounded focus:border-blue-300"
                                     value={pageSize}
                                     onChange={handlePageSizeChange}
                                 >
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>
                                     <option value={30}>30</option>
-
                                 </select>
                             </div>
                         </div>

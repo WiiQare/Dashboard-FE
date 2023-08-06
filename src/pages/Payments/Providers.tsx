@@ -1,12 +1,11 @@
 import { UserContext } from '@/context/UserContext';
-import Router from 'next/router';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
-import CardsData from "@/data/tableData/payments/paymentsCards";
+import CardsData from "@/data/pagesData/payments/paymentsCards";
 import Pagination from "@/components/atom/pagination";
 import Content from '@/components/content';
-import PayersColumns from '@/data/tableData/payments/providers/providerColumns';
-import Loader from '@/components/atom/loader';
+import PayersColumns from '@/data/pagesData/payments/providers/providerColumns';
+import PageSkeleton from '@/components/molecules/pageSkeleton';
 interface UserInterface {
     type: string;
     userId: string;
@@ -28,7 +27,7 @@ const Provider = () => {
     const [cardData, setCardData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
-
+    const [showLoader, setShowLoader] = useState(true);
     const [mounted, setMounted] = useState<boolean>(false);
 
     const take = 10;
@@ -47,7 +46,6 @@ const Provider = () => {
             const summaryData = await fetchData("/payments/summary", userState?.access_token);
             setTableData(res);
             setSummary(summaryData);
-            // console.log("res", res);
         };
         if (mounted && userAuth) {
             fetchDataAsync();
@@ -62,8 +60,6 @@ const Provider = () => {
         if (summary) {
             setCardData(CardsData(summary))
             setNumOfItems(summary.numberOfRows | 10)
-            // console.log('CardsData:', CardsData(summary));
-            // console.log('numOfItems:', numOfItems);
         }
     }, [summary]);
 
@@ -85,8 +81,17 @@ const Provider = () => {
         });
     };
 
-    if (!tableData || !summary) {
-        return <Loader />
+
+    useEffect(() => {
+        if (tableData && summary) {
+            setTimeout(() => {
+                setShowLoader(false);
+            }, 500);
+        }
+    }, [summary, tableData]);
+    console.log(showLoader)
+    if (showLoader) {
+        return <PageSkeleton number={8} row={10} />;
     }
 
     return (

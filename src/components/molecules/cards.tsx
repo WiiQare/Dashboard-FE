@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CardsItem from './cardItem';
 
 
@@ -7,7 +7,7 @@ const Cards = ({ data }: any) => {
 
 
     return (
-        <div className='grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]'>
+        <div className='grid  sm:grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  p-[23px]'>
             {data.map((item: any) => (
                 <CardsItem
                     key={item.title}
