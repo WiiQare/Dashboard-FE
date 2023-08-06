@@ -2,7 +2,7 @@ import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme } from "next-themes";
 
-export interface  PayersData {
+export interface PayersData {
     numberOfActivePayers?: number;
     numberOfRegisteredPayers?: number;
 }
@@ -15,19 +15,23 @@ const PayersPieChart: React.FC<PieChartProps> = ({ data }) => {
     const { theme } = useTheme();
 
     if (!data) {
-        return null; // Return early if data is undefined
+        return null;
     }
+
+    const totalPayers = (data.numberOfActivePayers || 0) + (data.numberOfRegisteredPayers || 0);
+    const activePayersPercentage = (data.numberOfActivePayers || 0) / totalPayers;
+    const registeredPayersPercentage = (data.numberOfRegisteredPayers || 0) / totalPayers;
 
     const pieData = [
         {
             id: "Active Payers",
             label: "Active Payers",
-            value: data.numberOfActivePayers || 0,
+            value: activePayersPercentage,
         },
         {
             id: "Registered Payers",
             label: "Registered Payers",
-            value: data.numberOfRegisteredPayers || 0,
+            value: registeredPayersPercentage,
         },
     ];
 
@@ -50,7 +54,7 @@ const PayersPieChart: React.FC<PieChartProps> = ({ data }) => {
             arcLinkLabelsTextColor={textColor}
             arcLabelsSkipAngle={10}
             arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
-            valueFormat={(value) => `${Number(value)} %`}
+            valueFormat={(value) => `${Math.round(value * 100)} %`} 
             legends={[
                 {
                     anchor: "bottom",
