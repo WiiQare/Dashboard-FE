@@ -1,7 +1,7 @@
 import SearchIcon from "@public/svg/search-icon";
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchValue } from "../../../redux/searchReducer";
+import { setSearchValue } from "@/redux/searchReducer";
 
 const Search: React.FC = () => {
     const dispatch = useDispatch();
