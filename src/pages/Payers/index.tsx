@@ -87,7 +87,7 @@ const Payers = () => {
         if (tableData && summary) {
             setTimeout(() => {
                 setShowLoader(false);
-            }, 500);
+            }, 50);
         }
     }, [summary, tableData]);
     console.log(showLoader)
