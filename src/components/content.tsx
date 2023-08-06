@@ -13,7 +13,7 @@ interface TableProps {
 function Content({ children, columns, cardsData, data, groups, currentPage }: TableProps) {
     return (
 
-        <div className="overflow-y-auto p-4 h-full w-full sm:px-4">
+        <div className="overflow-y-auto p-4 h-full w-full sm:px-4" id="content">
             <div className="grid grid-cols-1 gap-4 mb-4">
                 <div className="w-full">
                     <Cards data={cardsData} />

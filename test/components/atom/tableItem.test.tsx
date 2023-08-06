@@ -9,18 +9,18 @@ describe("TableItems Component", () => {
         const data = [
             { id: 1, name: "John Doe", age: 25 },
             { id: 2, name: "Jane Smith", age: 30 },
-          
+
         ];
 
         const columns = [
             { field: "id", headerName: "ID" },
             { field: "name", headerName: "Name" },
             { field: "age", headerName: "Age" },
-           
+
         ];
 
-        const groups: GridColumnGroupingModel = []; 
+        const groups: GridColumnGroupingModel = [];
 
-        render(<TableItems data={data} columns={columns} groups={groups} />);
+        render(<TableItems data={data} columns={columns} groups={groups} currentPage={"0"} />);
     });
 });

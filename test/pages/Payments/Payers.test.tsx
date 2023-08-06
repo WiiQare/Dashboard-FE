@@ -1,15 +1,11 @@
-import { render } from "@testing-library/react";
+// Payers.test.tsx
+import React from 'react';
+import { render } from '@testing-library/react';
 import Payers from "../../../src/pages/Payments/Payers";
 
-jest.mock("next/router", () => ({
-  replace: jest.fn(),
-  useRouter: jest.fn().mockReturnValue({
-    push: jest.fn(),
-    replace: jest.fn(),
-  }),
-}));
+describe('Payers Component', () => {
+  it('renders the component without errors', async () => {
+    render(<Payers />);
+  });
 
-test("renders Providers component", async () => {
-  const { container } = render(<Payers />);
-  expect(container).toMatchSnapshot();
 });

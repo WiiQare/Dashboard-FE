@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import CardsItem from '../../../src/components/atom/pageComponnets/cardItem';
+import CardsItem from '../../../src/components/atom/cardItem';
 
 describe('CardsItem Component', () => {
     const mockProps = {
@@ -12,6 +12,6 @@ describe('CardsItem Component', () => {
     };
 
     it('should render without errors', () => {
-        render(<CardsItem {...mockProps} />);
+        render(<CardsItem progress={0} {...mockProps} />);
     });
 });

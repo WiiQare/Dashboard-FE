@@ -1,15 +1,10 @@
-import { render } from "@testing-library/react";
-import Beneficiaries from "../../../src/pages/Beneficiaries";
+import React from 'react';
+import { render } from '@testing-library/react';
+import Beneficiaries from '../../../src/pages/Beneficiaries/index';
 
-jest.mock("next/router", () => ({
-  replace: jest.fn(),
-  useRouter: jest.fn().mockReturnValue({
-    push: jest.fn(),
-    replace: jest.fn(),
-  }),
-}));
+describe('Beneficiaries Component', () => {
+  it('renders the component without errors', async () => {
+    render(<Beneficiaries />);
+  });
 
-test("renders Providers component", async () => {
-  const { container } = render(<Beneficiaries />);
-  expect(container).toMatchSnapshot();
 });

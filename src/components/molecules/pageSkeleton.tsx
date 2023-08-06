@@ -11,7 +11,7 @@ const PageSkeleton = ({ number, row }: variable) => {
 
 
     return (
-        <div className="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4">
+        <div className="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4" id="page-skeleton">
         <div className="grid grid-cols-1 gap-4 mb-4">
             <div className="w-full">
             <CardSkeleton number={number} />

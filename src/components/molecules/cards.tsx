@@ -1,5 +1,5 @@
 import React from 'react';
-import CardsItem from './cardItem';
+import CardsItem from '../atom/cardItem';
 
 
 

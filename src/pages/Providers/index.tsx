@@ -40,15 +40,6 @@ const Providers = () => {
         setMounted(true);
     }, [User?.authenticated, User?.user]);
 
-    if (mounted) {
-        if (userAuth === false) {
-            // console.log("userAuth", userAuth)
-
-            Router.replace("/auth/signIn");
-
-        }
-    }
-
     useEffect(() => {
         if (!mounted) return; // Return early if the component is not mounted
 
