@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render} from '@testing-library/react';
 import Providers from '../../../src/pages/Providers/index';
 
-describe('Providers Component', () => {
-  it('renders the component without errors', async () => {
-    render(<Providers/>);
-  });
-
+test("renders Providers component", async () => {
+  const { container } = render(<Providers />);
+  expect(container).toMatchSnapshot();
 });
+

@@ -1,9 +1,7 @@
 import { render } from "@testing-library/react";
-import Voucher from "../../../src/pages/Vouchers/index";
+import Vouchers from "../../../src/pages/Vouchers/index";
 
-describe('Voucher Component', () => {
-  it('renders the component without errors', async () => {
-    render(<Voucher />);
-  });
-
+test("renders Vouchers component", async () => {
+  const { container } = render(<Vouchers />);
+  expect(container).toMatchSnapshot();
 });
