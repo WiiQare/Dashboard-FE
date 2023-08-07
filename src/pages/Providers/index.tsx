@@ -93,7 +93,7 @@ const Providers = () => {
         if (tableData && summary) {
             setTimeout(() => {
                 setShowLoader(false);
-            }, 50);
+            }, 25);
         }
     }, [summary, tableData]);
     console.log(showLoader)
