@@ -144,7 +144,7 @@ const TableItems: FC<TableItemsProps<any>> = ({ data, columns, groups, currentPa
         return (
             <div className="flex items-center">
                 <button className="px-2 py-1" onClick={handleCopyClick} title={value}>
-                    {typeof value === 'string' ? value.substr(0, 8) : value}
+                    {typeof value === 'string' ? value.substr(0, 8)+'...' : value}
                 </button>
             </div>
         );
