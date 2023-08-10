@@ -42,7 +42,6 @@ To install and run this Next.js project locally, follow the steps below:
 
    or
 
-
    yarn install
    ```
 
