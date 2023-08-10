@@ -32,7 +32,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
         try {
             const user = await AuthenticateUser(email, password);
 
-            if (user?.access_token && user.access_token.length > 8) {
+            if (typeof user?.access_token === 'string' && user.access_token.length > 8) {
                 if (user.type.includes("WIIQARE")) {
                     userContext?.setAuthenticated(true);
                     userContext?.setUser(user);
@@ -51,7 +51,6 @@ const SignIn: NextPage = (): React.JSX.Element => {
                 setIsValidInput(false);
             }
         } catch (error) {
-            // Handle error appropriately, e.g., show an error message
             console.error("Error authenticating user:", error);
             setIsValidInput(false);
         } finally {
@@ -59,6 +58,7 @@ const SignIn: NextPage = (): React.JSX.Element => {
             setIsLoading(false);
         }
     };
+
 
     return (
         <>
