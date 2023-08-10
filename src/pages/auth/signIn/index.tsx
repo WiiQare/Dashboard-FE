@@ -29,30 +29,35 @@ const SignIn: NextPage = (): React.JSX.Element => {
         const email = emailRef.current;
         const password = passwordRef.current;
 
-        const user = await AuthenticateUser(email, password);
+        try {
+            const user = await AuthenticateUser(email, password);
 
-        if (user?.access_token && user?.type.includes("WIIQARE")) {
-            userContext?.setAuthenticated(true);
-            userContext?.setUser(user);
-            sessionStorage.setItem("userState", JSON.stringify(user));
-            sessionStorage.setItem("userAuth", JSON.stringify(true));
-            setIsValidInput(true);
-            setIsDisabled(false);
-            setIsLoading(false);
-            router.push("/");
-        } else if (user?.access_token &&  !user?.type.includes("WIIQARE")) {
-            setErrorMessage("Sorry you are not allowed to access this page")
-            setIsLoading(false);
-            setIsDisabled(false);
+            if (user?.access_token && user.access_token.length > 8) {
+                if (user.type.includes("WIIQARE")) {
+                    userContext?.setAuthenticated(true);
+                    userContext?.setUser(user);
+                    sessionStorage.setItem("userState", JSON.stringify(user));
+                    sessionStorage.setItem("userAuth", JSON.stringify(true));
+                    setIsValidInput(true);
+                    setIsDisabled(false);
+                    setIsLoading(false);
+                    router.push("/");
+                } else {
+                    setErrorMessage("Sorry, you are not allowed to access this page");
+                    setIsValidInput(false);
+                }
+            } else {
+                setErrorMessage("Verify that you entered the correct email and password");
+                setIsValidInput(false);
+            }
+        } catch (error) {
+            // Handle error appropriately, e.g., show an error message
+            console.error("Error authenticating user:", error);
             setIsValidInput(false);
-        } else {
-            setIsValidInput(false);
-            setErrorMessage("Verify that you entered the correct email and password")
-            setIsLoading(false);
+        } finally {
             setIsDisabled(false);
+            setIsLoading(false);
         }
-
-
     };
 
     return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 type User = {
-    access_token: boolean;
+    access_token: string;
     userId: string;
     email: string;
     username: string;

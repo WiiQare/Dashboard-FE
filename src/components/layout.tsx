@@ -64,14 +64,13 @@ function Layout(props: Props) {
   }
 
   if (loading) {
-
     return <Loader />
   }
 
   if (router.pathname !== "/auth/signIn") {
-    if (!userAuth || hasExpired) {
+    if (!userAuth || hasExpired || userState?.access_token.length < 8) {
       router?.replace("/auth/signIn");
-      return null; // Return null to prevent rendering the content while redirecting
+      return null
     }
   }
   // console.log(userState?.access_token)
