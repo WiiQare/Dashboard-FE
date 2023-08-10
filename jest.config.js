@@ -27,8 +27,8 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@public/(.*)$': '<rootDir>/public/$1',
   },
-  testPathIgnorePatterns: ["<rootDir>/node_modules/","<rootDir>/dist/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/coverage/"],
-  coveragePathIgnorePatterns: ["<rootDir>/node_modules/","<rootDir>/dist/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/coverage/"],
+  testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/src/redux/", "<rootDir>/src/styles/", "<rootDir>/src/data/", "<rootDir>/coverage/"],
+  coveragePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/", "<rootDir>/.next/", "<rootDir>/public/", "<rootDir>/src/redux/", "<rootDir>/src/styles/", "<rootDir>/src/data/", "<rootDir>/coverage/"],
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset
     // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
