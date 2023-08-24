@@ -1,22 +1,22 @@
 // reducers/dropdownReducer.ts
 interface DropdownState {
-    isVisible: boolean;
+  isVisible: boolean;
 }
 
 const initialState: DropdownState = {
-    isVisible: false,
+  isVisible: false,
 };
 
 export const dropdownReducer = (
-    state = initialState,
-    action: any
+  state = initialState,
+  action: any,
 ): DropdownState => {
-    switch (action.type) {
-        case 'TOGGLE_DROPDOWN':
-            return {
-                isVisible: !state.isVisible,
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'TOGGLE_DROPDOWN':
+      return {
+        isVisible: !state.isVisible,
+      };
+    default:
+      return state;
+  }
 };

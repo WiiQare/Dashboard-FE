@@ -1,7 +1,7 @@
-import { render } from "@testing-library/react";
-import Payers from "../../../src/pages/Payers";
+import { render } from '@testing-library/react';
+import Payers from '../../../src/pages/Payers';
 
-test("renders Payers component", async () => {
+test('renders Payers component', async () => {
   const { container } = render(<Payers />);
   expect(container).toMatchSnapshot();
 });

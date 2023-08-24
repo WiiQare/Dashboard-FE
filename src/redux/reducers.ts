@@ -1,5 +1,5 @@
 // reducers.ts
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 interface AppState {
   profilePicture: string;
@@ -7,15 +7,15 @@ interface AppState {
 }
 
 const initialAppState: AppState = {
-  profilePicture: "",
+  profilePicture: '',
   isDropdownOpen: false,
 };
 
 const profileReducer = (state = initialAppState, action: any) => {
   switch (action.type) {
-    case "SET_PROFILE_PICTURE":
+    case 'SET_PROFILE_PICTURE':
       return { ...state, profilePicture: action.payload };
-    case "TOGGLE_DROPDOWN":
+    case 'TOGGLE_DROPDOWN':
       return { ...state, isDropdownOpen: !state.isDropdownOpen };
     default:
       return state;

@@ -1,7 +1,5 @@
-import Image from 'next/image'
-import React from "react";
-
-
+import Image from 'next/image';
+import React from 'react';
 
 function Logo() {
   return (
@@ -10,8 +8,7 @@ function Logo() {
       alt="Picture of the author"
       width="350"
       height="300"
-
     />
-  )
+  );
 }
 export default Logo;

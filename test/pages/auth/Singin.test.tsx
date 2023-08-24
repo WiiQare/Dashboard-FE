@@ -2,14 +2,14 @@ import { render } from '@testing-library/react';
 import SignIn from '../../../src/pages/auth/signIn/index';
 
 jest.mock('next/router', () => ({
-    useRouter: () => ({
-        push: jest.fn(),
-    }),
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
 }));
 
 describe('SignIn Component', () => {
-    it('should render without errors', () => {
-        render(<SignIn />);
-        // No errors thrown if the component renders successfully
-    });
+  it('should render without errors', () => {
+    render(<SignIn />);
+    // No errors thrown if the component renders successfully
+  });
 });

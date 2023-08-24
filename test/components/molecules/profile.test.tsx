@@ -7,12 +7,12 @@ import Profile from '../../../src/components/molecules/profile';
 import rootReducer from '@/redux/rootReducer';
 
 describe('Profile Component', () => {
-    it('Renders without errors', () => {
-        const store = createStore(rootReducer); // Create a Redux store with your reducer
-        render(
-            <Provider store={store}>
-                <Profile />
-            </Provider>
-        );
-    });
+  it('Renders without errors', () => {
+    const store = createStore(rootReducer); // Create a Redux store with your reducer
+    render(
+      <Provider store={store}>
+        <Profile />
+      </Provider>,
+    );
+  });
 });

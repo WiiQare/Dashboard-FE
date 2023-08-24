@@ -6,19 +6,19 @@ import SideBar from '../../../src/components/molecules/side-bar';
 
 // Mock the useRouter hook
 jest.mock('next/router', () => ({
-    useRouter: jest.fn(),
+  useRouter: jest.fn(),
 }));
 
 describe('SideBar Component', () => {
-    const mockProps = {
-        sidebarOpen: true,
-        handleSidebar: jest.fn(),
-    };
+  const mockProps = {
+    sidebarOpen: true,
+    handleSidebar: jest.fn(),
+  };
 
-    it('should render without errors', () => {
-        // Mock the useRouter result
-        (useRouter as jest.Mock).mockReturnValue({});
+  it('should render without errors', () => {
+    // Mock the useRouter result
+    (useRouter as jest.Mock).mockReturnValue({});
 
-        render(<SideBar {...mockProps} />);
-    });
+    render(<SideBar {...mockProps} />);
+  });
 });

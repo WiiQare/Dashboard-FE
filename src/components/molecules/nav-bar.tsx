@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import Search from "../atom/search";
-import DarkMode from "../atom/dark-mode";
-import Profile from "./profile";
+import Search from '../atom/search';
+import DarkMode from '../atom/dark-mode';
+import Profile from './profile';
 
 interface MyProps {
   handleSidebar(): void;
@@ -11,7 +11,6 @@ interface MyProps {
 
 const Navbar: React.FC<MyProps> = (props) => {
   return (
-
     <nav className=" transition-c-0.5 top-0  w-full border-b border-gray-200 bg-white dark:border-none dark:border-gray-700 dark:bg-[#050e20d6]">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
         <div className="gap4 mb-4 grid grid-cols-2">
@@ -46,7 +45,6 @@ const Navbar: React.FC<MyProps> = (props) => {
                     alt="Picture of the author"
                     width="350"
                     height="300"
-
                   />
                 </Link>
               </div>
@@ -66,7 +64,6 @@ const Navbar: React.FC<MyProps> = (props) => {
         </div>
       </div>
     </nav>
-
   );
 };
 

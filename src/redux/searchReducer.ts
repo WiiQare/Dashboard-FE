@@ -1,29 +1,28 @@
-
 // Define action types
-const SET_SEARCH_VALUE = "SET_SEARCH_VALUE";
+const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 
 // Define action creators
 export const setSearchValue = (value: string) => ({
-    type: SET_SEARCH_VALUE,
-    payload: value,
+  type: SET_SEARCH_VALUE,
+  payload: value,
 });
 
 // Define initial state
 const initialState = {
-    searchValue: "",
+  searchValue: '',
 };
 
 // Define reducer
 const SearchReducer = (state = initialState, action: any) => {
-    switch (action.type) {
-        case SET_SEARCH_VALUE:
-            return {
-                ...state,
-                searchValue: action.payload,
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case SET_SEARCH_VALUE:
+      return {
+        ...state,
+        searchValue: action.payload,
+      };
+    default:
+      return state;
+  }
 };
 
 export default SearchReducer;

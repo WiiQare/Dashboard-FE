@@ -3,15 +3,15 @@ window.matchMedia =
   function () {
     return {
       matches: false,
-      addListener: function () { },
-      removeListener: function () { },
+      addListener: function () {},
+      removeListener: function () {},
     };
   };
 window.ResizeObserver = class ResizeObserver {
-  observe() { }
-  unobserve() { }
-  disconnect() { }
-}
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
 jest.mock('next/router', () => ({
   useRouter: jest.fn().mockReturnValue({
     push: jest.fn(),

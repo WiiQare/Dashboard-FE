@@ -1,4 +1,4 @@
 // actions/dropdownActions.ts
 export const toggleDropdown = () => ({
-    type: 'TOGGLE_DROPDOWN',
+  type: 'TOGGLE_DROPDOWN',
 });
