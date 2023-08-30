@@ -54,7 +54,7 @@ const Profile = (): JSX.Element => {
     User?.setUser({});
     sessionStorage.removeItem('userAuth');
     sessionStorage.removeItem('userState');
-    Router.replace('/auth/signIn');
+    Router.replace('/auth/Login');
   };
 
   useEffect(() => {

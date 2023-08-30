@@ -31,7 +31,7 @@ const Login: NextPage = (): React.JSX.Element => {
 
     try {
       const user = await AuthenticateUser(email, password);
-
+      console.log(user);
       if (
         typeof user?.access_token === 'string' &&
         user.access_token.length > 8
