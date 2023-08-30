@@ -43,7 +43,7 @@ function Layout(props: Props) {
     setUserAuth(Boolean(sessionStorage.getItem('userAuth')));
     setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
     setMounted(true);
-    setLoading(false); // Set loading to false after mounting
+    setLoading(false);
   }, [User?.authenticated, User?.user]);
 
   const fetchDataAsync = async () => {
@@ -51,7 +51,6 @@ function Layout(props: Props) {
       await fetchData('/payers', userState?.access_token, 1, 0);
       setHasExpired(false);
     } catch (error) {
-      // Handle the error as needed
       console.error('Error fetching data:', error);
       setHasExpired(true);
     }
@@ -65,27 +64,29 @@ function Layout(props: Props) {
     return <Loader />;
   }
 
-  if (router.pathname !== '/auth/signIn') {
+  if (router.pathname !== '/auth/Login') {
     if (!userAuth || hasExpired || userState?.access_token.length < 8) {
-      router?.replace('/auth/signIn');
+      // Remove session data before redirecting
+      sessionStorage.removeItem('userState');
+      sessionStorage.removeItem('userAuth');
+      router?.replace('/auth/Login');
       return null;
     }
   }
-  // console.log(userState?.access_token)
   return (
     <div>
       <Header />
       <div className="  bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col fixed h-screen">
         <div className="flex z-50  w-full">
           {userAuth &&
-            router.pathname !== '/auth/signIn' &&
+            router.pathname !== '/auth/Login' &&
             router.pathname !== '/404' && (
               <Navbar handleSidebar={handleSidebarState} />
             )}
         </div>
         <div className="flex overflow-hidden w-screen flex-grow ">
           {userAuth &&
-            router.pathname !== '/auth/signIn' &&
+            router.pathname !== '/auth/Login' &&
             router.pathname !== '/404' && (
               <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
             )}
