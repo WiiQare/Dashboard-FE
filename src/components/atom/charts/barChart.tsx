@@ -1,8 +1,13 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { ResponsiveBar, BarDatum } from '@nivo/bar';
+import { BarDatum } from '@nivo/bar';
+import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
 
+const ResponsiveBar = dynamic(
+  () => import('@nivo/bar').then((m) => m.ResponsiveBar),
+  { ssr: false },
+);
 export interface ChartData extends BarDatum {
   activeCount: number;
   registeredCount: number;
