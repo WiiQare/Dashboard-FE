@@ -4,7 +4,6 @@ import Navbar from './molecules/nav-bar';
 import Header from './atom/head';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/context/UserContext';
-import { fetchData } from '@/pages/api/fetchData';
 import Loader from './atom/loader';
 
 let sidebarAction: boolean = false;
@@ -27,7 +26,6 @@ function Layout(props: Props) {
   const User = React.useContext(UserContext);
   const [open, setOpen] = useState(sidebarAction);
   const [loading, setLoading] = useState(true);
-  const [hasExpired, setHasExpired] = useState(false);
 
   const handleSidebarState = (): void => {
     setOpen(!open);
@@ -37,28 +35,12 @@ function Layout(props: Props) {
   const [userAuth, setUserAuth] = useState<boolean | undefined>(
     User?.authenticated,
   );
-  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setUserAuth(Boolean(sessionStorage.getItem('userAuth')));
     setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
-    setMounted(true);
     setLoading(false);
   }, [User?.authenticated, User?.user]);
-
-  const fetchDataAsync = async () => {
-    try {
-      await fetchData('/payers', userState?.access_token, 1, 0);
-      setHasExpired(false);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setHasExpired(true);
-    }
-  };
-
-  if (mounted && userAuth) {
-    fetchDataAsync();
-  }
 
   if (loading) {
     return <Loader />;
@@ -73,7 +55,7 @@ function Layout(props: Props) {
     //   'access_token',
     //   userState?.access_token,
     // );
-    if (!userAuth || hasExpired || userState?.access_token.length < 8) {
+    if (!userAuth || userState?.access_token.length < 8) {
       // Remove session data before redirecting
       sessionStorage.removeItem('userState');
       sessionStorage.removeItem('userAuth');

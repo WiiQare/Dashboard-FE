@@ -36,7 +36,7 @@ const Login: NextPage = (): React.JSX.Element => {
         typeof user?.access_token === 'string' &&
         user.access_token.length > 8
       ) {
-        const hasExpired = await fetchDataAsync(user.access_token); // Wait for fetchDataAsync to complete
+        const hasExpired = await fetchDataAsync(user.access_token); 
 
         if (!hasExpired && user.type.includes('WIIQARE')) {
           userContext?.setAuthenticated(true);
