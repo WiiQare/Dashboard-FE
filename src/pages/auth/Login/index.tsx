@@ -15,7 +15,6 @@ const Login: NextPage = (): React.JSX.Element => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasExpired, setHasExpired] = useState(false);
   const userContext = React.useContext(UserContext);
 
   if (userContext?.authenticated === true) {
@@ -33,7 +32,6 @@ const Login: NextPage = (): React.JSX.Element => {
     try {
       const user = await AuthenticateUser(email, password);
       // console.log(user);
-
       if (
         typeof user?.access_token === 'string' &&
         user.access_token.length > 8
@@ -74,11 +72,9 @@ const Login: NextPage = (): React.JSX.Element => {
   const fetchDataAsync = async (accessToken: string) => {
     try {
       await fetchData('/payers', accessToken, 1, 0);
-      setHasExpired(false);
       return false;
     } catch (error) {
       console.error('Error fetching data:', error);
-      setHasExpired(true);
       // console.log('hasExpire', hasExpired);
       return true;
     }
