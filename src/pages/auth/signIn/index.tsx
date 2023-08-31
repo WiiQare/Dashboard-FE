@@ -6,7 +6,7 @@ import { UserContext } from '@/context/UserContext';
 import CircularProgress from '@mui/material/CircularProgress';
 import { AuthenticateUser } from '@/pages/api/authentication';
 
-const SignIn: NextPage = (): React.JSX.Element => {
+const Login: NextPage = (): React.JSX.Element => {
   const emailRef = useRef('');
   const passwordRef = useRef('');
   const router = useRouter();
@@ -183,4 +183,4 @@ const SignIn: NextPage = (): React.JSX.Element => {
   );
 };
 
-export default SignIn;
+export default Login;

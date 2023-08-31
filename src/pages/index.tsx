@@ -40,7 +40,7 @@ export default function Home() {
   }, [User?.authenticated, User?.user]);
 
   useEffect(() => {
-    if (!mounted) return; // Return early if the component is not mounted
+    if (!mounted) return;
 
     const fetchDataAsync = async () => {
       const pieRes = await fetchData(

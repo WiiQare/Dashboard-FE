@@ -1,6 +1,11 @@
 import React from 'react';
-import { ResponsivePie } from '@nivo/pie';
 import { useTheme } from 'next-themes';
+import dynamic from 'next/dynamic';
+
+const ResponsivePie = dynamic(
+  () => import('@nivo/pie').then((m) => m.ResponsivePie),
+  { ssr: false },
+);
 
 export interface PayersData {
   numberOfActivePayers?: number;
