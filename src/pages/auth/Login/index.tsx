@@ -22,7 +22,6 @@ const Login: NextPage = (): React.JSX.Element => {
     router.push('/');
   }
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsDisabled(true);
@@ -33,7 +32,7 @@ const Login: NextPage = (): React.JSX.Element => {
 
     try {
       const user = await AuthenticateUser(email, password);
-      console.log(user);
+      // console.log(user);
 
       if (
         typeof user?.access_token === 'string' &&
@@ -80,11 +79,10 @@ const Login: NextPage = (): React.JSX.Element => {
     } catch (error) {
       console.error('Error fetching data:', error);
       setHasExpired(true);
-      console.log("hasExpire", hasExpired);
+      // console.log('hasExpire', hasExpired);
       return true;
     }
   };
-
 
   return (
     <div className="items-center bg-gradient-to-b from-blue-600 w-screen to-blue-400 mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

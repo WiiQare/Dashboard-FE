@@ -65,7 +65,14 @@ function Layout(props: Props) {
   }
 
   if (router.pathname !== '/auth/Login') {
-    console.log("userAuth",userAuth, "hasExpirde",hasExpired,"access_token",userState?.access_token)
+    // console.log(
+    //   'userAuth',
+    //   userAuth,
+    //   'hasExpirde',
+    //   hasExpired,
+    //   'access_token',
+    //   userState?.access_token,
+    // );
     if (!userAuth || hasExpired || userState?.access_token.length < 8) {
       // Remove session data before redirecting
       sessionStorage.removeItem('userState');
