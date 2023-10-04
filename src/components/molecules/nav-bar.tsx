@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Search from '../atom/search';
 import DarkMode from '../atom/dark-mode';
 import Profile from './profile';
 
