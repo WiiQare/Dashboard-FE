@@ -27,7 +27,21 @@ export const fetchData = async (
       throw new Error('An error occurred while fetching data.');
     }
   } catch (error) {
-    // console.error('Error fetching data:', error);
+    if (axios.isAxiosError(error)) {
+      const baseUrl = window.location.origin;
+      const currentUrl = window.location.href;
+      const status = error.response?.status;
+      if (
+        (status === 401 || status === 403 || status === 500) &&
+        !currentUrl.includes('/Login')
+      ) {
+        sessionStorage.removeItem('userState');
+        sessionStorage.removeItem('userAuth');
+        window.location.href = `${baseUrl}/auth/Login`;
+        return null;
+      }
+    }
+
     throw new Error('An error occurred while fetching data.');
   }
 };
