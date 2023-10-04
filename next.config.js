@@ -6,7 +6,7 @@ const nextConfig = {
   // distDir: 'dist',
   images: { unoptimized: true },
   env: {
-    WIIQARE_URI: 'https://api.wiiqare-app.com/api/v1',
+    WIIQARE_URI: 'https://api.wiiqare.com/api/v1',
   },
 };
 
