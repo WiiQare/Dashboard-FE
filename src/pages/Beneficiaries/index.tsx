@@ -1,5 +1,5 @@
 import { UserContext } from '@/context/UserContext';
-import React, { useEffect, useLayoutEffect, FC, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from '@/data/pagesData/beneficiaries/beneficiariesCards';
 import Pagination from '@/components/atom/pagination';
