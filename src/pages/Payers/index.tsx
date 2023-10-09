@@ -107,7 +107,6 @@ const Payers = () => {
       }, 25);
     }
   }, [summary, tableData]);
-  console.log(showLoader);
   if (showLoader) {
     return <PageSkeleton number={6} row={10} />;
   }

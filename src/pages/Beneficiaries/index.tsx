@@ -1,5 +1,5 @@
 import { UserContext } from '@/context/UserContext';
-import React, { useEffect, useLayoutEffect, FC, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from '@/data/pagesData/beneficiaries/beneficiariesCards';
 import Pagination from '@/components/atom/pagination';
@@ -107,7 +107,7 @@ const Beneficiaries = () => {
       }, 25);
     }
   }, [summary, tableData]);
-  console.log(showLoader);
+
   if (showLoader) {
     return <PageSkeleton number={7} row={10} />;
   }

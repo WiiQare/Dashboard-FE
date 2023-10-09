@@ -108,7 +108,7 @@ const Vouchers = () => {
       }, 25);
     }
   }, [summary, tableData]);
-  console.log(showLoader);
+
   if (showLoader) {
     return <PageSkeleton number={9} row={10} />;
   }

@@ -94,7 +94,7 @@ export default function Home() {
     }
   }, [mounted, userAuth, userState?.access_token]);
 
-  console.log(combinedCardData.length);
+  // console.log(combinedCardData.length);
   return (
     <div className="transition-c-0.5  overflow-y-auto p-4 h-full w-full sm:px-4">
       <div className="grid grid-cols-1 gap-4 mb-4">

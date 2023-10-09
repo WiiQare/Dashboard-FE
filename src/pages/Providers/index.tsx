@@ -108,7 +108,7 @@ const Providers = () => {
       }, 25);
     }
   }, [summary, tableData]);
-  console.log(showLoader);
+
   if (showLoader) {
     return <PageSkeleton number={7} row={10} />;
   }

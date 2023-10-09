@@ -3,7 +3,6 @@ import HealthIcon from '@public/svg/health-Icon';
 import PaymentsIcon from '@public/svg/payments-Icon';
 import BeneficiariesIcon from '@public/svg/beneficiaries-Icon';
 import PayersIcon from '@public/svg/payers-Icon';
-import ProfileIcon from '@public/svg/profile-icon';
 import NFTICON from '@public/svg/voucher-icon';
 import React, { useEffect, useState } from 'react';
 import PaymentProviderIcon from '@public/svg/Providers-icon';
@@ -45,16 +44,12 @@ interface UserInterface {
   access_token: string;
 }
 
-const SideBar = (props: { sidebarOpen: any; handleSidebar: any }) => {
+const SideBar = (props: { sidebarOpen: boolean; handleSidebar: any }) => {
   const router = useRouter();
   const User = React.useContext(UserContext);
 
   const [userState, setUserState] = useState<UserInterface | any>(User?.user);
-  const [userAuth, setUserAuth] = useState<boolean | undefined>(
-    User?.authenticated,
-  );
   useEffect(() => {
-    setUserAuth(Boolean(sessionStorage.getItem('userAuth')));
     setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
     // Set loading to false after mounting
   }, [User?.authenticated, User?.user]);

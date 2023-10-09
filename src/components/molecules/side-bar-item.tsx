@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export interface Menu {
