@@ -6,9 +6,17 @@ import payersColumns, {
 
 import PageLayout from '@/components/pages';
 
-
 const Payers = () => {
-  return <PageLayout columns={payersColumns} CardsData={CardsData} columnGroupingModel={payersColumnGroupingModel} endpoint={'/payers'} itemNumberEndpoint={'numberOfRegisteredPayers'} summaryEndpoint={'/payers/summary'}></PageLayout>
+  return (
+    <PageLayout
+      columns={payersColumns}
+      CardsData={CardsData}
+      columnGroupingModel={payersColumnGroupingModel}
+      endpoint={'/payers'}
+      itemNumberEndpoint={'numberOfRegisteredPayers'}
+      summaryEndpoint={'/payers/summary'}
+    ></PageLayout>
+  );
 };
 
 export default Payers;

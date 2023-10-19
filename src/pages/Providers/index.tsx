@@ -18,6 +18,15 @@ interface CustomUser {
 let newSkip: number = 0;
 
 const Providers = () => {
-  return <PageLayout columns={ProvidersColumns} CardsData={CardsData} columnGroupingModel={''} endpoint={'/providers'} itemNumberEndpoint={'numberOfRegisteredProviders'} summaryEndpoint={'/providers/summary'}></PageLayout>
+  return (
+    <PageLayout
+      columns={ProvidersColumns}
+      CardsData={CardsData}
+      columnGroupingModel={''}
+      endpoint={'/providers'}
+      itemNumberEndpoint={'numberOfRegisteredProviders'}
+      summaryEndpoint={'/providers/summary'}
+    ></PageLayout>
+  );
 };
 export default Providers;

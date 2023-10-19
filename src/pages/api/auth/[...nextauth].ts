@@ -1,9 +1,8 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 interface tokensProvider {
-  id : string;
-  date: any
-
+  id: string;
+  date: any;
 }
 const authOptions = {
   session: {
@@ -11,10 +10,16 @@ const authOptions = {
     strategy: 'jwt',
   },
   callbacks: {
-    async signInError(error:any) {
+    async signInError(error: any) {
       throw new Error(error.message); // Include the error message
     },
-    async jwt({ token, user }: { token: { id: string; data: any | null }, user: any }) {
+    async jwt({
+      token,
+      user,
+    }: {
+      token: { id: string; data: any | null };
+      user: any;
+    }) {
       if (user) {
         token.id = user.access_token;
         token.data = user;
@@ -23,7 +28,13 @@ const authOptions = {
       return token;
     },
 
-    async session({ session, token }:{ session: { user : any; accessToken: any | null }, token: { id : string ; data : any | null } }) {
+    async session({
+      session,
+      token,
+    }: {
+      session: { user: any; accessToken: any | null };
+      token: { id: string; data: any | null };
+    }) {
       session.user.id = token.id;
       session.user.data = token.data;
       session.accessToken = token.id;
@@ -56,7 +67,10 @@ const authOptions = {
 
           if (json.code) throw new Error(json.description);
 
-          if (json.type !== 'WIIQARE_MANAGER' && json.type !== 'WIIQARE_ADMIN') {
+          if (
+            json.type !== 'WIIQARE_MANAGER' &&
+            json.type !== 'WIIQARE_ADMIN'
+          ) {
             throw new Error("Vous n'êtes pas autorisé à vous connecter");
           }
 

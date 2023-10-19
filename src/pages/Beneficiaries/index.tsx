@@ -8,7 +8,16 @@ import PageLayout from '@/components/pages';
 let newSkip: number = 0;
 
 const Beneficiaries = () => {
-  return <PageLayout columns={BeneficiariesColumns} CardsData={CardsData} columnGroupingModel={BeneficiariesColumnGroupingModel} endpoint={'/beneficiaries'} itemNumberEndpoint={'numberOfRegisteredBeneficiaries'} summaryEndpoint={'/beneficiaries/summary'}></PageLayout>
+  return (
+    <PageLayout
+      columns={BeneficiariesColumns}
+      CardsData={CardsData}
+      columnGroupingModel={BeneficiariesColumnGroupingModel}
+      endpoint={'/beneficiaries'}
+      itemNumberEndpoint={'numberOfRegisteredBeneficiaries'}
+      summaryEndpoint={'/beneficiaries/summary'}
+    ></PageLayout>
+  );
 };
 
 export default Beneficiaries;

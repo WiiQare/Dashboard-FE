@@ -21,12 +21,13 @@ import { GlobalStyles } from '@mui/material';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from 'next-themes';
+import { useSession } from 'next-auth/react';
 
 const getFilteredRows = ({ apiRef }: GridCsvGetRowsToExportParams) =>
   gridExpandedSortedRowIdsSelector(apiRef);
 
 const ExportIcon = createSvgIcon(
-  <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />,
+  <path d="M19 12v7H5v7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />,
   'SaveAlt',
 );
 
@@ -41,8 +42,17 @@ interface CustomToolbarProps {
   currentPage: string;
 }
 
+interface CustomUser {
+  id: string;
+  name: string | null;
+  email: string | null | undefined;
+  image: string | null | undefined;
+}
+
 const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
   const apiRef = useGridApiContext();
+  const { data: session } = useSession();
+  const userState = session?.user as CustomUser;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const isDarkMode = theme.theme === 'dark';
@@ -59,13 +69,9 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
     handleExportClose();
     const endPoint = `/export/${currentPage}`;
     const rowsToExport = getFilteredRows({ apiRef });
+    const accessToken = userState?.id; // Get the access token here
 
     try {
-      const userState = JSON.parse(
-        sessionStorage.getItem('userState') || 'null',
-      );
-      const accessToken = userState?.access_token;
-
       const headers = {
         Authorization: `Bearer ${accessToken}`,
       };
@@ -73,7 +79,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
       const response = await axios.get(
         `${process.env.WIIQARE_URI}/admin${endPoint}`,
         {
-          data: rowsToExport,
+          params: { data: rowsToExport }, // Change 'data' to 'params'
           headers,
           responseType: 'arraybuffer',
         },
@@ -89,7 +95,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
         window.URL.revokeObjectURL(url);
       }
     } catch (error) {
-      console.error('Error exporting data:', error);
+      // console.error('Error exporting data:', error);
     }
   };
 

@@ -17,8 +17,16 @@ interface CustomUser {
 let newSkip: number = 0;
 
 const Payers = () => {
-  return <PageLayout columns={payersColumns} CardsData={CardsData} columnGroupingModel={''} endpoint={'/payments/payers'} itemNumberEndpoint={'numberOfRows'} summaryEndpoint={'/payments/summary'}></PageLayout>
+  return (
+    <PageLayout
+      columns={payersColumns}
+      CardsData={CardsData}
+      columnGroupingModel={''}
+      endpoint={'/payments/payers'}
+      itemNumberEndpoint={'numberOfRows'}
+      summaryEndpoint={'/payments/summary'}
+    ></PageLayout>
+  );
 };
 
 export default Payers;
-

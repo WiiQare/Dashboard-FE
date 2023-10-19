@@ -4,7 +4,16 @@ import PaymentsProvidersColumns from '@/data/pagesData/payments/providers/provid
 import PageLayout from '@/components/pages';
 
 const Provider = () => {
-  return <PageLayout columns={PaymentsProvidersColumns} CardsData={CardsData} columnGroupingModel={null} endpoint={'/payments/providers'} itemNumberEndpoint={'numberOfRows'} summaryEndpoint={'/payments/summary'}></PageLayout>
+  return (
+    <PageLayout
+      columns={PaymentsProvidersColumns}
+      CardsData={CardsData}
+      columnGroupingModel={null}
+      endpoint={'/payments/providers'}
+      itemNumberEndpoint={'numberOfRows'}
+      summaryEndpoint={'/payments/summary'}
+    ></PageLayout>
+  );
 };
 
 export default Provider;

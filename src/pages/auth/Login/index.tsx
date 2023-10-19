@@ -17,7 +17,7 @@ const Login = () => {
   const userAuth = !!session;
 
   // console.log(session);
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsDisabled(true);
     setIsLoading(true);
@@ -33,15 +33,14 @@ const Login = () => {
       });
       // console.log("response error: ", response)
       if (response?.error) {
-        console.log("response error: ", response)
+        console.log('response error: ', response);
         setErrorMessage('Invalid email or password');
         setIsValidInput(false);
       } else {
         router.push('/');
-        console.log("login successful");
+        console.log('login successful');
       }
     } catch (error) {
-
       // console.error('Error authenticating user:', error);
       setErrorMessage('An error occurred during authentication.');
       setIsValidInput(false);
@@ -52,7 +51,7 @@ const Login = () => {
   };
   if (userAuth) {
     router.push('/');
-    return <Loader></Loader>
+    return <Loader></Loader>;
   } else {
     return (
       <div className="items-center bg-gradient-to-b from-blue-600 w-screen to-blue-400 mx-auto md:h-screen lg:py-0 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -169,6 +168,6 @@ const Login = () => {
         </div>
       </div>
     );
-  };
-}
+  }
+};
 export default Login;

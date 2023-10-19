@@ -34,7 +34,7 @@ function Layout(props: Props) {
   }, [session, userAuth, router.pathname, router]);
 
   if (typeof session === 'undefined') {
-    return <Loader />
+    return <Loader />;
   }
   return (
     <div>

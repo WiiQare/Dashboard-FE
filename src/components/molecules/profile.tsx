@@ -5,33 +5,22 @@ import { toggleDropdown } from '../../redux/actions/actions';
 import { UserContext } from '@/context/UserContext';
 import Image from 'next/image';
 import Router from 'next/router';
-
-interface UserInterface {
-  type: string;
-  userId: string;
-  phoneNumber: string;
-  names: string;
+import { signOut, useSession } from 'next-auth/react';
+import router from 'next/router';
+interface CustomUser {
   email: string;
-  access_token: string;
+  data: any;
+  image: string | null | undefined;
 }
-
 const Profile = (): JSX.Element => {
-  const User = React.useContext(UserContext);
-
   const dispatch = useDispatch();
   const isDropdownVisible = useSelector(
     (state: RootState) => state.dropdown.isVisible,
   );
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profilePictureRef = useRef<HTMLDivElement>(null);
-  const [userState, setUserState] = useState<UserInterface | null>(
-    User?.user || null,
-  );
-
-  useEffect(() => {
-    setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
-  }, []);
-
+  const { data: session } = useSession();
+  const userState = session?.user as CustomUser;
   const handleProfilePictureClick = () => {
     dispatch(toggleDropdown());
   };
@@ -50,11 +39,8 @@ const Profile = (): JSX.Element => {
   };
 
   const handleSignOut = () => {
-    User?.setAuthenticated(false);
-    User?.setUser({});
-    sessionStorage.removeItem('userAuth');
-    sessionStorage.removeItem('userState');
-    Router.replace('/auth/Login');
+    signOut();
+    router.push('/auth/Login');
   };
 
   useEffect(() => {
@@ -64,7 +50,7 @@ const Profile = (): JSX.Element => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
-
+  console.log(userState);
   return (
     <div className="profile-dropdown">
       <div
@@ -92,13 +78,13 @@ const Profile = (): JSX.Element => {
             <div className="px-4 py-3  ">
               <div className="font-medium truncate">
                 <span className="block text-sm dark:text-white font-bold text-black ">
-                  {userState?.names}
+                  {userState?.email.split('@')[0]}
                 </span>
                 <span className="block text-sm mt-2 font-medium dark:text-white text-gray-700 truncate">
                   {userState?.email}
                 </span>
                 <span className="block text-sm mt-1 font-medium dark:text-white text-gray-500 truncate">
-                  {userState?.type}
+                  {userState?.data.names}
                 </span>
               </div>
             </div>

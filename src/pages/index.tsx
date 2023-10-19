@@ -11,7 +11,6 @@ import CardSkeleton from '@/components/atom/skeleton/cardSkeleton';
 import { useSession } from 'next-auth/react';
 import { fetchData } from './api/fetchData';
 
-
 interface CustomUser {
   id: string;
   name: string | null | undefined;
@@ -26,34 +25,42 @@ export default function Home() {
   const [pieData, setPieData] = useState<any>({});
   const { data: session } = useSession();
   const userState = session?.user as CustomUser;
-  const userAuth = !!session
+  const userAuth = !!session;
 
   useEffect(() => {
     if (userAuth) {
       const fetchDataAsync = async () => {
         // Use userState.id as the access token
         const accessToken = userState?.id;
-  
+
         // Check if accessToken is not null or undefined before making API requests
         if (accessToken) {
-          console.log('Access token', session)
+          console.log('Access token', session);
           const pieRes = await fetchData('/payers/summary', accessToken);
           setPieData(pieRes);
-  
+
           const vouchers = await fetchData('/vouchers/summary', accessToken);
           const payers = await fetchData('/payers/summary', accessToken);
           const providers = await fetchData('/providers/summary', accessToken);
-          const beneficiaries = await fetchData('/beneficiaries/summary', accessToken);
+          const beneficiaries = await fetchData(
+            '/beneficiaries/summary',
+            accessToken,
+          );
           const res = await fetchData('/charts/payers', accessToken, 5, 0);
-          const line = await fetchData('/charts/beneficiaries', accessToken, 20, 0);
-  
+          const line = await fetchData(
+            '/charts/beneficiaries',
+            accessToken,
+            20,
+            0,
+          );
+
           const combinedData = [
             ...VouchersCards(vouchers),
             ...PayersCards(payers),
             ...BeneficiariesCards(beneficiaries),
             ...ProvidersCards(providers),
           ];
-          
+
           setCombinedCardData(combinedData);
           setBarChartData(res);
           setLineChartData(line);
@@ -62,7 +69,6 @@ export default function Home() {
 
       fetchDataAsync();
     }
-
   }, [userAuth, userState]);
 
   return (
@@ -70,7 +76,7 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div className="w-full">
           {combinedCardData.length ? (
-                   <Cards data={combinedCardData} />
+            <Cards data={combinedCardData} />
           ) : (
             <CardSkeleton number={10} />
           )}
