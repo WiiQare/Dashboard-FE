@@ -11,7 +11,7 @@ import CardSkeleton from '@/components/atom/skeleton/cardSkeleton';
 import { useSession } from 'next-auth/react';
 import { fetchData } from './api/fetchData';
 
-interface CustomUser {
+interface UserType {
   id: string;
   name: string | null | undefined;
   email: string | null | undefined;
@@ -24,9 +24,9 @@ export default function Home() {
   const [combinedCardData, setCombinedCardData] = useState<any[]>([]);
   const [pieData, setPieData] = useState<any>({});
   const { data: session } = useSession();
-  const userState = session?.user as CustomUser;
+  const userState = session?.user as UserType;
   const userAuth = !!session;
-
+  console.log(session)
   useEffect(() => {
     if (userAuth) {
       const fetchDataAsync = async () => {

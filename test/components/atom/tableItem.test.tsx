@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TableItems from '../../../src/components/atom/tableItem';
+import TableItems from '@/components/atom/tableItem';
 import { GridColumnGroupingModel } from '@mui/x-data-grid';
+import { SessionProvider } from 'next-auth/react';
+import { UserType } from '@/Interfaces/interfaces';
 
 describe('TableItems Component', () => {
   test('Renders without errors', () => {
@@ -19,12 +21,14 @@ describe('TableItems Component', () => {
     const groups: GridColumnGroupingModel = [];
 
     render(
+      <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
       <TableItems
         data={data}
         columns={columns}
         groups={groups}
         currentPage={'0'}
-      />,
+      />
+  </SessionProvider>,
     );
   });
 });

@@ -4,6 +4,7 @@ import Content from '@/components/content';
 import PageSkeleton from '@/components/molecules/pageSkeleton';
 import { useSession } from 'next-auth/react';
 import { fetchData } from '@/pages/api/fetchData';
+import { UserType } from '@/Interfaces/interfaces';
 
 interface PageLayoutProps {
   columns: any[];
@@ -14,12 +15,7 @@ interface PageLayoutProps {
   summaryEndpoint: string;
 }
 
-interface CustomUser {
-  id: string;
-  name: string | null;
-  email: string | null | undefined;
-  image: string | null | undefined;
-}
+
 
 const PageLayout: React.FC<PageLayoutProps> = ({
   columns,
@@ -30,7 +26,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   itemNumberEndpoint,
 }) => {
   const { data: session } = useSession();
-  const userState = session?.user as CustomUser;
+  const userState = session?.user as UserType;
   const [tableData, setTableData] = useState<any>(null);
   const [summary, setSummary] = useState<any>();
   const [numOfItems, setNumOfItems] = useState<number>(0);

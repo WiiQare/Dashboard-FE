@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import TableSkeleton from '../../../../src/components/atom/skeleton/tableSkeleton';
+import TableSkeleton from '@/components/atom/skeleton/tableSkeleton';
 
 describe('TableSkeleton Component', () => {
   it('renders the correct number of skeleton cards', () => {

@@ -1,4 +1,4 @@
-import MenuItem, { Menu } from './side-bar-item';
+import MenuItem, { Menu } from './MenuItem';
 import HealthIcon from '@public/svg/health-Icon';
 import PaymentsIcon from '@public/svg/payments-Icon';
 import BeneficiariesIcon from '@public/svg/beneficiaries-Icon';
@@ -6,9 +6,9 @@ import PayersIcon from '@public/svg/payers-Icon';
 import NFTICON from '@public/svg/voucher-icon';
 import React from 'react';
 import PaymentProviderIcon from '@public/svg/Providers-icon';
-import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import AddMember from './addmember';
+import { UserType } from '@/Interfaces/interfaces';
+import AddMember from './Addmember';
 
 const Submenus = [
   { icon: PaymentProviderIcon, title: 'Provider', href: '/Payments/Providers' },
@@ -35,13 +35,10 @@ const menus = [
 //   },
 // ] as unknown as Menu[];
 
-interface CustomUser {
-  data: any;
-}
 
 const SideBar = (props: { sidebarOpen: boolean; handleSidebar: any }) => {
   const { data: session } = useSession();
-  const userState = session?.user as CustomUser;
+  const userState = session?.user as UserType;
 
   return (
     <div

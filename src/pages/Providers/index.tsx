@@ -8,7 +8,7 @@ import Content from '@/components/content';
 import ProvidersColumns from '@/data/pagesData/providers/providersColumns';
 import PageSkeleton from '@/components/molecules/pageSkeleton';
 import PageLayout from '@/components/pages';
-interface CustomUser {
+interface UserType {
   id: string;
   name: string | null | undefined;
   email: string | null | undefined;

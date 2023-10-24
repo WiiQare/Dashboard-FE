@@ -2,16 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/rootReducer';
 import { toggleDropdown } from '../../redux/actions/actions';
-import { UserContext } from '@/context/UserContext';
 import Image from 'next/image';
 import Router from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 import router from 'next/router';
-interface CustomUser {
-  email: string;
-  data: any;
-  image: string | null | undefined;
-}
+import { UserType } from '@/Interfaces/interfaces';
+
 const Profile = (): JSX.Element => {
   const dispatch = useDispatch();
   const isDropdownVisible = useSelector(
@@ -20,7 +16,7 @@ const Profile = (): JSX.Element => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profilePictureRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
-  const userState = session?.user as CustomUser;
+  const userState = session?.user as UserType;
   const handleProfilePictureClick = () => {
     dispatch(toggleDropdown());
   };
@@ -78,7 +74,7 @@ const Profile = (): JSX.Element => {
             <div className="px-4 py-3  ">
               <div className="font-medium truncate">
                 <span className="block text-sm dark:text-white font-bold text-black ">
-                  {userState?.email.split('@')[0]}
+                  {userState?.email?.split('@')[0]}
                 </span>
                 <span className="block text-sm mt-2 font-medium dark:text-white text-gray-700 truncate">
                   {userState?.email}

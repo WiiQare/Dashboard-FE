@@ -6,12 +6,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Image from 'next/image';
 import { AddManagers } from '@/pages/api/addManagers';
 
-interface CustomUser {
-  id: string;
-  name: string | null | undefined;
-  email: string | null | undefined;
-  image: string | null | undefined;
-}
 
 const AddMember = (): JSX.Element => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();

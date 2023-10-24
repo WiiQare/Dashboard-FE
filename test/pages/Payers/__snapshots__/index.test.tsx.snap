@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Payers component 1`] = `
+exports[`renders Vouchers component 1`] = `
 <div>
   <div
     class="transition-1 overflow-y-auto p-4 h-full w-full sm:px-4"
@@ -678,5 +678,6 @@ exports[`renders Payers component 1`] = `
       </div>
     </div>
   </div>
+  )
 </div>
 `;

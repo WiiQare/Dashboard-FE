@@ -7,7 +7,7 @@ import Content from '@/components/content';
 import payersColumns from '@/data/pagesData/payments/payers/payersColumns';
 import PageSkeleton from '@/components/molecules/pageSkeleton';
 import PageLayout from '@/components/pages';
-interface CustomUser {
+interface UserType {
   id: string;
   name: string | null | undefined;
   email: string | null | undefined;

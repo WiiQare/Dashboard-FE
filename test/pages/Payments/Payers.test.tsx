@@ -1,10 +1,15 @@
 // Payers.test.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
-import Payers from '../../../src/pages/Payments/Payers';
+import Payers from '@/pages/Payments/Payers';
+import { SessionProvider } from 'next-auth/react';
+import { UserType } from '@/Interfaces/interfaces';
 
-describe('Payers Component', () => {
-  it('renders the component without errors', async () => {
-    render(<Payers />);
-  });
+test('renders Vouchers component', async () => {
+  const { container } = render(
+    <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
+      <Payers/>)
+    </SessionProvider>,
+  );
+  expect(container).toMatchSnapshot();
 });

@@ -22,6 +22,7 @@ import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from 'next-themes';
 import { useSession } from 'next-auth/react';
+import { UserType } from '@/Interfaces/interfaces';
 
 const getFilteredRows = ({ apiRef }: GridCsvGetRowsToExportParams) =>
   gridExpandedSortedRowIdsSelector(apiRef);
@@ -42,17 +43,11 @@ interface CustomToolbarProps {
   currentPage: string;
 }
 
-interface CustomUser {
-  id: string;
-  name: string | null;
-  email: string | null | undefined;
-  image: string | null | undefined;
-}
 
 const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
   const apiRef = useGridApiContext();
   const { data: session } = useSession();
-  const userState = session?.user as CustomUser;
+  const userState = session?.user as UserType;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const isDarkMode = theme.theme === 'dark';
@@ -199,9 +194,9 @@ const TableItems: FC<TableItemsProps<any>> = ({
                 color: theme.theme === 'dark' && 'white !important',
               },
               '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root, .MuiFormControlLabel-label':
-                {
-                  color: theme.theme === 'dark' && 'white !important',
-                },
+              {
+                color: theme.theme === 'dark' && 'white !important',
+              },
             }}
           />
           <DataGrid

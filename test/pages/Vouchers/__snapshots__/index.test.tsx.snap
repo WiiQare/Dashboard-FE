@@ -159,78 +159,6 @@ exports[`renders Vouchers component 1`] = `
               </div>
             </div>
           </div>
-          <div
-            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
-          >
-            <div
-              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
-              />
-              <div
-                class="flex flex-col space-y-3"
-              >
-                <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
-          >
-            <div
-              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
-              />
-              <div
-                class="flex flex-col space-y-3"
-              >
-                <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
-          >
-            <div
-              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
-              />
-              <div
-                class="flex flex-col space-y-3"
-              >
-                <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
-                />
-                <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
-                />
-              </div>
-            </div>
-          </div>
         </div>
         <div
           class="transition-c-0.5"
@@ -750,5 +678,6 @@ exports[`renders Vouchers component 1`] = `
       </div>
     </div>
   </div>
+  )
 </div>
 `;
