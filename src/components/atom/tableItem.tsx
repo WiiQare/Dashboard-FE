@@ -43,7 +43,6 @@ interface CustomToolbarProps {
   currentPage: string;
 }
 
-
 const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
   const apiRef = useGridApiContext();
   const { data: session } = useSession();
@@ -194,9 +193,9 @@ const TableItems: FC<TableItemsProps<any>> = ({
                 color: theme.theme === 'dark' && 'white !important',
               },
               '.MuiSvgIcon-root, .MuiInputBase-root, .MuiInputLabel-root, .MuiFormControlLabel-label':
-              {
-                color: theme.theme === 'dark' && 'white !important',
-              },
+                {
+                  color: theme.theme === 'dark' && 'white !important',
+                },
             }}
           />
           <DataGrid

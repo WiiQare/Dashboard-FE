@@ -21,14 +21,19 @@ describe('TableItems Component', () => {
     const groups: GridColumnGroupingModel = [];
 
     render(
-      <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
-      <TableItems
-        data={data}
-        columns={columns}
-        groups={groups}
-        currentPage={'0'}
-      />
-  </SessionProvider>,
+      <SessionProvider
+        session={{
+          user: { data: { userId: 'random123' } } as UserType,
+          expires: '',
+        }}
+      >
+        <TableItems
+          data={data}
+          columns={columns}
+          groups={groups}
+          currentPage={'0'}
+        />
+      </SessionProvider>,
     );
   });
 });

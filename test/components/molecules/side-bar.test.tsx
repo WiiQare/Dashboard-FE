@@ -22,9 +22,14 @@ describe('SideBar Component', () => {
     (useRouter as jest.Mock).mockReturnValue({});
 
     render(
-      <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
-       <SideBar {...mockProps} />
-  </SessionProvider>,
-   );
+      <SessionProvider
+        session={{
+          user: { data: { userId: 'random123' } } as UserType,
+          expires: '',
+        }}
+      >
+        <SideBar {...mockProps} />
+      </SessionProvider>,
+    );
   });
 });

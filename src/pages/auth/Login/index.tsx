@@ -41,7 +41,6 @@ const Login = () => {
         console.log('login successful');
       }
     } catch (error) {
-   
       setErrorMessage('An error occurred during authentication.');
       setIsValidInput(false);
     } finally {

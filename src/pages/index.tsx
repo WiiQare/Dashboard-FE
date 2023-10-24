@@ -26,7 +26,7 @@ export default function Home() {
   const { data: session } = useSession();
   const userState = session?.user as UserType;
   const userAuth = !!session;
-  console.log(session)
+  console.log(session);
   useEffect(() => {
     if (userAuth) {
       const fetchDataAsync = async () => {

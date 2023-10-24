@@ -35,7 +35,6 @@ const menus = [
 //   },
 // ] as unknown as Menu[];
 
-
 const SideBar = (props: { sidebarOpen: boolean; handleSidebar: any }) => {
   const { data: session } = useSession();
   const userState = session?.user as UserType;

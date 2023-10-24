@@ -5,10 +5,14 @@ import { UserType } from '@/Interfaces/interfaces';
 
 test('renders Vouchers component', async () => {
   const { container } = render(
-    <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
+    <SessionProvider
+      session={{
+        user: { data: { userId: 'random123' } } as UserType,
+        expires: '',
+      }}
+    >
       <Providers />)
     </SessionProvider>,
   );
   expect(container).toMatchSnapshot();
 });
-

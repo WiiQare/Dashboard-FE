@@ -15,8 +15,6 @@ interface PageLayoutProps {
   summaryEndpoint: string;
 }
 
-
-
 const PageLayout: React.FC<PageLayoutProps> = ({
   columns,
   CardsData,

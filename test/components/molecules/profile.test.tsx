@@ -12,12 +12,16 @@ describe('Profile Component', () => {
   it('Renders without errors', () => {
     const store = createStore(rootReducer); // Create a Redux store with your reducer
     render(
-        <SessionProvider session={{ user: { data: { userId: 'random123' } } as UserType, expires: '' }}>
-     <Provider store={store}>
-        <Profile />
-      </Provider>
-  </SessionProvider>
-     ,
+      <SessionProvider
+        session={{
+          user: { data: { userId: 'random123' } } as UserType,
+          expires: '',
+        }}
+      >
+        <Provider store={store}>
+          <Profile />
+        </Provider>
+      </SessionProvider>,
     );
   });
 });

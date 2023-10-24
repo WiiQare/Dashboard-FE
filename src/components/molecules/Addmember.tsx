@@ -6,7 +6,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Image from 'next/image';
 import { AddManagers } from '@/pages/api/addManagers';
 
-
 const AddMember = (): JSX.Element => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const emailRef = useRef('');
