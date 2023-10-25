@@ -13,7 +13,7 @@ exports[`renders Vouchers component 1`] = `
         class="w-full"
       >
         <div
-          class="grid cards grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5 p-[23px]"
+          class="grid cards grid-cols-1 gap-1 md:grid-cols-3 md:gap-4 xl:grid-cols-5 2xl:gap-7.5 p-[23px]"
         >
           <div
             class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
@@ -25,16 +25,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -49,16 +49,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -73,16 +73,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -97,16 +97,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -121,16 +121,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -145,16 +145,16 @@ exports[`renders Vouchers component 1`] = `
                 class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
               />
               <div
-                class="flex flex-col space-y-3"
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
               >
                 <div
-                  class="w-16 h-4 bg-gray-300 rounded-md "
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-24 h-4 bg-gray-300 rounded-md "
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
                 />
                 <div
-                  class="w-36 h-4 bg-gray-300 rounded-md "
+                  class="w-full h-4 bg-gray-300 rounded-md"
                 />
               </div>
             </div>
