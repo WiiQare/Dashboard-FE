@@ -4,7 +4,7 @@ import payersColumns, {
   payersColumnGroupingModel,
 } from '@/data/pagesData/payers/payersColumns';
 
-import PageLayout from '@/components/pages';
+import PageLayout from '@/components/compounds/pages';
 
 const Payers = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import CardsData from '@/data/pagesData/vouchers/vouchersCards';
 import VouchersColumns from '@/data/pagesData/vouchers/vouchersColumns';
-import PageLayout from '@/components/pages';
+import PageLayout from '@/components/compounds/pages';
 
 const Vouchers = () => {
   return (

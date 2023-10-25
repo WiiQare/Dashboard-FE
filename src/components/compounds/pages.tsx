@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from '@/components/atom/pagination';
-import Content from '@/components/content';
-import PageSkeleton from '@/components/molecules/pageSkeleton';
+import Content from '@/components/compounds/content';
 import { useSession } from 'next-auth/react';
 import { fetchData } from '@/pages/api/fetchData';
 import { UserType } from '@/Interfaces/interfaces';
+import PageSkeleton from '../molecules/pageSkeleton';
 
 interface PageLayoutProps {
   columns: any[];

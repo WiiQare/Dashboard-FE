@@ -3,7 +3,7 @@ import CardsData from '@/data/pagesData/beneficiaries/beneficiariesCards';
 import BeneficiariesColumns, {
   BeneficiariesColumnGroupingModel,
 } from '@/data/pagesData/beneficiaries/beneficiariesColumns';
-import PageLayout from '@/components/pages';
+import PageLayout from '@/components/compounds/pages';
 
 let newSkip: number = 0;
 

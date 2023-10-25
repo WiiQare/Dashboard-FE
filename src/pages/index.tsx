@@ -76,7 +76,7 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div className="w-full">
           {combinedCardData.length ? (
-            <Cards data={combinedCardData} />
+            <CardSkeleton number={10} />
           ) : (
             <CardSkeleton number={10} />
           )}

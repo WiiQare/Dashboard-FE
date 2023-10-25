@@ -8,8 +8,8 @@ import { UserProvider } from '@/context/UserContext';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import type { AppProps } from 'next/app';
-import Layout from '@/components/layout';
 import { SessionProvider } from 'next-auth/react';
+import Layout from '@/components/compounds/layout';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

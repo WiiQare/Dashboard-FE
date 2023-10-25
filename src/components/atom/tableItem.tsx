@@ -120,7 +120,7 @@ const CustomToolbar: React.FC<CustomToolbarProps> = ({ currentPage }) => {
           },
         }}
       >
-        <MenuItem onClick={handleExport}>Download CSV</MenuItem>
+        {/* <MenuItem onClick={handleExport}>Download CSV</MenuItem> */}
       </Menu>
     </GridToolbarContainer>
   );

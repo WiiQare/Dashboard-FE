@@ -4,7 +4,7 @@ function HealthIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="w-7 ml-[-3px] invert dark:fill-black dark:border-white"
+      className="w-7 ml-[-3px] invert dark:fill-black dark:border-black"
       height="30"
       fill="none"
       viewBox="0 0 23 24"

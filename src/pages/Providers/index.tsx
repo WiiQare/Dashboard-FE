@@ -4,10 +4,10 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchData } from '../api/fetchData';
 import CardsData from '@/data/pagesData/providers/providersCards';
 import Pagination from '@/components/atom/pagination';
-import Content from '@/components/content';
+import Content from '@/components/compounds/content';
 import ProvidersColumns from '@/data/pagesData/providers/providersColumns';
-import PageSkeleton from '@/components/molecules/pageSkeleton';
-import PageLayout from '@/components/pages';
+import PageSkeleton from '@/molecules/pageskeleton';
+import PageLayout from '@/components/compounds/pages';
 interface UserType {
   id: string;
   name: string | null | undefined;

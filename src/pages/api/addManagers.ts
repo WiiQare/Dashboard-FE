@@ -18,7 +18,7 @@ export async function AddManagers(
     const apiEndpoint = `${process.env.WIIQARE_URI}/admin/managers`;
 
     // Make a POST request to the selected API endpoint
-    const { data, status } = await axios.post<User>(apiEndpoint, {
+    const { data } = await axios.post<User>(apiEndpoint, {
       email,
       password,
     });

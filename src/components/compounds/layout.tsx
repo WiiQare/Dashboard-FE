@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import SideBar from './molecules/side-bar';
-import Navbar from './molecules/nav-bar';
-import Header from './atom/head';
+import SideBar from '../molecules/side-bar';
+import Navbar from '../molecules/nav-bar';
+import Header from '../atom/head';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import Loader from './atom/loader';
+import Loader from '../atom/loader';
 
 type Props = {
   children: JSX.Element;

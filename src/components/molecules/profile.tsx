@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/rootReducer';
 import { toggleDropdown } from '../../redux/actions/actions';
 import Image from 'next/image';
 import Router from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
-import router from 'next/router';
 import { UserType } from '@/Interfaces/interfaces';
 
 const Profile = (): JSX.Element => {
@@ -36,7 +35,7 @@ const Profile = (): JSX.Element => {
 
   const handleSignOut = () => {
     signOut();
-    router.push('/auth/Login');
+    Router.push('/auth/Login');
   };
 
   useEffect(() => {

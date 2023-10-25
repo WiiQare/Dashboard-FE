@@ -1,7 +1,7 @@
 import React from 'react';
 import CardsData from '@/data/pagesData/payments/paymentsCards';
 import PaymentsProvidersColumns from '@/data/pagesData/payments/providers/providerColumns';
-import PageLayout from '@/components/pages';
+import PageLayout from '@/components/compounds/pages';
 
 const Provider = () => {
   return (
