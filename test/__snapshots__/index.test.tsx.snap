@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Home component 1`] = `
+<div>
+  <div
+    class="transition-c-0.5  overflow-y-auto p-4 h-full w-full sm:px-4"
+    id="main"
+  >
+    <div
+      class="grid grid-cols-1 gap-4 mb-4"
+    >
+      <div
+        class="w-full"
+      >
+        <div
+          class="grid cards grid-cols-1 gap-1 md:grid-cols-3 md:gap-4 xl:grid-cols-5 2xl:gap-7.5 p-[23px]"
+        >
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-[#180a0a07] border-[0.2px] shadow-md sm:grid-cols-2 items-left rounded-md dark:bg-[#182644] bg-white p-[20px]"
+          >
+            <div
+              class="flex flex-row items-center justify-center h-full space-x-5 animate-pulse dark:bg-[#182644] bg-white"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-full dark:bg-gray-700 bg-gray-300"
+              />
+              <div
+                class="flex flex-col space-y-3 w-3/4 md:w-2/3 lg:w-1/2 2xl:w-3/4"
+              >
+                <div
+                  class="w-1/2 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-2/3 h-4 bg-gray-300 rounded-md"
+                />
+                <div
+                  class="w-full h-4 bg-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-4"
+        >
+          <div
+            class="flex flex-col md:h-[23rem] lg:flex-row gap-4 transition-c-0.5 pr-2"
+          >
+            <div
+              class="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md rounded-md bg-white lg:w-1/2"
+            >
+              <div
+                class="p-chart"
+                data-pc-name="chart"
+                data-pc-section="root"
+                style="width: 100%; height: 100%; font-family: inherit; padding: 0.5rem;"
+              >
+                <canvas
+                  data-pc-section="canvas"
+                  height="100%"
+                  role="img"
+                  width="100%"
+                />
+              </div>
+            </div>
+            <div
+              class="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] cheatcode shadow-md rounded-md bg-white lg:w-1/2"
+            />
+          </div>
+          <div
+            class="flex mt-5 pr-5 flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md rounded-md h-[28rem] bg-white"
+          >
+            <div
+              class="w-[95%]"
+            >
+              <div
+                class="bar-chart MuiBox-root css-1amhwt3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+</div>
+`;

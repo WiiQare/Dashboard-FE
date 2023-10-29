@@ -1,10 +1,11 @@
+// Home.test.tsx
 import React from 'react';
 import { render } from '@testing-library/react';
-import Beneficiaries from '@/pages/Beneficiaries/index';
-import { SessionProvider } from 'next-auth/react';
+import Home from '@/pages';
 import { UserType } from '@/Interfaces/interfaces';
+import { SessionProvider } from 'next-auth/react';
 
-test('renders Vouchers component', async () => {
+test('renders Home component', () => {
   const { container } = render(
     <SessionProvider
       session={{
@@ -12,7 +13,7 @@ test('renders Vouchers component', async () => {
         expires: '',
       }}
     >
-      <Beneficiaries />)
+      <Home />)
     </SessionProvider>,
   );
   expect(container).toMatchSnapshot();

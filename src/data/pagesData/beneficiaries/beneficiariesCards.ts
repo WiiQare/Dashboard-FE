@@ -1,11 +1,6 @@
 const CardsData = (summary: any) => {
   return [
     {
-      title: 'Total Registered Beneficiaries',
-      color: '934286',
-      info: summary.numberOfRegisteredBeneficiaries,
-    },
-    {
       title: 'Pending Vouchers',
       color: 'F37500',
       info: summary.pendingVouchers.numberOfVouchers,
@@ -41,6 +36,11 @@ const CardsData = (summary: any) => {
       color: '#008000',
       progress: 100,
       info: summary.voucherCurrencies,
+    },
+    {
+      title: 'Total Registered Beneficiaries',
+      color: '934286',
+      info: summary.numberOfRegisteredBeneficiaries,
     },
   ];
 };

@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SideBarItem from '@/components/molecules/side-bar-item';
-import BeneficiariesIcon from './beneficiaries-Icon';
-import HealthIcon from './health-Icon';
-import PayersIcon from './payers-Icon';
-import PaymentsIcon from './payments-Icon';
-import ProfileIcon from './profile-icon';
-import VoucherIcon from './voucher-icon';
-import PaymentProviderIcon from './Providers-icon';
+import BeneficiariesIcon from '../public/svg/beneficiaries-Icon';
+import HealthIcon from '../public/svg/health-Icon';
+import PayersIcon from '../public/svg/payers-Icon';
+import PaymentsIcon from '../public/svg/payments-Icon';
+import ProfileIcon from '../public/svg/profile-icon';
+import VoucherIcon from '../public/svg/voucher-icon';
+import PaymentProviderIcon from '../public/svg/Providers-icon';
 
 describe('Components with similar layout', () => {
   it('should render HealthIcon without errors', () => {

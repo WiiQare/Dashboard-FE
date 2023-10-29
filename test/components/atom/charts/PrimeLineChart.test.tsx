@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import PrimeLineChart from '../../../../src/components/atom/charts/PrimeLineChart';
+import PrimeLineChart from '@/components/atom/charts/PrimeLineChart';
 
 describe('PrimeLineChart', () => {
   it('should be rendered', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from './molecules/table';
-import Cards from './molecules/cards';
+import Table from '../molecules/table';
+import Cards from '../molecules/cards';
 
 interface TableProps {
   columns: any[];

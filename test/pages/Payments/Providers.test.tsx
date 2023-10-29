@@ -1,7 +1,18 @@
 import { render } from '@testing-library/react';
-import Providers from '../../../src/pages/Payments/Providers';
+import Providers from '@/pages/Payments/Providers';
+import { SessionProvider } from 'next-auth/react';
+import { UserType } from '@/Interfaces/interfaces';
 
-test('renders Providers component', async () => {
-  const { container } = render(<Providers />);
+test('renders Vouchers component', async () => {
+  const { container } = render(
+    <SessionProvider
+      session={{
+        user: { data: { userId: 'random123' } } as UserType,
+        expires: '',
+      }}
+    >
+      <Providers />)
+    </SessionProvider>,
+  );
   expect(container).toMatchSnapshot();
 });
