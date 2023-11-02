@@ -1,6 +1,6 @@
 import { GridValueGetterParams } from '@mui/x-data-grid';
 
-const PaymentsProvidersColumns: any[] = [
+const ProvidersColumns: any[] = [
   {
     field: 'providerName',
     headerName: 'Provider Name',
@@ -60,4 +60,4 @@ const PaymentsProvidersColumns: any[] = [
   },
 ];
 
-export default PaymentsProvidersColumns;
+export default ProvidersColumns;

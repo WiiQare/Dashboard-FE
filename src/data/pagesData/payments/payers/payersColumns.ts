@@ -1,4 +1,4 @@
-const PaymentsPayersColumns: any[] = [
+const PayersColumns: any[] = [
   {
     field: 'transactionId',
     headerName: 'Transaction ID',
@@ -31,4 +31,4 @@ const PaymentsPayersColumns: any[] = [
   },
 ];
 
-export default PaymentsPayersColumns;
+export default PayersColumns;

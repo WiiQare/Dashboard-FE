@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import PayersPieChart, { PayersData } from '@/components/atom/charts/pieChart';
+import PayersPieChart, {
+  PayersData,
+} from '../../../../src/components/atom/charts/pieChart';
 
 describe('PayersPieChart Component', () => {
   it('should render without errors when data is provided', () => {

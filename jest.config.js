@@ -36,7 +36,6 @@ module.exports = {
     '<rootDir>/src/styles/',
     '<rootDir>/src/data/',
     '<rootDir>/coverage/',
-    '<rootDir>/src/pages/api/auth/',
   ],
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
@@ -47,7 +46,6 @@ module.exports = {
     '<rootDir>/src/styles/',
     '<rootDir>/src/data/',
     '<rootDir>/coverage/',
-    '<rootDir>/src/pages/api/auth/',
   ],
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset

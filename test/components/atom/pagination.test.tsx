@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Pagination from '@/components/atom/pagination';
+import Pagination from '../../../src/components/atom/pagination';
 
 describe('Pagination Component', () => {
   test('Calls onPageChange with the correct page number when a page button is clicked', () => {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import BarChart from '@/components/atom/charts/barChart';
+import BarChart from '../../../../src/components/atom/charts/barChart';
 
 describe('BarChart', () => {
   it('should be rendered', () => {

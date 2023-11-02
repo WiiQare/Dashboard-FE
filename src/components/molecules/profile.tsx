@@ -1,21 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/rootReducer';
 import { toggleDropdown } from '../../redux/actions/actions';
+import { UserContext } from '@/context/UserContext';
 import Image from 'next/image';
 import Router from 'next/router';
-import { signOut, useSession } from 'next-auth/react';
-import { UserType } from '@/Interfaces/interfaces';
+
+interface UserInterface {
+  type: string;
+  userId: string;
+  phoneNumber: string;
+  names: string;
+  email: string;
+  access_token: string;
+}
 
 const Profile = (): JSX.Element => {
+  const User = React.useContext(UserContext);
+
   const dispatch = useDispatch();
   const isDropdownVisible = useSelector(
     (state: RootState) => state.dropdown.isVisible,
   );
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profilePictureRef = useRef<HTMLDivElement>(null);
-  const { data: session } = useSession();
-  const userState = session?.user as UserType;
+  const [userState, setUserState] = useState<UserInterface | null>(
+    User?.user || null,
+  );
+
+  useEffect(() => {
+    setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
+  }, []);
+
   const handleProfilePictureClick = () => {
     dispatch(toggleDropdown());
   };
@@ -34,8 +50,11 @@ const Profile = (): JSX.Element => {
   };
 
   const handleSignOut = () => {
-    signOut();
-    Router.push('/auth/Login');
+    User?.setAuthenticated(false);
+    User?.setUser({});
+    sessionStorage.removeItem('userAuth');
+    sessionStorage.removeItem('userState');
+    Router.replace('/auth/Login');
   };
 
   useEffect(() => {
@@ -45,7 +64,7 @@ const Profile = (): JSX.Element => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
-  console.log(userState);
+
   return (
     <div className="profile-dropdown">
       <div
@@ -73,13 +92,13 @@ const Profile = (): JSX.Element => {
             <div className="px-4 py-3  ">
               <div className="font-medium truncate">
                 <span className="block text-sm dark:text-white font-bold text-black ">
-                  {userState?.email?.split('@')[0]}
+                  {userState?.names}
                 </span>
                 <span className="block text-sm mt-2 font-medium dark:text-white text-gray-700 truncate">
                   {userState?.email}
                 </span>
                 <span className="block text-sm mt-1 font-medium dark:text-white text-gray-500 truncate">
-                  {userState?.data.names}
+                  {userState?.type}
                 </span>
               </div>
             </div>

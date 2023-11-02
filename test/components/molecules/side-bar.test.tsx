@@ -2,9 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useRouter } from 'next/router';
-import SideBar from '@/components/molecules/side-bar';
-import { SessionProvider } from 'next-auth/react';
-import { UserType } from '@/Interfaces/interfaces';
+import SideBar from '../../../src/components/molecules/side-bar';
 
 // Mock the useRouter hook
 jest.mock('next/router', () => ({
@@ -21,15 +19,6 @@ describe('SideBar Component', () => {
     // Mock the useRouter result
     (useRouter as jest.Mock).mockReturnValue({});
 
-    render(
-      <SessionProvider
-        session={{
-          user: { data: { userId: 'random123' } } as UserType,
-          expires: '',
-        }}
-      >
-        <SideBar {...mockProps} />
-      </SessionProvider>,
-    );
+    render(<SideBar {...mockProps} />);
   });
 });

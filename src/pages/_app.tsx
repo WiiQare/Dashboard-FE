@@ -8,32 +8,29 @@ import { UserProvider } from '@/context/UserContext';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import type { AppProps } from 'next/app';
-import { SessionProvider } from 'next-auth/react';
-import Layout from '@/components/compounds/layout';
+import Layout from '@/components/layout';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider enableSystem={false} attribute="class">
-      <SessionProvider session={pageProps.session}>
-        <Provider store={store}>
-          <NextNProgress
-            color="#ff8a2b"
-            startPosition={0.75}
-            stopDelayMs={300}
-            height={3}
-            options={{
-              showSpinner: false,
-              easing: 'ease',
-              speed: 500,
-            }}
-          />
-          <UserProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </UserProvider>
-        </Provider>
-      </SessionProvider>
+      <Provider store={store}>
+        <NextNProgress
+          color="#ff8a2b"
+          startPosition={0.75}
+          stopDelayMs={300}
+          height={3}
+          options={{
+            showSpinner: false,
+            easing: 'ease',
+            speed: 500,
+          }}
+        />
+        <UserProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </UserProvider>
+      </Provider>
     </ThemeProvider>
   );
 }

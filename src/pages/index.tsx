@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import LineChart from '@/components/atom/charts/PrimeLineChart';
 import BarChart, { ChartData } from '@/components/atom/charts/barChart';
+import { UserContext } from '@/context/UserContext';
+
+import { fetchData } from './api/fetchData';
 import PayersPieChart from '@/components/atom/charts/pieChart';
 import VouchersCards from '@/data/pagesData/main/vouchersCards';
 import PayersCards from '@/data/pagesData/main/payersCards';
@@ -8,74 +11,92 @@ import BeneficiariesCards from '@/data/pagesData/main/beneficiariesCards';
 import ProvidersCards from '@/data/pagesData/main/providerCards';
 import Cards from '@/components/molecules/cards';
 import CardSkeleton from '@/components/atom/skeleton/cardSkeleton';
-import { useSession } from 'next-auth/react';
-import { fetchData } from './api/fetchData';
 
-interface UserType {
-  id: string;
-  name: string | null | undefined;
-  email: string | null | undefined;
-  image: string | null | undefined;
+interface UserInterface {
+  type: string;
+  userId: string;
+  phoneNumber: string;
+  names: string;
+  email: string;
+  access_token: string;
 }
 
 export default function Home() {
+  const User = React.useContext(UserContext);
   const [barChartData, setBarChartData] = useState<ChartData[]>([]);
   const [lineChartData, setLineChartData] = useState<[]>([]);
   const [combinedCardData, setCombinedCardData] = useState<any[]>([]);
   const [pieData, setPieData] = useState<any>({});
-  const { data: session } = useSession();
-  const userState = session?.user as UserType;
-  const userAuth = !!session;
-  console.log(session);
+  const [userState, setUserState] = useState<UserInterface | any>(User?.user);
+  const [userAuth, setUserAuth] = useState<boolean | undefined>(
+    User?.authenticated,
+  );
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useLayoutEffect(() => {
+    setUserAuth(Boolean(sessionStorage.getItem('userAuth')));
+    setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
+    setMounted(true);
+  }, [User?.authenticated, User?.user]);
+
   useEffect(() => {
-    if (userAuth) {
-      const fetchDataAsync = async () => {
-        // Use userState.id as the access token
-        const accessToken = userState?.id;
+    if (!mounted) return;
 
-        // Check if accessToken is not null or undefined before making API requests
-        if (accessToken) {
-          console.log('Access token', session);
-          const pieRes = await fetchData('/payers/summary', accessToken);
-          setPieData(pieRes);
+    const fetchDataAsync = async () => {
+      const pieRes = await fetchData(
+        '/payers/summary',
+        userState?.access_token,
+      );
+      setPieData(pieRes);
+      const vouchers = await fetchData(
+        '/vouchers/summary',
+        userState?.access_token,
+      );
+      const payers = await fetchData(
+        '/payers/summary',
+        userState?.access_token,
+      );
+      const providers = await fetchData(
+        '/providers/summary',
+        userState?.access_token,
+      );
+      const beneficiaries = await fetchData(
+        '/beneficiaries/summary',
+        userState?.access_token,
+      );
+      const res = await fetchData(
+        '/charts/payers',
+        userState?.access_token,
+        5,
+        0,
+      );
+      const line = await fetchData(
+        '/charts/beneficiaries',
+        userState?.access_token,
+        20,
+        0,
+      );
 
-          const vouchers = await fetchData('/vouchers/summary', accessToken);
-          const payers = await fetchData('/payers/summary', accessToken);
-          const providers = await fetchData('/providers/summary', accessToken);
-          const beneficiaries = await fetchData(
-            '/beneficiaries/summary',
-            accessToken,
-          );
-          const res = await fetchData('/charts/payers', accessToken, 5, 0);
-          const line = await fetchData(
-            '/charts/beneficiaries',
-            accessToken,
-            20,
-            0,
-          );
+      const combinedData = [
+        ...VouchersCards(vouchers),
+        ...PayersCards(payers),
+        ...BeneficiariesCards(beneficiaries),
+        ...ProvidersCards(providers),
+      ];
 
-          const combinedData = [
-            ...VouchersCards(vouchers),
-            ...PayersCards(payers),
-            ...BeneficiariesCards(beneficiaries),
-            ...ProvidersCards(providers),
-          ];
+      setCombinedCardData(combinedData);
+      setBarChartData(res);
+      setLineChartData(line);
+    };
 
-          setCombinedCardData(combinedData);
-          setBarChartData(res);
-          setLineChartData(line);
-        }
-      };
-
+    if (mounted && userAuth) {
       fetchDataAsync();
     }
-  }, [userAuth, userState]);
+  }, [mounted, userAuth, userState?.access_token]);
 
+  // console.log(combinedCardData.length);
   return (
-    <div
-      className="transition-c-0.5  overflow-y-auto p-4 h-full w-full sm:px-4"
-      id="main"
-    >
+    <div className="transition-c-0.5  overflow-y-auto p-4 h-full w-full sm:px-4">
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div className="w-full">
           {combinedCardData.length ? (
@@ -88,7 +109,7 @@ export default function Home() {
               <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md rounded-md bg-white lg:w-1/2">
                 <LineChart Data={barChartData} />
               </div>
-              <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] cheatcode shadow-md rounded-md bg-white lg:w-1/2">
+              <div className="flex flex-grow dark:bg-[#182644] border-[#180a0a07] border-[0.2px] shadow-md rounded-md bg-white lg:w-1/2">
                 <PayersPieChart data={pieData} />
               </div>
             </div>
