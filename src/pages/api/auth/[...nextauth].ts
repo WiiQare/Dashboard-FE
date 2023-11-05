@@ -46,8 +46,8 @@ const authOptions = {
       type: 'credentials',
       credentials: {
         // Define the shape of the credentials object using the interface
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         try {

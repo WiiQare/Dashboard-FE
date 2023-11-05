@@ -1,12 +1,6 @@
-import { UserContext } from '@/context/UserContext';
-import Router from 'next/router';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { fetchData } from '../api/fetchData';
+import React from 'react';
 import CardsData from '@/data/pagesData/providers/providersCards';
-import Pagination from '@/components/atom/pagination';
-import Content from '@/components/compounds/content';
 import ProvidersColumns from '@/data/pagesData/providers/providersColumns';
-import PageSkeleton from '@/molecules/pageskeleton';
 import PageLayout from '@/components/compounds/pages';
 interface UserType {
   id: string;

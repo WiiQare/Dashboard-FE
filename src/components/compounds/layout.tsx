@@ -13,6 +13,7 @@ type Props = {
 function Layout(props: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const { data: session } = useSession();
   const userAuth = !!session;
 
@@ -21,39 +22,45 @@ function Layout(props: Props) {
   };
 
   useEffect(() => {
-    if (typeof session === 'undefined') {
-      // Session information is not available yet (user not logged in)
-      // You can show a loading indicator or handle this condition as needed
-      return;
-    }
+    const isLoginPage = router.pathname === '/auth/Login';
 
-    if (!userAuth && router.pathname !== '/auth/Login') {
+    if (isLoginPage && typeof session === 'undefined') {
       // Redirect unauthenticated users to the login page
       router.push('/auth/Login');
+    } else if (!isLoginPage && !userAuth) {
+      // Redirect unauthenticated users to the login page on other routes
+      router.push('/auth/Login');
+    } else {
+      setIsReady(true);
     }
-  }, [session, userAuth, router.pathname, router]);
+  }, [session, userAuth, router.pathname]);
 
-  if (typeof session === 'undefined') {
-    return <Loader />;
-  }
-  return (
-    <div>
-      <Header />
-      <div className="bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col fixed h-screen">
-        <div className="flex z-50 w-full">
-          {router.pathname !== '/auth/Login' && router.pathname !== '/404' && (
-            <Navbar handleSidebar={handleSidebarState} />
-          )}
-        </div>
-        <div className="flex overflow-hidden w-screen flex-grow">
-          {router.pathname !== '/auth/Login' && router.pathname !== '/404' && (
-            <SideBar sidebarOpen={open} handleSidebar={handleSidebarState} />
-          )}
-          <div className="flex flex-grow w-full">{props.children}</div>
+  if (isReady) {
+    return (
+      <div>
+        <Header />
+        <div className="bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col fixed h-screen">
+          <div className="flex z-50 w-full">
+            {router.pathname !== '/auth/Login' &&
+              router.pathname !== '/404' && (
+                <Navbar handleSidebar={handleSidebarState} />
+              )}
+          </div>
+          <div className="flex overflow-hidden w-screen flex-grow">
+            {router.pathname !== '/auth/Login' &&
+              router.pathname !== '/404' && (
+                <SideBar
+                  sidebarOpen={open}
+                  handleSidebar={handleSidebarState}
+                />
+              )}
+            <div className="flex flex-grow w-full">{props.children}</div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return <Loader />;
 }
 
 export default Layout;
