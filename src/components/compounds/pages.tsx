@@ -38,13 +38,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   const skip = 0;
 
   useEffect(() => {
-    // Set the access token when userState is available
+    if (summary) {
+      setCardData(CardsData(summary));
+      setNumOfItems(summary[itemNumberEndpoint]);
+    }
     if (userState?.id) {
       setAccessToken(userState.id);
     }
-  }, [userState]);
-
-  useEffect(() => {
     if (accessToken) {
       const fetchDataAsync = async () => {
         const res = await fetchData(endpoint, accessToken, take, skip);
@@ -57,13 +57,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       fetchDataAsync();
     }
   }, [accessToken, endpoint, summaryEndpoint]);
-
-  useEffect(() => {
-    if (summary) {
-      setCardData(CardsData(summary));
-      setNumOfItems(summary[itemNumberEndpoint]);
-    }
-  }, [CardsData, itemNumberEndpoint, summary]);
 
   const handlePageChange = async (page: number) => {
     if (page >= 1 && page <= Math.ceil(numOfItems / take)) {
