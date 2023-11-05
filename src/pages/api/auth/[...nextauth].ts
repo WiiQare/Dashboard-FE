@@ -1,17 +1,19 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-interface tokensProvider {
-  id: string;
-  date: any;
+
+// Define the shape of the credentials object
+interface Credentials {
+  email: string;
+  password: string;
 }
 const authOptions = {
   session: {
     maxAge: 85000,
-    strategy: 'jwt',
+    strategy: 'jwt', // Set the session strategy to 'jwt'
   },
   callbacks: {
     async signInError(error: any) {
-      throw new Error(error.message); // Include the error message
+      throw new Error(error.message);
     },
     async jwt({
       token,
@@ -24,10 +26,8 @@ const authOptions = {
         token.id = user.access_token;
         token.data = user;
       }
-
       return token;
     },
-
     async session({
       session,
       token,
@@ -44,7 +44,11 @@ const authOptions = {
   providers: [
     CredentialsProvider({
       type: 'credentials',
-      credentials: {},
+      credentials: {
+        // Define the shape of the credentials object using the interface
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials) {
         try {
           const Options = {
@@ -61,7 +65,7 @@ const authOptions = {
           const response = await fetch(url, Options);
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message); // Include the server error message
+            throw new Error(errorData.message);
           }
           const json = await response.json();
 
@@ -81,11 +85,10 @@ const authOptions = {
       },
     }),
   ],
-
   pages: {
     signIn: 'auth/Login',
   },
   secret: 'secretpeterwiiqareuniceftoken',
 };
 
-export default NextAuth(authOptions);
+export default NextAuth(authOptions as any);
