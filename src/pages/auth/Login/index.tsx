@@ -33,12 +33,12 @@ const Login = () => {
       });
       // console.log("response error: ", response)
       if (response?.error) {
-        console.log('response error: ', response);
+        // console.log('response error: ', response);
         setErrorMessage('Invalid email or password');
         setIsValidInput(false);
       } else {
         router.push('/');
-        console.log('login successful');
+        // console.log('login successful');
       }
     } catch (error) {
       setErrorMessage('An error occurred during authentication.');
