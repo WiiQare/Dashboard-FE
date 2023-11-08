@@ -35,7 +35,7 @@ const Profile = (): JSX.Element => {
 
   const handleSignOut = () => {
     signOut();
-    Router.push('/auth/Login');
+    // Router.push('/auth/Login');
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Profile = (): JSX.Element => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
-  console.log(userState);
+  // console.log(userState);
   return (
     <div className="profile-dropdown">
       <div
