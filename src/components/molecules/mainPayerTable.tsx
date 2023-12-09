@@ -1,5 +1,6 @@
-import PayersColumns from '@/data/pagesData/payers/payersColumns';
-import { payersColumnGroupingModel } from '@/data/pagesData/payers/payersColumns';
+import PayersColumns, {
+  payersColumnGroupingModel,
+} from '@/data/pagesData/payers/payersColumns';
 import React from 'react';
 import { useTheme } from 'next-themes';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';

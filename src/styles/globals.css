@@ -5,36 +5,6 @@
 @tailwind utilities;
 
 /* Paragraph */
-.button-text {
-  @apply text-base font-medium;
-}
-
-.p2 {
-  @apply text-sm font-medium leading-6;
-}
-
-.p3 {
-  @apply text-sm font-light leading-6;
-}
-
-.p4 {
-  @apply text-sm font-light;
-}
-
-.p5 {
-  @apply text-xs font-normal;
-}
-
-/* Heading */
-h1,
-.h1 {
-  @apply text-[28px] font-bold leading-10;
-}
-
-h2,
-.h2 {
-  @apply text-xl font-medium leading-[30px];
-}
 
 canvas {
   width: 100% !important;
@@ -59,81 +29,12 @@ input {
   color: black;
 } */
 
-.number-title {
-  width: 149.67px;
-  height: 36.14px;
-
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 30px;
-  letter-spacing: 0.02em;
-
-  color: #0f123f;
-
-  transform: rotate(-0.2deg);
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.number-title {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 30px;
-  letter-spacing: 0.02em;
-
-  color: #0f123f;
-
-  transform: rotate(-0.2deg);
-}
-
-.title-box {
-  color: #7099d1 !important;
-  font-size: 16px;
-  transform: rotate(-0.2deg);
-}
-
-.MuiDataGrid-columnHeader:focus-within {
-  outline: none !important;
-}
-
-.left-table {
-  display: block;
-  text-align: left;
-  font-size: 16px;
-}
-
-.right-table {
-  display: block;
-  text-align: right;
-  font-size: 16px;
-}
-
-.action-box {
-  box-sizing: border-box;
-  width: 47px;
-  height: 45px;
-  align-content: center;
-  border: 1px solid rgba(136, 136, 136, 0.28);
-}
-
 .transition-1 {
   transition: all 1s ease;
 }
 
 .transition-c-0\.5 {
   transition: all 0.5s ease;
-}
-
-.circle {
-  height: 2.875rem /* 46px */;
-  width: 2.875rem /* 46px */;
 }
 
 .translate-x-0 {
@@ -153,24 +54,6 @@ input {
   .search-input {
     width: 10rem;
     transition: all 1s ease;
-  }
-}
-
-.bg-gray-850 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-
-.FF {
-  -webkit-transition: background-color 1s ease-out;
-  -moz-transition: background-color 1s ease-out;
-  -o-transition: background-color 1s ease-out;
-  transition: background-color 1s ease-out;
-}
-
-@media screen and (max-width: 1524px) and (min-width: 1280px) {
-  .card-text {
-    max-width: 8rem;
   }
 }
 
@@ -201,8 +84,28 @@ th.text-left:nth-child(3) > div:nth-child(1) {
   }
 }
 
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .cheatcode {
+    margin-top: 29rem;
+  }
+}
+
+#\:r113\: {
+  pointer-events: none;
+}
+
 div.MuiDataGrid-columnHeader:nth-child(1) {
   padding-left: 1rem;
+}
+
+button.absolute {
+  display: none;
+}
+
+.h-\[100dvh\] {
+  /* height: 100vh; */
+  pointer-events: none;
+  margin-top: 10rem;
 }
 
 .nextui-collapse-title-container:hover {
@@ -214,19 +117,6 @@ div.MuiDataGrid-columnHeader:nth-child(1) {
 .nextui-c-hPzDAx {
   height: 4.4rem;
   margin-top: -1rem;
-}
-
-.accordion-header {
-  @apply flex items-center justify-between p-4 bg-gray-200 cursor-pointer;
-}
-
-.accordion-header:hover {
-  @apply bg-gray-300;
-}
-
-.accordion-content.expanded {
-  @apply max-h-96;
-  /* Adjust the value as needed */
 }
 
 .nextui-collapse-title-container {

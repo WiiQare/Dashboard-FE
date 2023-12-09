@@ -1,14 +1,14 @@
-import MenuItem, { Menu } from './side-bar-item';
+import MenuItem, { Menu } from './MenuItem';
 import HealthIcon from '@public/svg/health-Icon';
 import PaymentsIcon from '@public/svg/payments-Icon';
 import BeneficiariesIcon from '@public/svg/beneficiaries-Icon';
 import PayersIcon from '@public/svg/payers-Icon';
 import NFTICON from '@public/svg/voucher-icon';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PaymentProviderIcon from '@public/svg/Providers-icon';
-import Link from 'next/link';
-import { UserContext } from '@/context/UserContext';
-import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
+import { UserType } from '@/Interfaces/interfaces';
+import AddMember from './Addmember';
 
 const Submenus = [
   { icon: PaymentProviderIcon, title: 'Provider', href: '/Payments/Providers' },
@@ -35,24 +35,9 @@ const menus = [
 //   },
 // ] as unknown as Menu[];
 
-interface UserInterface {
-  type: string;
-  userId: string;
-  phoneNumber: string;
-  names: string;
-  email: string;
-  access_token: string;
-}
-
 const SideBar = (props: { sidebarOpen: boolean; handleSidebar: any }) => {
-  const router = useRouter();
-  const User = React.useContext(UserContext);
-
-  const [userState, setUserState] = useState<UserInterface | any>(User?.user);
-  useEffect(() => {
-    setUserState(JSON.parse(sessionStorage.getItem('userState') || 'null'));
-    // Set loading to false after mounting
-  }, [User?.authenticated, User?.user]);
+  const { data: session } = useSession();
+  const userState = session?.user as UserType;
 
   return (
     <div
@@ -77,14 +62,7 @@ const SideBar = (props: { sidebarOpen: boolean; handleSidebar: any }) => {
           </ul>
           {/* <------components-----> */}
           <hr className="ml-4 py-2 text-black dark:text-white/20" />
-          {userState?.type === 'WIIQARE_ADMIN' && (
-            <Link
-              href="/"
-              className=" dark:text-white/20 justify-center rounded-lg  py-3 px-4 bg-blue-100 dark:bg-blue-950 dark:hover:text-blue-200  hover:bg-blue-200 text-gray-800 dark:text-gray-100 font-bold inline-flex items-center"
-            >
-              Add members
-            </Link>
-          )}
+          {userState?.data.type === 'WIIQARE_ADMIN' && <AddMember></AddMember>}
         </div>
       </div>
     </div>
