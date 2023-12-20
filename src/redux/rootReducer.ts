@@ -9,7 +9,7 @@ import reducerPatient from './reducerPatient';
 const rootReducer = combineReducers({
   search: searchReducer,
   dropdown: dropdownReducer,
-  patient: reducerPatient
+  patient: reducerPatient,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

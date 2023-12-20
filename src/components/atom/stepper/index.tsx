@@ -1,7 +1,6 @@
 import { useStepContext } from '@/context/StepContext';
 import React, { useEffect } from 'react';
 
-
 const Stepper: React.FC = () => {
   const { activeStepIndex } = useStepContext();
 
@@ -51,6 +50,6 @@ const Stepper: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Stepper;

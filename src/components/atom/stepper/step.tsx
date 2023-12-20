@@ -24,6 +24,6 @@ const Step: React.FC = () => {
   }
 
   return stepContent;
-}
+};
 
 export default Step;

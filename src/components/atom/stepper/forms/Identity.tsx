@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootStatePatient } from '@/redux/rootReducerPatient';
 import { setPatientDispatch } from '@/redux/reducerPatient';
 import LoadingButton from '../../loader/LoadingButton';
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 
 export interface StateDataProps {
   type: number;
@@ -29,8 +29,8 @@ export type valueIdentity = {
   city?: string;
   phoneNumber: string;
   country?: string;
-  accessToken?: string
-}
+  accessToken?: string;
+};
 
 const Identity = () => {
   const [country, setCountry] = useState('cd');
@@ -39,7 +39,9 @@ const Identity = () => {
   const { data: session } = useSession();
   const userState = session?.user as UserType;
   // const [state, setState] = useState<StateDataProps>({ type: 0, message: '' });
-  const client = useSelector((state: RootStatePatient) => state?.patient?.client);
+  const client = useSelector(
+    (state: RootStatePatient) => state?.patient?.client,
+  );
   const { activeStepIndex, setActiveStepIndex, formData } = useStepContext();
   const dispatch = useDispatch();
 
@@ -66,7 +68,7 @@ const Identity = () => {
         //   setState({ type: 0, message: '' });
         // }, 3000);
       } else {
-        toast.success('Enregistré avec succès')
+        toast.success('Enregistré avec succès');
         // setState({ type: 1, message: 'Enregistré avec succès' });
 
         localStorage.setItem(
@@ -101,9 +103,8 @@ const Identity = () => {
       country: '',
     },
     validationSchema: ValidationSchema,
-    onSubmit
+    onSubmit,
   });
-
 
   const renderError = (message: string) => (
     <p className="text-xs text-red-600 font-light flex items-center gap-1">
@@ -114,7 +115,11 @@ const Identity = () => {
   return (
     <>
       <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit} autoComplete="false" className='flex flex-col gap-6'>
+        <form
+          onSubmit={formik.handleSubmit}
+          autoComplete="false"
+          className="flex flex-col gap-6"
+        >
           <div className="flex flex-col gap-3">
             <div className="flex flex-col md:flex-row gap-6 w-full">
               {/* <div className="md:w-1/3 w-full inline-flex">
@@ -144,9 +149,8 @@ const Identity = () => {
                     name="phoneNumber"
                   />
                   {formik.values.phoneNumber.trim() == '' ||
-                    formik.values.phoneNumber
-                      .replace('+' + dial, ' ')
-                      .trim() == '' ? (
+                  formik.values.phoneNumber.replace('+' + dial, ' ').trim() ==
+                    '' ? (
                     renderError('Entrez le numéro de téléphone')
                   ) : (
                     <></>
@@ -155,10 +159,11 @@ const Identity = () => {
                 <span className="w-fit h-fit px-1 md:p-2 rounded-lg flex items-center md:gap-2 text-sm text-gray-600">
                   <span
                     className="tooltip tooltip-left md:tooltip-bottom text-xs"
-                    data-tip={`${formik.values.phoneNumber.trim() != ''
-                      ? formik.values.phoneNumber
-                      : 'Ce numéro de téléphone'
-                      } devra être le numéro disponible, pour être utilisé à l'hôpital `}
+                    data-tip={`${
+                      formik.values.phoneNumber.trim() != ''
+                        ? formik.values.phoneNumber
+                        : 'Ce numéro de téléphone'
+                    } devra être le numéro disponible, pour être utilisé à l'hôpital `}
                   >
                     <CiCircleInfo size={23} className="text-red-400" />
                   </span>
@@ -175,7 +180,7 @@ const Identity = () => {
                   fullWidth
                   label="Nom de famille"
                   variant="outlined"
-                  defaultValue={""}
+                  defaultValue={''}
                   onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
                     localStorage.setItem('firstName', e.currentTarget.value);
                   }}
@@ -287,12 +292,11 @@ const Identity = () => {
                 </>
               )}
             </button>
-
           </div>
         </form>
       </FormikProvider>
     </>
   );
-}
+};
 
 export default Identity;

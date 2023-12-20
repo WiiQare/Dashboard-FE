@@ -21,7 +21,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider enableSystem={false} attribute="class">
       <SessionProvider session={pageProps.session}>
         <QueryClientProvider client={queryClient}>
-
           <Provider store={store}>
             <NextNProgress
               color="#ff8a2b"
@@ -41,11 +40,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
               </Layout>
               {/* </Provider> */}
-
             </UserProvider>
           </Provider>
         </QueryClientProvider>
-
       </SessionProvider>
     </ThemeProvider>
   );

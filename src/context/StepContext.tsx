@@ -2,7 +2,6 @@ import React, { createContext, useContext } from 'react';
 
 // Interface pour définir le type de données stockées dans le contexte
 export interface StepContextData {
-
   activeStepIndex: number;
   setActiveStepIndex: (id: number) => void;
   formData?: Object;
@@ -16,7 +15,9 @@ const StepContext = createContext<StepContextData | undefined>(undefined);
 const useStepContext = () => {
   const context = useContext(StepContext);
   if (!context) {
-    throw new Error('useMyContext doit être utilisé à l\'intérieur de MyContextProvider');
+    throw new Error(
+      "useMyContext doit être utilisé à l'intérieur de MyContextProvider",
+    );
   }
   return context;
 };

@@ -26,10 +26,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('flowbite/plugin'),
-    require('daisyui'),
-  ],
+  plugins: [require('flowbite/plugin'), require('daisyui')],
   daisyui: {
     darkTheme: false,
   },

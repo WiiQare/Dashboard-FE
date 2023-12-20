@@ -3,11 +3,10 @@ import { CiSaveDown2 } from 'react-icons/ci';
 import { HiOutlinePrinter } from 'react-icons/hi';
 
 interface cardHeaderProps {
-    children?: React.ReactElement,
-    title: string,
-    download?: boolean,
-    print?: boolean
-
+  children?: React.ReactElement;
+  title: string;
+  download?: boolean;
+  print?: boolean;
 }
 const CardHeader: React.FC<cardHeaderProps> = ({
   children = null,
@@ -23,7 +22,6 @@ const CardHeader: React.FC<cardHeaderProps> = ({
         </h1>
       </div>
       <div className="flex flex-row flex-wrap  gap-2 center justify-end space-x-2">
-       
         {print ? (
           <Button className="border-2 border-sky text-primary hover:text-white hover:bg-primary">
             <HiOutlinePrinter className="mr-2 h-5 w-5" />
@@ -43,7 +41,6 @@ const CardHeader: React.FC<cardHeaderProps> = ({
         )}
 
         {children ? children : <></>}
-
       </div>
     </div>
   );

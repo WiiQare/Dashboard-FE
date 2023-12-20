@@ -18,7 +18,7 @@ const Generate = () => {
     activeStepIndex,
     setActiveStepIndex,
     formData,
-    setFormData
+    setFormData,
   };
 
   return (
@@ -37,14 +37,10 @@ const Generate = () => {
           <div className="w-full overflow-hidden md:col-span-2 rounded-lg py-8 flex flex-col gap-6 bg-white drop-shadow-sm">
             <div className="px-8 space-y-8">
               <div>
-                <h2 className="font-semibold text-xl">
-                  Générer un pass santé
-                </h2>
+                <h2 className="font-semibold text-xl">Générer un pass santé</h2>
               </div>
               <div className="flex flex-col gap-4">
-                <StepContext.Provider
-                  value={contextValue}
-                >
+                <StepContext.Provider value={contextValue}>
                   <div className="flex flex-col items-center justify-start">
                     <Stepper />
                     <Step />

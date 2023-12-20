@@ -39,16 +39,26 @@ function Layout(props: Props) {
     return (
       <div>
         <Header />
-        <div className={`bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col  ${router.pathname !== '/auth/Login' &&
-          router.pathname !== '/404' ? 'overflow-scroll' : 'h-screen overflow-hidden'}`}>
+        <div
+          className={`bg-[#f0f4fd] dark:bg-[#0f172a] flex flex-col  ${
+            router.pathname !== '/auth/Login' && router.pathname !== '/404'
+              ? 'overflow-scroll'
+              : 'h-screen overflow-hidden'
+          }`}
+        >
           <div className="flex z-50 w-full fixed">
             {router.pathname !== '/auth/Login' &&
               router.pathname !== '/404' && (
                 <Navbar handleSidebar={handleSidebarState} />
               )}
           </div>
-          <div className={`flex overflow-hidden w-screen fixed h-screen flex-grow ${router.pathname !== '/auth/Login' &&
-            router.pathname !== '/404' ? 'pt-24' : ''}`}>
+          <div
+            className={`flex overflow-hidden w-screen fixed h-screen flex-grow ${
+              router.pathname !== '/auth/Login' && router.pathname !== '/404'
+                ? 'pt-24'
+                : ''
+            }`}
+          >
             {router.pathname !== '/auth/Login' &&
               router.pathname !== '/404' && (
                 <SideBar
@@ -56,7 +66,9 @@ function Layout(props: Props) {
                   handleSidebar={handleSidebarState}
                 />
               )}
-            <div className="flex flex-grow w-full pt-0 pb-60  h-full overflow-scroll">{props.children}</div>
+            <div className="flex flex-grow w-full pt-0 pb-60  h-full overflow-scroll">
+              {props.children}
+            </div>
           </div>
         </div>
       </div>
