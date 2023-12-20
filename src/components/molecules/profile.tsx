@@ -10,7 +10,7 @@ import { UserType } from '@/Interfaces/interfaces';
 const Profile = (): JSX.Element => {
   const dispatch = useDispatch();
   const isDropdownVisible = useSelector(
-    (state: RootState) => state.dropdown.isVisible,
+    (state: RootState) => state?.dropdown?.isVisible,
   );
   const dropdownRef = useRef<HTMLDivElement>(null);
   const profilePictureRef = useRef<HTMLDivElement>(null);

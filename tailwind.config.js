@@ -15,7 +15,7 @@ module.exports = {
           '04': '#F8F7F1',
           '05': '#DEDEDE',
         },
-
+        orange: '#FF8A2B',
         green: '#52C93F',
       },
       fontFamily: {
@@ -26,5 +26,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+    require('daisyui'),
+  ],
+  daisyui: {
+    darkTheme: false,
+  },
 };

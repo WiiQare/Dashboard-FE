@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <div
-      className="transition-c-0.5  overflow-y-auto p-4 h-full w-full sm:px-4"
+      className="transition-c-0.5 p-4 h-full w-full sm:px-4"
       id="main"
     >
       <div className="grid grid-cols-1 gap-4 mb-4">
