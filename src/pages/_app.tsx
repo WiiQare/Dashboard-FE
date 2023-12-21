@@ -10,29 +10,39 @@ import 'primereact/resources/primereact.min.css';
 import type { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import Layout from '@/components/compounds/layout';
+import { storePatient } from '@/redux/store/storePatient';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import ToasterProvider from '@/components/atom/ToasterProvider';
+
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider enableSystem={false} attribute="class">
       <SessionProvider session={pageProps.session}>
-        <Provider store={store}>
-          <NextNProgress
-            color="#ff8a2b"
-            startPosition={0.75}
-            stopDelayMs={300}
-            height={3}
-            options={{
-              showSpinner: false,
-              easing: 'ease',
-              speed: 500,
-            }}
-          />
-          <UserProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </UserProvider>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <NextNProgress
+              color="#ff8a2b"
+              startPosition={0.75}
+              stopDelayMs={300}
+              height={3}
+              options={{
+                showSpinner: false,
+                easing: 'ease',
+                speed: 500,
+              }}
+            />
+            <UserProvider>
+              {/* <Provider store={storePatient}> */}
+              <ToasterProvider />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+              {/* </Provider> */}
+            </UserProvider>
+          </Provider>
+        </QueryClientProvider>
       </SessionProvider>
     </ThemeProvider>
   );
