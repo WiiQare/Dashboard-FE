@@ -315,10 +315,7 @@ const Amount: React.FC<AmountDataProps> = ({
     </p>
   );
 
-  const convertAutomatically = async (
-    e: ChangeEvent<HTMLInputElement>,
-  ) => {
-
+  const convertAutomatically = async (e: ChangeEvent<HTMLInputElement>) => {
     e.currentTarget.value && setAmountTemp(Number(e.currentTarget.value));
 
     setConvertRequest(true);
@@ -335,7 +332,6 @@ const Amount: React.FC<AmountDataProps> = ({
   const convertAutomaticallyOnFirstSelect = async (
     e: ChangeEvent<HTMLSelectElement>,
   ) => {
-
     // e.currentTarget.value && setAmountTemp(Number(e.currentTarget.value));
 
     setConvertRequest(true);
@@ -352,12 +348,11 @@ const Amount: React.FC<AmountDataProps> = ({
   const convertAutomaticallyOnSecondSelect = async (
     e: ChangeEvent<HTMLSelectElement>,
   ) => {
-
     setConvertRequest(true);
     const res = await convertCurrency(
       currencySender,
       Number(amountTemp),
-      e.currentTarget.value
+      e.currentTarget.value,
     );
 
     setConvertRequest(false);
@@ -389,7 +384,6 @@ const Amount: React.FC<AmountDataProps> = ({
       }
     },
   });
-
 
   return (
     <Formik
@@ -481,8 +475,9 @@ const Amount: React.FC<AmountDataProps> = ({
                       Pays:{' '}
                       <b className="text-gray-700 flex gap-1 items-center">
                         <img
-                          src={`https://flagcdn.com/w20/${patient?.country ?? 'cd'
-                            }.png`}
+                          src={`https://flagcdn.com/w20/${
+                            patient?.country ?? 'cd'
+                          }.png`}
                           alt="cd"
                           width={20}
                           height={20}
@@ -611,11 +606,13 @@ const Amount: React.FC<AmountDataProps> = ({
                         className="block  border-transparent rounded-md focus:ring-orange focus:border-orange w-[5.5rem]"
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                           const selectedValue = e.target.value;
-                          setCurrencyPatient(selectedValue || '');  // Utilisez une chaîne vide comme valeur par défaut si c'est null
+                          setCurrencyPatient(selectedValue || ''); // Utilisez une chaîne vide comme valeur par défaut si c'est null
                           setCurrencyPatientName(
                             selectedValue
-                              ? e.target.options[e.target.selectedIndex].getAttribute('currency') || ''
-                              : ''
+                              ? e.target.options[
+                                  e.target.selectedIndex
+                                ].getAttribute('currency') || ''
+                              : '',
                           );
                           convertAutomaticallyOnSecondSelect(e);
                         }}
