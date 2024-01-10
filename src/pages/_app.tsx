@@ -16,8 +16,6 @@ import ToasterProvider from '@/components/atom/ToasterProvider';
 import { ThemeProvider as ThemeUI } from '@mui/material/styles';
 import { themeUI } from '../theme';
 
-
-
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {

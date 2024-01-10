@@ -207,7 +207,7 @@ export const themeUI = createTheme(
           },
         },
       },
-    }
+    },
   },
   frFR,
 );
