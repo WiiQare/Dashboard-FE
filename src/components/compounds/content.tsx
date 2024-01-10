@@ -30,7 +30,7 @@ function Content({
               data={data}
               currentPage={currentPage}
             />
-            {children}
+            {/* {children} */}
           </div>
         </div>
       </div>
