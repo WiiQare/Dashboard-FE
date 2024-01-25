@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Vouchers = () => {
   return (
-    <div className="flex flex-col p-5">
+    <div className="flex flex-col p-5 w-full">
       <div className="flex flex-row-reverse">
         <Link href="/Vouchers/generate" legacyBehavior>
           <a className="bg-orange hover:bg-secondary transition-all duration-300 py-3 px-5 rounded-lg text-sm text-white outline-none">

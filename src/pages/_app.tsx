@@ -13,6 +13,8 @@ import Layout from '@/components/compounds/layout';
 import { storePatient } from '@/redux/store/storePatient';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ToasterProvider from '@/components/atom/ToasterProvider';
+import { ThemeProvider as ThemeUI } from '@mui/material/styles';
+import { themeUI } from '../theme';
 
 const queryClient = new QueryClient();
 
@@ -33,12 +35,15 @@ export default function App({ Component, pageProps }: AppProps) {
                 speed: 500,
               }}
             />
+
             <UserProvider>
               {/* <Provider store={storePatient}> */}
               <ToasterProvider />
+              {/* <ThemeUI theme={themeUI}> */}
               <Layout>
                 <Component {...pageProps} />
               </Layout>
+              {/* </ThemeUI> */}
               {/* </Provider> */}
             </UserProvider>
           </Provider>

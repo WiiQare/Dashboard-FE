@@ -315,9 +315,7 @@ const Amount: React.FC<AmountDataProps> = ({
     </p>
   );
 
-  const convertAutomatically = async (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const convertAutomatically = async (e: ChangeEvent<HTMLInputElement>) => {
     e.currentTarget.value && setAmountTemp(Number(e.currentTarget.value));
 
     setConvertRequest(true);
@@ -325,6 +323,36 @@ const Amount: React.FC<AmountDataProps> = ({
       currencySender,
       Number(e?.target?.value) ?? amountTemp,
       currencyPatient,
+    );
+
+    setConvertRequest(false);
+    setConvertResult(res);
+  };
+
+  const convertAutomaticallyOnFirstSelect = async (
+    e: ChangeEvent<HTMLSelectElement>,
+  ) => {
+    // e.currentTarget.value && setAmountTemp(Number(e.currentTarget.value));
+
+    setConvertRequest(true);
+    const res = await convertCurrency(
+      e.currentTarget.value,
+      Number(amountTemp),
+      currencyPatient,
+    );
+
+    setConvertRequest(false);
+    setConvertResult(res);
+  };
+
+  const convertAutomaticallyOnSecondSelect = async (
+    e: ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setConvertRequest(true);
+    const res = await convertCurrency(
+      currencySender,
+      Number(amountTemp),
+      e.currentTarget.value,
     );
 
     setConvertRequest(false);
@@ -516,7 +544,7 @@ const Amount: React.FC<AmountDataProps> = ({
                         className="block w-full border-transparent rounded-md focus:ring-orange focus:border-blue-600 "
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => {
                           setCurrencySender(e.target.value);
-                          convertAutomatically(e);
+                          convertAutomaticallyOnFirstSelect(e);
                         }}
                       >
                         <option>USD</option>
@@ -577,13 +605,16 @@ const Amount: React.FC<AmountDataProps> = ({
                         name="hs-inline-leading-select-currency"
                         className="block  border-transparent rounded-md focus:ring-orange focus:border-orange w-[5.5rem]"
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-                          setCurrencyPatient(e.target.value);
-                          // setCurrencyPatientName(
-                          //     e.target.options[
-                          //         e.target.selectedIndex
-                          //     ].getAttribute('currency'),
-                          // );
-                          convertAutomatically(e);
+                          const selectedValue = e.target.value;
+                          setCurrencyPatient(selectedValue || ''); // Utilisez une chaîne vide comme valeur par défaut si c'est null
+                          setCurrencyPatientName(
+                            selectedValue
+                              ? e.target.options[
+                                  e.target.selectedIndex
+                                ].getAttribute('currency') || ''
+                              : '',
+                          );
+                          convertAutomaticallyOnSecondSelect(e);
                         }}
                       >
                         {symbols.map((symbol, index) => (

@@ -142,7 +142,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isDisabled}
-                  className="flex w-full justify-center  rounded-md bg-orange-600 hover:bg-orange-500 py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center  rounded-md !bg-orange py-2 text-sm font-semibold leading-6 text-white dark:text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   {isLoading ? (
                     <CircularProgress color="inherit" size={20} />
