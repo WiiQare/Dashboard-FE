@@ -1,4 +1,3 @@
-// reducers/dropdownReducer.ts
 interface DropdownState {
   isVisible: boolean;
 }
