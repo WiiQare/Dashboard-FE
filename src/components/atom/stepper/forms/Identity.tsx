@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, ChangeEventHandler } from 'react';
 import { ErrorMessage, Field, FormikProvider, useFormik } from 'formik';
 import * as yup from 'yup';
-import MuiPhoneNumber from 'material-ui-phone-number';
+import MuiPhoneNumber from 'mui-phone-number';
 import { HiArrowSmRight, HiOutlineInformationCircle } from 'react-icons/hi';
 import { CiCircleInfo } from 'react-icons/ci';
 import { Stack, TextField } from '@mui/material';
@@ -149,7 +149,7 @@ const Identity = () => {
                     name="phoneNumber"
                   />
                   {formik.values.phoneNumber.trim() == '' ||
-                  formik.values.phoneNumber.replace('+' + dial, ' ').trim() ==
+                    formik.values.phoneNumber.replace('+' + dial, ' ').trim() ==
                     '' ? (
                     renderError('Entrez le numéro de téléphone')
                   ) : (
@@ -159,11 +159,10 @@ const Identity = () => {
                 <span className="w-fit h-fit px-1 md:p-2 rounded-lg flex items-center md:gap-2 text-sm text-gray-600">
                   <span
                     className="tooltip tooltip-left md:tooltip-bottom text-xs"
-                    data-tip={`${
-                      formik.values.phoneNumber.trim() != ''
-                        ? formik.values.phoneNumber
-                        : 'Ce numéro de téléphone'
-                    } devra être le numéro disponible, pour être utilisé à l'hôpital `}
+                    data-tip={`${formik.values.phoneNumber.trim() != ''
+                      ? formik.values.phoneNumber
+                      : 'Ce numéro de téléphone'
+                      } devra être le numéro disponible, pour être utilisé à l'hôpital `}
                   >
                     <CiCircleInfo size={23} className="text-red-400" />
                   </span>
